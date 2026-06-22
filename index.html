@@ -91,6 +91,22 @@
     backdrop-filter: blur(10px);
     border-bottom:1px solid var(--line);
   }
+  /* ===== MEGA MENU ===== */
+  .nav-resources{ position:relative; height:100%; display:flex; align-items:center; }
+  .nav-resources > .navlink{ cursor:pointer; }
+  .mega-menu{ display:none; position:fixed; top:64px; left:0; right:0; background:var(--bg); border-top:1px solid var(--line); border-bottom:1px solid var(--line); box-shadow:0 8px 32px rgba(14,31,51,0.10); z-index:200; }
+  .mega-menu.open{ display:block; }
+  .mega-cols{ display:grid; grid-template-columns:repeat(5,1fr); gap:0; }
+  .mega-col{ padding:28px 24px; border-right:1px solid var(--line); }
+  .mega-col:last-child{ border-right:none; }
+  .mega-col-head{ font-family:var(--mono); font-size:10px; letter-spacing:.10em; text-transform:uppercase; color:var(--slate); font-weight:600; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--line); }
+  .mega-item{ display:block; font-size:13.5px; color:var(--navy-soft); padding:5px 0; cursor:pointer; transition:color .15s ease; line-height:1.4; }
+  .mega-item:hover{ color:var(--clay-deep); }
+  .mega-item-primary{ font-weight:600; color:var(--navy); }
+  .mega-item-primary:hover{ color:var(--clay-deep); }
+  .mega-overlay{ display:none; position:fixed; inset:0; z-index:190; }
+  .mega-overlay.open{ display:block; }
+
   .nav{
     display:flex; align-items:center; justify-content:space-between;
     height:64px;
@@ -471,7 +487,9 @@
     <nav class="navlinks">
       <span class="navlink" data-route="home">Home</span>
       <span class="navlink" data-route="products">Products</span>
-      <span class="navlink" data-route="academy">Academy</span>
+      <div class="nav-resources" id="navResources">
+        <span class="navlink" id="resourcesNavLink" onclick="toggleMegaMenu(event)">Resources</span>
+      </div>
       <span class="navlink" data-route="industries">Industries</span>
       <span class="navlink" data-route="press">Publications</span>
       <span class="navlink" data-route="about">About Us</span>
@@ -490,11 +508,67 @@
   <a data-route="home">Home</a>
   <a data-route="products">Products</a>
   <a data-route="academy">Academy</a>
+  <a data-route="knowledge-center">Knowledge Center</a>
+  <a data-route="resources-tools">Tools & Downloads</a>
   <a data-route="industries">Industries</a>
   <a data-route="press">Publications</a>
   <a data-route="about">About Us</a>
   <a data-route="contact">Contact</a>
   <a onclick="openModal(); toggleMobileMenu();">Client Login</a>
+</div>
+
+<!-- ===== MEGA MENU ===== -->
+<div class="mega-overlay" id="megaOverlay" onclick="closeMegaMenu()"></div>
+<div class="mega-menu" id="megaMenu">
+  <div class="wrap">
+    <div class="mega-cols">
+      <!-- LEARN -->
+      <div class="mega-col">
+        <div class="mega-col-head">Learn</div>
+        <span class="mega-item mega-item-primary" data-route="academy">Academy</span>
+        <span class="mega-item" data-route="academy" data-anchor="programs">Certification Programs</span>
+        <span class="mega-item" data-route="academy" data-anchor="corporate-training">Corporate Training</span>
+        <span class="mega-item" data-route="academy-cla">Certified LabOS Admin (CLA)</span>
+        <span class="mega-item" data-route="academy-ldtb">Lab Digital Transformation</span>
+        <span class="mega-item" data-route="academy-poultrysuite">PoultrySuite Certifications</span>
+      </div>
+      <!-- KNOWLEDGE -->
+      <div class="mega-col">
+        <div class="mega-col-head">Knowledge</div>
+        <span class="mega-item mega-item-primary" data-route="knowledge-center">Knowledge Center</span>
+        <span class="mega-item" data-route="knowledge-center" data-anchor="healthcare">Laboratory Excellence Center</span>
+        <span class="mega-item" data-route="knowledge-center" data-anchor="agriculture">Poultry Excellence Center</span>
+        <span class="mega-item" data-route="knowledge-center" data-anchor="tools">Interactive Tools</span>
+      </div>
+      <!-- TOOLS -->
+      <div class="mega-col">
+        <div class="mega-col-head">Tools</div>
+        <span class="mega-item mega-item-primary" data-route="resources-tools" data-anchor="calculators">Calculators</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="lab-calculators">Lab Cost Calculator</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="lab-calculators">Test Pricing Calculator</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="poultry-calculators">Feed Calculator</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="poultry-calculators">Egg Production Calculator</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="poultry-calculators">Farm Profitability Calculator</span>
+      </div>
+      <!-- DOWNLOADS -->
+      <div class="mega-col">
+        <div class="mega-col-head">Downloads</div>
+        <span class="mega-item mega-item-primary" data-route="resources-tools" data-anchor="downloads">Downloads</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="sop-templates">SOP Templates</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="audit-checklists">Audit Checklists</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="quality-manuals">Quality Manuals</span>
+        <span class="mega-item" data-route="resources-tools" data-anchor="forms-library">Forms Library</span>
+      </div>
+      <!-- SUPPORT -->
+      <div class="mega-col">
+        <div class="mega-col-head">Support</div>
+        <span class="mega-item mega-item-primary" data-route="contact">Documentation</span>
+        <span class="mega-item" data-route="contact">Help Center</span>
+        <span class="mega-item" data-route="contact">Product Guides</span>
+        <span class="mega-item" data-route="contact">Request a Demo</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <main>
@@ -1915,6 +1989,293 @@
 
 </div>
 
+<!-- =========================================================== KNOWLEDGE CENTER =========================================================== -->
+<div class="page" data-page="knowledge-center">
+
+  <div class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Resources / Knowledge Center</div>
+      <div class="eyebrow">AgoroX Knowledge Center</div>
+      <h1>Africa's Practical Resource Center</h1>
+      <p class="lede" style="max-width:680px;">Laboratory excellence and poultry productivity resources — practical guides, templates, tools, and benchmark data built for African operators.</p>
+      <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap;">
+        <span class="btn btn-clay" data-route="knowledge-center" data-anchor="healthcare">Lab Resources <span class="btn-arrow">→</span></span>
+        <span class="btn btn-ghost" data-route="knowledge-center" data-anchor="agriculture">Poultry Resources</span>
+        <span class="btn btn-ghost" data-route="knowledge-center" data-anchor="tools">Interactive Tools</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEALTHCARE PILLAR -->
+  <section id="healthcare">
+    <div class="wrap">
+      <div class="eyebrow">Healthcare</div>
+      <h2>Laboratory Excellence Center</h2>
+      <p style="max-width:680px;color:var(--slate-dark);margin-bottom:32px;">Practical guides, templates, and frameworks for African laboratory operators — from daily workflow to ISO 15189 readiness.</p>
+      <div class="industry-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="industry-card">
+          <div class="ic-num">01</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Laboratory Operations</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Sample collection, transportation, rejection management, TAT, workflow optimisation.</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">02</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Quality Management</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">IQC, EQA, laboratory KPIs, error reduction, CAPA frameworks.</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">03</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Accreditation & Compliance</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">ISO 15189 implementation, audit preparation, documentation templates, SOP development.</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">04</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Laboratory Management</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Staff management, inventory control, equipment maintenance, cost management, profitability.</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">05</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Digital Laboratory Resources</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Digital transformation, LIS implementation, data management, cybersecurity, AI in diagnostics.</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">06</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Laboratory Toolkit</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Free SOP templates, audit checklists, sample rejection forms, CAPA forms.</p>
+          <span class="btn btn-ghost" style="margin-top:auto;font-size:12px;" data-route="resources-tools" data-anchor="downloads">Download →</span>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:18px;background:var(--paper);border:1px solid var(--line);">
+        <p style="font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Benchmark Reports — Coming Soon</p>
+        <p style="font-size:13px;color:var(--slate-dark);">State of Laboratory Digitalization · Laboratory Operations Benchmark Report · Diagnostic Services Trends Report</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AGRICULTURE PILLAR -->
+  <section id="agriculture" style="background:var(--paper-dim);">
+    <div class="wrap">
+      <div class="eyebrow">Agriculture</div>
+      <h2>Poultry Excellence Center</h2>
+      <p style="max-width:680px;color:var(--slate-dark);margin-bottom:32px;">Production management, health protocols, feed formulation, and economics for Nigerian and African poultry operators.</p>
+      <div class="industry-grid" style="grid-template-columns:repeat(3,1fr);">
+        <div class="industry-card">
+          <div class="ic-num">01</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Poultry Management</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Broiler production (brooding, growth, feed programs), Layer management (egg optimisation, nutrition, quality).</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">02</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Poultry Economics</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Cost of production, profitability optimisation, feed cost management, farm financial planning.</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">03</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Poultry Health</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Vaccination schedules, disease prevention, farm health monitoring, outbreak response protocols.</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">04</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Production Analytics</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Production KPIs, feed conversion analysis, mortality analysis, performance benchmarking.</p>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">05</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Feed Formulation Center</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Broiler and layer formulas, ingredient database (maize, soya, GNC, PKC, wheat offal, fishmeal), feed economics.</p>
+          <span class="btn btn-ghost" style="margin-top:auto;font-size:12px;" data-route="resources-tools" data-anchor="poultry-calculators">Use Calculator →</span>
+        </div>
+        <div class="industry-card">
+          <div class="ic-num">06</div>
+          <h4 style="font-size:14px;font-weight:600;margin:8px 0 6px;">Biosecurity Center</h4>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Assessment tools, outbreak preparedness, quarantine templates, farm access policies, emergency response plans.</p>
+        </div>
+      </div>
+      <div style="margin-top:16px;padding:18px;background:var(--bg);border:1px solid var(--line);">
+        <p style="font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--slate);margin-bottom:6px;">Benchmark Reports — Coming Soon</p>
+        <p style="font-size:13px;color:var(--slate-dark);">Poultry Industry Benchmark Report · Production Performance Benchmarks · Feed Efficiency Benchmarks · Mortality Benchmark Reports</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE TOOLS PILLAR -->
+  <section id="tools">
+    <div class="wrap">
+      <div class="eyebrow">Interactive Tools</div>
+      <h2>Calculators & Planning Tools</h2>
+      <p style="max-width:680px;color:var(--slate-dark);margin-bottom:32px;">Free online calculators for laboratory and farm operators — no account required.</p>
+      <div class="feature-duo">
+        <div class="feature-mini" style="cursor:default;">
+          <div class="fv-top">Laboratory</div>
+          <h3>Lab Calculators</h3>
+          <ul style="list-style:none;padding:0;margin:12px 0;font-size:13.5px;color:var(--slate-dark);">
+            <li style="padding:4px 0;border-bottom:1px solid var(--line);">Turnaround Time Calculator</li>
+            <li style="padding:4px 0;border-bottom:1px solid var(--line);">Laboratory Cost Calculator</li>
+            <li style="padding:4px 0;border-bottom:1px solid var(--line);">Staffing Calculator</li>
+            <li style="padding:4px 0;">Test Pricing Calculator</li>
+          </ul>
+          <span class="btn btn-ghost" data-route="resources-tools" data-anchor="lab-calculators">Open Tools →</span>
+        </div>
+        <div class="feature-mini" style="cursor:default;">
+          <div class="fv-top">Poultry Farm</div>
+          <h3>Farm Calculators</h3>
+          <ul style="list-style:none;padding:0;margin:12px 0;font-size:13.5px;color:var(--slate-dark);">
+            <li style="padding:4px 0;border-bottom:1px solid var(--line);">Feed Requirement Calculator</li>
+            <li style="padding:4px 0;border-bottom:1px solid var(--line);">Egg Production Calculator</li>
+            <li style="padding:4px 0;border-bottom:1px solid var(--line);">Farm Profitability Calculator</li>
+            <li style="padding:4px 0;">Vaccination Scheduler</li>
+          </ul>
+          <span class="btn btn-ghost" data-route="resources-tools" data-anchor="poultry-calculators">Open Tools →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="eyebrow">From Knowledge to Action</div>
+      <h2>Read. Download. Calculate. Certify.</h2>
+      <p>AgoroX Academy connects every resource to a certification pathway — turning knowledge into credentials that advance your career.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <span class="btn btn-primary" data-route="academy">Explore Certifications <span class="btn-arrow">→</span></span>
+        <span class="btn btn-ghost" style="color:var(--navy);border-color:rgba(14,31,51,0.25);background:var(--bg);" data-route="contact">Talk to Us</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- =========================================================== RESOURCES: TOOLS & DOWNLOADS =========================================================== -->
+<div class="page" data-page="resources-tools">
+
+  <div class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Resources / Tools & Downloads</div>
+      <div class="eyebrow">Resources</div>
+      <h1>Tools, Templates & Downloads</h1>
+      <p class="lede" style="max-width:680px;">Free calculators, SOP templates, audit checklists, quality manuals, and forms for laboratory and poultry farm operators.</p>
+    </div>
+  </div>
+
+  <!-- LABORATORY CALCULATORS -->
+  <section id="calculators">
+    <div class="wrap">
+      <div class="eyebrow">Laboratory</div>
+      <h2 id="lab-calculators">Laboratory Calculators</h2>
+      <div class="program-facts" style="margin-top:20px;">
+        <div class="program-fact">
+          <div class="pf-label">Turnaround Time Calculator</div>
+          <div class="pf-value">Estimate and benchmark TAT across test categories and workflows.</div>
+          <div style="margin-top:10px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--slate);">Coming Soon</div>
+        </div>
+        <div class="program-fact">
+          <div class="pf-label">Laboratory Cost Calculator</div>
+          <div class="pf-value">Calculate per-test cost including reagents, staffing, and overhead.</div>
+          <div style="margin-top:10px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--slate);">Coming Soon</div>
+        </div>
+        <div class="program-fact">
+          <div class="pf-label">Staffing Calculator</div>
+          <div class="pf-value">Determine optimal staffing levels based on daily test volume.</div>
+          <div style="margin-top:10px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--slate);">Coming Soon</div>
+        </div>
+        <div class="program-fact">
+          <div class="pf-label">Test Pricing Calculator</div>
+          <div class="pf-value">Set competitive test prices with built-in cost recovery and margin targets.</div>
+          <div style="margin-top:10px;padding:10px 12px;background:var(--paper);border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--slate);">Coming Soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POULTRY CALCULATORS -->
+  <section id="poultry-calculators" style="background:var(--paper-dim);">
+    <div class="wrap">
+      <div class="eyebrow">Poultry Farm</div>
+      <h2>Poultry Calculators</h2>
+      <div class="program-facts" style="margin-top:20px;">
+        <div class="program-fact">
+          <div class="pf-label">Feed Requirement Calculator</div>
+          <div class="pf-value">Calculate daily and weekly feed requirements by flock size, age, and breed.</div>
+          <div style="margin-top:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--slate);">Coming Soon</div>
+        </div>
+        <div class="program-fact">
+          <div class="pf-label">Egg Production Calculator</div>
+          <div class="pf-value">Project weekly egg production and revenue from your layer flock.</div>
+          <div style="margin-top:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--slate);">Coming Soon</div>
+        </div>
+        <div class="program-fact">
+          <div class="pf-label">Farm Profitability Calculator</div>
+          <div class="pf-value">Full income and expense model with break-even analysis.</div>
+          <div style="margin-top:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--slate);">Coming Soon</div>
+        </div>
+        <div class="program-fact">
+          <div class="pf-label">Vaccination Scheduler</div>
+          <div class="pf-value">Generate a custom vaccination calendar based on flock type and age.</div>
+          <div style="margin-top:10px;padding:10px 12px;background:var(--bg);border:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--slate);">Coming Soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOADS -->
+  <section id="downloads">
+    <div class="wrap">
+      <div class="eyebrow">Free Templates</div>
+      <h2>Downloads</h2>
+      <p style="max-width:640px;color:var(--slate-dark);margin-bottom:28px;">Ready-to-use templates, checklists, and forms. No account required.</p>
+
+      <h3 id="sop-templates" style="font-size:16px;margin-bottom:12px;color:var(--navy);">SOP Templates</h3>
+      <div class="module-list" style="margin-bottom:28px;">
+        <div class="module-item"><div class="mi-num">SOP</div><div><div class="mi-title">Sample Collection SOP</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+        <div class="module-item"><div class="mi-num">SOP</div><div><div class="mi-title">Result Release SOP</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+        <div class="module-item"><div class="mi-num">SOP</div><div><div class="mi-title">Equipment Calibration SOP</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+      </div>
+
+      <h3 id="audit-checklists" style="font-size:16px;margin-bottom:12px;color:var(--navy);">Audit Checklists</h3>
+      <div class="module-list" style="margin-bottom:28px;">
+        <div class="module-item"><div class="mi-num">CHK</div><div><div class="mi-title">Daily Laboratory Checklist</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+        <div class="module-item"><div class="mi-num">CHK</div><div><div class="mi-title">Internal Audit Checklist</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+        <div class="module-item"><div class="mi-num">CHK</div><div><div class="mi-title">Accreditation Readiness Checklist</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+      </div>
+
+      <h3 id="quality-manuals" style="font-size:16px;margin-bottom:12px;color:var(--navy);">Quality Manuals</h3>
+      <div class="module-list" style="margin-bottom:28px;">
+        <div class="module-item"><div class="mi-num">QM</div><div><div class="mi-title">Laboratory Quality Manual Template</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+      </div>
+
+      <h3 id="forms-library" style="font-size:16px;margin-bottom:12px;color:var(--navy);">Forms Library</h3>
+      <div class="module-list" style="margin-bottom:28px;">
+        <div class="module-item"><div class="mi-num">FRM</div><div><div class="mi-title">Sample Rejection Form</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+        <div class="module-item"><div class="mi-num">FRM</div><div><div class="mi-title">Incident Report Form</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+        <div class="module-item"><div class="mi-num">FRM</div><div><div class="mi-title">CAPA Form</div></div><div style="margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--slate);">Coming Soon</div></div>
+      </div>
+
+      <div style="padding:20px;background:var(--skyfill);border:1px solid var(--line);display:flex;align-items:center;gap:20px;flex-wrap:wrap;">
+        <div>
+          <p style="font-weight:600;margin-bottom:4px;color:var(--navy);">Notify me when templates are available</p>
+          <p style="font-size:13px;color:var(--slate-dark);">Register your interest and we'll notify you when each resource is published.</p>
+        </div>
+        <span class="btn btn-clay" data-route="contact" style="flex-shrink:0;">Register Interest <span class="btn-arrow">→</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY CTA -->
+  <section class="cta">
+    <div class="wrap">
+      <div class="eyebrow">The AgoroX User Journey</div>
+      <h2>Read Article → Download Template → Use Calculator → Enrol in Certification → Request Demo</h2>
+      <p>Every resource connects to a training pathway. Every training pathway connects to a product.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <span class="btn btn-primary" data-route="academy">Explore Academy <span class="btn-arrow">→</span></span>
+        <span class="btn btn-ghost" style="color:var(--navy);border-color:rgba(14,31,51,0.25);background:var(--bg);" data-route="knowledge-center">Knowledge Center</span>
+      </div>
+    </div>
+  </section>
+
+</div>
+
 </main>
 
 <footer>
@@ -1946,6 +2307,8 @@
         <ul>
           <li><a data-route="about">About Us</a></li>
           <li><a data-route="academy">Academy</a></li>
+          <li><a data-route="knowledge-center">Knowledge Center</a></li>
+          <li><a data-route="resources-tools">Tools & Downloads</a></li>
           <li><a data-route="industries">Industries</a></li>
           <li><a data-route="press">Publications</a></li>
           <li><a data-route="contact">Contact</a></li>
@@ -2012,7 +2375,7 @@
   function toggleMobileMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 
   // ---------- Router ----------
-  const validRoutes = ['home','products','academy','academy-cla','academy-ldtb','academy-poultrysuite','industries','press','about','contact'];
+  const validRoutes = ['home','products','academy','academy-cla','academy-ldtb','academy-poultrysuite','industries','press','about','contact','knowledge-center','resources-tools'];
 
   function navigate(route, anchor){
     if(!validRoutes.includes(route)) route = 'home';
@@ -2030,6 +2393,11 @@
     document.querySelectorAll('.navlink').forEach(n=>{
       n.classList.toggle('active', n.dataset.route === route);
     });
+    // Also highlight Resources link for knowledge-center and resources-tools pages
+    const resourcesLink = document.getElementById('resourcesNavLink');
+    if(resourcesLink){
+      resourcesLink.classList.toggle('active', route === 'knowledge-center' || route === 'resources-tools');
+    }
     document.querySelectorAll('.mobile-menu a[data-route]').forEach(n=>{
       n.classList.toggle('active', n.dataset.route === route);
     });
@@ -2075,6 +2443,24 @@
       row.style.display = (filter === 'all' || row.dataset.tag === filter) ? 'grid' : 'none';
     });
   });
+  // ---------- Mega menu ----------
+  function toggleMegaMenu(e){
+    e.stopPropagation();
+    const menu = document.getElementById('megaMenu');
+    const overlay = document.getElementById('megaOverlay');
+    const isOpen = menu.classList.contains('open');
+    if(isOpen){ closeMegaMenu(); } else { menu.classList.add('open'); overlay.classList.add('open'); }
+  }
+  function closeMegaMenu(){
+    document.getElementById('megaMenu').classList.remove('open');
+    document.getElementById('megaOverlay').classList.remove('open');
+  }
+  // Close mega menu when navigating
+  document.addEventListener('click', function(e){
+    const el = e.target.closest('[data-route]');
+    if(el && !e.target.closest('#navResources')){ closeMegaMenu(); }
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMegaMenu(); });
 </script>
 
 </body>
