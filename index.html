@@ -722,18 +722,17 @@
   .tri-meta-item{font-family:var(--mono);font-size:10.5px;color:var(--slate);}
   .tri-meta-item span{color:var(--clay-deep);font-weight:600;}
 
-  /* ========== AI ASSISTANT PLACEHOLDER ========== */
-  .ai-assistant-box{background:var(--navy);padding:28px 24px;border-radius:3px;}
-  .aab-label{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--clay);}
-  .ai-assistant-box h3{font-size:20px;font-weight:400;color:var(--paper);margin-top:8px;letter-spacing:-0.015em;}
-  .ai-assistant-box p{font-size:13.5px;color:rgba(247,245,240,0.65);margin-top:6px;line-height:1.55;}
-  .aab-input-row{display:flex;gap:8px;margin-top:16px;}
-  .aab-input{flex:1;background:rgba(247,245,240,0.08);border:1px solid rgba(247,245,240,0.16);padding:10px 14px;border-radius:3px;font-size:14px;color:var(--paper);font-family:var(--body);}
-  .aab-input::placeholder{color:rgba(247,245,240,0.35);}
-  .aab-prompt-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px;}
-  @media(max-width:640px){.aab-prompt-grid{grid-template-columns:1fr;}}
-  .aab-prompt{background:rgba(247,245,240,0.06);border:1px solid rgba(247,245,240,0.12);padding:9px 13px;border-radius:3px;font-size:12.5px;color:rgba(247,245,240,0.75);cursor:pointer;transition:background .15s ease;line-height:1.4;}
-  .aab-prompt:hover{background:rgba(247,245,240,0.12);}
+  
+  
+  
+  
+  
+  
+  
+  
+  @media(max-width:640px){}
+  
+  
 
   /* ========== LEAD CAPTURE ========== */
   .lead-form-inline{background:var(--skyfill);border:1px solid var(--line);padding:20px;display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;}
@@ -833,26 +832,6 @@
   .bw-conf-ref{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--clay-deep);letter-spacing:.06em;margin:14px 0;}
   .bw-conf-msg{font-size:15px;color:var(--slate-dark);max-width:420px;margin:0 auto;line-height:1.6;}
 
-  /* ── AI chat interface ───────────────────────────────────────────── */
-  .ai-chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:400px;max-height:640px;border:1px solid var(--line);}
-  .ai-chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px;background:var(--paper);}
-  .ai-msg{max-width:80%;display:flex;flex-direction:column;gap:4px;}
-  .ai-msg.user{align-self:flex-end;align-items:flex-end;}
-  .ai-msg.assistant{align-self:flex-start;align-items:flex-start;}
-  .ai-bubble{padding:12px 16px;border-radius:3px;font-size:14px;line-height:1.55;}
-  .ai-msg.user .ai-bubble{background:var(--navy);color:var(--paper);}
-  .ai-msg.assistant .ai-bubble{background:var(--bg);border:1px solid var(--line);color:var(--navy);}
-  .ai-msg-time{font-family:var(--mono);font-size:10px;color:var(--slate);}
-  .ai-typing .ai-bubble{background:var(--bg);border:1px solid var(--line);}
-  .ai-typing-dots{display:flex;gap:4px;padding:4px 0;}
-  .ai-typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--slate);animation:typing 1s infinite;}
-  .ai-typing-dots span:nth-child(2){animation-delay:.2s;}
-  .ai-typing-dots span:nth-child(3){animation-delay:.4s;}
-  @keyframes typing{0%,80%,100%{opacity:.3;}40%{opacity:1;}}
-  .ai-chat-input-row{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);background:var(--bg);}
-  .ai-chat-input{flex:1;padding:10px 14px;border:1px solid var(--line);border-radius:3px;font-size:14px;font-family:var(--body);resize:none;max-height:100px;line-height:1.4;}
-  .ai-chat-input:focus{outline:none;border-color:var(--clay);}
-
   /* ── Onboarding form wizard ─────────────────────────────────────── */
   .ow-steps{display:flex;margin-bottom:28px;border:1px solid var(--line);overflow:hidden;}
   .ow-step-tab{flex:1;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);border-right:1px solid var(--line);background:var(--paper);cursor:default;}
@@ -913,15 +892,6 @@
     /* ── Plan grid ── */
     .plan-grid { grid-template-columns: 1fr; }
 
-    /* ── AI chat ── */
-    .ai-chat-wrap { height: calc(100vh - 220px); min-height: 320px; }
-    .ai-chat-messages { padding: 14px; gap: 12px; }
-    .ai-bubble { font-size: 13.5px; padding: 10px 13px; }
-    .ai-chat-input-row { padding: 10px; gap: 6px; }
-    .ai-chat-input { font-size: 14px; }
-    #aiSuggestions { padding: 8px 10px; gap: 6px; }
-    .aab-prompt { font-size: 12px; padding: 7px 10px; }
-
     /* ── Join benefits grid ── */
     .join-benefits { grid-template-columns: 1fr; }
 
@@ -969,7 +939,6 @@
     .test-result-item { grid-template-columns: 1fr; gap: 10px; }
     .tri-cta .btn { width: 100%; justify-content: center; }
 
-    /* ── AI assistant topics grid ── */
     div[style*="grid-template-columns:repeat(3,1fr)"] {
       grid-template-columns: 1fr !important;
     }
@@ -980,9 +949,31 @@
     .bw-date-grid { grid-template-columns: repeat(3, 1fr); }
     .bw-time-grid { grid-template-columns: repeat(2, 1fr); }
     .bw-prog-dot { width: 20px; height: 20px; font-size: 9px; }
-    .ai-chat-wrap { height: calc(100vh - 200px); }
+    
     .ax-modal { padding: 20px 16px 28px; }
   }
+
+
+  /* ── Test search autocomplete ───────────────────────────────────────── */
+  .ft-search-wrap{ position:relative; }
+  .ft-dropdown{
+    display:none; position:absolute; left:0; right:0; top:100%;
+    background:var(--bg); border:1px solid var(--clay); border-top:none;
+    z-index:200; max-height:320px; overflow-y:auto;
+    box-shadow:0 6px 18px rgba(14,31,51,.12);
+  }
+  .ft-dropdown.open{ display:block; }
+  .ft-dd-item{
+    padding:11px 16px; cursor:pointer; display:flex;
+    justify-content:space-between; align-items:center;
+    border-bottom:1px solid var(--line); font-size:14px; color:var(--navy);
+    transition:background .1s;
+  }
+  .ft-dd-item:last-child{ border-bottom:none; }
+  .ft-dd-item:hover, .ft-dd-item.highlighted{ background:var(--skyfill); }
+  .ft-dd-item mark{ background:none; color:var(--clay-deep); font-weight:600; }
+  .ft-dd-cat{ font-family:var(--mono); font-size:10.5px; color:var(--slate); letter-spacing:.04em; }
+  .ft-no-results{ padding:14px 16px; font-size:13.5px; color:var(--slate-dark); }
 
 </style>
 </head>
@@ -1070,7 +1061,6 @@
   <a data-route="resources-tools">Tools & Downloads</a>
   <a data-route="industries">Industries</a>
   <a data-route="find-test">Find a Test</a>
-  <a data-route="ask-ai">Ask AgoroX AI</a>
   <a data-route="join-network">Join the Network</a>
   <a data-route="laboratories">Laboratories</a>
   <a data-route="patient-portal">Patient Portal</a>
@@ -1151,7 +1141,6 @@
           <div class="hero-actions">
             <span class="btn btn-clay" data-route="find-test">Find a Test <span class="btn-arrow">→</span></span>
             <span class="btn btn-clay" data-route="join-network" style="background:var(--navy);">Join as Laboratory</span>
-            <span class="btn btn-ghost" data-route="ask-ai">Ask AgoroX AI</span>
           </div>
         </div>
         <div class="hero-stats">
@@ -2753,33 +2742,6 @@
     </div>
   </section>
 
-  <!-- AGOROX AI ASSISTANT -->
-  <section style="background:var(--paper);">
-    <div class="wrap">
-      <div class="section-head"><div>
-        <div class="eyebrow">Coming Soon</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Ask AgoroX AI</h2>
-        <p class="lede" style="margin-top:12px;">An AI-powered knowledge assistant trained on the Knowledge Center, Academy, and product documentation. Instant answers to laboratory and operational questions.</p>
-      </div></div>
-      <div class="ai-assistant-box">
-        <div class="aab-label">AgoroX AI · Knowledge Assistant · Preview</div>
-        <h3>How can I help your laboratory today?</h3>
-        <p>Ask anything about laboratory operations, ISO 15189, accreditation, LabOS, or quality management.</p>
-        <div class="aab-input-row">
-          <input type="text" class="aab-input" placeholder="e.g. How do I reduce sample rejection rates?">
-          <span class="btn btn-clay" style="flex-shrink:0;">Ask →</span>
-        </div>
-        <div class="aab-prompt-grid">
-          <div class="aab-prompt">How do I implement ISO 15189 in a small laboratory?</div>
-          <div class="aab-prompt">How do I reduce sample rejection rates?</div>
-          <div class="aab-prompt">What does an internal audit checklist look like?</div>
-          <div class="aab-prompt">How do I prepare for MLSCN accreditation?</div>
-        </div>
-        <p style="font-size:11.5px; color:rgba(247,245,240,0.45); margin-top:14px; font-family:var(--mono);">AI assistant in development · Powered by the AgoroX Knowledge Base · Available to Platform subscribers</p>
-      </div>
-    </div>
-  </section>
-
 <!-- HEALTHCARE PILLAR -->
   <section id="healthcare">
     <div class="wrap">
@@ -2810,7 +2772,7 @@
         <div class="industry-card">
           <div class="ic-num">05</div>
           <h4 style="font-size:14px;font-weight:500;margin:8px 0 6px;">Digital Laboratory Resources</h4>
-          <p style="font-size:12.5px;color:var(--slate-dark);">Digital transformation, LIS implementation, data management, cybersecurity, AI in diagnostics.</p>
+          <p style="font-size:12.5px;color:var(--slate-dark);">Digital transformation, LIS implementation, data management, cybersecurity, automation in diagnostics.</p>
         </div>
         <div class="industry-card">
           <div class="ic-num">06</div>
@@ -3137,7 +3099,7 @@
           <div class="lab-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Ibadan, Oyo State</div>
           <div class="lab-tests">120+ tests · Haematology, Microbiology, Chemical Pathology</div>
           <div class="lab-actions">
-            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;">Book Test</span>
+            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="book-test">Book Test</span>
             <span class="lab-rating"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M10 1.5l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3.5L4.5 17.5l1.5-6L1.5 7.5l6-.5z"/></svg> 4.8</span>
           </div>
         </div>
@@ -3148,7 +3110,7 @@
           <div class="lab-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Lagos, Lagos State</div>
           <div class="lab-tests">200+ tests · Full Service Laboratory</div>
           <div class="lab-actions">
-            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;">Book Test</span>
+            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="book-test">Book Test</span>
             <span class="lab-rating"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M10 1.5l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3.5L4.5 17.5l1.5-6L1.5 7.5l6-.5z"/></svg> 4.6</span>
           </div>
         </div>
@@ -3170,7 +3132,7 @@
           <div class="lab-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Port Harcourt, Rivers State</div>
           <div class="lab-tests">150+ tests · DNA, Microbiology, Histopathology</div>
           <div class="lab-actions">
-            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;">Book Test</span>
+            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="book-test">Book Test</span>
             <span class="lab-rating"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M10 1.5l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3.5L4.5 17.5l1.5-6L1.5 7.5l6-.5z"/></svg> 4.7</span>
           </div>
         </div>
@@ -3192,7 +3154,7 @@
           <div class="lab-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Kano, Kano State</div>
           <div class="lab-tests">180+ tests · Full Service, Research</div>
           <div class="lab-actions">
-            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;">Book Test</span>
+            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="book-test">Book Test</span>
             <span class="lab-rating"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M10 1.5l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3.5L4.5 17.5l1.5-6L1.5 7.5l6-.5z"/></svg> 4.9</span>
           </div>
         </div>
@@ -4075,7 +4037,7 @@
   function toggleMobileMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 
   // ---------- Router ----------
-  const validRoutes = ['home','products','academy','academy-cla','academy-ldtb','academy-poultrysuite','industries','laboratories','lab-profile','book-test','patient-portal','agorox-network','labos-pricing','roadmap','press','about','contact','knowledge-center','resources-tools','join-network','find-test','ask-ai'];
+  const validRoutes = ['home','products','academy','academy-cla','academy-ldtb','academy-poultrysuite','industries','laboratories','lab-profile','book-test','patient-portal','agorox-network','labos-pricing','roadmap','press','about','contact','knowledge-center','resources-tools','join-network','find-test'];
 
   function navigate(route, anchor){
     if(!validRoutes.includes(route)) route = 'home';
@@ -4398,7 +4360,8 @@
     <div class="wrap">
       <div class="eco-search-box" style="margin-bottom:16px;">
         <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-        <input type="text" placeholder="Search for a test — e.g. Malaria, CBC, HbA1c, Liver Function, DNA Test...">
+        <input type="text" id="ftSearch" id="ftSearch" placeholder="Type a test name — e.g. Malaria, CBC, HbA1c, Liver Function…" oninput="FT.filter(this.value)" onkeydown="FT.key(event)" autocomplete="off" role="combobox">
+        <div class="ft-dropdown" id="ftDropdown"></div>
       </div>
       <div class="eco-filter-row">
         <button class="eco-filter-btn active">All Tests</button>
@@ -4421,67 +4384,67 @@
         <h2 style="font-weight:600; color:#0E1F33;">Most searched tests in the network</h2>
       </div></div>
       <div class="test-category-grid">
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('fbc')" style="cursor:pointer;">
           <div class="tcc-name">Full Blood Count (FBC / CBC)</div>
           <div class="tcc-count">Available at 6 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('malaria')" style="cursor:pointer;">
           <div class="tcc-name">Malaria RDT &amp; Microscopy</div>
           <div class="tcc-count">Available at 5 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('lft')" style="cursor:pointer;">
           <div class="tcc-name">Liver Function Test (LFT)</div>
           <div class="tcc-count">Available at 5 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('lipid')" style="cursor:pointer;">
           <div class="tcc-name">Lipid Profile</div>
           <div class="tcc-count">Available at 4 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('hba1c')" style="cursor:pointer;">
           <div class="tcc-name">HbA1c (Glycated Haemoglobin)</div>
           <div class="tcc-count">Available at 4 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('hiv')" style="cursor:pointer;">
           <div class="tcc-name">HIV / AIDS Test</div>
           <div class="tcc-count">Available at 6 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('thyroid')" style="cursor:pointer;">
           <div class="tcc-name">Thyroid Function Test</div>
           <div class="tcc-count">Available at 3 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('urine')" style="cursor:pointer;">
           <div class="tcc-name">Urinalysis</div>
           <div class="tcc-count">Available at 6 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('glucose')" style="cursor:pointer;">
           <div class="tcc-name">Blood Glucose (FBS &amp; 2hPP)</div>
           <div class="tcc-count">Available at 6 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('hepb')" style="cursor:pointer;">
           <div class="tcc-name">Hepatitis B &amp; C Screening</div>
           <div class="tcc-count">Available at 5 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('preg')" style="cursor:pointer;">
           <div class="tcc-name">Pregnancy Test (β-hCG)</div>
           <div class="tcc-count">Available at 5 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('dna')" style="cursor:pointer;">
           <div class="tcc-name">DNA Paternity Testing</div>
           <div class="tcc-count">Available at 2 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('cs')" style="cursor:pointer;">
           <div class="tcc-name">Culture &amp; Sensitivity (C&amp;S)</div>
           <div class="tcc-count">Available at 4 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('drug')" style="cursor:pointer;">
           <div class="tcc-name">Drug Screening Panel</div>
           <div class="tcc-count">Available at 3 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('kft')" style="cursor:pointer;">
           <div class="tcc-name">Kidney Function Test (KFT)</div>
           <div class="tcc-count">Available at 5 laboratories</div>
         </div>
-        <div class="test-category-card" data-route="laboratories">
+        <div class="test-category-card" onclick="BW.preselectAndGo('semen')" style="cursor:pointer;">
           <div class="tcc-name">Seminal Analysis</div>
           <div class="tcc-count">Available at 3 laboratories</div>
         </div>
@@ -4532,7 +4495,7 @@
             </div>
           </div>
           <div class="tri-cta">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="laboratories">Book Test →</span>
+            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="book-test">Book Test →</span>
           </div>
         </div>
 
@@ -4550,7 +4513,7 @@
             </div>
           </div>
           <div class="tri-cta">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="laboratories">Book Test →</span>
+            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="book-test">Book Test →</span>
           </div>
         </div>
 
@@ -4568,7 +4531,7 @@
             </div>
           </div>
           <div class="tri-cta">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="laboratories">Book Test →</span>
+            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="book-test">Book Test →</span>
           </div>
         </div>
 
@@ -4662,89 +4625,17 @@
 
 </div>
 
-
-<!-- =========================================================== AGOROX AI =========================================================== -->
-<div class="page" data-page="ask-ai">
-
-  <div class="page-hero">
-    <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / AgoroX AI</div>
-      <div class="eyebrow">AI Knowledge Assistant</div>
-      <h1 style="font-weight:700; color:#1F3A5F;">Ask AgoroX AI</h1>
-      <p class="lede">Your AI-powered guide for laboratory operations, quality management, ISO 15189, accreditation, and LabOS. Powered by Claude.</p>
-    </div>
-  </div>
-
-  <section>
-    <div class="wrap" style="max-width:760px;">
-      <div class="ai-chat-wrap" id="aiChatWrap">
-
-        <!-- Messages -->
-        <div class="ai-chat-messages" id="aiMessages">
-          <div class="ai-msg assistant">
-            <div class="ai-bubble">
-              👋 Hello! I'm the AgoroX AI Assistant.<br><br>
-              I can help you with <strong>laboratory operations</strong>, <strong>ISO 15189</strong>, <strong>accreditation preparation</strong>, <strong>LabOS</strong>, quality management, and anything related to running a diagnostic laboratory in Africa.<br><br>
-              What would you like to know?
-            </div>
-            <div class="ai-msg-time">AgoroX AI</div>
-          </div>
-        </div>
-
-        <!-- Suggested prompts -->
-        <div style="padding:12px 16px;border-top:1px solid var(--line);background:var(--paper);display:flex;gap:8px;flex-wrap:wrap;" id="aiSuggestions">
-          <button class="aab-prompt" style="background:var(--bg);color:var(--navy);border-color:var(--line);" onclick="AI.send(this.textContent)">How do I reduce sample rejection rates?</button>
-          <button class="aab-prompt" style="background:var(--bg);color:var(--navy);border-color:var(--line);" onclick="AI.send(this.textContent)">What are the ISO 15189 pre-analytical requirements?</button>
-          <button class="aab-prompt" style="background:var(--bg);color:var(--navy);border-color:var(--line);" onclick="AI.send(this.textContent)">How do I prepare an internal audit checklist?</button>
-          <button class="aab-prompt" style="background:var(--bg);color:var(--navy);border-color:var(--line);" onclick="AI.send(this.textContent)">How do I set up LabOS for my laboratory?</button>
-        </div>
-
-        <!-- Input -->
-        <div class="ai-chat-input-row">
-          <textarea class="ai-chat-input" id="aiInput" rows="1" placeholder="Ask about laboratory operations, ISO 15189, accreditation, LabOS…"
-            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.sendFromInput();}"></textarea>
-          <button class="btn btn-clay" onclick="AI.sendFromInput()" id="aiSendBtn" style="align-self:flex-end;">Send</button>
-        </div>
-      </div>
-
-      <p style="margin-top:12px;font-size:12px;color:var(--slate);font-family:var(--mono);">
-        AgoroX AI · Powered by Claude (Anthropic) · Knowledge current to 2025 · Not a substitute for professional medical advice
-      </p>
-    </div>
-  </section>
-
-  <!-- Topics it covers -->
-  <section style="background:var(--paper);">
-    <div class="wrap">
-      <div class="eyebrow" style="margin-bottom:16px;">Topics Covered</div>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);">
-        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">Laboratory Operations</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">Workflow, TAT, sample handling, equipment</div></div>
-        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">Quality Management</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">QMS, CAPA, non-conformances, IQC/EQA</div></div>
-        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">ISO 15189</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">Requirements, implementation, gap analysis</div></div>
-        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">Accreditation</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">MLSCN, NAS, audit preparation</div></div>
-        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">LabOS Platform</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">Setup, workflows, features, troubleshooting</div></div>
-        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">AgoroX Ecosystem</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">Network, Academy, booking, patient portal</div></div>
-      </div>
-    </div>
-  </section>
-
-</div>
-
-
 <script>
 // ════════════════════════════════════════════════════════════════════════════
 // AgoroX Platform JS  —  Phase 2
 // ════════════════════════════════════════════════════════════════════════════
 const AX = (function(){
-  // Worker API base — update this to your deployed worker URL
-  // e.g. 'https://agorox-api.YOUR-ACCOUNT.workers.dev'
-  const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  const API = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:8787'
-    : 'https://agorox-api.johnpadeola.workers.dev/api';   // on Cloudflare Pages this routes to the worker
+    : 'https://agorox-api.johnpadeola.workers.dev/api';
 
   const sessionId = 'ax_' + Math.random().toString(36).slice(2,10);
 
-  // ── Internal helpers ──────────────────────────────────────────────────────
   async function post(path, data){
     try{
       const r = await fetch(API + path, {
@@ -4757,253 +4648,239 @@ const AX = (function(){
   }
 
   function $(id){ return document.getElementById(id); }
-  function setErr(id, msg){ const el = $(id); if(el) el.textContent = msg; }
-  function clearErr(id){ setErr(id, ''); }
+  function setErr(id, msg){ const el=$(id); if(el) el.textContent=msg; }
+  function clearErr(id){ setErr(id,''); }
 
   function toast(msg){
-    const t = $('ax-toast');
+    const t=$('ax-toast');
     if(!t) return;
-    t.textContent = msg;
+    t.textContent=msg;
     t.classList.add('show');
     setTimeout(()=>t.classList.remove('show'), 2400);
   }
 
-  // ── Analytics ─────────────────────────────────────────────────────────────
   const analytics = {
     track(event, page='', element='', meta={}){
       post('/analytics', {event, page, element, session_id: sessionId, meta});
     }
   };
 
-  // ── Lead capture ──────────────────────────────────────────────────────────
   let _pendingResource = null;
-
   const leads = {
     open(el){
       _pendingResource = {
-        id: el.dataset.resourceId || '',
-        title: el.dataset.resourceTitle || 'Resource'
+        id: el ? (el.dataset.resourceId||'') : '',
+        title: el ? (el.dataset.resourceTitle||'Resource') : 'Resource'
       };
-      const titleEl = $('axLeadResourceTitle');
+      const titleEl=$('axLeadResourceTitle');
       if(titleEl) titleEl.textContent = `Enter your details to access: "${_pendingResource.title}"`;
-      $('axLeadSuccess').style.display = 'none';
-      $('axLeadForm').style.display = 'block';
-      $('axLeadModal').classList.add('open');
-      analytics.track('lead_modal_open', 'knowledge-center', _pendingResource.id);
+      const successEl=$('axLeadSuccess');
+      const formEl=$('axLeadForm');
+      if(successEl) successEl.style.display='none';
+      if(formEl) formEl.style.display='block';
+      const modal=$('axLeadModal');
+      if(modal) modal.classList.add('open');
+      analytics.track('lead_modal_open','knowledge-center',_pendingResource.id);
     },
     async submit(){
-      const name  = $('lf_name').value.trim();
-      const email = $('lf_email').value.trim();
+      const name  = ($('lf_name')||{}).value ? $('lf_name').value.trim() : '';
+      const email = ($('lf_email')||{}).value ? $('lf_email').value.trim() : '';
       clearErr('lf_name_err'); clearErr('lf_email_err');
-      let ok = true;
-      if(!name)  { setErr('lf_name_err','Name is required'); ok=false; }
-      if(!email || !/\S+@\S+\.\S+/.test(email)){ setErr('lf_email_err','Valid email required'); ok=false; }
+      let ok=true;
+      if(!name){ setErr('lf_name_err','Name is required'); ok=false; }
+      if(!email||!/\S+@\S+\.\S+/.test(email)){ setErr('lf_email_err','Valid email required'); ok=false; }
       if(!ok) return;
-
-      const btn = document.querySelector('#axLeadForm .btn-clay');
-      btn.disabled = true;
-      btn.innerHTML = '<span class="ax-spinner"></span> Processing…';
-
-      const result = await post('/lead', {
+      const btn=document.querySelector('#axLeadForm .btn-clay');
+      if(btn){ btn.disabled=true; btn.innerHTML='<span class="ax-spinner"></span> Processing…'; }
+      await post('/lead', {
         name, email,
-        lab_name: $('lf_lab').value.trim(),
-        country:  $('lf_country').value,
-        resource_id:    _pendingResource?.id    || '',
-        resource_title: _pendingResource?.title || '',
+        lab_name: ($('lf_lab')||{}).value ? $('lf_lab').value.trim() : '',
+        country:  ($('lf_country')||{}).value || '',
+        resource_id:    _pendingResource ? _pendingResource.id    : '',
+        resource_title: _pendingResource ? _pendingResource.title : '',
         source_page: window.location.hash
       });
-
-      // Always show success (fallback if API not yet wired)
-      $('axLeadForm').style.display = 'none';
-      $('axLeadSuccess').style.display = 'block';
-      analytics.track('lead_captured', 'knowledge-center', _pendingResource?.id);
+      const formEl=$('axLeadForm'); if(formEl) formEl.style.display='none';
+      const successEl=$('axLeadSuccess'); if(successEl) successEl.style.display='block';
+      analytics.track('lead_captured','knowledge-center', _pendingResource ? _pendingResource.id : '');
     },
-    close(){ $('axLeadModal').classList.remove('open'); }
+    close(){ const m=$('axLeadModal'); if(m) m.classList.remove('open'); }
   };
 
-  const modal = {
-    close(){ leads.close(); }
-  };
+  const modal = { close(){ leads.close(); } };
 
-  // ── Expose ────────────────────────────────────────────────────────────────
   return { post, analytics, leads, modal, toast, $, setErr, clearErr };
 })();
 
 // Close modal on overlay click
-document.getElementById('axLeadModal').addEventListener('click', function(e){
-  if(e.target === this) AX.modal.close();
-});
+(function(){
+  const m = document.getElementById('axLeadModal');
+  if(m) m.addEventListener('click', function(e){ if(e.target===this) AX.modal.close(); });
+})();
 
 // ════════════════════════════════════════════════════════════════════════════
 // BW — Booking Wizard
 // ════════════════════════════════════════════════════════════════════════════
 const BW = (function(){
-  const state = { step:1, test:null, date:null, time:null,
+  const state = { step:1, test:null, date:null, dateLabel:null, time:null,
     patient:{ name:'', email:'', phone:'', notes:'' } };
 
   const TESTS = [
-    {id:'fbc',   name:'Full Blood Count (FBC)',       cat:'Haematology'},
-    {id:'malaria',name:'Malaria RDT / Microscopy',    cat:'Parasitology'},
-    {id:'lft',   name:'Liver Function Test (LFT)',    cat:'Chemical Pathology'},
-    {id:'lipid', name:'Lipid Profile',                cat:'Chemical Pathology'},
-    {id:'hba1c', name:'HbA1c',                        cat:'Chemical Pathology'},
-    {id:'hiv',   name:'HIV Screen',                   cat:'Immunology'},
-    {id:'hepb',  name:'Hepatitis B &amp; C Screen',   cat:'Immunology'},
-    {id:'thyroid',name:'Thyroid Function Test',       cat:'Endocrinology'},
-    {id:'glucose',name:'Blood Glucose (FBS / 2hPP)',  cat:'Chemical Pathology'},
-    {id:'urine', name:'Urinalysis (M/C/S)',            cat:'Microbiology'},
-    {id:'kft',   name:'Kidney Function Test (KFT)',   cat:'Chemical Pathology'},
-    {id:'cs',    name:'Culture &amp; Sensitivity',    cat:'Microbiology'},
-    {id:'preg',  name:'Pregnancy Test (β-hCG)',       cat:'Immunology'},
-    {id:'drug',  name:'Drug Screening Panel',         cat:'Toxicology'},
-    {id:'dna',   name:'DNA Paternity Testing',        cat:'Molecular'},
-    {id:'semen', name:'Seminal Analysis',             cat:'Andrology'},
-    {id:'eso',   name:'Electrolytes / Urea / Creatinine', cat:'Chemical Pathology'},
-    {id:'psa',   name:'PSA (Prostate Specific Antigen)', cat:'Oncology'},
+    {id:'fbc',    name:'Full Blood Count (FBC)',          cat:'Haematology'},
+    {id:'malaria',name:'Malaria RDT / Microscopy',        cat:'Parasitology'},
+    {id:'lft',    name:'Liver Function Test (LFT)',        cat:'Chemical Pathology'},
+    {id:'lipid',  name:'Lipid Profile',                   cat:'Chemical Pathology'},
+    {id:'hba1c',  name:'HbA1c',                           cat:'Chemical Pathology'},
+    {id:'hiv',    name:'HIV Screen',                      cat:'Immunology'},
+    {id:'hepb',   name:'Hepatitis B & C Screen',          cat:'Immunology'},
+    {id:'thyroid',name:'Thyroid Function Test',           cat:'Endocrinology'},
+    {id:'glucose',name:'Blood Glucose (FBS / 2hPP)',      cat:'Chemical Pathology'},
+    {id:'urine',  name:'Urinalysis (M/C/S)',              cat:'Microbiology'},
+    {id:'kft',    name:'Kidney Function Test (KFT)',       cat:'Chemical Pathology'},
+    {id:'cs',     name:'Culture & Sensitivity',           cat:'Microbiology'},
+    {id:'preg',   name:'Pregnancy Test (β-hCG)',          cat:'Immunology'},
+    {id:'drug',   name:'Drug Screening Panel',            cat:'Toxicology'},
+    {id:'dna',    name:'DNA Paternity Testing',           cat:'Molecular'},
+    {id:'semen',  name:'Seminal Analysis',                cat:'Andrology'},
+    {id:'eso',    name:'Electrolytes / Urea / Creatinine',cat:'Chemical Pathology'},
+    {id:'psa',    name:'PSA (Prostate Specific Antigen)', cat:'Oncology'},
   ];
 
-  const DAYS_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const DAYS  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const TIMES_AVAILABLE = ['08:00','08:30','09:00','09:30','10:00','10:30',
-    '11:00','11:30','12:00','13:00','13:30','14:00','14:30','15:00','15:30','16:00'];
+  const TIMES_ALL  = ['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30',
+                      '12:00','13:00','13:30','14:00','14:30','15:00','15:30','16:00'];
   const TIMES_TAKEN = ['09:00','11:00','13:30'];
 
   function gotoStep(n){
     document.querySelectorAll('.bw-step').forEach(s=>s.classList.remove('active'));
-    const el = document.getElementById('bwStep'+n);
-    if(el) el.classList.add('active');
-    state.step = n;
-    // Update progress dots
+    const el=document.getElementById('bwStep'+n); if(el) el.classList.add('active');
+    state.step=n;
     document.querySelectorAll('.bw-prog-step').forEach(dot=>{
-      const s = parseInt(dot.dataset.step);
-      dot.classList.toggle('done',   s < n);
-      dot.classList.toggle('active', s === n);
+      const s=parseInt(dot.dataset.step);
+      dot.classList.toggle('done',   s<n);
+      dot.classList.toggle('active', s===n);
     });
-    // Scroll to top of wizard
-    const hero = document.querySelector('.page.active .page-hero');
-    if(hero) hero.scrollIntoView({behavior:'smooth', block:'start'});
+    const hero=document.querySelector('.page.active .page-hero');
+    if(hero) hero.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
   function renderTests(){
-    const grid = document.getElementById('bwTestGrid');
-    if(!grid) return;
-    grid.innerHTML = TESTS.map(t=>`
-      <div class="bw-test-item${state.test?.id===t.id?' selected':''}" onclick="BW.pickTest('${t.id}')">
+    const grid=document.getElementById('bwTestGrid'); if(!grid) return;
+    grid.innerHTML=TESTS.map(t=>`
+      <div class="bw-test-item${state.test&&state.test.id===t.id?' selected':''}" onclick="BW.pickTest('${t.id}')">
         <div class="bw-test-name">${t.name}</div>
         <div class="bw-test-cat">${t.cat}</div>
       </div>`).join('');
   }
 
   function renderDates(){
-    const grid = document.getElementById('bwDateGrid');
-    if(!grid) return;
-    const today = new Date();
-    let html = '';
+    const grid=document.getElementById('bwDateGrid'); if(!grid) return;
+    const today=new Date(); let h='';
     for(let i=0;i<14;i++){
-      const d = new Date(today);
-      d.setDate(today.getDate()+i);
-      const iso = d.toISOString().slice(0,10);
-      const label = (i===0?'Today':i===1?'Tomorrow':DAYS_SHORT[d.getDay()]);
-      html += `<button class="bw-date-btn${state.date===iso?' selected':''}" onclick="BW.pickDate('${iso}','${label}, ${d.getDate()} ${MONTHS[d.getMonth()]}')">
-        <span class="bw-date-day">${label}</span>
+      const d=new Date(today); d.setDate(today.getDate()+i);
+      const iso=d.toISOString().slice(0,10);
+      const lbl=(i===0?'Today':i===1?'Tomorrow':DAYS[d.getDay()]);
+      h+=`<button class="bw-date-btn${state.date===iso?' selected':''}" onclick="BW.pickDate('${iso}','${lbl}, ${d.getDate()} ${MONTHS[d.getMonth()]}')">
+        <span class="bw-date-day">${lbl}</span>
         <span class="bw-date-num">${d.getDate()}</span>
       </button>`;
     }
-    grid.innerHTML = html;
+    grid.innerHTML=h;
   }
 
   function renderTimes(){
-    const grid = document.getElementById('bwTimeGrid');
-    if(!grid) return;
-    grid.innerHTML = TIMES_AVAILABLE.map(t=>{
-      const taken = TIMES_TAKEN.includes(t);
+    const grid=document.getElementById('bwTimeGrid'); if(!grid) return;
+    grid.innerHTML=TIMES_ALL.map(t=>{
+      const taken=TIMES_TAKEN.includes(t);
       return `<button class="bw-time-btn${taken?' unavailable':''}${state.time===t?' selected':''}"
         ${taken?'disabled':''} onclick="BW.pickTime('${t}')">${t}</button>`;
     }).join('');
   }
 
   return {
+    preselectAndGo(testId){
+      state.test = TESTS.find(t=>t.id===testId)||null;
+      window.location.hash='#book-test';
+    },
     init(){
+      // Reset steps
+      gotoStep(1);
+      const prog=document.getElementById('bwProgress');
+      if(prog) prog.style.display='';
       renderTests();
       renderDates();
+      // Apply pre-selection highlight
+      if(state.test){
+        setTimeout(()=>{
+          document.querySelectorAll('.bw-test-item').forEach(el=>{
+            const n=el.querySelector('.bw-test-name');
+            if(n && state.test && n.textContent===state.test.name)
+              el.classList.add('selected');
+          });
+        },50);
+      }
     },
     filterTests(q){
       document.querySelectorAll('.bw-test-item').forEach(el=>{
-        el.style.display = el.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+        el.style.display=el.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';
       });
     },
     pickTest(id){
-      state.test = TESTS.find(t=>t.id===id);
-      document.querySelectorAll('.bw-test-item').forEach(el=>el.classList.remove('selected'));
-      const items = document.querySelectorAll('.bw-test-item');
-      items.forEach(el=>{ if(el.querySelector('.bw-test-cat').textContent.includes(state.test.cat)
-        && el.querySelector('.bw-test-name').textContent === state.test.name.replace(/&amp;/g,'&'))
-        el.classList.add('selected'); });
-      // simpler approach: re-render
+      state.test=TESTS.find(t=>t.id===id)||null;
       renderTests();
     },
-    pickDate(iso, label){
-      state.date = iso;
-      state.dateLabel = label;
+    pickDate(iso,label){
+      state.date=iso; state.dateLabel=label;
       renderDates();
-      const lbl = document.getElementById('bwSelectedDateLabel');
-      if(lbl) lbl.textContent = label;
+      const lbl=document.getElementById('bwSelectedDateLabel');
+      if(lbl) lbl.textContent=label;
       renderTimes();
     },
-    pickTime(t){
-      state.time = t;
-      renderTimes();
-    },
+    pickTime(t){ state.time=t; renderTimes(); },
     next(current){
-      if(current===1){
-        if(!state.test){ AX.toast('Please select a test'); return; }
-      } else if(current===2){
-        if(!state.date){ AX.toast('Please select a date'); return; }
-      } else if(current===3){
-        if(!state.time){ AX.toast('Please select a time slot'); return; }
-      } else if(current===4){
-        const name  = document.getElementById('bw_name').value.trim();
-        const email = document.getElementById('bw_email').value.trim();
+      if(current===1){ if(!state.test){ AX.toast('Please select a test'); return; } }
+      else if(current===2){ if(!state.date){ AX.toast('Please select a date'); return; } }
+      else if(current===3){ if(!state.time){ AX.toast('Please select a time slot'); return; } }
+      else if(current===4){
+        const name  = (document.getElementById('bw_name')||{}).value||'';
+        const email = (document.getElementById('bw_email')||{}).value||'';
         AX.clearErr('bw_name_err'); AX.clearErr('bw_email_err');
-        if(!name){ AX.setErr('bw_name_err','Name is required'); return; }
-        if(!email||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('bw_email_err','Valid email required'); return; }
-        state.patient = { name, email,
-          phone: document.getElementById('bw_phone').value.trim(),
-          notes: document.getElementById('bw_notes').value.trim() };
-        // Populate summary
-        const $=id=>document.getElementById(id);
-        $('bwSumTest').textContent  = state.test?.name  || '';
-        $('bwSumDate').textContent  = state.dateLabel   || state.date || '';
-        $('bwSumTime').textContent  = state.time        || '';
-        $('bwSumName').textContent  = state.patient.name;
-        $('bwSumEmail').textContent = state.patient.email;
+        if(!name.trim()){ AX.setErr('bw_name_err','Name is required'); return; }
+        if(!email.trim()||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('bw_email_err','Valid email required'); return; }
+        state.patient={ name:name.trim(), email:email.trim(),
+          phone:(document.getElementById('bw_phone')||{}).value||'',
+          notes:(document.getElementById('bw_notes')||{}).value||'' };
+        const set=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=v; };
+        set('bwSumTest',  state.test?state.test.name:'');
+        set('bwSumDate',  state.dateLabel||state.date||'');
+        set('bwSumTime',  state.time||'');
+        set('bwSumName',  state.patient.name);
+        set('bwSumEmail', state.patient.email);
       }
       gotoStep(current+1);
     },
     back(current){ gotoStep(current-1); },
     async submit(){
-      const btn = document.getElementById('bwSubmitBtn');
-      btn.disabled = true;
-      btn.innerHTML = '<span class="ax-spinner"></span> Confirming…';
-      const result = await AX.post('/booking', {
+      const btn=document.getElementById('bwSubmitBtn');
+      if(btn){ btn.disabled=true; btn.innerHTML='<span class="ax-spinner"></span> Confirming…'; }
+      const result=await AX.post('/booking',{
         patient_name:  state.patient.name,
         patient_email: state.patient.email,
         patient_phone: state.patient.phone,
-        lab_id:   'vitalis-ibadan',
-        lab_name: 'Vitalis Diagnostics',
-        test_id:  state.test?.id || '',
-        test_name: state.test?.name || '',
-        booking_date: state.date,
-        booking_time: state.time,
-        notes: state.patient.notes
+        lab_id:'vitalis-ibadan', lab_name:'Vitalis Diagnostics',
+        test_id:  state.test?state.test.id:'',
+        test_name:state.test?state.test.name:'',
+        booking_date:state.date, booking_time:state.time,
+        notes:state.patient.notes
       });
-      const ref = result?.booking_ref || 'AX' + Math.random().toString(36).slice(2,8).toUpperCase();
-      document.getElementById('bwConfRef').textContent   = ref;
-      document.getElementById('bwConfEmail').textContent = state.patient.email;
-      AX.analytics.track('booking_completed', 'book-test', state.test?.id);
+      const ref=result&&result.booking_ref ? result.booking_ref : 'AX'+Math.random().toString(36).slice(2,8).toUpperCase();
+      const setEl=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=v; };
+      setEl('bwConfRef',   ref);
+      setEl('bwConfEmail', state.patient.email);
+      AX.analytics.track('booking_completed','book-test', state.test?state.test.id:'');
       gotoStep(6);
-      // hide progress bar on confirmation
-      const prog = document.getElementById('bwProgress');
+      const prog=document.getElementById('bwProgress');
       if(prog) prog.style.display='none';
     }
   };
@@ -5013,56 +4890,52 @@ const BW = (function(){
 // OW — Onboarding Wizard (Join Network)
 // ════════════════════════════════════════════════════════════════════════════
 const OW = (function(){
-  let state = { plan:'', step:1 };
-  const fields = {};
+  let state={plan:'', step:1};
+  const fields={};
 
   function goPanel(n){
-    state.step = n;
+    state.step=n;
     document.querySelectorAll('.ow-panel').forEach(p=>p.classList.remove('active'));
-    const panel = document.getElementById('owPanel'+n);
-    if(panel) panel.classList.add('active');
+    const panel=document.getElementById('owPanel'+n); if(panel) panel.classList.add('active');
     document.querySelectorAll('.ow-step-tab').forEach(t=>{
-      const s = parseInt(t.dataset.panel);
-      t.classList.toggle('active', s===n);
-      t.classList.toggle('done',   s<n);
+      const s=parseInt(t.dataset.panel);
+      t.classList.toggle('active',s===n);
+      t.classList.toggle('done',s<n);
     });
   }
 
   return {
-    selectPlan(plan, el){
-      state.plan = plan;
+    selectPlan(plan,el){
+      state.plan=plan;
       document.querySelectorAll('.plan-card').forEach(c=>c.style.outline='');
-      if(el) el.style.outline = '3px solid var(--clay)';
-      // Show form section
-      const formSec = document.getElementById('jnForm');
+      if(el) el.style.outline='3px solid var(--clay)';
+      const formSec=document.getElementById('jnForm');
       if(formSec){ formSec.style.display='block'; formSec.scrollIntoView({behavior:'smooth',block:'start'}); }
       goPanel(1);
-      AX.analytics.track('plan_selected', 'join-network', plan);
+      AX.analytics.track('plan_selected','join-network',plan);
     },
     next(current){
       if(current===1){
-        const name  = document.getElementById('ow_name').value.trim();
-        const email = document.getElementById('ow_email').value.trim();
+        const name  = (document.getElementById('ow_name')||{}).value||'';
+        const email = (document.getElementById('ow_email')||{}).value||'';
         AX.clearErr('ow_name_err'); AX.clearErr('ow_email_err');
-        if(!name){ AX.setErr('ow_name_err','Name is required'); return; }
-        if(!email||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('ow_email_err','Valid email required'); return; }
-        fields.contact_name  = name;
-        fields.contact_email = email;
-        fields.contact_phone = document.getElementById('ow_phone').value.trim();
+        if(!name.trim()){ AX.setErr('ow_name_err','Name is required'); return; }
+        if(!email.trim()||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('ow_email_err','Valid email required'); return; }
+        fields.contact_name=name.trim(); fields.contact_email=email.trim();
+        fields.contact_phone=(document.getElementById('ow_phone')||{}).value||'';
       } else if(current===2){
-        const ln = document.getElementById('ow_labname').value.trim();
+        const ln=(document.getElementById('ow_labname')||{}).value||'';
         AX.clearErr('ow_labname_err');
-        if(!ln){ AX.setErr('ow_labname_err','Laboratory name is required'); return; }
-        fields.lab_name    = ln;
-        fields.lab_address = document.getElementById('ow_address').value.trim();
-        fields.lab_state   = document.getElementById('ow_state').value;
+        if(!ln.trim()){ AX.setErr('ow_labname_err','Laboratory name is required'); return; }
+        fields.lab_name=ln.trim();
+        fields.lab_address=(document.getElementById('ow_address')||{}).value||'';
+        fields.lab_state=(document.getElementById('ow_state')||{}).value||'';
       } else if(current===3){
-        const sel = document.getElementById('ow_spec');
-        fields.specialities  = Array.from(sel.selectedOptions).map(o=>o.value).join(', ');
-        fields.accreditation = document.getElementById('ow_accred').value.trim();
-        // Build summary
-        const summary = document.getElementById('owSummary');
-        if(summary) summary.innerHTML = `
+        const sel=document.getElementById('ow_spec');
+        fields.specialities=sel ? Array.from(sel.selectedOptions).map(o=>o.value).join(', ') : '';
+        fields.accreditation=(document.getElementById('ow_accred')||{}).value||'';
+        const summary=document.getElementById('owSummary');
+        if(summary) summary.innerHTML=`
           <div class="bw-summary-row"><span class="bw-summary-label">Plan</span><span class="bw-summary-value">${state.plan}</span></div>
           <div class="bw-summary-row"><span class="bw-summary-label">Contact</span><span class="bw-summary-value">${fields.contact_name}</span></div>
           <div class="bw-summary-row"><span class="bw-summary-label">Email</span><span class="bw-summary-value">${fields.contact_email}</span></div>
@@ -5074,73 +4947,130 @@ const OW = (function(){
     },
     back(current){ goPanel(current-1); },
     async submit(){
-      const btn = document.getElementById('owSubmitBtn');
-      btn.disabled = true;
-      btn.innerHTML = '<span class="ax-spinner"></span> Submitting…';
-      await AX.post('/lab-apply', { ...fields, plan: state.plan });
-      document.getElementById('owSubmitArea').style.display = 'none';
-      document.getElementById('owSuccess').style.display = 'block';
-      const e = document.getElementById('owSuccessEmail');
-      if(e) e.textContent = fields.contact_email;
-      AX.analytics.track('lab_applied', 'join-network', state.plan);
+      const btn=document.getElementById('owSubmitBtn');
+      if(btn){ btn.disabled=true; btn.innerHTML='<span class="ax-spinner"></span> Submitting…'; }
+      await AX.post('/lab-apply', {...fields, plan:state.plan});
+      const area=document.getElementById('owSubmitArea'); if(area) area.style.display='none';
+      const success=document.getElementById('owSuccess'); if(success) success.style.display='block';
+      const e=document.getElementById('owSuccessEmail'); if(e) e.textContent=fields.contact_email;
+      AX.analytics.track('lab_applied','join-network',state.plan);
     }
   };
 })();
 
-// ════════════════════════════════════════════════════════════════════════════
-// AI — Chat Interface
-// ════════════════════════════════════════════════════════════════════════════
-const AI = (function(){
-  const history = [];
 
-  function appendMsg(role, text, typing=false){
-    const box = document.getElementById('aiMessages');
-    if(!box) return null;
-    const div = document.createElement('div');
-    div.className = 'ai-msg ' + role + (typing?' ai-typing':'');
-    div.innerHTML = typing
-      ? `<div class="ai-bubble"><div class="ai-typing-dots"><span></span><span></span><span></span></div></div>`
-      : `<div class="ai-bubble">${text.replace(/\n/g,'<br>')}</div><div class="ai-msg-time">${role==='user'?'You':'AgoroX AI'}</div>`;
-    box.appendChild(div);
-    box.scrollTop = box.scrollHeight;
-    return div;
+// ════════════════════════════════════════════════════════════════════════════
+// FT — Find a Test autocomplete
+// ════════════════════════════════════════════════════════════════════════════
+const FT = (function(){
+  const TESTS = [
+    {id:'fbc',     name:'Full Blood Count (FBC / CBC)',          cat:'Haematology'},
+    {id:'malaria', name:'Malaria RDT / Microscopy',              cat:'Parasitology'},
+    {id:'lft',     name:'Liver Function Test (LFT)',             cat:'Chemical Pathology'},
+    {id:'lipid',   name:'Lipid Profile',                         cat:'Chemical Pathology'},
+    {id:'hba1c',   name:'HbA1c (Glycated Haemoglobin)',          cat:'Chemical Pathology'},
+    {id:'hiv',     name:'HIV / AIDS Screen',                     cat:'Immunology'},
+    {id:'hepb',    name:'Hepatitis B & C Screening',             cat:'Immunology'},
+    {id:'thyroid', name:'Thyroid Function Test (TFT)',            cat:'Endocrinology'},
+    {id:'glucose', name:'Blood Glucose (FBS / 2hPP)',            cat:'Chemical Pathology'},
+    {id:'urine',   name:'Urinalysis (M/C/S)',                    cat:'Microbiology'},
+    {id:'kft',     name:'Kidney Function Test (KFT)',             cat:'Chemical Pathology'},
+    {id:'cs',      name:'Culture & Sensitivity (C&S)',            cat:'Microbiology'},
+    {id:'preg',    name:'Pregnancy Test (beta-hCG)',              cat:'Immunology'},
+    {id:'drug',    name:'Drug Screening Panel',                  cat:'Toxicology'},
+    {id:'dna',     name:'DNA Paternity Testing',                 cat:'Molecular'},
+    {id:'semen',   name:'Seminal Analysis',                      cat:'Andrology'},
+    {id:'eso',     name:'Electrolytes / Urea / Creatinine',      cat:'Chemical Pathology'},
+    {id:'psa',     name:'PSA (Prostate Specific Antigen)',       cat:'Oncology'},
+    {id:'widal',   name:'Widal Test (Typhoid)',                  cat:'Microbiology'},
+    {id:'rpr',     name:'RPR / VDRL (Syphilis)',                 cat:'Immunology'},
+    {id:'hba',     name:'Haemoglobin Electrophoresis',           cat:'Haematology'},
+    {id:'esr',     name:'ESR (Erythrocyte Sedimentation Rate)',  cat:'Haematology'},
+    {id:'rhf',     name:'Rheumatoid Factor (RHF)',               cat:'Immunology'},
+    {id:'crp',     name:'C-Reactive Protein (CRP)',              cat:'Immunology'},
+    {id:'fer',     name:'Serum Ferritin',                        cat:'Chemical Pathology'},
+    {id:'vitd',    name:'Vitamin D (25-OH)',                     cat:'Endocrinology'},
+    {id:'b12',     name:'Vitamin B12 & Folate',                  cat:'Chemical Pathology'},
+    {id:'uric',    name:'Uric Acid',                             cat:'Chemical Pathology'},
+    {id:'cortisol',name:'Cortisol (Morning / Random)',           cat:'Endocrinology'},
+    {id:'afp',     name:'AFP (Alpha-Fetoprotein)',               cat:'Oncology'},
+  ];
+
+  var highlighted = -1;
+  var filtered = [];
+
+  function hl(text, term){
+    var i = text.toLowerCase().indexOf(term.toLowerCase());
+    if(i === -1) return text;
+    return text.slice(0,i) + '<mark>' + text.slice(i, i+term.length) + '</mark>' + text.slice(i+term.length);
   }
 
+  function close(){
+    var dd = document.getElementById('ftDropdown');
+    if(dd) dd.classList.remove('open');
+    highlighted = -1;
+  }
+
+  function render(term){
+    var dd = document.getElementById('ftDropdown');
+    if(!dd) return;
+    if(!term){ close(); return; }
+    filtered = TESTS.filter(function(t){
+      return t.name.toLowerCase().includes(term.toLowerCase()) ||
+             t.cat.toLowerCase().includes(term.toLowerCase()) ||
+             t.id.toLowerCase().includes(term.toLowerCase());
+    });
+    highlighted = -1;
+    if(filtered.length === 0){
+      dd.innerHTML = '<div class="ft-no-results">No tests found — try "liver", "CBC" or "thyroid"</div>';
+    } else {
+      dd.innerHTML = filtered.map(function(t){
+        return '<div class="ft-dd-item" onclick="FT.pick(\''+t.id+'\')">'+
+               '<span>'+hl(t.name,term)+'</span>'+
+               '<span class="ft-dd-cat">'+t.cat+'</span></div>';
+      }).join('');
+    }
+    dd.classList.add('open');
+  }
+
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.eco-search-box')) close();
+  });
+
   return {
-    async send(text){
-      if(!text.trim()) return;
-      // Hide suggestions after first message
-      const sug = document.getElementById('aiSuggestions');
-      if(sug) sug.style.display = 'none';
-
-      appendMsg('user', text);
-      history.push({ role:'user', content: text });
-
-      const typingEl = appendMsg('assistant', '', true);
-      const sendBtn = document.getElementById('aiSendBtn');
-      if(sendBtn) sendBtn.disabled = true;
-
-      try {
-        const res = await AX.post('/ai', { messages: history });
-        const reply = res?.reply || "I'm sorry, I couldn't process that. Please try again.";
-        history.push({ role:'assistant', content: reply });
-        if(typingEl) typingEl.remove();
-        appendMsg('assistant', reply);
-        AX.analytics.track('ai_query', 'ask-ai', '');
-      } catch(e) {
-        if(typingEl) typingEl.remove();
-        appendMsg('assistant', 'Connection error. Please check your network and try again.');
+    filter: function(q){ render(q.trim()); },
+    key: function(e){
+      var dd = document.getElementById('ftDropdown');
+      if(!dd || !dd.classList.contains('open')) return;
+      var items = dd.querySelectorAll('.ft-dd-item');
+      if(e.key === 'ArrowDown'){
+        e.preventDefault();
+        highlighted = Math.min(highlighted+1, items.length-1);
+        items.forEach(function(el,i){ el.classList.toggle('highlighted', i===highlighted); });
+      } else if(e.key === 'ArrowUp'){
+        e.preventDefault();
+        highlighted = Math.max(highlighted-1, 0);
+        items.forEach(function(el,i){ el.classList.toggle('highlighted', i===highlighted); });
+      } else if(e.key === 'Enter'){
+        e.preventDefault();
+        if(highlighted >= 0 && filtered[highlighted]) FT.pick(filtered[highlighted].id);
+      } else if(e.key === 'Escape'){
+        close();
+        var inp = document.getElementById('ftSearch');
+        if(inp){ inp.value=''; render(''); }
       }
-      if(sendBtn) sendBtn.disabled = false;
-      const input = document.getElementById('aiInput');
-      if(input) input.value = '';
     },
-    sendFromInput(){
-      const input = document.getElementById('aiInput');
-      if(input && input.value.trim()) AI.send(input.value.trim());
+    pick: function(testId){
+      var t = TESTS.find(function(x){ return x.id===testId; });
+      if(!t) return;
+      var inp = document.getElementById('ftSearch');
+      if(inp) inp.value = t.name;
+      close();
+      setTimeout(function(){ BW.preselectAndGo(testId); }, 150);
     }
   };
 })();
+
 
 // ════════════════════════════════════════════════════════════════════════════
 // Init — fire on route change
@@ -5150,17 +5080,20 @@ const AI = (function(){
   window.renderRoute = function(){
     if(orig) orig();
     const hash = window.location.hash.replace('#','').split('/')[0];
-    if(hash === 'book-test') BW.init();
-    // Track page view
+    if(hash === 'book-test'){
+      const prog = document.getElementById('bwProgress');
+      if(prog) prog.style.display = '';
+      BW.init();
+    }
     AX.analytics.track('page_view', hash, '');
   };
-  // Track CTA clicks (delegate)
   document.addEventListener('click', function(e){
     const cta = e.target.closest('[data-route]');
     if(cta) AX.analytics.track('cta_click', window.location.hash.slice(1), cta.textContent.trim().slice(0,40));
   });
 })();
 </script>
+
 
 </body>
 </html>
