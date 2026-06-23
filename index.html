@@ -4740,7 +4740,7 @@ const AX = (function(){
   // e.g. 'https://agorox-api.YOUR-ACCOUNT.workers.dev'
   const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:8787'
-    : '/api';   // on Cloudflare Pages this routes to the worker
+    : 'https://agorox-api.johnpadeola.workers.dev';   // on Cloudflare Pages this routes to the worker
 
   const sessionId = 'ax_' + Math.random().toString(36).slice(2,10);
 
