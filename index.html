@@ -867,6 +867,123 @@
   #ax-toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:var(--paper);font-family:var(--mono);font-size:11.5px;padding:8px 14px;border-radius:3px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:500;}
   #ax-toast.show{opacity:.9;}
 
+
+  /* ════════════════════════════════════════════════
+     PHASE 2  —  MOBILE RESPONSIVE FIXES
+     ════════════════════════════════════════════════ */
+
+  @media (max-width: 640px) {
+
+    /* ── Lead capture modal ── */
+    .ax-modal-overlay { align-items: flex-end; padding: 0; }
+    .ax-modal {
+      max-width: 100%;
+      width: 100%;
+      border-radius: 12px 12px 0 0;
+      padding: 24px 20px 32px;
+      max-height: 92vh;
+      overflow-y: auto;
+    }
+
+    /* ── Booking wizard progress ── */
+    .bw-progress { gap: 0; margin-bottom: 20px; }
+    .bw-prog-label { display: none; }
+    .bw-prog-dot { width: 24px; height: 24px; font-size: 10px; }
+    .bw-prog-step::before { top: 12px; }
+
+    /* ── Booking test grid ── */
+    .bw-test-grid { grid-template-columns: 1fr; }
+
+    /* ── Date grid ── */
+    .bw-date-grid { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+    .bw-date-num { font-size: 14px; }
+
+    /* ── Time grid ── */
+    .bw-time-grid { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+    .bw-time-btn { font-size: 12px; padding: 8px 4px; }
+
+    /* ── Booking wizard nav ── */
+    .ow-nav { gap: 8px; }
+    .ow-nav .btn { flex: 1; justify-content: center; font-size: 13.5px; padding: 10px 12px; }
+
+    /* ── Onboarding wizard tabs ── */
+    .ow-steps { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .ow-step-tab { font-size: 9px; padding: 8px 6px; white-space: nowrap; letter-spacing: 0; }
+
+    /* ── Plan grid ── */
+    .plan-grid { grid-template-columns: 1fr; }
+
+    /* ── AI chat ── */
+    .ai-chat-wrap { height: calc(100vh - 220px); min-height: 320px; }
+    .ai-chat-messages { padding: 14px; gap: 12px; }
+    .ai-bubble { font-size: 13.5px; padding: 10px 13px; }
+    .ai-chat-input-row { padding: 10px; gap: 6px; }
+    .ai-chat-input { font-size: 14px; }
+    #aiSuggestions { padding: 8px 10px; gap: 6px; }
+    .aab-prompt { font-size: 12px; padding: 7px 10px; }
+
+    /* ── Join benefits grid ── */
+    .join-benefits { grid-template-columns: 1fr; }
+
+    /* ── Form fields ── */
+    .ax-form-field input,
+    .ax-form-field select,
+    .ax-form-field textarea { font-size: 16px; } /* prevents iOS zoom */
+
+    /* ── Booking summary ── */
+    .bw-summary-row { flex-direction: column; gap: 2px; padding: 8px 0; }
+    .bw-summary-value { font-size: 13.5px; }
+
+    /* ── Booking confirmation ── */
+    .bw-conf-ref { font-size: 18px; }
+    .bw-confirmation { padding: 20px 0; }
+
+    /* ── Tier economy cards ── */
+    .tier-economy { grid-template-columns: 1fr; }
+    .tec-card { padding: 16px 14px; }
+
+    /* ── Ecosystem diagram ── */
+    .eco-diagram { max-width: 100%; }
+    .eco-node { min-width: 0; padding: 9px 16px; font-size: 13px; }
+
+    /* ── Download grid ── */
+    .download-grid { grid-template-columns: 1fr; }
+
+    /* ── Platform acquisition split ── */
+    div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+
+    /* ── Resource journey ── */
+    .resource-journey { border: none; gap: 1px; }
+    .rj-step { border: 1px solid var(--line); border-bottom: none; }
+    .rj-step:last-child { border-bottom: 1px solid var(--line); }
+
+    /* ── Roadmap theme grid ── */
+    .roadmap-theme-grid { grid-template-columns: 1fr; }
+
+    /* ── Test category grid ── */
+    .test-category-grid { grid-template-columns: 1fr 1fr; }
+
+    /* ── Test result items ── */
+    .test-result-item { grid-template-columns: 1fr; gap: 10px; }
+    .tri-cta .btn { width: 100%; justify-content: center; }
+
+    /* ── AI assistant topics grid ── */
+    div[style*="grid-template-columns:repeat(3,1fr)"] {
+      grid-template-columns: 1fr !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Extra small screens */
+    .bw-date-grid { grid-template-columns: repeat(3, 1fr); }
+    .bw-time-grid { grid-template-columns: repeat(2, 1fr); }
+    .bw-prog-dot { width: 20px; height: 20px; font-size: 9px; }
+    .ai-chat-wrap { height: calc(100vh - 200px); }
+    .ax-modal { padding: 20px 16px 28px; }
+  }
+
 </style>
 </head>
 <body>
