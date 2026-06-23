@@ -766,9 +766,157 @@
   .rtc-desc{font-size:12.5px;color:var(--slate-dark);line-height:1.5;}
   .rtc-status{font-family:var(--mono);font-size:9.5px;color:var(--clay-deep);margin-top:auto;padding-top:10px;}
 
+
+  /* ── Lead capture modal ─────────────────────────────────────────── */
+  .ax-modal-overlay{display:none;position:fixed;inset:0;background:rgba(14,31,51,0.55);z-index:400;align-items:center;justify-content:center;padding:20px;}
+  .ax-modal-overlay.open{display:flex;}
+  .ax-modal{background:var(--bg);max-width:440px;width:100%;padding:28px;border-radius:3px;position:relative;}
+  .ax-modal-close{position:absolute;top:14px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:var(--slate);line-height:1;}
+  .ax-modal h3{font-size:19px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+  .ax-modal p{font-size:13.5px;color:var(--slate-dark);margin-bottom:18px;line-height:1.5;}
+  .ax-form-field{margin-bottom:14px;}
+  .ax-form-field label{display:block;font-size:12.5px;font-weight:600;color:var(--navy);margin-bottom:5px;font-family:var(--mono);letter-spacing:.04em;text-transform:uppercase;}
+  .ax-form-field input,.ax-form-field select,.ax-form-field textarea{width:100%;padding:10px 14px;border:1px solid var(--line);border-radius:3px;font-size:14px;font-family:var(--body);color:var(--navy);background:var(--bg);transition:border-color .15s;}
+  .ax-form-field input:focus,.ax-form-field select:focus,.ax-form-field textarea:focus{outline:none;border-color:var(--clay);}
+  .ax-form-field textarea{resize:vertical;min-height:80px;}
+  .ax-form-error{font-size:12px;color:#c0392b;margin-top:4px;}
+  .ax-form-success{background:#e8f5e9;border:1px solid #a5d6a7;padding:16px;border-radius:3px;text-align:center;}
+  .ax-form-success h4{color:#2E7D32;font-size:16px;margin-bottom:6px;}
+  .ax-form-success p{color:#1b5e20;font-size:13.5px;}
+  .ax-spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;vertical-align:-3px;margin-right:6px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .btn[disabled]{opacity:0.6;cursor:not-allowed;transform:none!important;}
+
+  /* ── Booking wizard ──────────────────────────────────────────────── */
+  .bw-progress{display:flex;gap:0;margin-bottom:28px;}
+  .bw-prog-step{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;position:relative;}
+  .bw-prog-step::before{content:'';position:absolute;top:14px;left:50%;right:-50%;height:1px;background:var(--line);z-index:0;}
+  .bw-prog-step:last-child::before{display:none;}
+  .bw-prog-dot{width:28px;height:28px;border-radius:50%;border:2px solid var(--line);background:var(--bg);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:11px;color:var(--slate);z-index:1;position:relative;}
+  .bw-prog-step.done .bw-prog-dot{background:var(--navy);border-color:var(--navy);color:var(--paper);}
+  .bw-prog-step.active .bw-prog-dot{background:var(--clay);border-color:var(--clay);color:var(--white);}
+  .bw-prog-label{font-size:11px;color:var(--slate);text-align:center;white-space:nowrap;}
+  .bw-prog-step.active .bw-prog-label{color:var(--clay-deep);font-weight:600;}
+  .bw-prog-step.done .bw-prog-label{color:var(--navy);}
+
+  .bw-step{display:none;}
+  .bw-step.active{display:block;animation:fadein .2s ease;}
+  .bw-test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  @media(max-width:640px){.bw-test-grid{grid-template-columns:1fr 1fr;}}
+  .bw-test-item{background:var(--bg);padding:12px 14px;cursor:pointer;transition:background .12s;border:2px solid transparent;}
+  .bw-test-item:hover{background:var(--paper);}
+  .bw-test-item.selected{background:var(--skyfill);border-color:var(--clay);}
+  .bw-test-name{font-size:14px;font-weight:500;color:var(--navy);}
+  .bw-test-cat{font-family:var(--mono);font-size:10.5px;color:var(--slate);margin-top:3px;}
+
+  .bw-date-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:20px;}
+  @media(max-width:520px){.bw-date-grid{grid-template-columns:repeat(5,1fr);}}
+  .bw-date-btn{padding:8px 4px;border:1px solid var(--line);border-radius:3px;background:var(--bg);cursor:pointer;text-align:center;transition:all .12s;}
+  .bw-date-btn:hover{border-color:var(--navy);}
+  .bw-date-btn.selected{background:var(--navy);border-color:var(--navy);color:var(--paper);}
+  .bw-date-day{font-family:var(--mono);font-size:9.5px;color:inherit;display:block;}
+  .bw-date-num{font-size:16px;font-weight:600;color:inherit;display:block;margin-top:2px;}
+
+  .bw-time-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  @media(max-width:520px){.bw-time-grid{grid-template-columns:repeat(3,1fr);}}
+  .bw-time-btn{padding:9px 8px;border:1px solid var(--line);border-radius:3px;background:var(--bg);cursor:pointer;font-family:var(--mono);font-size:13px;text-align:center;transition:all .12s;}
+  .bw-time-btn:hover{border-color:var(--navy);}
+  .bw-time-btn.selected{background:var(--navy);border-color:var(--navy);color:var(--paper);}
+  .bw-time-btn.unavailable{opacity:.35;cursor:not-allowed;background:var(--paper);}
+
+  .bw-summary-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--line-soft);font-size:14px;}
+  .bw-summary-row:last-child{border-bottom:none;}
+  .bw-summary-label{color:var(--slate-dark);}
+  .bw-summary-value{font-weight:500;color:var(--navy);}
+
+  .bw-confirmation{text-align:center;padding:28px 0;}
+  .bw-conf-ref{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--clay-deep);letter-spacing:.06em;margin:14px 0;}
+  .bw-conf-msg{font-size:15px;color:var(--slate-dark);max-width:420px;margin:0 auto;line-height:1.6;}
+
+  /* ── AI chat interface ───────────────────────────────────────────── */
+  .ai-chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 160px);min-height:400px;max-height:640px;border:1px solid var(--line);}
+  .ai-chat-messages{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:16px;background:var(--paper);}
+  .ai-msg{max-width:80%;display:flex;flex-direction:column;gap:4px;}
+  .ai-msg.user{align-self:flex-end;align-items:flex-end;}
+  .ai-msg.assistant{align-self:flex-start;align-items:flex-start;}
+  .ai-bubble{padding:12px 16px;border-radius:3px;font-size:14px;line-height:1.55;}
+  .ai-msg.user .ai-bubble{background:var(--navy);color:var(--paper);}
+  .ai-msg.assistant .ai-bubble{background:var(--bg);border:1px solid var(--line);color:var(--navy);}
+  .ai-msg-time{font-family:var(--mono);font-size:10px;color:var(--slate);}
+  .ai-typing .ai-bubble{background:var(--bg);border:1px solid var(--line);}
+  .ai-typing-dots{display:flex;gap:4px;padding:4px 0;}
+  .ai-typing-dots span{width:6px;height:6px;border-radius:50%;background:var(--slate);animation:typing 1s infinite;}
+  .ai-typing-dots span:nth-child(2){animation-delay:.2s;}
+  .ai-typing-dots span:nth-child(3){animation-delay:.4s;}
+  @keyframes typing{0%,80%,100%{opacity:.3;}40%{opacity:1;}}
+  .ai-chat-input-row{display:flex;gap:8px;padding:14px;border-top:1px solid var(--line);background:var(--bg);}
+  .ai-chat-input{flex:1;padding:10px 14px;border:1px solid var(--line);border-radius:3px;font-size:14px;font-family:var(--body);resize:none;max-height:100px;line-height:1.4;}
+  .ai-chat-input:focus{outline:none;border-color:var(--clay);}
+
+  /* ── Onboarding form wizard ─────────────────────────────────────── */
+  .ow-steps{display:flex;margin-bottom:28px;border:1px solid var(--line);overflow:hidden;}
+  .ow-step-tab{flex:1;padding:10px 8px;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--slate);border-right:1px solid var(--line);background:var(--paper);cursor:default;}
+  .ow-step-tab:last-child{border-right:none;}
+  .ow-step-tab.active{background:var(--navy);color:var(--paper);}
+  .ow-step-tab.done{background:var(--skyfill);color:var(--navy);}
+  .ow-panel{display:none;}
+  .ow-panel.active{display:block;animation:fadein .2s ease;}
+  .ow-nav{display:flex;justify-content:space-between;margin-top:24px;gap:12px;}
+
+  /* ── Analytics toast (dev mode) ─────────────────────────────────── */
+  #ax-toast{position:fixed;bottom:20px;right:20px;background:var(--navy);color:var(--paper);font-family:var(--mono);font-size:11.5px;padding:8px 14px;border-radius:3px;opacity:0;transition:opacity .3s;pointer-events:none;z-index:500;}
+  #ax-toast.show{opacity:.9;}
+
 </style>
 </head>
 <body>
+
+
+<!-- ── AgoroX Lead Capture Modal ──────────────────────────────── -->
+<div id="axLeadModal" class="ax-modal-overlay" role="dialog" aria-modal="true">
+  <div class="ax-modal">
+    <button class="ax-modal-close" onclick="AX.modal.close()" aria-label="Close">✕</button>
+    <div id="axLeadForm">
+      <h3>Download Free Resource</h3>
+      <p id="axLeadResourceTitle">Enter your details to receive instant access.</p>
+      <div class="ax-form-field">
+        <label>Full Name *</label>
+        <input id="lf_name" type="text" placeholder="Dr. Amara Okonkwo">
+        <div class="ax-form-error" id="lf_name_err"></div>
+      </div>
+      <div class="ax-form-field">
+        <label>Email Address *</label>
+        <input id="lf_email" type="email" placeholder="amara@yourlaboratory.com">
+        <div class="ax-form-error" id="lf_email_err"></div>
+      </div>
+      <div class="ax-form-field">
+        <label>Laboratory / Organisation</label>
+        <input id="lf_lab" type="text" placeholder="Vitalis Diagnostics">
+      </div>
+      <div class="ax-form-field">
+        <label>Country</label>
+        <select id="lf_country">
+          <option value="Nigeria">Nigeria</option>
+          <option value="Ghana">Ghana</option>
+          <option value="Kenya">Kenya</option>
+          <option value="South Africa">South Africa</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <button class="btn btn-clay" style="width:100%;justify-content:center;" onclick="AX.leads.submit()">
+        Get Free Access →
+      </button>
+      <p style="font-size:11.5px;color:var(--slate);margin-top:10px;text-align:center;">No spam. Unsubscribe anytime.</p>
+    </div>
+    <div id="axLeadSuccess" class="ax-form-success" style="display:none;">
+      <h4>✓ Access Granted</h4>
+      <p>Your download link has been sent to your email.<br>Check your inbox within 2 minutes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ── Analytics toast ─────────────────────────────────────────── -->
+<div id="ax-toast"></div>
 
 <header>
   <div class="wrap nav">
@@ -805,6 +953,7 @@
   <a data-route="resources-tools">Tools & Downloads</a>
   <a data-route="industries">Industries</a>
   <a data-route="find-test">Find a Test</a>
+  <a data-route="ask-ai">Ask AgoroX AI</a>
   <a data-route="join-network">Join the Network</a>
   <a data-route="laboratories">Laboratories</a>
   <a data-route="patient-portal">Patient Portal</a>
@@ -880,12 +1029,12 @@
     <div class="wrap">
       <div class="hero-top">
         <div>
-          <h1>Africa's healthcare platform — <em>connecting laboratories, patients, and knowledge.</em></h1>
+          <h1>Africa's healthcare platform — <em>find tests, book online, get results.</em></h1>
           <p class="lede">AgoroX is the digital infrastructure connecting laboratories and patients across Africa. Discover tests, book appointments, access results — and for laboratories, digitise operations and grow your patient base.</p>
           <div class="hero-actions">
             <span class="btn btn-clay" data-route="find-test">Find a Test <span class="btn-arrow">→</span></span>
-            <span class="btn btn-ghost" data-route="join-network">Join the Network</span>
-            <span class="btn btn-ghost" data-route="products">Explore Products</span>
+            <span class="btn btn-clay" data-route="join-network" style="background:var(--navy);">Join as Laboratory</span>
+            <span class="btn btn-ghost" data-route="ask-ai">Ask AgoroX AI</span>
           </div>
         </div>
         <div class="hero-stats">
@@ -2465,19 +2614,19 @@
           <div class="dc-type">SOP Template</div>
           <h4>Sample Collection &amp; Handling SOP</h4>
           <p>Step-by-step standard operating procedure for specimen collection, labelling, and transport. ISO 15189-aligned.</p>
-          <div style="margin-top:auto; padding-top:12px;"><span class="btn btn-ghost" style="font-size:12.5px; padding:9px 14px;" data-route="resources-tools" data-anchor="sop-templates">Download Free →</span></div>
+          <div style="margin-top:auto; padding-top:12px;"><span class="btn btn-ghost" style="font-size:12.5px; padding:9px 14px;" onclick="AX.leads.open(this)" data-resource-id="sop-collection" data-resource-title="Sample Collection &amp; Handling SOP">Download Free →</span></div>
         </div>
         <div class="download-card">
           <div class="dc-type">Audit Checklist</div>
           <h4>Internal Quality Audit Checklist</h4>
           <p>115-point audit checklist covering pre-analytical, analytical, and post-analytical phases. Immediate use.</p>
-          <div style="margin-top:auto; padding-top:12px;"><span class="btn btn-ghost" style="font-size:12.5px; padding:9px 14px;" data-route="resources-tools" data-anchor="audit-checklists">Download Free →</span></div>
+          <div style="margin-top:auto; padding-top:12px;"><span class="btn btn-ghost" style="font-size:12.5px; padding:9px 14px;" onclick="AX.leads.open(this)" data-resource-id="audit-checklist" data-resource-title="Internal Quality Audit Checklist">Download Free →</span></div>
         </div>
         <div class="download-card">
           <div class="dc-type">Toolkit</div>
           <h4>Accreditation Preparation Toolkit</h4>
           <p>Gap analysis template, corrective action log, and pre-assessment checklist for MLSCN and ISO accreditation pathways.</p>
-          <div style="margin-top:auto; padding-top:12px;"><span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="resources-tools" data-anchor="downloads">Get Toolkit →</span></div>
+          <div style="margin-top:auto; padding-top:12px;"><span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" onclick="AX.leads.open(this)" data-resource-id="accreditation-toolkit" data-resource-title="Accreditation Preparation Toolkit">Get Toolkit →</span></div>
         </div>
       </div>
       <div class="lead-form-inline" style="margin-top:1px;">
@@ -3037,54 +3186,132 @@
 
   <div class="page-hero">
     <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="laboratories" style="cursor:pointer;">Laboratories</span> / <span data-route="lab-profile" style="cursor:pointer;">Vitalis Diagnostics</span> / Book</div>
-      <h1 style="font-weight:600; color:#0E1F33;">Book a Test</h1>
-      <p class="lede">Select a test, choose your preferred date and time, and confirm your appointment.</p>
+      <div class="breadcrumb">
+        <span data-route="home" style="cursor:pointer;">Home</span> /
+        <span data-route="laboratories" style="cursor:pointer;">Laboratories</span> /
+        <span data-route="lab-profile" style="cursor:pointer;">Laboratory</span> / Book a Test
+      </div>
+      <div class="eyebrow">Test Booking</div>
+      <h1 style="font-weight:700; color:#1F3A5F;">Book a Test</h1>
+      <p class="lede">Complete your booking in a few steps. Confirmation sent to your email instantly.</p>
     </div>
   </div>
 
-  <section style="background:var(--paper);">
-    <div class="wrap">
-      <div class="booking-steps">
-        <div class="booking-step active"><span class="step-num">1</span> Select Test</div>
-        <span class="step-arrow">→</span>
-        <div class="booking-step"><span class="step-num">2</span> Date & Time</div>
-        <span class="step-arrow">→</span>
-        <div class="booking-step"><span class="step-num">3</span> Patient Info</div>
-        <span class="step-arrow">→</span>
-        <div class="booking-step"><span class="step-num">4</span> Confirm</div>
-        <span class="step-arrow">→</span>
-        <div class="booking-step"><span class="step-num">5</span> Payment</div>
+  <section>
+    <div class="wrap" style="max-width:720px;">
+
+      <!-- Progress bar -->
+      <div class="bw-progress" id="bwProgress">
+        <div class="bw-prog-step active" data-step="1"><div class="bw-prog-dot">1</div><div class="bw-prog-label">Test</div></div>
+        <div class="bw-prog-step" data-step="2"><div class="bw-prog-dot">2</div><div class="bw-prog-label">Date</div></div>
+        <div class="bw-prog-step" data-step="3"><div class="bw-prog-dot">3</div><div class="bw-prog-label">Time</div></div>
+        <div class="bw-prog-step" data-step="4"><div class="bw-prog-dot">4</div><div class="bw-prog-label">Details</div></div>
+        <div class="bw-prog-step" data-step="5"><div class="bw-prog-dot">5</div><div class="bw-prog-label">Confirm</div></div>
       </div>
 
-      <div class="booking-panel">
-        <h3>Select a Test</h3>
-        <div class="booking-option">
-          <div class="bo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2c-3 4-5 7-5 10a5 5 0 0010 0c0-3-2-6-5-10z"/></svg></div>
-          <div><div class="bo-name">Full Blood Count (FBC)</div><div class="bo-desc">Complete haematology panel · ₦5,000</div></div>
+      <!-- Step 1: Choose test -->
+      <div class="bw-step active" id="bwStep1">
+        <h3 style="margin-bottom:6px;">Select a Test</h3>
+        <p style="font-size:13.5px;color:var(--slate-dark);margin-bottom:16px;">Choose the test you need. Your selected laboratory offers all tests below.</p>
+        <div class="eco-search-box" style="margin-bottom:14px;">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" id="bwTestSearch" placeholder="Filter tests..." oninput="BW.filterTests(this.value)">
         </div>
-        <div class="booking-option">
-          <div class="bo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="4"/><path d="M10 2v4M10 14v4M2 10h4M14 10h4M4.5 4.5l2.8 2.8M12.7 12.7l2.8 2.8M4.5 15.5l2.8-2.8M12.7 7.3l2.8-2.8"/></svg></div>
-          <div><div class="bo-name">Malaria Parasite Test</div><div class="bo-desc">Microscopy + RDT · ₦3,000</div></div>
-        </div>
-        <div class="booking-option">
-          <div class="bo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2h6M8 2v6l-5 8a1 1 0 001 1h12a1 1 0 001-1l-5-8V2"/><path d="M5 13h10"/></svg></div>
-          <div><div class="bo-name">Liver Function Test</div><div class="bo-desc">ALT, AST, Bilirubin, Protein · ₦8,500</div></div>
-        </div>
-        <div class="booking-option">
-          <div class="bo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2l-5 5M11 5l4 4M4 12l5 5M2 17l1 1M7 9l-4 4 5 5 4-4"/><path d="M9 7l4 4"/></svg></div>
-          <div><div class="bo-name">Lipid Profile</div><div class="bo-desc">Cholesterol, Triglycerides, HDL, LDL · ₦7,500</div></div>
-        </div>
-        <div class="booking-option">
-          <div class="bo-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4l-4 8"/><circle cx="8" cy="14" r="3"/><path d="M4 18h12"/><path d="M10 5a2 2 0 114 0"/><path d="M8 17v1"/></svg></div>
-          <div><div class="bo-name">Urinalysis</div><div class="bo-desc">Complete urine examination · ₦2,500</div></div>
-        </div>
-        <p style="text-align:center; margin-top:16px; font-size:13px; color:var(--slate);">Showing top tests. <a data-route="lab-profile" style="color:var(--clay-deep); cursor:pointer;">View all 120+ tests →</a></p>
+        <div class="bw-test-grid" id="bwTestGrid"></div>
+        <div class="ow-nav"><span></span><button class="btn btn-clay" onclick="BW.next(1)">Continue →</button></div>
       </div>
+
+      <!-- Step 2: Choose date -->
+      <div class="bw-step" id="bwStep2">
+        <h3 style="margin-bottom:6px;">Choose a Date</h3>
+        <p style="font-size:13.5px;color:var(--slate-dark);margin-bottom:16px;">Select your preferred date. Same-day booking available before 10:00 AM.</p>
+        <div class="bw-date-grid" id="bwDateGrid"></div>
+        <div class="ow-nav">
+          <button class="btn btn-ghost" onclick="BW.back(2)">← Back</button>
+          <button class="btn btn-clay" onclick="BW.next(2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Choose time -->
+      <div class="bw-step" id="bwStep3">
+        <h3 style="margin-bottom:6px;">Choose a Time</h3>
+        <p style="font-size:13.5px;color:var(--slate-dark);margin-bottom:16px;">Available slots for <strong id="bwSelectedDateLabel">–</strong></p>
+        <div class="bw-time-grid" id="bwTimeGrid"></div>
+        <div class="ow-nav">
+          <button class="btn btn-ghost" onclick="BW.back(3)">← Back</button>
+          <button class="btn btn-clay" onclick="BW.next(3)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Patient details -->
+      <div class="bw-step" id="bwStep4">
+        <h3 style="margin-bottom:16px;">Your Details</h3>
+        <div class="ax-form-field">
+          <label>Full Name *</label>
+          <input id="bw_name" type="text" placeholder="Chukwuemeka Obi">
+          <div class="ax-form-error" id="bw_name_err"></div>
+        </div>
+        <div class="ax-form-field">
+          <label>Email Address *</label>
+          <input id="bw_email" type="email" placeholder="emeka@email.com">
+          <div class="ax-form-error" id="bw_email_err"></div>
+        </div>
+        <div class="ax-form-field">
+          <label>Phone Number</label>
+          <input id="bw_phone" type="tel" placeholder="+234 801 234 5678">
+        </div>
+        <div class="ax-form-field">
+          <label>Notes (optional)</label>
+          <textarea id="bw_notes" placeholder="Any relevant medical history or special requirements..."></textarea>
+        </div>
+        <div class="ow-nav">
+          <button class="btn btn-ghost" onclick="BW.back(4)">← Back</button>
+          <button class="btn btn-clay" onclick="BW.next(4)">Review Booking →</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Confirm -->
+      <div class="bw-step" id="bwStep5">
+        <h3 style="margin-bottom:16px;">Review &amp; Confirm</h3>
+        <div style="border:1px solid var(--line);padding:16px;margin-bottom:20px;">
+          <div class="bw-summary-row"><span class="bw-summary-label">Test</span><span class="bw-summary-value" id="bwSumTest">–</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Laboratory</span><span class="bw-summary-value" id="bwSumLab">Vitalis Diagnostics</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Date</span><span class="bw-summary-value" id="bwSumDate">–</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Time</span><span class="bw-summary-value" id="bwSumTime">–</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Patient</span><span class="bw-summary-value" id="bwSumName">–</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Email</span><span class="bw-summary-value" id="bwSumEmail">–</span></div>
+        </div>
+        <p style="font-size:13px;color:var(--slate-dark);margin-bottom:18px;line-height:1.6;">
+          By confirming, you agree to the laboratory's appointment policy. A confirmation email will be sent immediately. The laboratory will contact you if any changes are needed.
+        </p>
+        <div class="ow-nav">
+          <button class="btn btn-ghost" onclick="BW.back(5)">← Back</button>
+          <button class="btn btn-clay" id="bwSubmitBtn" onclick="BW.submit()">Confirm Booking →</button>
+        </div>
+      </div>
+
+      <!-- Confirmation screen -->
+      <div class="bw-step" id="bwStep6">
+        <div class="bw-confirmation">
+          <div style="font-size:40px;">✓</div>
+          <h2 style="font-weight:600;margin-top:12px;">Booking Confirmed</h2>
+          <div class="bw-conf-ref" id="bwConfRef">AX–––––</div>
+          <p class="bw-conf-msg">
+            Your appointment has been confirmed and the laboratory has been notified.
+            A confirmation email has been sent to <strong id="bwConfEmail">–</strong>.
+          </p>
+          <div style="margin-top:28px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+            <span class="btn btn-clay" data-route="patient-portal">View in Patient Portal →</span>
+            <span class="btn btn-ghost" data-route="find-test">Book Another Test</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
 </div>
+
 
 <!-- =========================================================== PATIENT PORTAL =========================================================== -->
 <div class="page" data-page="patient-portal">
@@ -3838,272 +4065,198 @@
   <div class="page-hero">
     <div class="wrap">
       <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Join AgoroX Network</div>
-      <div class="eyebrow">Network Onboarding</div>
+      <div class="eyebrow">Laboratory Onboarding</div>
       <h1 style="font-weight:700; color:#1F3A5F;">Join the AgoroX Network</h1>
-      <p class="lede">Become operational in 30 minutes. No sales call required. Choose your plan, configure your laboratory, and start receiving bookings today.</p>
-      <div class="platform-badges" style="margin-top:18px;">
-        <span class="platform-badge pb-active">Self-Service</span>
-        <span class="platform-badge">No Setup Fee</span>
-        <span class="platform-badge">Live in 30 Minutes</span>
-        <span class="platform-badge">Cancel Anytime</span>
-        <span class="platform-badge">No Technical Skills Required</span>
-      </div>
+      <p class="lede">Become operational in 30 minutes. Self-service. No setup fee. Start receiving patient bookings today.</p>
     </div>
   </div>
 
-  <!-- HOW IT WORKS -->
-  <section style="background:var(--paper);">
+  <!-- Plan selection (always visible) -->
+  <section style="background:var(--paper);" id="jnPlans">
     <div class="wrap">
       <div class="section-head"><div>
-        <div class="eyebrow">Onboarding Flow</div>
-        <h2 style="font-weight:600; color:#0E1F33;">From sign-up to first booking — in one session.</h2>
+        <div class="eyebrow">Step 1 — Choose Your Plan</div>
+        <h2 style="font-weight:600;">Select the plan that fits your laboratory.</h2>
       </div></div>
-      <div class="resource-journey">
-        <div class="rj-step">
-          <div class="rj-num">01</div>
-          <div class="rj-label">Choose Your Plan</div>
-          <div class="rj-desc">Select CoreCare, Professional, Enterprise, or Network Partner based on your goals</div>
-        </div>
-        <div class="rj-step">
-          <div class="rj-num">02</div>
-          <div class="rj-label">Create Your Profile</div>
-          <div class="rj-desc">Add laboratory name, description, location, address, and contact details</div>
-        </div>
-        <div class="rj-step">
-          <div class="rj-num">03</div>
-          <div class="rj-label">Configure Tests</div>
-          <div class="rj-desc">Add tests from the AgoroX catalogue or create custom tests with pricing</div>
-        </div>
-        <div class="rj-step">
-          <div class="rj-num">04</div>
-          <div class="rj-label">Set Hours &amp; Availability</div>
-          <div class="rj-desc">Configure operating hours and booking windows per day</div>
-        </div>
-        <div class="rj-step">
-          <div class="rj-num">05</div>
-          <div class="rj-label">Publish &amp; Go Live</div>
-          <div class="rj-desc">Activate your profile and start appearing in the patient-facing directory</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PLAN SELECTION -->
-  <section>
-    <div class="wrap">
-      <div class="section-head"><div>
-        <div class="eyebrow">Plans</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Choose the plan that fits your laboratory.</h2>
-        <p class="lede" style="margin-top:12px;">All plans include LabOS LIMS. Upgrade at any time. No long-term contracts.</p>
-      </div></div>
-      <div class="plan-grid">
-
-        <div class="plan-card">
+      <div class="plan-grid" id="jnPlanGrid">
+        <div class="plan-card" onclick="OW.selectPlan('corecare',this)">
           <div class="plan-tier">CoreCare</div>
           <h3>Run Your Lab</h3>
-          <div class="plan-tagline">Essential digital infrastructure for independent laboratories</div>
+          <div class="plan-tagline">Essential digital operations for independent laboratories</div>
           <ul class="plan-features">
             <li>LabOS LIMS — full sample lifecycle</li>
             <li>Patient result delivery</li>
             <li>Basic directory listing</li>
-            <li>Academy — foundation modules</li>
+            <li>Academy foundation modules</li>
             <li>Knowledge Center access</li>
           </ul>
-          <div class="plan-cta">
-            <span class="btn btn-ghost" style="width:100%; justify-content:center;" data-route="contact">Get Started →</span>
-          </div>
         </div>
-
-        <div class="plan-card plan-featured">
+        <div class="plan-card plan-featured" onclick="OW.selectPlan('professional',this)">
           <div class="plan-tier">Professional</div>
           <h3>Grow Your Lab</h3>
-          <div class="plan-tagline">Full platform for laboratories ready to grow their patient base</div>
+          <div class="plan-tagline">Full platform with online bookings and patient portal</div>
           <ul class="plan-features">
             <li>Everything in CoreCare</li>
             <li>Online booking integration</li>
             <li>Enhanced directory listing</li>
             <li>Patient portal integration</li>
-            <li>Academy — all certification paths</li>
-            <li>Performance analytics dashboard</li>
+            <li>All Academy certifications</li>
+            <li>Performance analytics</li>
           </ul>
-          <div class="plan-cta">
-            <span class="btn btn-clay" style="width:100%; justify-content:center;" data-route="contact">Get Started →</span>
-          </div>
         </div>
-
-        <div class="plan-card">
+        <div class="plan-card" onclick="OW.selectPlan('enterprise',this)">
           <div class="plan-tier">Enterprise</div>
           <h3>Scale Your Lab</h3>
-          <div class="plan-tagline">Multi-branch infrastructure for laboratory groups and hospitals</div>
+          <div class="plan-tagline">Multi-branch infrastructure for laboratory groups</div>
           <ul class="plan-features">
             <li>Everything in Professional</li>
             <li>Multi-branch management</li>
             <li>Custom test catalogue</li>
             <li>API access &amp; integrations</li>
             <li>Dedicated onboarding support</li>
-            <li>SLA &amp; compliance documentation</li>
           </ul>
-          <div class="plan-cta">
-            <span class="btn btn-ghost" style="width:100%; justify-content:center;" data-route="contact">Contact Sales →</span>
-          </div>
         </div>
-
-        <div class="plan-card" style="background:var(--skyfill);">
+        <div class="plan-card" style="background:var(--skyfill);" onclick="OW.selectPlan('network-partner',this)">
           <div class="plan-tier" style="color:#2E7D32;">Network Partner</div>
           <h3>Get More Patients</h3>
-          <div class="plan-tagline">Premium visibility in the AgoroX ecosystem with maximum patient exposure</div>
+          <div class="plan-tagline">Premium network listing with maximum patient exposure</div>
           <ul class="plan-features">
             <li>Everything in Professional</li>
-            <li>Featured network listing</li>
+            <li>Featured directory listing</li>
             <li>Verified Partner badge</li>
             <li>Priority search placement</li>
             <li>Home collection routing</li>
-            <li>Referral network access</li>
           </ul>
-          <div class="plan-cta">
-            <span class="btn btn-primary" style="width:100%; justify-content:center; background:#2E7D32; border-color:#2E7D32;" data-route="contact">Apply Now →</span>
-          </div>
         </div>
-
       </div>
     </div>
   </section>
 
-  <!-- WHY JOIN BENEFITS -->
+  <!-- Application form wizard -->
+  <section id="jnForm" style="display:none;">
+    <div class="wrap" style="max-width:640px;">
+      <div class="ow-steps" id="owSteps">
+        <div class="ow-step-tab active" data-panel="1">1. Contact</div>
+        <div class="ow-step-tab" data-panel="2">2. Laboratory</div>
+        <div class="ow-step-tab" data-panel="3">3. Services</div>
+        <div class="ow-step-tab" data-panel="4">4. Confirm</div>
+      </div>
+
+      <!-- Panel 1: Contact -->
+      <div class="ow-panel active" id="owPanel1">
+        <h3 style="margin-bottom:16px;">Your Contact Details</h3>
+        <div class="ax-form-field">
+          <label>Full Name *</label>
+          <input id="ow_name" type="text" placeholder="Dr. Funmilayo Adeyemi">
+          <div class="ax-form-error" id="ow_name_err"></div>
+        </div>
+        <div class="ax-form-field">
+          <label>Email Address *</label>
+          <input id="ow_email" type="email" placeholder="funmi@yourlaboratory.com">
+          <div class="ax-form-error" id="ow_email_err"></div>
+        </div>
+        <div class="ax-form-field">
+          <label>Phone Number</label>
+          <input id="ow_phone" type="tel" placeholder="+234 801 234 5678">
+        </div>
+        <div class="ow-nav"><span></span><button class="btn btn-clay" onclick="OW.next(1)">Continue →</button></div>
+      </div>
+
+      <!-- Panel 2: Laboratory details -->
+      <div class="ow-panel" id="owPanel2">
+        <h3 style="margin-bottom:16px;">Your Laboratory</h3>
+        <div class="ax-form-field">
+          <label>Laboratory Name *</label>
+          <input id="ow_labname" type="text" placeholder="Vitalis Diagnostics">
+          <div class="ax-form-error" id="ow_labname_err"></div>
+        </div>
+        <div class="ax-form-field">
+          <label>Address</label>
+          <input id="ow_address" type="text" placeholder="12 Independence Road">
+        </div>
+        <div class="ax-form-field">
+          <label>State</label>
+          <select id="ow_state">
+            <option value="">Select state…</option>
+            <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option>
+            <option>Bauchi</option><option>Bayelsa</option><option>Benue</option><option>Borno</option>
+            <option>Cross River</option><option>Delta</option><option>Ebonyi</option><option>Edo</option>
+            <option>Ekiti</option><option>Enugu</option><option>FCT — Abuja</option><option>Gombe</option>
+            <option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option>
+            <option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+            <option>Lagos</option><option>Nasarawa</option><option>Niger</option><option>Ogun</option>
+            <option>Ondo</option><option>Osun</option><option selected>Oyo</option><option>Plateau</option>
+            <option>Rivers</option><option>Sokoto</option><option>Taraba</option><option>Yobe</option><option>Zamfara</option>
+          </select>
+        </div>
+        <div class="ow-nav">
+          <button class="btn btn-ghost" onclick="OW.back(2)">← Back</button>
+          <button class="btn btn-clay" onclick="OW.next(2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Panel 3: Services & accreditation -->
+      <div class="ow-panel" id="owPanel3">
+        <h3 style="margin-bottom:16px;">Services &amp; Accreditation</h3>
+        <div class="ax-form-field">
+          <label>Test Specialities</label>
+          <select id="ow_spec" multiple style="height:130px;">
+            <option>Haematology</option>
+            <option>Chemical Pathology</option>
+            <option>Microbiology</option>
+            <option>Immunology / Serology</option>
+            <option>Histopathology</option>
+            <option>DNA Testing</option>
+            <option>Drug Screening</option>
+            <option>Hormones &amp; Endocrinology</option>
+          </select>
+          <div style="font-size:11.5px;color:var(--slate);margin-top:4px;">Hold Ctrl / Cmd to select multiple</div>
+        </div>
+        <div class="ax-form-field">
+          <label>Accreditation (if any)</label>
+          <input id="ow_accred" type="text" placeholder="ISO 15189, MLSCN, NAS…">
+        </div>
+        <div class="ow-nav">
+          <button class="btn btn-ghost" onclick="OW.back(3)">← Back</button>
+          <button class="btn btn-clay" onclick="OW.next(3)">Review Application →</button>
+        </div>
+      </div>
+
+      <!-- Panel 4: Review and submit -->
+      <div class="ow-panel" id="owPanel4">
+        <h3 style="margin-bottom:16px;">Review Your Application</h3>
+        <div style="border:1px solid var(--line);padding:16px;margin-bottom:20px;" id="owSummary"></div>
+        <div id="owSubmitArea">
+          <p style="font-size:13px;color:var(--slate-dark);margin-bottom:16px;line-height:1.6;">
+            After submission, the AgoroX team will review your application within 24 hours. You'll receive an email with your LabOS login and onboarding instructions.
+          </p>
+          <div class="ow-nav">
+            <button class="btn btn-ghost" onclick="OW.back(4)">← Back</button>
+            <button class="btn btn-clay" id="owSubmitBtn" onclick="OW.submit()">Submit Application →</button>
+          </div>
+        </div>
+        <div id="owSuccess" class="ax-form-success" style="display:none;">
+          <h4>✓ Application Received</h4>
+          <p>Thank you! We'll review your application and send your LabOS login details within 24 hours. Check your email at <strong id="owSuccessEmail">–</strong>.</p>
+          <div style="margin-top:16px;">
+            <span class="btn btn-clay" data-route="knowledge-center">Explore Resources While You Wait →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why join section (always visible below form) -->
   <section style="background:var(--paper);">
     <div class="wrap">
-      <div class="section-head"><div>
-        <div class="eyebrow">Why Laboratories Join AgoroX</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Nine reasons to make the switch today.</h2>
-      </div></div>
+      <div class="eyebrow" style="margin-bottom:20px;">Why 200+ Laboratories Choose AgoroX</div>
       <div class="join-benefits">
-        <div class="join-benefit">
-          <div class="jb-num">01</div>
-          <div class="jb-title">Digitise Operations</div>
-          <div class="jb-desc">Replace paper registers and manual workflows with a purpose-built LIMS that works from day one.</div>
-        </div>
-        <div class="join-benefit">
-          <div class="jb-num">02</div>
-          <div class="jb-title">Improve Patient Experience</div>
-          <div class="jb-desc">Online booking, real-time test tracking, and digital result delivery — the experience patients expect.</div>
-        </div>
-        <div class="join-benefit">
-          <div class="jb-num">03</div>
-          <div class="jb-title">Receive Online Bookings</div>
-          <div class="jb-desc">Bookings appear directly in LabOS. No re-entry, no phone calls, no missed appointments.</div>
-        </div>
-        <div class="join-benefit">
-          <div class="jb-num">04</div>
-          <div class="jb-title">Increase Visibility</div>
-          <div class="jb-desc">Get listed in the AgoroX Laboratory Directory and be discovered by patients searching for tests across Nigeria.</div>
-        </div>
-        <div class="join-benefit">
-          <div class="jb-num">05</div>
-          <div class="jb-title">Access Academy Training</div>
-          <div class="jb-desc">Certify your team through structured programs. Build real competency with verifiable credentials.</div>
-        </div>
-        <div class="join-benefit">
-          <div class="jb-num">06</div>
-          <div class="jb-title">Access Knowledge Resources</div>
-          <div class="jb-desc">SOPs, quality manuals, audit checklists, and calculators — available whenever your team needs them.</div>
-        </div>
-        <div class="join-benefit">
-          <div class="jb-num">07</div>
-          <div class="jb-title">Improve Operational Performance</div>
-          <div class="jb-desc">Track turnaround time, rejection rates, sample volumes, and revenue — in a unified dashboard.</div>
-        </div>
-        <div class="join-benefit">
-          <div class="jb-num">08</div>
-          <div class="jb-title">Prepare for Accreditation</div>
-          <div class="jb-desc">Built-in quality management tools and resources aligned to ISO 15189 and MLSCN accreditation requirements.</div>
-        </div>
-        <div class="join-benefit">
-          <div class="jb-num">09</div>
-          <div class="jb-title">Participate in the Network</div>
-          <div class="jb-desc">Become part of Africa's growing laboratory network. Referrals, visibility, and long-term patient relationships.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ONBOARDING WIZARD PREVIEW -->
-  <section>
-    <div class="wrap">
-      <div style="display:grid; grid-template-columns:0.95fr 1.05fr; gap:40px; align-items:start;">
-        <div>
-          <div class="eyebrow">Onboarding Wizard</div>
-          <h2 style="margin-top:14px; font-weight:600; color:#0E1F33;">A step-by-step wizard handles everything.</h2>
-          <p style="font-size:14.5px; color:var(--slate-dark); margin-top:12px; line-height:1.6;">No technical expertise required. The onboarding wizard walks you through every configuration step with inline guidance. Typical completion time: 20–30 minutes.</p>
-          <div style="margin-top:20px; display:flex; gap:12px; flex-wrap:wrap;">
-            <span class="btn btn-clay" data-route="contact">Start Onboarding →</span>
-            <span class="btn btn-ghost" data-route="labos-pricing">Compare Plans</span>
-          </div>
-        </div>
-        <div>
-          <div class="wizard-steps">
-            <div class="wizard-step ws-active">
-              <div class="ws-num">1</div>
-              <div class="ws-body">
-                <div class="ws-title">Laboratory Details</div>
-                <div class="ws-desc">Name, description, logo, speciality, and contact information</div>
-              </div>
-            </div>
-            <div class="wizard-step">
-              <div class="ws-num">2</div>
-              <div class="ws-body">
-                <div class="ws-title">Location &amp; Address</div>
-                <div class="ws-desc">Physical address, map pin, and service area configuration</div>
-              </div>
-            </div>
-            <div class="wizard-step">
-              <div class="ws-num">3</div>
-              <div class="ws-body">
-                <div class="ws-title">Test Catalogue</div>
-                <div class="ws-desc">Add tests from the AgoroX catalogue or create custom tests</div>
-              </div>
-            </div>
-            <div class="wizard-step">
-              <div class="ws-num">4</div>
-              <div class="ws-body">
-                <div class="ws-title">Pricing Configuration</div>
-                <div class="ws-desc">Set prices per test and configure payment options</div>
-              </div>
-            </div>
-            <div class="wizard-step">
-              <div class="ws-num">5</div>
-              <div class="ws-body">
-                <div class="ws-title">Operating Hours</div>
-                <div class="ws-desc">Set daily hours and booking availability windows</div>
-              </div>
-            </div>
-            <div class="wizard-step">
-              <div class="ws-num">6</div>
-              <div class="ws-body">
-                <div class="ws-title">Accreditation Information</div>
-                <div class="ws-desc">Optional — add certification numbers and accreditation details</div>
-              </div>
-            </div>
-            <div class="wizard-step">
-              <div class="ws-num">7</div>
-              <div class="ws-body">
-                <div class="ws-title">Review &amp; Publish</div>
-                <div class="ws-desc">Preview your profile and go live on the AgoroX Network</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="eco-cta">
-    <div class="wrap">
-      <h2>Ready to join the network?</h2>
-      <p>Your laboratory profile will be live within 30 minutes. No technical expertise required.</p>
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <span class="btn btn-clay" data-route="contact">Start Free Setup <span class="btn-arrow">→</span></span>
-        <span class="btn btn-ghost" data-route="labos-pricing" style="color:var(--paper); border-color:rgba(247,245,240,0.3);">Compare Plans</span>
-        <span class="btn btn-ghost" data-route="contact" style="color:var(--paper); border-color:rgba(247,245,240,0.3);">Talk to Us</span>
+        <div class="join-benefit"><div class="jb-num">01</div><div class="jb-title">Digitise Operations</div><div class="jb-desc">Replace paper registers with a purpose-built LIMS from day one.</div></div>
+        <div class="join-benefit"><div class="jb-num">02</div><div class="jb-title">Receive Online Bookings</div><div class="jb-desc">Bookings flow directly into LabOS — no re-entry, no calls.</div></div>
+        <div class="join-benefit"><div class="jb-num">03</div><div class="jb-title">Increase Visibility</div><div class="jb-desc">Be discovered by patients searching for tests across Nigeria.</div></div>
+        <div class="join-benefit"><div class="jb-num">04</div><div class="jb-title">Access Academy Training</div><div class="jb-desc">Certify your team with structured programs and digital badges.</div></div>
+        <div class="join-benefit"><div class="jb-num">05</div><div class="jb-title">Prepare for Accreditation</div><div class="jb-desc">Built-in QMS tools aligned to ISO 15189 and MLSCN requirements.</div></div>
+        <div class="join-benefit"><div class="jb-num">06</div><div class="jb-title">Grow Your Network</div><div class="jb-desc">Referrals, patient relationships, and long-term growth.</div></div>
       </div>
     </div>
   </section>
@@ -4391,6 +4544,506 @@
   </section>
 
 </div>
+
+
+<!-- =========================================================== AGOROX AI =========================================================== -->
+<div class="page" data-page="ask-ai">
+
+  <div class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / AgoroX AI</div>
+      <div class="eyebrow">AI Knowledge Assistant</div>
+      <h1 style="font-weight:700; color:#1F3A5F;">Ask AgoroX AI</h1>
+      <p class="lede">Your AI-powered guide for laboratory operations, quality management, ISO 15189, accreditation, and LabOS. Powered by Claude.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap" style="max-width:760px;">
+      <div class="ai-chat-wrap" id="aiChatWrap">
+
+        <!-- Messages -->
+        <div class="ai-chat-messages" id="aiMessages">
+          <div class="ai-msg assistant">
+            <div class="ai-bubble">
+              👋 Hello! I'm the AgoroX AI Assistant.<br><br>
+              I can help you with <strong>laboratory operations</strong>, <strong>ISO 15189</strong>, <strong>accreditation preparation</strong>, <strong>LabOS</strong>, quality management, and anything related to running a diagnostic laboratory in Africa.<br><br>
+              What would you like to know?
+            </div>
+            <div class="ai-msg-time">AgoroX AI</div>
+          </div>
+        </div>
+
+        <!-- Suggested prompts -->
+        <div style="padding:12px 16px;border-top:1px solid var(--line);background:var(--paper);display:flex;gap:8px;flex-wrap:wrap;" id="aiSuggestions">
+          <button class="aab-prompt" style="background:var(--bg);color:var(--navy);border-color:var(--line);" onclick="AI.send(this.textContent)">How do I reduce sample rejection rates?</button>
+          <button class="aab-prompt" style="background:var(--bg);color:var(--navy);border-color:var(--line);" onclick="AI.send(this.textContent)">What are the ISO 15189 pre-analytical requirements?</button>
+          <button class="aab-prompt" style="background:var(--bg);color:var(--navy);border-color:var(--line);" onclick="AI.send(this.textContent)">How do I prepare an internal audit checklist?</button>
+          <button class="aab-prompt" style="background:var(--bg);color:var(--navy);border-color:var(--line);" onclick="AI.send(this.textContent)">How do I set up LabOS for my laboratory?</button>
+        </div>
+
+        <!-- Input -->
+        <div class="ai-chat-input-row">
+          <textarea class="ai-chat-input" id="aiInput" rows="1" placeholder="Ask about laboratory operations, ISO 15189, accreditation, LabOS…"
+            onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.sendFromInput();}"></textarea>
+          <button class="btn btn-clay" onclick="AI.sendFromInput()" id="aiSendBtn" style="align-self:flex-end;">Send</button>
+        </div>
+      </div>
+
+      <p style="margin-top:12px;font-size:12px;color:var(--slate);font-family:var(--mono);">
+        AgoroX AI · Powered by Claude (Anthropic) · Knowledge current to 2025 · Not a substitute for professional medical advice
+      </p>
+    </div>
+  </section>
+
+  <!-- Topics it covers -->
+  <section style="background:var(--paper);">
+    <div class="wrap">
+      <div class="eyebrow" style="margin-bottom:16px;">Topics Covered</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);">
+        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">Laboratory Operations</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">Workflow, TAT, sample handling, equipment</div></div>
+        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">Quality Management</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">QMS, CAPA, non-conformances, IQC/EQA</div></div>
+        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">ISO 15189</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">Requirements, implementation, gap analysis</div></div>
+        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">Accreditation</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">MLSCN, NAS, audit preparation</div></div>
+        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">LabOS Platform</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">Setup, workflows, features, troubleshooting</div></div>
+        <div style="background:var(--bg);padding:14px 16px;"><div style="font-weight:500;font-size:14px;color:var(--navy);">AgoroX Ecosystem</div><div style="font-size:13px;color:var(--slate-dark);margin-top:5px;">Network, Academy, booking, patient portal</div></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+
+<script>
+// ════════════════════════════════════════════════════════════════════════════
+// AgoroX Platform JS  —  Phase 2
+// ════════════════════════════════════════════════════════════════════════════
+const AX = (function(){
+  // Worker API base — update this to your deployed worker URL
+  // e.g. 'https://agorox-api.YOUR-ACCOUNT.workers.dev'
+  const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:8787'
+    : '/api';   // on Cloudflare Pages this routes to the worker
+
+  const sessionId = 'ax_' + Math.random().toString(36).slice(2,10);
+
+  // ── Internal helpers ──────────────────────────────────────────────────────
+  async function post(path, data){
+    try{
+      const r = await fetch(API + path, {
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify(data)
+      });
+      return r.json();
+    } catch(e){ console.warn('AX.post error', path, e); return {ok:false}; }
+  }
+
+  function $(id){ return document.getElementById(id); }
+  function setErr(id, msg){ const el = $(id); if(el) el.textContent = msg; }
+  function clearErr(id){ setErr(id, ''); }
+
+  function toast(msg){
+    const t = $('ax-toast');
+    if(!t) return;
+    t.textContent = msg;
+    t.classList.add('show');
+    setTimeout(()=>t.classList.remove('show'), 2400);
+  }
+
+  // ── Analytics ─────────────────────────────────────────────────────────────
+  const analytics = {
+    track(event, page='', element='', meta={}){
+      post('/analytics', {event, page, element, session_id: sessionId, meta});
+    }
+  };
+
+  // ── Lead capture ──────────────────────────────────────────────────────────
+  let _pendingResource = null;
+
+  const leads = {
+    open(el){
+      _pendingResource = {
+        id: el.dataset.resourceId || '',
+        title: el.dataset.resourceTitle || 'Resource'
+      };
+      const titleEl = $('axLeadResourceTitle');
+      if(titleEl) titleEl.textContent = `Enter your details to access: "${_pendingResource.title}"`;
+      $('axLeadSuccess').style.display = 'none';
+      $('axLeadForm').style.display = 'block';
+      $('axLeadModal').classList.add('open');
+      analytics.track('lead_modal_open', 'knowledge-center', _pendingResource.id);
+    },
+    async submit(){
+      const name  = $('lf_name').value.trim();
+      const email = $('lf_email').value.trim();
+      clearErr('lf_name_err'); clearErr('lf_email_err');
+      let ok = true;
+      if(!name)  { setErr('lf_name_err','Name is required'); ok=false; }
+      if(!email || !/\S+@\S+\.\S+/.test(email)){ setErr('lf_email_err','Valid email required'); ok=false; }
+      if(!ok) return;
+
+      const btn = document.querySelector('#axLeadForm .btn-clay');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="ax-spinner"></span> Processing…';
+
+      const result = await post('/lead', {
+        name, email,
+        lab_name: $('lf_lab').value.trim(),
+        country:  $('lf_country').value,
+        resource_id:    _pendingResource?.id    || '',
+        resource_title: _pendingResource?.title || '',
+        source_page: window.location.hash
+      });
+
+      // Always show success (fallback if API not yet wired)
+      $('axLeadForm').style.display = 'none';
+      $('axLeadSuccess').style.display = 'block';
+      analytics.track('lead_captured', 'knowledge-center', _pendingResource?.id);
+    },
+    close(){ $('axLeadModal').classList.remove('open'); }
+  };
+
+  const modal = {
+    close(){ leads.close(); }
+  };
+
+  // ── Expose ────────────────────────────────────────────────────────────────
+  return { post, analytics, leads, modal, toast, $, setErr, clearErr };
+})();
+
+// Close modal on overlay click
+document.getElementById('axLeadModal').addEventListener('click', function(e){
+  if(e.target === this) AX.modal.close();
+});
+
+// ════════════════════════════════════════════════════════════════════════════
+// BW — Booking Wizard
+// ════════════════════════════════════════════════════════════════════════════
+const BW = (function(){
+  const state = { step:1, test:null, date:null, time:null,
+    patient:{ name:'', email:'', phone:'', notes:'' } };
+
+  const TESTS = [
+    {id:'fbc',   name:'Full Blood Count (FBC)',       cat:'Haematology'},
+    {id:'malaria',name:'Malaria RDT / Microscopy',    cat:'Parasitology'},
+    {id:'lft',   name:'Liver Function Test (LFT)',    cat:'Chemical Pathology'},
+    {id:'lipid', name:'Lipid Profile',                cat:'Chemical Pathology'},
+    {id:'hba1c', name:'HbA1c',                        cat:'Chemical Pathology'},
+    {id:'hiv',   name:'HIV Screen',                   cat:'Immunology'},
+    {id:'hepb',  name:'Hepatitis B &amp; C Screen',   cat:'Immunology'},
+    {id:'thyroid',name:'Thyroid Function Test',       cat:'Endocrinology'},
+    {id:'glucose',name:'Blood Glucose (FBS / 2hPP)',  cat:'Chemical Pathology'},
+    {id:'urine', name:'Urinalysis (M/C/S)',            cat:'Microbiology'},
+    {id:'kft',   name:'Kidney Function Test (KFT)',   cat:'Chemical Pathology'},
+    {id:'cs',    name:'Culture &amp; Sensitivity',    cat:'Microbiology'},
+    {id:'preg',  name:'Pregnancy Test (β-hCG)',       cat:'Immunology'},
+    {id:'drug',  name:'Drug Screening Panel',         cat:'Toxicology'},
+    {id:'dna',   name:'DNA Paternity Testing',        cat:'Molecular'},
+    {id:'semen', name:'Seminal Analysis',             cat:'Andrology'},
+    {id:'eso',   name:'Electrolytes / Urea / Creatinine', cat:'Chemical Pathology'},
+    {id:'psa',   name:'PSA (Prostate Specific Antigen)', cat:'Oncology'},
+  ];
+
+  const DAYS_SHORT = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const TIMES_AVAILABLE = ['08:00','08:30','09:00','09:30','10:00','10:30',
+    '11:00','11:30','12:00','13:00','13:30','14:00','14:30','15:00','15:30','16:00'];
+  const TIMES_TAKEN = ['09:00','11:00','13:30'];
+
+  function gotoStep(n){
+    document.querySelectorAll('.bw-step').forEach(s=>s.classList.remove('active'));
+    const el = document.getElementById('bwStep'+n);
+    if(el) el.classList.add('active');
+    state.step = n;
+    // Update progress dots
+    document.querySelectorAll('.bw-prog-step').forEach(dot=>{
+      const s = parseInt(dot.dataset.step);
+      dot.classList.toggle('done',   s < n);
+      dot.classList.toggle('active', s === n);
+    });
+    // Scroll to top of wizard
+    const hero = document.querySelector('.page.active .page-hero');
+    if(hero) hero.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function renderTests(){
+    const grid = document.getElementById('bwTestGrid');
+    if(!grid) return;
+    grid.innerHTML = TESTS.map(t=>`
+      <div class="bw-test-item${state.test?.id===t.id?' selected':''}" onclick="BW.pickTest('${t.id}')">
+        <div class="bw-test-name">${t.name}</div>
+        <div class="bw-test-cat">${t.cat}</div>
+      </div>`).join('');
+  }
+
+  function renderDates(){
+    const grid = document.getElementById('bwDateGrid');
+    if(!grid) return;
+    const today = new Date();
+    let html = '';
+    for(let i=0;i<14;i++){
+      const d = new Date(today);
+      d.setDate(today.getDate()+i);
+      const iso = d.toISOString().slice(0,10);
+      const label = (i===0?'Today':i===1?'Tomorrow':DAYS_SHORT[d.getDay()]);
+      html += `<button class="bw-date-btn${state.date===iso?' selected':''}" onclick="BW.pickDate('${iso}','${label}, ${d.getDate()} ${MONTHS[d.getMonth()]}')">
+        <span class="bw-date-day">${label}</span>
+        <span class="bw-date-num">${d.getDate()}</span>
+      </button>`;
+    }
+    grid.innerHTML = html;
+  }
+
+  function renderTimes(){
+    const grid = document.getElementById('bwTimeGrid');
+    if(!grid) return;
+    grid.innerHTML = TIMES_AVAILABLE.map(t=>{
+      const taken = TIMES_TAKEN.includes(t);
+      return `<button class="bw-time-btn${taken?' unavailable':''}${state.time===t?' selected':''}"
+        ${taken?'disabled':''} onclick="BW.pickTime('${t}')">${t}</button>`;
+    }).join('');
+  }
+
+  return {
+    init(){
+      renderTests();
+      renderDates();
+    },
+    filterTests(q){
+      document.querySelectorAll('.bw-test-item').forEach(el=>{
+        el.style.display = el.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+      });
+    },
+    pickTest(id){
+      state.test = TESTS.find(t=>t.id===id);
+      document.querySelectorAll('.bw-test-item').forEach(el=>el.classList.remove('selected'));
+      const items = document.querySelectorAll('.bw-test-item');
+      items.forEach(el=>{ if(el.querySelector('.bw-test-cat').textContent.includes(state.test.cat)
+        && el.querySelector('.bw-test-name').textContent === state.test.name.replace(/&amp;/g,'&'))
+        el.classList.add('selected'); });
+      // simpler approach: re-render
+      renderTests();
+    },
+    pickDate(iso, label){
+      state.date = iso;
+      state.dateLabel = label;
+      renderDates();
+      const lbl = document.getElementById('bwSelectedDateLabel');
+      if(lbl) lbl.textContent = label;
+      renderTimes();
+    },
+    pickTime(t){
+      state.time = t;
+      renderTimes();
+    },
+    next(current){
+      if(current===1){
+        if(!state.test){ AX.toast('Please select a test'); return; }
+      } else if(current===2){
+        if(!state.date){ AX.toast('Please select a date'); return; }
+      } else if(current===3){
+        if(!state.time){ AX.toast('Please select a time slot'); return; }
+      } else if(current===4){
+        const name  = document.getElementById('bw_name').value.trim();
+        const email = document.getElementById('bw_email').value.trim();
+        AX.clearErr('bw_name_err'); AX.clearErr('bw_email_err');
+        if(!name){ AX.setErr('bw_name_err','Name is required'); return; }
+        if(!email||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('bw_email_err','Valid email required'); return; }
+        state.patient = { name, email,
+          phone: document.getElementById('bw_phone').value.trim(),
+          notes: document.getElementById('bw_notes').value.trim() };
+        // Populate summary
+        const $=id=>document.getElementById(id);
+        $('bwSumTest').textContent  = state.test?.name  || '';
+        $('bwSumDate').textContent  = state.dateLabel   || state.date || '';
+        $('bwSumTime').textContent  = state.time        || '';
+        $('bwSumName').textContent  = state.patient.name;
+        $('bwSumEmail').textContent = state.patient.email;
+      }
+      gotoStep(current+1);
+    },
+    back(current){ gotoStep(current-1); },
+    async submit(){
+      const btn = document.getElementById('bwSubmitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="ax-spinner"></span> Confirming…';
+      const result = await AX.post('/booking', {
+        patient_name:  state.patient.name,
+        patient_email: state.patient.email,
+        patient_phone: state.patient.phone,
+        lab_id:   'vitalis-ibadan',
+        lab_name: 'Vitalis Diagnostics',
+        test_id:  state.test?.id || '',
+        test_name: state.test?.name || '',
+        booking_date: state.date,
+        booking_time: state.time,
+        notes: state.patient.notes
+      });
+      const ref = result?.booking_ref || 'AX' + Math.random().toString(36).slice(2,8).toUpperCase();
+      document.getElementById('bwConfRef').textContent   = ref;
+      document.getElementById('bwConfEmail').textContent = state.patient.email;
+      AX.analytics.track('booking_completed', 'book-test', state.test?.id);
+      gotoStep(6);
+      // hide progress bar on confirmation
+      const prog = document.getElementById('bwProgress');
+      if(prog) prog.style.display='none';
+    }
+  };
+})();
+
+// ════════════════════════════════════════════════════════════════════════════
+// OW — Onboarding Wizard (Join Network)
+// ════════════════════════════════════════════════════════════════════════════
+const OW = (function(){
+  let state = { plan:'', step:1 };
+  const fields = {};
+
+  function goPanel(n){
+    state.step = n;
+    document.querySelectorAll('.ow-panel').forEach(p=>p.classList.remove('active'));
+    const panel = document.getElementById('owPanel'+n);
+    if(panel) panel.classList.add('active');
+    document.querySelectorAll('.ow-step-tab').forEach(t=>{
+      const s = parseInt(t.dataset.panel);
+      t.classList.toggle('active', s===n);
+      t.classList.toggle('done',   s<n);
+    });
+  }
+
+  return {
+    selectPlan(plan, el){
+      state.plan = plan;
+      document.querySelectorAll('.plan-card').forEach(c=>c.style.outline='');
+      if(el) el.style.outline = '3px solid var(--clay)';
+      // Show form section
+      const formSec = document.getElementById('jnForm');
+      if(formSec){ formSec.style.display='block'; formSec.scrollIntoView({behavior:'smooth',block:'start'}); }
+      goPanel(1);
+      AX.analytics.track('plan_selected', 'join-network', plan);
+    },
+    next(current){
+      if(current===1){
+        const name  = document.getElementById('ow_name').value.trim();
+        const email = document.getElementById('ow_email').value.trim();
+        AX.clearErr('ow_name_err'); AX.clearErr('ow_email_err');
+        if(!name){ AX.setErr('ow_name_err','Name is required'); return; }
+        if(!email||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('ow_email_err','Valid email required'); return; }
+        fields.contact_name  = name;
+        fields.contact_email = email;
+        fields.contact_phone = document.getElementById('ow_phone').value.trim();
+      } else if(current===2){
+        const ln = document.getElementById('ow_labname').value.trim();
+        AX.clearErr('ow_labname_err');
+        if(!ln){ AX.setErr('ow_labname_err','Laboratory name is required'); return; }
+        fields.lab_name    = ln;
+        fields.lab_address = document.getElementById('ow_address').value.trim();
+        fields.lab_state   = document.getElementById('ow_state').value;
+      } else if(current===3){
+        const sel = document.getElementById('ow_spec');
+        fields.specialities  = Array.from(sel.selectedOptions).map(o=>o.value).join(', ');
+        fields.accreditation = document.getElementById('ow_accred').value.trim();
+        // Build summary
+        const summary = document.getElementById('owSummary');
+        if(summary) summary.innerHTML = `
+          <div class="bw-summary-row"><span class="bw-summary-label">Plan</span><span class="bw-summary-value">${state.plan}</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Contact</span><span class="bw-summary-value">${fields.contact_name}</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Email</span><span class="bw-summary-value">${fields.contact_email}</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Laboratory</span><span class="bw-summary-value">${fields.lab_name}</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">State</span><span class="bw-summary-value">${fields.lab_state||'—'}</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Specialities</span><span class="bw-summary-value">${fields.specialities||'—'}</span></div>`;
+      }
+      goPanel(current+1);
+    },
+    back(current){ goPanel(current-1); },
+    async submit(){
+      const btn = document.getElementById('owSubmitBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="ax-spinner"></span> Submitting…';
+      await AX.post('/lab-apply', { ...fields, plan: state.plan });
+      document.getElementById('owSubmitArea').style.display = 'none';
+      document.getElementById('owSuccess').style.display = 'block';
+      const e = document.getElementById('owSuccessEmail');
+      if(e) e.textContent = fields.contact_email;
+      AX.analytics.track('lab_applied', 'join-network', state.plan);
+    }
+  };
+})();
+
+// ════════════════════════════════════════════════════════════════════════════
+// AI — Chat Interface
+// ════════════════════════════════════════════════════════════════════════════
+const AI = (function(){
+  const history = [];
+
+  function appendMsg(role, text, typing=false){
+    const box = document.getElementById('aiMessages');
+    if(!box) return null;
+    const div = document.createElement('div');
+    div.className = 'ai-msg ' + role + (typing?' ai-typing':'');
+    div.innerHTML = typing
+      ? `<div class="ai-bubble"><div class="ai-typing-dots"><span></span><span></span><span></span></div></div>`
+      : `<div class="ai-bubble">${text.replace(/\n/g,'<br>')}</div><div class="ai-msg-time">${role==='user'?'You':'AgoroX AI'}</div>`;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+    return div;
+  }
+
+  return {
+    async send(text){
+      if(!text.trim()) return;
+      // Hide suggestions after first message
+      const sug = document.getElementById('aiSuggestions');
+      if(sug) sug.style.display = 'none';
+
+      appendMsg('user', text);
+      history.push({ role:'user', content: text });
+
+      const typingEl = appendMsg('assistant', '', true);
+      const sendBtn = document.getElementById('aiSendBtn');
+      if(sendBtn) sendBtn.disabled = true;
+
+      try {
+        const res = await AX.post('/ai', { messages: history });
+        const reply = res?.reply || "I'm sorry, I couldn't process that. Please try again.";
+        history.push({ role:'assistant', content: reply });
+        if(typingEl) typingEl.remove();
+        appendMsg('assistant', reply);
+        AX.analytics.track('ai_query', 'ask-ai', '');
+      } catch(e) {
+        if(typingEl) typingEl.remove();
+        appendMsg('assistant', 'Connection error. Please check your network and try again.');
+      }
+      if(sendBtn) sendBtn.disabled = false;
+      const input = document.getElementById('aiInput');
+      if(input) input.value = '';
+    },
+    sendFromInput(){
+      const input = document.getElementById('aiInput');
+      if(input && input.value.trim()) AI.send(input.value.trim());
+    }
+  };
+})();
+
+// ════════════════════════════════════════════════════════════════════════════
+// Init — fire on route change
+// ════════════════════════════════════════════════════════════════════════════
+(function(){
+  const orig = window.renderRoute;
+  window.renderRoute = function(){
+    if(orig) orig();
+    const hash = window.location.hash.replace('#','').split('/')[0];
+    if(hash === 'book-test') BW.init();
+    // Track page view
+    AX.analytics.track('page_view', hash, '');
+  };
+  // Track CTA clicks (delegate)
+  document.addEventListener('click', function(e){
+    const cta = e.target.closest('[data-route]');
+    if(cta) AX.analytics.track('cta_click', window.location.hash.slice(1), cta.textContent.trim().slice(0,40));
+  });
+})();
+</script>
 
 </body>
 </html>
