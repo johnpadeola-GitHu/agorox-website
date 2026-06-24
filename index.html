@@ -1044,7 +1044,7 @@
       </div>
       <span class="navlink" data-route="patient-portal">Patients Portal</span>
       <span class="navlink" data-route="agorox-network">AgoroX Network</span>
-      <span class="navlink" data-route="press">Publications</span>
+      <span class="navlink" data-route="press">AgoroX Press</span>
       <span class="navlink" data-route="about">About Us</span>
       <span class="navlink" data-route="contact">Contact</span>
     </nav>
@@ -1062,7 +1062,7 @@
   <a onclick="toggleMegaMenu(event); toggleMobileMenu();">Resources ▾</a>
   <a data-route="patient-portal">Patients Portal</a>
   <a data-route="agorox-network">AgoroX Network</a>
-  <a data-route="press">Publications</a>
+  <a data-route="press">AgoroX Press</a>
   <a data-route="about">About Us</a>
   <a data-route="contact">Contact</a>
   <a onclick="openModal(); toggleMobileMenu();">Tenants Login</a>
@@ -1289,10 +1289,10 @@
     <div class="wrap">
       <div class="section-head">
         <div>
-          <div class="eyebrow">Publications</div>
+          <div class="eyebrow">AgoroX Press</div>
           <h2>News, research, and writing from AgoroX.</h2>
         </div>
-        <span class="btn btn-ghost" data-route="press">View all publications →</span>
+        <span class="btn btn-ghost" data-route="press">View all press →</span>
       </div>
       <div class="press-list">
         <div class="press-row" data-route="press">
@@ -1364,7 +1364,7 @@
         </div>
         <div class="product-card" data-route="press">
           <div class="pc-tag">Reference</div>
-          <h3>Publications</h3>
+          <h3>AgoroX Press</h3>
           <p>Announcements, product updates, research, and writing from AgoroX and AgoroX Press, including the Practical Farming Series.</p>
           <span class="pc-link">Read the latest →</span>
         </div>
@@ -2381,21 +2381,219 @@
 <!-- =========================================================== PRESS =========================================================== -->
 <div class="page" data-page="press">
 
-  <div class="page-hero" style="background:var(--paper);">
+  <!-- ── HERO ───────────────────────────────────────────────────────────── -->
+  <div style="background:var(--navy); padding:72px 0 56px;">
     <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Publications</div>
-      <h1>News, research, and writing from AgoroX.</h1>
-      <p class="lede">Announcements, product updates, and publications from AgoroX and AgoroX Press, including the Practical Farming Series.</p>
+      <div class="breadcrumb" style="color:rgba(247,245,240,.5);">
+        <span data-route="home" style="cursor:pointer; color:rgba(247,245,240,.5);">Home</span> / AgoroX Press
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; gap:40px; align-items:end; flex-wrap:wrap;">
+        <div>
+          <div class="eyebrow" style="color:var(--clay);">AgoroX Press</div>
+          <h1 style="color:var(--paper); font-weight:700; font-size:clamp(28px,4vw,48px); line-height:1.15; margin:16px 0 20px;">
+            Publishing practical knowledge<br>for African operators.
+          </h1>
+          <p style="color:rgba(247,245,240,.75); font-size:15px; line-height:1.65; max-width:480px;">
+            Guides, manuals, and reference books written by practitioners for practitioners. No theory padding. No generic advice. Just what works on the ground.
+          </p>
+        </div>
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:rgba(247,245,240,.4); text-align:right; padding-bottom:4px;">
+          An imprint of<br><span style="color:var(--clay); font-size:14px; font-weight:600; letter-spacing:.02em;">AgoroX Technologies</span>
+        </div>
+      </div>
     </div>
   </div>
 
-  <section>
+  <!-- ── FEATURED SERIES ──────────────────────────────────────────────────── -->
+  <section style="background:var(--paper); padding:72px 0 80px;">
     <div class="wrap">
-      <div class="press-filter">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:48px; flex-wrap:wrap; gap:16px;">
+        <div>
+          <div class="eyebrow">Featured Series</div>
+          <h2 style="font-weight:700; color:var(--navy); margin-top:12px; font-size:clamp(22px,3vw,34px);">The Practical Farming Series</h2>
+          <p style="color:var(--slate-dark); font-size:14px; margin-top:8px; max-width:480px;">Three volumes. One complete operating guide for serious poultry farmers — from the first flock through to building an agri-business at scale.</p>
+        </div>
+        <div style="font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); background:var(--clay); background:linear-gradient(135deg,var(--clay),#a8522a); color:#fff; padding:8px 16px; border-radius:2px;">
+          Coming Soon
+        </div>
+      </div>
+
+      <!-- Book covers grid -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:32px;">
+
+        <!-- Volume 1: The Foundation -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <!-- SVG Book Cover -->
+          <div style="aspect-ratio:3/4; border-radius:4px; overflow:hidden; box-shadow:0 8px 32px rgba(14,31,51,.18), 4px 0 0 #0a1625 inset; position:relative;">
+            <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+              <!-- Cover background -->
+              <rect width="300" height="400" fill="#0E1F33"/>
+              <!-- Spine shadow -->
+              <rect x="0" y="0" width="18" height="400" fill="#081422"/>
+              <!-- Decorative top band -->
+              <rect x="18" y="0" width="282" height="8" fill="#C46A3E"/>
+              <!-- Subtle pattern: horizontal rules -->
+              <line x1="18" y1="60" x2="300" y2="60" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+              <line x1="18" y1="80" x2="300" y2="80" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+              <line x1="18" y1="340" x2="300" y2="340" stroke="rgba(247,245,240,.08)" stroke-width="1"/>
+              <!-- Volume badge -->
+              <rect x="28" y="20" width="80" height="22" rx="2" fill="#C46A3E"/>
+              <text x="68" y="35" font-family="monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="600" letter-spacing="1">VOLUME 1</text>
+              <!-- Main illustration: egg/foundation motif -->
+              <ellipse cx="200" cy="200" rx="72" ry="84" fill="none" stroke="rgba(196,106,62,.25)" stroke-width="1.5"/>
+              <ellipse cx="200" cy="200" rx="52" ry="60" fill="none" stroke="rgba(196,106,62,.18)" stroke-width="1"/>
+              <ellipse cx="200" cy="200" rx="32" ry="37" fill="rgba(196,106,62,.12)"/>
+              <!-- Ground lines -->
+              <line x1="28" y1="300" x2="280" y2="300" stroke="rgba(247,245,240,.08)" stroke-width="1"/>
+              <line x1="28" y1="308" x2="220" y2="308" stroke="rgba(247,245,240,.05)" stroke-width="1"/>
+              <!-- Title -->
+              <text x="28" y="130" font-family="Georgia, serif" font-size="26" fill="#F7F5F0" font-weight="700">The Poultry</text>
+              <text x="28" y="162" font-family="Georgia, serif" font-size="26" fill="#F7F5F0" font-weight="700">Farmer's</text>
+              <text x="28" y="194" font-family="Georgia, serif" font-size="26" fill="#C46A3E" font-weight="700">Playbook</text>
+              <!-- Subtitle -->
+              <rect x="28" y="218" width="160" height="1" fill="rgba(247,245,240,.2)"/>
+              <text x="28" y="236" font-family="Georgia, serif" font-size="13" fill="rgba(247,245,240,.7)" font-style="italic">The Foundation</text>
+              <!-- Authors -->
+              <text x="28" y="360" font-family="monospace" font-size="9" fill="rgba(247,245,240,.4)" letter-spacing="1">JOHN IPADEOLA AGORO</text>
+              <text x="28" y="376" font-family="monospace" font-size="9" fill="rgba(247,245,240,.4)" letter-spacing="1">&amp; ELIJAH TAIWO</text>
+              <!-- Press imprint -->
+              <text x="272" y="376" font-family="monospace" font-size="8" fill="rgba(196,106,62,.6)" text-anchor="end" letter-spacing=".5">AgoroX Press</text>
+            </svg>
+          </div>
+          <!-- Book info -->
+          <div>
+            <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--clay-deep); margin-bottom:6px;">Volume 1 · The Practical Farming Series</div>
+            <h3 style="font-weight:700; color:var(--navy); font-size:18px; margin-bottom:8px; line-height:1.3;">The Poultry Farmer's Playbook<br><span style="font-weight:400; font-style:italic; color:var(--slate-dark);">The Foundation</span></h3>
+            <p style="font-size:13px; color:var(--slate-dark); line-height:1.65; margin-bottom:12px;">Everything you need to start right — housing, breeds, feeding, biosecurity, and record-keeping. The base layer every serious farmer builds on.</p>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div style="font-size:11px; font-family:var(--mono); color:var(--slate); text-transform:uppercase; letter-spacing:.05em;">John Ipadeola Agoro &amp; Elijah Taiwo</div>
+            </div>
+            <div style="margin-top:14px; padding:10px 14px; background:rgba(196,106,62,.08); border-left:3px solid var(--clay); border-radius:0 2px 2px 0; font-size:12.5px; color:var(--clay-deep); font-weight:500;">
+              Coming Soon — register your interest below
+            </div>
+          </div>
+        </div>
+
+        <!-- Volume 2: The Business -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="aspect-ratio:3/4; border-radius:4px; overflow:hidden; box-shadow:0 8px 32px rgba(14,31,51,.18), 4px 0 0 #0a1625 inset; position:relative;">
+            <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+              <rect width="300" height="400" fill="#1a2e45"/>
+              <rect x="0" y="0" width="18" height="400" fill="#0e1f33"/>
+              <rect x="18" y="0" width="282" height="8" fill="#C46A3E"/>
+              <line x1="18" y1="60" x2="300" y2="60" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+              <line x1="18" y1="340" x2="300" y2="340" stroke="rgba(247,245,240,.08)" stroke-width="1"/>
+              <rect x="28" y="20" width="80" height="22" rx="2" fill="#C46A3E"/>
+              <text x="68" y="35" font-family="monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="600" letter-spacing="1">VOLUME 2</text>
+              <!-- Chart motif: bar chart going up -->
+              <rect x="140" y="260" width="22" height="60" rx="2" fill="rgba(196,106,62,.2)"/>
+              <rect x="170" y="220" width="22" height="100" rx="2" fill="rgba(196,106,62,.3)"/>
+              <rect x="200" y="180" width="22" height="140" rx="2" fill="rgba(196,106,62,.2)"/>
+              <rect x="230" y="150" width="22" height="170" rx="2" fill="rgba(196,106,62,.35)"/>
+              <line x1="130" y1="325" x2="265" y2="325" stroke="rgba(247,245,240,.12)" stroke-width="1"/>
+              <!-- Upward arrow -->
+              <polyline points="165,200 185,170 205,180 235,140" stroke="rgba(196,106,62,.6)" stroke-width="2" fill="none" stroke-linecap="round"/>
+              <polygon points="232,130 245,145 218,148" fill="rgba(196,106,62,.6)"/>
+              <!-- Title -->
+              <text x="28" y="130" font-family="Georgia, serif" font-size="26" fill="#F7F5F0" font-weight="700">The Poultry</text>
+              <text x="28" y="162" font-family="Georgia, serif" font-size="26" fill="#F7F5F0" font-weight="700">Farmer's</text>
+              <text x="28" y="194" font-family="Georgia, serif" font-size="26" fill="#C46A3E" font-weight="700">Playbook</text>
+              <rect x="28" y="218" width="160" height="1" fill="rgba(247,245,240,.2)"/>
+              <text x="28" y="236" font-family="Georgia, serif" font-size="13" fill="rgba(247,245,240,.7)" font-style="italic">The Business</text>
+              <text x="28" y="360" font-family="monospace" font-size="9" fill="rgba(247,245,240,.4)" letter-spacing="1">JOHN IPADEOLA AGORO</text>
+              <text x="28" y="376" font-family="monospace" font-size="9" fill="rgba(247,245,240,.4)" letter-spacing="1">&amp; ELIJAH TAIWO</text>
+              <text x="272" y="376" font-family="monospace" font-size="8" fill="rgba(196,106,62,.6)" text-anchor="end" letter-spacing=".5">AgoroX Press</text>
+            </svg>
+          </div>
+          <div>
+            <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--clay-deep); margin-bottom:6px;">Volume 2 · The Practical Farming Series</div>
+            <h3 style="font-weight:700; color:var(--navy); font-size:18px; margin-bottom:8px; line-height:1.3;">The Poultry Farmer's Playbook<br><span style="font-weight:400; font-style:italic; color:var(--slate-dark);">The Business</span></h3>
+            <p style="font-size:13px; color:var(--slate-dark); line-height:1.65; margin-bottom:12px;">Sales, procurement, cash flow, staff management, and the financial discipline that separates a farm from a business.</p>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div style="font-size:11px; font-family:var(--mono); color:var(--slate); text-transform:uppercase; letter-spacing:.05em;">John Ipadeola Agoro &amp; Elijah Taiwo</div>
+            </div>
+            <div style="margin-top:14px; padding:10px 14px; background:rgba(196,106,62,.08); border-left:3px solid var(--clay); border-radius:0 2px 2px 0; font-size:12.5px; color:var(--clay-deep); font-weight:500;">
+              Coming Soon — register your interest below
+            </div>
+          </div>
+        </div>
+
+        <!-- Volume 3: The Scale Up -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div style="aspect-ratio:3/4; border-radius:4px; overflow:hidden; box-shadow:0 8px 32px rgba(14,31,51,.18), 4px 0 0 #0a1625 inset; position:relative;">
+            <svg viewBox="0 0 300 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;display:block;">
+              <rect width="300" height="400" fill="#0E1F33"/>
+              <rect x="0" y="0" width="18" height="400" fill="#081422"/>
+              <rect x="18" y="0" width="282" height="8" fill="#C46A3E"/>
+              <line x1="18" y1="60" x2="300" y2="60" stroke="rgba(247,245,240,.06)" stroke-width="1"/>
+              <line x1="18" y1="340" x2="300" y2="340" stroke="rgba(247,245,240,.08)" stroke-width="1"/>
+              <rect x="28" y="20" width="80" height="22" rx="2" fill="#C46A3E"/>
+              <text x="68" y="35" font-family="monospace" font-size="9" fill="#fff" text-anchor="middle" font-weight="600" letter-spacing="1">VOLUME 3</text>
+              <!-- Network/expansion motif: nodes and connections -->
+              <circle cx="200" cy="210" r="6" fill="rgba(196,106,62,.7)"/>
+              <circle cx="240" cy="170" r="4" fill="rgba(196,106,62,.5)"/>
+              <circle cx="165" cy="175" r="4" fill="rgba(196,106,62,.5)"/>
+              <circle cx="255" cy="240" r="4" fill="rgba(196,106,62,.4)"/>
+              <circle cx="155" cy="250" r="4" fill="rgba(196,106,62,.4)"/>
+              <circle cx="220" cy="280" r="4" fill="rgba(196,106,62,.3)"/>
+              <line x1="200" y1="210" x2="240" y2="170" stroke="rgba(196,106,62,.3)" stroke-width="1.5"/>
+              <line x1="200" y1="210" x2="165" y2="175" stroke="rgba(196,106,62,.3)" stroke-width="1.5"/>
+              <line x1="200" y1="210" x2="255" y2="240" stroke="rgba(196,106,62,.3)" stroke-width="1.5"/>
+              <line x1="200" y1="210" x2="155" y2="250" stroke="rgba(196,106,62,.3)" stroke-width="1.5"/>
+              <line x1="200" y1="210" x2="220" y2="280" stroke="rgba(196,106,62,.3)" stroke-width="1.5"/>
+              <line x1="240" y1="170" x2="165" y2="175" stroke="rgba(196,106,62,.15)" stroke-width="1" stroke-dasharray="4,4"/>
+              <line x1="255" y1="240" x2="220" y2="280" stroke="rgba(196,106,62,.15)" stroke-width="1" stroke-dasharray="4,4"/>
+              <!-- Title -->
+              <text x="28" y="130" font-family="Georgia, serif" font-size="26" fill="#F7F5F0" font-weight="700">The Poultry</text>
+              <text x="28" y="162" font-family="Georgia, serif" font-size="26" fill="#F7F5F0" font-weight="700">Farmer's</text>
+              <text x="28" y="194" font-family="Georgia, serif" font-size="26" fill="#C46A3E" font-weight="700">Playbook</text>
+              <rect x="28" y="218" width="160" height="1" fill="rgba(247,245,240,.2)"/>
+              <text x="28" y="236" font-family="Georgia, serif" font-size="13" fill="rgba(247,245,240,.7)" font-style="italic">The Scale Up</text>
+              <text x="28" y="360" font-family="monospace" font-size="9" fill="rgba(247,245,240,.4)" letter-spacing="1">JOHN IPADEOLA AGORO</text>
+              <text x="28" y="376" font-family="monospace" font-size="9" fill="rgba(247,245,240,.4)" letter-spacing="1">&amp; ELIJAH TAIWO</text>
+              <text x="272" y="376" font-family="monospace" font-size="8" fill="rgba(196,106,62,.6)" text-anchor="end" letter-spacing=".5">AgoroX Press</text>
+            </svg>
+          </div>
+          <div>
+            <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--clay-deep); margin-bottom:6px;">Volume 3 · The Practical Farming Series</div>
+            <h3 style="font-weight:700; color:var(--navy); font-size:18px; margin-bottom:8px; line-height:1.3;">The Poultry Farmer's Playbook<br><span style="font-weight:400; font-style:italic; color:var(--slate-dark);">The Scale Up</span></h3>
+            <p style="font-size:13px; color:var(--slate-dark); line-height:1.65; margin-bottom:12px;">Expanding to multiple sites, building systems and teams, institutional supply contracts, and long-term capital planning.</p>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div style="font-size:11px; font-family:var(--mono); color:var(--slate); text-transform:uppercase; letter-spacing:.05em;">John Ipadeola Agoro &amp; Elijah Taiwo</div>
+            </div>
+            <div style="margin-top:14px; padding:10px 14px; background:rgba(196,106,62,.08); border-left:3px solid var(--clay); border-radius:0 2px 2px 0; font-size:12.5px; color:var(--clay-deep); font-weight:500;">
+              Coming Soon — register your interest below
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interest capture -->
+      <div style="margin-top:64px; background:var(--navy); border-radius:6px; padding:36px; text-align:center;">
+        <div class="eyebrow" style="color:var(--clay);">Be First to Know</div>
+        <h3 style="color:var(--paper); font-size:clamp(18px,2.5vw,24px); font-weight:700; margin:12px 0 8px;">Get notified when the series launches</h3>
+        <p style="color:rgba(247,245,240,.7); font-size:13.5px; margin-bottom:24px;">Leave your email and we'll notify you before the public release — with an early-reader discount.</p>
+        <form style="display:flex; gap:10px; max-width:420px; margin:0 auto; flex-wrap:wrap;" onsubmit="return AX.leads.submitPress(this);">
+          <input type="email" id="pressEmail" placeholder="your@email.com" required
+            style="flex:1; min-width:200px; border:1px solid rgba(247,245,240,.2); border-radius:3px; padding:10px 14px; font-size:14px; background:rgba(247,245,240,.08); color:var(--paper);">
+          <button type="submit" class="btn btn-clay" style="white-space:nowrap;">Notify Me</button>
+        </form>
+        <p id="pressEmailThanks" style="display:none; color:var(--clay); font-size:13px; margin-top:12px; font-weight:500;">✓ Done — we'll be in touch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── NEWS & ANNOUNCEMENTS ──────────────────────────────────────────────── -->
+  <section style="background:#fff; padding:64px 0;">
+    <div class="wrap">
+      <div class="eyebrow">Latest</div>
+      <h2 style="font-weight:700; color:var(--navy); margin:12px 0 32px; font-size:clamp(20px,3vw,28px);">News &amp; Announcements</h2>
+      <div class="press-filter" style="margin-bottom:24px;">
         <button class="active" data-filter="all">All</button>
         <button data-filter="Announcement">Announcements</button>
         <button data-filter="Product Update">Product Updates</button>
-        <button data-filter="Publication">Publications</button>
+        <button data-filter="Publication">AgoroX Press</button>
         <button data-filter="Research">Research</button>
       </div>
       <div class="press-list" id="pressList">
@@ -2411,29 +2609,39 @@
         </div>
         <div class="press-row" data-tag="Publication">
           <div class="press-date">MAY 2026</div>
-          <div class="press-title">The Poultry Farmer's Playbook: a 5-volume practical guide from AgoroX Press</div>
+          <div class="press-title">The Poultry Farmer's Playbook: three-volume practical series announced from AgoroX Press</div>
           <div class="press-tag">Publication</div>
         </div>
         <div class="press-row" data-tag="Research">
           <div class="press-date">MAY 2026</div>
-          <div class="press-title">Inside LabOS: building lab software for multi-branch diagnostics</div>
+          <div class="press-title">Inside LabOS: building laboratory software for multi-branch diagnostics in Nigeria</div>
           <div class="press-tag">Research</div>
         </div>
-        <div class="press-row" data-tag="Product Update">
-          <div class="press-date">JUN 2026</div>
-          <div class="press-title">PharmacyOS begins onboarding for community pharmacies in Ibadan</div>
-          <div class="press-tag">Product Update</div>
-        </div>
         <div class="press-row" data-tag="Announcement">
-          <div class="press-date">MAY 2026</div>
-          <div class="press-title">AgoroX Technologies launches SmartInvoice for Nigerian SMEs</div>
+          <div class="press-date">APR 2026</div>
+          <div class="press-title">AgoroX Network opens laboratory applications — online booking goes live</div>
           <div class="press-tag">Announcement</div>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ── MEDIA CONTACT ─────────────────────────────────────────────────────── -->
+  <section style="background:var(--paper); padding:48px 0;">
+    <div class="wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; flex-wrap:wrap;">
+      <div>
+        <div class="eyebrow">Media &amp; Press</div>
+        <h3 style="font-weight:700; color:var(--navy); margin:12px 0 12px; font-size:clamp(18px,2vw,22px);">Writing about AgoroX?</h3>
+        <p style="color:var(--slate-dark); font-size:14px; line-height:1.65;">We welcome interview requests, case study collaborations, and fact-checking inquiries. Our team responds to press enquiries within 48 hours.</p>
+      </div>
+      <div>
+        <span class="btn btn-clay" data-route="contact">Contact Us →</span>
+      </div>
+    </div>
+  </section>
+
 </div>
+
 
 <!-- =========================================================== ABOUT =========================================================== -->
 <div class="page" data-page="about">
@@ -3457,267 +3665,346 @@
 <!-- =========================================================== AGOROX NETWORK =========================================================== -->
 <div class="page" data-page="agorox-network">
 
-  <div class="page-hero">
+  <!-- ── HERO ───────────────────────────────────────────────────────────── -->
+  <div style="background:var(--navy); padding:72px 0 56px;">
     <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / AgoroX Network</div>
-      <h1 style="font-weight:700; color:#1F3A5F;">The AgoroX Network</h1>
-      <p class="lede">Connecting laboratories and patients across Africa. AgoroX is not just software — it is the infrastructure for a connected healthcare ecosystem.</p>
+      <div class="breadcrumb" style="color:rgba(247,245,240,.5);">
+        <span data-route="home" style="cursor:pointer; color:rgba(247,245,240,.5);">Home</span> / AgoroX Network
+      </div>
+      <div style="display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; flex-wrap:wrap;">
+        <div>
+          <div class="eyebrow" style="color:var(--clay);">Laboratory Network</div>
+          <h1 style="color:var(--paper); font-weight:700; font-size:clamp(28px,4vw,48px); line-height:1.15; margin:16px 0 20px;">
+            Join Africa's Connected<br>Laboratory Network
+          </h1>
+          <p style="color:rgba(247,245,240,.8); font-size:16px; line-height:1.65; max-width:520px; margin-bottom:32px;">
+            Patients across Africa search for diagnostic tests online every day. 
+            AgoroX puts your laboratory in front of them — with online booking, digital results, and tools to run your lab better.
+          </p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <span class="btn btn-clay" onclick="document.getElementById('jnForm').scrollIntoView({behavior:'smooth'})">Apply Now →</span>
+            <span class="btn btn-ghost" style="color:var(--paper); border-color:rgba(247,245,240,.3);" data-route="labos-pricing">View Plans</span>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:rgba(247,245,240,.1); border:1px solid rgba(247,245,240,.1); border-radius:4px; overflow:hidden; min-width:220px;">
+          <div style="background:rgba(247,245,240,.05); padding:20px; text-align:center;">
+            <div style="font-size:32px; font-weight:700; color:var(--clay); font-family:var(--mono);">302</div>
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:rgba(247,245,240,.6); margin-top:4px;">Tests available</div>
+          </div>
+          <div style="background:rgba(247,245,240,.05); padding:20px; text-align:center;">
+            <div style="font-size:32px; font-weight:700; color:var(--clay); font-family:var(--mono);">₦0</div>
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:rgba(247,245,240,.6); margin-top:4px;">Setup fee</div>
+          </div>
+          <div style="background:rgba(247,245,240,.05); padding:20px; text-align:center;">
+            <div style="font-size:32px; font-weight:700; color:var(--clay); font-family:var(--mono);">&lt;5</div>
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:rgba(247,245,240,.6); margin-top:4px;">Mins to apply</div>
+          </div>
+          <div style="background:rgba(247,245,240,.05); padding:20px; text-align:center;">
+            <div style="font-size:32px; font-weight:700; color:var(--clay); font-family:var(--mono);">15</div>
+            <div style="font-size:11px; text-transform:uppercase; letter-spacing:.06em; color:rgba(247,245,240,.6); margin-top:4px;">Categories</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-
-  <!-- ECOSYSTEM ECONOMY -->
-  <section id="ecosystem-economy" style="background:var(--paper);">
+  <!-- ── HOW IT WORKS ────────────────────────────────────────────────────── -->
+  <section style="background:var(--paper); padding:64px 0;">
     <div class="wrap">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">The AgoroX Economy</div>
-          <h2 style="font-weight:600; color:#0E1F33;">Four tiers. One connected ecosystem.</h2>
-          <p class="lede" style="margin-top:12px;">Every plan creates value — for your laboratory and for patients across the network. Choose where you want to start and grow from there.</p>
+      <div class="eyebrow" style="text-align:center;">How It Works</div>
+      <h2 style="text-align:center; font-weight:700; color:var(--navy); margin:12px 0 48px; font-size:clamp(22px,3vw,32px);">
+        From application to first booking — in days, not months.
+      </h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:0; position:relative;">
+        <!-- connector line -->
+        <div style="position:absolute; top:32px; left:10%; right:10%; height:1px; background:var(--clay); opacity:.25; display:none;" class="hiw-connector"></div>
+        <style>.hiw-connector{display:block!important;}</style>
+        <div style="text-align:center; padding:0 24px 32px;">
+          <div style="width:64px; height:64px; border-radius:50%; background:var(--navy); color:var(--paper); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:20px; font-weight:700; font-family:var(--mono); position:relative; z-index:1;">01</div>
+          <h4 style="font-weight:600; color:var(--navy); margin-bottom:10px;">Apply Online</h4>
+          <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.65;">Choose your plan, fill in your lab details, and submit. No sales call needed.</p>
+        </div>
+        <div style="text-align:center; padding:0 24px 32px;">
+          <div style="width:64px; height:64px; border-radius:50%; background:var(--navy); color:var(--paper); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:20px; font-weight:700; font-family:var(--mono); position:relative; z-index:1;">02</div>
+          <h4 style="font-weight:600; color:var(--navy); margin-bottom:10px;">Configure Your Tests</h4>
+          <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.65;">Set up your test catalogue from 302 available tests across 15 specialities.</p>
+        </div>
+        <div style="text-align:center; padding:0 24px 32px;">
+          <div style="width:64px; height:64px; border-radius:50%; background:var(--clay); color:#fff; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:20px; font-weight:700; font-family:var(--mono); position:relative; z-index:1;">03</div>
+          <h4 style="font-weight:600; color:var(--navy); margin-bottom:10px;">Go Live</h4>
+          <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.65;">Your lab appears in the AgoroX directory. Patients find you, book online, and arrive prepared.</p>
+        </div>
+        <div style="text-align:center; padding:0 24px 32px;">
+          <div style="width:64px; height:64px; border-radius:50%; background:var(--navy); color:var(--paper); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-size:20px; font-weight:700; font-family:var(--mono); position:relative; z-index:1;">04</div>
+          <h4 style="font-weight:600; color:var(--navy); margin-bottom:10px;">Grow</h4>
+          <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.65;">Analytics, patient feedback, and LabOS integration drive continuous improvement.</p>
         </div>
       </div>
-      <div class="tier-economy" style="margin-top:8px;">
+    </div>
+  </section>
 
-        <div class="tec-card">
-          <div class="tec-tier">CoreCare</div>
-          <h4>Run Your Laboratory</h4>
-          <div class="tec-goal">Digital operations from day one</div>
-          <ul class="tec-features">
-            <li>LabOS LIMS — full sample lifecycle</li>
-            <li>Patient result delivery</li>
-            <li>Basic directory listing</li>
-            <li>Academy foundation modules</li>
-            <li>Knowledge Center access</li>
+  <!-- ── PLANS ───────────────────────────────────────────────────────────── -->
+  <section id="plans" style="background:#fff; padding:64px 0;">
+    <div class="wrap">
+      <div class="eyebrow" style="text-align:center;">Choose a Plan</div>
+      <h2 style="text-align:center; font-weight:700; color:var(--navy); margin:12px 0 8px; font-size:clamp(22px,3vw,32px);">
+        Start free. Grow at your pace.
+      </h2>
+      <p style="text-align:center; color:var(--slate-dark); margin-bottom:48px; font-size:14px;">All plans include LabOS access. Upgrade or change plan any time.</p>
+
+      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px;">
+
+        <!-- CoreCare -->
+        <div class="plan-card" onclick="OW.selectPlan('corecare',this)" style="border:2px solid var(--line); border-radius:6px; padding:28px 24px; cursor:pointer; transition:all .15s; background:#fff;">
+          <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); margin-bottom:12px;">CoreCare</div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--navy); margin-bottom:6px;">Run Your Lab</h3>
+          <p style="font-size:13px; color:var(--slate-dark); margin-bottom:20px; line-height:1.55;">Digital operations from day one — without the complexity.</p>
+          <div style="font-size:24px; font-weight:700; color:var(--navy); margin-bottom:20px;">Free <span style="font-size:13px; font-weight:400; color:var(--slate);">to start</span></div>
+          <ul style="list-style:none; padding:0; margin:0 0 24px; font-size:13px; color:var(--slate-dark); line-height:2;">
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>LabOS LIMS — full sample lifecycle</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Patient result delivery</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Basic directory listing</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Academy foundation modules</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Knowledge Center access</li>
           </ul>
-          <div class="tec-action">
-            <span class="btn btn-ghost" style="font-size:12.5px; padding:9px 14px;" data-route="join-network">Get Started →</span>
+          <div style="margin-top:auto;">
+            <div style="border-top:1px solid var(--line); padding-top:16px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); font-weight:600;">→ Select CoreCare</div>
           </div>
         </div>
 
-        <div class="tec-card tec-highlight">
-          <div class="tec-tier">Professional</div>
-          <h4>Grow Your Laboratory</h4>
-          <div class="tec-goal">Patients find you. Bookings flow in.</div>
-          <ul class="tec-features">
-            <li>Everything in CoreCare</li>
-            <li>Online booking integration</li>
-            <li>Enhanced directory listing</li>
-            <li>Patient portal integration</li>
-            <li>Academy — all certifications</li>
-            <li>Performance analytics</li>
+        <!-- Professional (featured) -->
+        <div class="plan-card plan-featured" onclick="OW.selectPlan('professional',this)" style="border:2px solid var(--clay); border-radius:6px; padding:28px 24px; cursor:pointer; transition:all .15s; background:var(--navy); position:relative;">
+          <div style="position:absolute; top:-1px; left:50%; transform:translateX(-50%); background:var(--clay); color:#fff; font-size:10px; font-family:var(--mono); letter-spacing:.08em; text-transform:uppercase; padding:4px 14px; border-radius:0 0 4px 4px;">Most Popular</div>
+          <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:rgba(247,245,240,.5); margin-bottom:12px;">Professional</div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--paper); margin-bottom:6px;">Grow Your Lab</h3>
+          <p style="font-size:13px; color:rgba(247,245,240,.7); margin-bottom:20px; line-height:1.55;">Patients find you. Bookings flow in directly.</p>
+          <div style="font-size:24px; font-weight:700; color:var(--clay); margin-bottom:20px;">Contact us <span style="font-size:13px; font-weight:400; color:rgba(247,245,240,.5);">for pricing</span></div>
+          <ul style="list-style:none; padding:0; margin:0 0 24px; font-size:13px; color:rgba(247,245,240,.8); line-height:2;">
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Everything in CoreCare</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Online booking via Patients Portal</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Enhanced directory listing</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>All Academy certifications</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Performance analytics dashboard</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Priority support</li>
           </ul>
-          <div class="tec-action">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="join-network">Get Started →</span>
+          <div style="border-top:1px solid rgba(247,245,240,.15); padding-top:16px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay); font-weight:600;">→ Select Professional</div>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="plan-card" onclick="OW.selectPlan('enterprise',this)" style="border:2px solid var(--line); border-radius:6px; padding:28px 24px; cursor:pointer; transition:all .15s; background:#fff;">
+          <div style="font-family:var(--mono); font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--slate); margin-bottom:12px;">Enterprise</div>
+          <h3 style="font-size:20px; font-weight:700; color:var(--navy); margin-bottom:6px;">Scale Your Lab</h3>
+          <p style="font-size:13px; color:var(--slate-dark); margin-bottom:20px; line-height:1.55;">Multi-branch. Institutional grade. API access.</p>
+          <div style="font-size:24px; font-weight:700; color:var(--navy); margin-bottom:20px;">Custom <span style="font-size:13px; font-weight:400; color:var(--slate);">pricing</span></div>
+          <ul style="list-style:none; padding:0; margin:0 0 24px; font-size:13px; color:var(--slate-dark); line-height:2;">
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Everything in Professional</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Multi-branch management</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Custom test catalogue</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>API access &amp; integrations</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>Dedicated onboarding</li>
+            <li style="display:flex; gap:8px; align-items:flex-start;"><span style="color:var(--clay); flex-shrink:0;">✓</span>SLA &amp; compliance support</li>
+          </ul>
+          <div style="border-top:1px solid var(--line); padding-top:16px; font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); font-weight:600;">→ Select Enterprise</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── JOIN FORM ────────────────────────────────────────────────────────── -->
+  <section id="jnForm" style="display:none; background:var(--paper); padding:64px 0;">
+    <div class="wrap" style="max-width:640px;">
+      <div class="eyebrow">Join Application</div>
+      <h2 style="font-weight:700; color:var(--navy); margin:12px 0 8px;">Start your application</h2>
+      <p style="color:var(--slate-dark); font-size:14px; margin-bottom:32px;">Complete the form below. Our team reviews every application within 24 hours.</p>
+
+      <!-- Step tabs -->
+      <div style="display:flex; gap:0; margin-bottom:28px; border:1px solid var(--line); border-radius:4px; overflow:hidden;">
+        <div class="ow-step-tab active" data-panel="1" style="flex:1; padding:12px; text-align:center; font-size:12px; font-family:var(--mono); cursor:default; background:var(--navy); color:var(--paper); letter-spacing:.04em;">1. Contact</div>
+        <div class="ow-step-tab" data-panel="2" style="flex:1; padding:12px; text-align:center; font-size:12px; font-family:var(--mono); cursor:default; background:#fff; color:var(--slate); letter-spacing:.04em; border-left:1px solid var(--line);">2. Laboratory</div>
+        <div class="ow-step-tab" data-panel="3" style="flex:1; padding:12px; text-align:center; font-size:12px; font-family:var(--mono); cursor:default; background:#fff; color:var(--slate); letter-spacing:.04em; border-left:1px solid var(--line);">3. Specialities</div>
+        <div class="ow-step-tab" data-panel="4" style="flex:1; padding:12px; text-align:center; font-size:12px; font-family:var(--mono); cursor:default; background:#fff; color:var(--slate); letter-spacing:.04em; border-left:1px solid var(--line);">4. Review</div>
+      </div>
+
+      <!-- Panel 1: Contact -->
+      <div class="ow-panel active" id="owPanel1" style="display:block;">
+        <div style="display:grid; gap:16px;">
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Full Name *</label>
+            <input type="text" id="ow_name" placeholder="Your full name" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
+            <span id="ow_name_err" style="color:var(--clay-deep); font-size:12px;"></span>
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Email Address *</label>
+            <input type="email" id="ow_email" placeholder="your@laboratory.com" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
+            <span id="ow_email_err" style="color:var(--clay-deep); font-size:12px;"></span>
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Phone Number</label>
+            <input type="tel" id="ow_phone" placeholder="e.g. 0803 000 0000" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
           </div>
         </div>
+        <div class="ow-nav" style="margin-top:24px;"><span></span><button class="btn btn-clay" onclick="OW.next(1)">Next: Laboratory →</button></div>
+      </div>
 
-        <div class="tec-card">
-          <div class="tec-tier">Enterprise</div>
-          <h4>Scale Your Laboratory</h4>
-          <div class="tec-goal">Multi-branch. Institutional grade.</div>
-          <ul class="tec-features">
-            <li>Everything in Professional</li>
-            <li>Multi-branch management</li>
-            <li>Custom test catalogue</li>
-            <li>API access &amp; integrations</li>
-            <li>Dedicated onboarding</li>
-            <li>SLA &amp; compliance support</li>
-          </ul>
-          <div class="tec-action">
-            <span class="btn btn-ghost" style="font-size:12.5px; padding:9px 14px;" data-route="contact">Contact Sales →</span>
+      <!-- Panel 2: Lab Details -->
+      <div class="ow-panel" id="owPanel2" style="display:none;">
+        <div style="display:grid; gap:16px;">
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Laboratory Name *</label>
+            <input type="text" id="ow_labname" placeholder="e.g. Vitalis Diagnostics" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
+            <span id="ow_labname_err" style="color:var(--clay-deep); font-size:12px;"></span>
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Address</label>
+            <input type="text" id="ow_address" placeholder="Street address" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">State</label>
+            <select id="ow_state" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px; background:#fff;">
+              <option value="">Select state</option>
+              <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option><option>Anambra</option><option>Bauchi</option>
+              <option>Bayelsa</option><option>Benue</option><option>Borno</option><option>Cross River</option><option>Delta</option>
+              <option>Ebonyi</option><option>Edo</option><option>Ekiti</option><option>Enugu</option><option>FCT Abuja</option>
+              <option>Gombe</option><option>Imo</option><option>Jigawa</option><option>Kaduna</option><option>Kano</option>
+              <option>Katsina</option><option>Kebbi</option><option>Kogi</option><option>Kwara</option><option>Lagos</option>
+              <option>Nasarawa</option><option>Niger</option><option>Ogun</option><option>Ondo</option><option>Osun</option>
+              <option>Oyo</option><option>Plateau</option><option>Rivers</option><option>Sokoto</option><option>Taraba</option>
+              <option>Yobe</option><option>Zamfara</option>
+            </select>
           </div>
         </div>
+        <div class="ow-nav" style="margin-top:24px;">
+          <button class="btn btn-ghost" onclick="OW.back(2)">← Back</button>
+          <button class="btn btn-clay" onclick="OW.next(2)">Next: Specialities →</button>
+        </div>
+      </div>
 
-        <div class="tec-card" style="background:var(--navy);">
-          <div class="tec-tier" style="color:var(--clay);">Network Partner</div>
-          <h4 style="color:var(--paper);">Get More Patients</h4>
-          <div class="tec-goal" style="color:rgba(247,245,240,0.65);">Premium visibility in the AgoroX ecosystem</div>
-          <ul class="tec-features">
-            <li style="color:rgba(247,245,240,0.8);">Everything in Professional</li>
-            <li style="color:rgba(247,245,240,0.8);">Featured network listing</li>
-            <li style="color:rgba(247,245,240,0.8);">Verified Partner badge</li>
-            <li style="color:rgba(247,245,240,0.8);">Priority search placement</li>
-            <li style="color:rgba(247,245,240,0.8);">Home collection routing</li>
-            <li style="color:rgba(247,245,240,0.8);">Referral network access</li>
-          </ul>
-          <div class="tec-action">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="join-network">Apply Now →</span>
+      <!-- Panel 3: Specialities -->
+      <div class="ow-panel" id="owPanel3" style="display:none;">
+        <div style="display:grid; gap:16px;">
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Test Specialities</label>
+            <p style="font-size:12px; color:var(--slate); margin-bottom:8px;">Hold Ctrl / Cmd to select multiple</p>
+            <select id="ow_spec" multiple style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:8px 12px; font-size:13px; height:160px;">
+              <option>Haematology</option>
+              <option>Chemical Pathology</option>
+              <option>Microbiology</option>
+              <option>Immunology / Serology</option>
+              <option>Endocrinology</option>
+              <option>Histopathology</option>
+              <option>Molecular Diagnostics</option>
+              <option>Imaging &amp; Radiology</option>
+              <option>STI / Sexual Health</option>
+              <option>Oncology / Tumour Markers</option>
+              <option>Urinalysis</option>
+              <option>Andrology</option>
+              <option>Toxicology</option>
+              <option>Renal / Nephrology</option>
+              <option>General / Multi-discipline</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Accreditation</label>
+            <input type="text" id="ow_accred" placeholder="e.g. NAFDAC, CAP, ISO 15189 (if applicable)" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
           </div>
         </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ECOSYSTEM DIAGRAM -->
-  <section>
-    <div class="wrap">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;">
-        <div>
-          <div class="eyebrow">How Value Flows</div>
-          <h2 style="margin-top:14px; font-weight:600; color:#0E1F33;">From discovery to results — a connected loop.</h2>
-          <p style="font-size:14.5px; color:var(--slate-dark); margin-top:12px; line-height:1.6;">Patients find tests through the AgoroX Network. Bookings flow directly into LabOS. Results reach patients through the Patient Portal. Every step is connected — removing friction, improving care, growing your laboratory.</p>
-          <ul style="margin-top:16px; display:flex; flex-direction:column; gap:8px; padding:0;">
-            <li style="display:flex; gap:10px; font-size:14px; color:var(--navy-soft); list-style:none;"><span style="color:var(--clay-deep); flex-shrink:0;">—</span>Patients search for tests, not laboratories</li>
-            <li style="display:flex; gap:10px; font-size:14px; color:var(--navy-soft); list-style:none;"><span style="color:var(--clay-deep); flex-shrink:0;">—</span>Bookings appear automatically in LabOS</li>
-            <li style="display:flex; gap:10px; font-size:14px; color:var(--navy-soft); list-style:none;"><span style="color:var(--clay-deep); flex-shrink:0;">—</span>Digital results delivered to the patient portal</li>
-            <li style="display:flex; gap:10px; font-size:14px; color:var(--navy-soft); list-style:none;"><span style="color:var(--clay-deep); flex-shrink:0;">—</span>Laboratories grow without additional overhead</li>
-          </ul>
+        <div class="ow-nav" style="margin-top:24px;">
+          <button class="btn btn-ghost" onclick="OW.back(3)">← Back</button>
+          <button class="btn btn-clay" onclick="OW.next(3)">Review Application →</button>
         </div>
-        <div>
-          <div class="eco-diagram">
-            <div class="eco-node eco-primary">Patients</div>
-            <div class="eco-arrow">↓</div>
-            <div class="eco-node eco-accent">AgoroX Network</div>
-            <div class="eco-arrow">↓</div>
-            <div class="eco-node">Laboratories</div>
-            <div class="eco-arrow">↓</div>
-            <div class="eco-node">Bookings → LabOS</div>
-            <div class="eco-arrow">↓</div>
-            <div class="eco-node">Sample Processing</div>
-            <div class="eco-arrow">↓</div>
-            <div class="eco-node">Digital Results</div>
-            <div class="eco-arrow">↓</div>
-            <div class="eco-node eco-primary">Patient Engagement</div>
+      </div>
+
+      <!-- Panel 4: Review -->
+      <div class="ow-panel" id="owPanel4" style="display:none;">
+        <div id="owSummary" style="background:#fff; border:1px solid var(--line); border-radius:4px; padding:20px; margin-bottom:20px;"></div>
+        <p style="font-size:13px; color:var(--slate-dark); margin-bottom:20px;">Our team reviews every application and responds within 24 hours.</p>
+        <div id="owSubmitArea">
+          <div class="ow-nav">
+            <button class="btn btn-ghost" onclick="OW.back(4)">← Back</button>
+            <button id="owSubmitBtn" class="btn btn-clay" onclick="OW.submit()">Submit Application →</button>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="background:var(--paper);">
-    <div class="wrap">
-      <div class="section-head"><div>
-        <div class="eyebrow">How It Works</div>
-        <h2 style="font-weight:600; color:#0E1F33;">From discovery to results — in four steps</h2>
-      </div></div>
-      <div class="network-how">
-        <div class="network-step">
-          <h4>Discover</h4>
-          <p>Patients find laboratories through the AgoroX directory. Search by test, location, or speciality.</p>
-        </div>
-        <div class="network-step">
-          <h4>Book</h4>
-          <p>Select a test, choose a date, and book an appointment online. Optionally pay before the visit.</p>
-        </div>
-        <div class="network-step">
-          <h4>Process</h4>
-          <p>Bookings appear automatically in LabOS. The laboratory processes the test without re-entering data.</p>
-        </div>
-        <div class="network-step">
-          <h4>Access</h4>
-          <p>Results are released through the Patient Portal. Patients track, view, and download their reports.</p>
+        <div id="owSuccess" style="display:none; background:var(--skyfill); border:1px solid var(--clay); border-radius:4px; padding:24px; text-align:center;">
+          <div style="font-size:32px; margin-bottom:12px;">✓</div>
+          <h3 style="color:var(--navy); margin-bottom:8px;">Application Received</h3>
+          <p style="color:var(--slate-dark); font-size:14px;">We'll contact <strong id="owSuccessEmail"></strong> within 24 hours to complete your onboarding.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <section>
+  <!-- ── WHY JOIN ─────────────────────────────────────────────────────────── -->
+  <section style="background:var(--paper); padding:64px 0;">
     <div class="wrap">
-      <div class="section-head"><div>
-        <div class="eyebrow">Benefits</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Built for laboratories. Built for patients.</h2>
-      </div></div>
-      <div class="benefit-cols">
-        <div class="benefit-col">
-          <h3>For Laboratories</h3>
-          <ul>
-            <li>Receive online bookings directly into LabOS</li>
-            <li>Increase visibility through the laboratory directory</li>
-            <li>Offer patients a digital portal for results</li>
-            <li>Deliver digital results — no paper, no delays</li>
-            <li>Access training and certification through the Academy</li>
-            <li>Use Knowledge Center resources for accreditation</li>
-            <li>Grow your patient base through the network</li>
-            <li>Participate in the future healthcare marketplace</li>
-          </ul>
-        </div>
-        <div class="benefit-col">
-          <h3>For Patients</h3>
-          <ul>
-            <li>Find accredited laboratories near you</li>
-            <li>Book tests online — no queues, no phone calls</li>
-            <li>Pay online before or at the laboratory</li>
-            <li>Track test status in real time</li>
-            <li>Access results digitally through the Patient Portal</li>
-            <li>View complete test history across laboratories</li>
-            <li>Manage healthcare records in one place</li>
-            <li>Access services from anywhere in Nigeria</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="background:var(--paper);">
-    <div class="wrap">
-      <div class="section-head"><div>
-        <div class="eyebrow">Vision</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Building Africa's Laboratory Network</h2>
-      </div></div>
-      <p style="font-size:15px; color:var(--charcoal-soft); max-width:640px; line-height:1.7; margin-bottom:20px;">The AgoroX Network is the long-term vision for connected healthcare infrastructure across the continent. Starting with laboratories, expanding to pharmacies, clinics, and eventually a complete digital health ecosystem — AgoroX is building the rails that healthcare runs on.</p>
-      <span class="btn btn-ghost" data-route="roadmap">See the Roadmap →</span>
-    </div>
-  </section>
-
-  <section class="eco-cta">
-    <div class="wrap">
-      <h2>Join the AgoroX Network</h2>
-      <p>Whether you're a laboratory looking to grow, or a patient looking for better access — the network is for you.</p>
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <span class="btn btn-clay" data-route="join-network">Join the Network →</span>
-        <span class="btn btn-ghost" data-route="find-test" style="color:var(--paper); border-color:rgba(247,245,240,0.3);">Find a Test →</span>
-        <span class="btn btn-ghost" data-route="labos-pricing" style="color:var(--paper); border-color:rgba(247,245,240,0.3);">View Plans →</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Join the Network — moved from home page -->
-  <section style="background:var(--paper);">
-    <div class="wrap">
-      <div class="section-head">
-        <div>
-          <div class="eyebrow">Why Join AgoroX</div>
-          <h2 style="font-weight:700; color:#0E1F33;">More than software. A platform for growth.</h2>
-        </div>
-      </div>
+      <div class="eyebrow">Why AgoroX Network</div>
+      <h2 style="font-weight:700; color:var(--navy); margin:12px 0 40px; font-size:clamp(22px,3vw,32px);">Built for laboratories that want to grow.</h2>
       <div class="why-grid">
         <div class="why-card">
           <div class="why-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V9M10 16V4M15 16v-5"/><path d="M2 18h16"/></svg></div>
           <h4>Digitise Operations</h4>
-          <p>Replace paper workflows with purpose-built platforms designed by teams that run their own operations.</p>
+          <p>Replace paper workflows with purpose-built platforms designed by teams that run their own lab and farm operations.</p>
         </div>
         <div class="why-card">
           <div class="why-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="6" r="2.5"/><path d="M1 16c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="15" cy="7" r="2"/><path d="M19 16c0-2.5-1.8-4-4-4"/></svg></div>
-          <h4>Improve Patient Experience</h4>
-          <p>Online booking, real-time tracking, digital results — the experience patients expect.</p>
+          <h4>Better Patient Experience</h4>
+          <p>Online booking, real-time tracking, digital results — the care experience patients expect at every income level.</p>
         </div>
         <div class="why-card">
           <div class="why-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="9" r="5"/><path d="M18 18l-4.5-4.5"/></svg></div>
           <h4>Increase Visibility</h4>
-          <p>Get listed in the AgoroX Directory and be discovered by patients searching for tests across Africa.</p>
+          <p>Get listed in the AgoroX directory and be discovered by patients searching for tests across Nigeria.</p>
         </div>
         <div class="why-card">
           <div class="why-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="14" rx="1.5"/><path d="M2 9h16"/><path d="M6 2v4M14 2v4"/></svg></div>
-          <h4>Receive Online Bookings</h4>
-          <p>Bookings flow directly into LabOS — no re-entry, no phone calls, no missed appointments.</p>
+          <h4>Zero Phone-Tag</h4>
+          <p>Bookings flow directly into LabOS. No re-entry, no missed appointments, no phone back-and-forth.</p>
         </div>
         <div class="why-card">
           <div class="why-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 8l9-4 9 4-9 4-9-4z"/><path d="M5 10v4c0 1.5 2.2 3 5 3s5-1.5 5-3v-4"/><path d="M19 8v5"/></svg></div>
-          <h4>Access Academy Training</h4>
-          <p>Certify your team through structured programs that build real operational competency.</p>
+          <h4>Academy Training</h4>
+          <p>Certify your team through structured programs that build real operational competency — not just theory.</p>
         </div>
         <div class="why-card">
           <div class="why-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 16l5-5 3 3 7-8"/><path d="M14 6h4v4"/></svg></div>
-          <h4>Prepare for Accreditation</h4>
-          <p>SOPs, quality manuals, audit checklists — resources designed for laboratories pursuing accreditation.</p>
+          <h4>Accreditation-Ready</h4>
+          <p>SOPs, quality manuals, audit checklists — resources designed for laboratories pursuing ISO 15189 or CAP.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ── QUOTE ───────────────────────────────────────────────────────────── -->
+  <section style="background:var(--navy); padding:48px 0;">
+    <div class="wrap" style="max-width:680px; text-align:center;">
+      <p style="font-size:clamp(16px,2.5vw,22px); color:var(--paper); line-height:1.65; font-style:italic; margin-bottom:24px;">
+        "AgoroX didn't sell us software built for a market they'd never seen. They built it for a lab — because they run one."
+      </p>
+      <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+        <div style="width:36px; height:36px; border-radius:50%; background:var(--clay); display:flex; align-items:center; justify-content:center; font-weight:700; color:#fff; font-size:13px;">VD</div>
+        <div style="text-align:left;">
+          <div style="font-size:13px; font-weight:600; color:var(--paper);">Operations Lead</div>
+          <div style="font-size:12px; color:rgba(247,245,240,.55);">Vitalis Diagnostics — LabOS customer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────────────────────── -->
+  <section style="background:var(--paper); padding:56px 0;">
+    <div class="wrap" style="text-align:center;">
+      <div class="eyebrow">Get Started</div>
+      <h2 style="font-weight:700; color:var(--navy); margin:12px 0 16px; font-size:clamp(22px,3vw,32px);">Your first booking is closer than you think.</h2>
+      <p style="color:var(--slate-dark); font-size:14px; margin-bottom:28px;">No sales call needed. No setup fee. Apply online and go live within days.</p>
+      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+        <span class="btn btn-clay" onclick="document.getElementById('plans').scrollIntoView({behavior:'smooth'})">Choose a Plan →</span>
+        <span class="btn btn-ghost" data-route="contact">Talk to Us</span>
+      </div>
+    </div>
+  </section>
 
 </div>
+
 
 <!-- =========================================================== LABOS PLANS & PRICING =========================================================== -->
 <div class="page" data-page="labos-pricing">
@@ -3998,7 +4285,7 @@
           <li><a data-route="academy">Academy</a></li>
           <li><a data-route="knowledge-center">Knowledge Center</a></li>
           <li><a data-route="resources-tools">Tools & Downloads</a></li>
-          <li><a data-route="press">Publications</a></li>
+          <li><a data-route="press">AgoroX Press</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -4711,18 +4998,44 @@ const AX = (function(){
       const s=$('axLeadSuccess'); if(s) s.style.display='block';
       analytics.track('lead_captured','knowledge-center',_pendingResource?_pendingResource.id:'');
     },
-    close(){ const m=$('axLeadModal'); if(m) m.classList.remove('open'); }
+    close(){ const m=$('axLeadModal'); if(m) m.classList.remove('open'); },
+    async submitPress(form){
+      var email=(document.getElementById('pressEmail')||{}).value||'';
+      if(!email) return false;
+      await post('/lead',{name:'Press Interest',email:email,resource_title:"The Poultry Farmer's Playbook Series",source_page:'press'});
+      var t=document.getElementById('pressEmailThanks'); if(t) t.style.display='block';
+      var f=document.getElementById('pressEmail'); if(f) f.style.display='none';
+      return false;
+    }
   };
   const modal = { close(){ leads.close(); } };
   return { post, analytics, leads, modal, toast, $, setErr, clearErr };
 })();
 
 (function(){
+  // Unified delegated click handler — covers BW grids, FT dropdown, search picks
   document.addEventListener('click',function(e){
+    // Close search dropdowns when clicking outside
     if(!e.target.closest('.eco-search-box')){
-      var dd=document.getElementById('bwSearchDrop');
-      if(dd) dd.classList.remove('open');
+      var s1=document.getElementById('bwSearchDrop'); if(s1) s1.classList.remove('open');
+      var s2=document.getElementById('ftDropdown');   if(s2) s2.classList.remove('open');
+      var s3=document.getElementById('ppDropdown');   if(s3) s3.classList.remove('open');
     }
+    // BW test grid
+    var ti=e.target.closest('[data-bw-test]');
+    if(ti){ BW.pickTest(ti.dataset.bwTest); return; }
+    // BW date grid
+    var di=e.target.closest('[data-bw-date]');
+    if(di){ BW.pickDate(di.dataset.bwDate,di.dataset.bwLbl); return; }
+    // BW time grid
+    var mi=e.target.closest('[data-bw-time]');
+    if(mi&&!mi.disabled){ BW.pickTime(mi.dataset.bwTime); return; }
+    // BW search dropdown
+    var si=e.target.closest('[data-bw-pick]');
+    if(si){ BW.searchPick(si.dataset.bwPick); return; }
+    // FT find-a-test dropdown
+    var fi=e.target.closest('[data-ft-pick]');
+    if(fi){ FT.pick(fi.dataset.ftPick); return; }
   });
 })();
 
@@ -5076,29 +5389,29 @@ const BW = (function(){
     if(hero) hero.scrollIntoView({behavior:'smooth',block:'start'});
   }
   function renderTests(){
-    const grid=document.getElementById('bwTestGrid'); if(!grid) return;
-    grid.innerHTML=TESTS.map(t=>
-      '<div class="bw-test-item'+(state.test&&state.test.id===t.id?' selected':'')+'" onclick="BW.pickTest(''+t.id+'')">'+
-      '<div class="bw-test-name">'+t.name+'</div><div class="bw-test-cat">'+t.cat+'</div></div>'
-    ).join('');
+    var grid=document.getElementById('bwTestGrid'); if(!grid) return;
+    grid.innerHTML=TESTS.map(function(t){
+      var sel=state.test&&state.test.id===t.id?' selected':'';
+      return '<div class="bw-test-item'+sel+'" data-bw-test="'+t.id+'"><div class="bw-test-name">'+t.name+'</div><div class="bw-test-cat">'+t.cat+'</div></div>';
+    }).join('');
   }
   function renderDates(){
-    const grid=document.getElementById('bwDateGrid'); if(!grid) return;
-    const today=new Date(); let h='';
-    for(let i=0;i<14;i++){
-      const d=new Date(today); d.setDate(today.getDate()+i);
-      const iso=d.toISOString().slice(0,10);
-      const lbl=(i===0?'Today':i===1?'Tomorrow':DAYS[d.getDay()]);
-      h+='<button class="bw-date-btn'+(state.date===iso?' selected':'')+'" onclick="BW.pickDate(''+iso+'',''+lbl+', '+d.getDate()+' '+MONTHS[d.getMonth()]+'')">'+
-         '<span class="bw-date-day">'+lbl+'</span><span class="bw-date-num">'+d.getDate()+'</span></button>';
+    var grid=document.getElementById('bwDateGrid'); if(!grid) return;
+    var today=new Date(),h='';
+    for(var i=0;i<14;i++){
+      var d=new Date(today); d.setDate(today.getDate()+i);
+      var iso=d.toISOString().slice(0,10);
+      var lbl=i===0?'Today':i===1?'Tomorrow':DAYS[d.getDay()];
+      var fll=lbl+', '+d.getDate()+' '+MONTHS[d.getMonth()];
+      h+='<button class="bw-date-btn'+(state.date===iso?' selected':'')+'" data-bw-date="'+iso+'" data-bw-lbl="'+fll+'"><span class="bw-date-day">'+lbl+'</span><span class="bw-date-num">'+d.getDate()+'</span></button>';
     }
     grid.innerHTML=h;
   }
   function renderTimes(){
-    const grid=document.getElementById('bwTimeGrid'); if(!grid) return;
-    grid.innerHTML=TIMES_ALL.map(t=>{
-      const taken=TIMES_TAKEN.includes(t);
-      return '<button class="bw-time-btn'+(taken?' unavailable':'')+(state.time===t?' selected':'')+'" '+(taken?'disabled':'')+' onclick="BW.pickTime(''+t+'')">'+t+'</button>';
+    var grid=document.getElementById('bwTimeGrid'); if(!grid) return;
+    grid.innerHTML=TIMES_ALL.map(function(t){
+      var taken=TIMES_TAKEN.includes(t),sel=state.time===t?' selected':'';
+      return '<button class="bw-time-btn'+sel+(taken?' unavailable':'')+'"'+(taken?' disabled':'')+' data-bw-time="'+t+'">'+t+'</button>';
     }).join('');
   }
   // Expose tests globally
@@ -5138,7 +5451,7 @@ const BW = (function(){
         dd.innerHTML=matches.slice(0,20).map(function(t){
           var i=t.name.toLowerCase().indexOf(term.toLowerCase());
           var hl=i===-1?t.name:t.name.slice(0,i)+'<mark style="background:none;color:var(--clay-deep);font-weight:700;">'+t.name.slice(i,i+term.length)+'</mark>'+t.name.slice(i+term.length);
-          return '<div class="ft-dd-item" onclick="BW.searchPick(''+t.id+'')">'+
+          return '<div class="ft-dd-item" data-bw-pick="'+t.id+'">'+
                  '<span>'+hl+'</span><span class="ft-dd-cat">'+t.cat+'</span></div>';
         }).join('');
       }
