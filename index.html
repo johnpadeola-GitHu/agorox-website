@@ -619,7 +619,7 @@
   .footer-legal a{ font-size:12px; color:#9CA1A8; }
   .footer-legal a:hover{ color:var(--clay); }
 
-  /* ---------- Client Login Modal ---------- */
+  /* ---------- Tenant Login Modal ---------- */
   .modal-backdrop{ position:fixed; inset:0; background:rgba(14,31,51,0.55); backdrop-filter:blur(3px); z-index:1000; display:none; align-items:center; justify-content:center; padding:24px; }
   .modal-backdrop.open{ display:flex; }
   .modal{ background:var(--paper); max-width:640px; width:100%; max-height:86vh; overflow-y:auto; border:1px solid var(--line); box-shadow:0 24px 64px rgba(14,31,51,0.25); }
@@ -1039,19 +1039,15 @@
     </a>
     <nav class="navlinks">
       <span class="navlink" data-route="home">Home</span>
-      <span class="navlink" data-route="products">Products</span>
-      <div class="nav-resources" id="navResources">
-        <span class="navlink" id="resourcesNavLink" onclick="toggleMegaMenu(event)">Resources</span>
-      </div>
-      <span class="navlink" data-route="industries">Industries</span>
-      <span class="navlink" data-route="laboratories">Laboratories</span>
-      <span class="navlink" data-route="agorox-network">Network</span>
+      <span class="navlink" data-route="knowledge-center">Resources</span>
+      <span class="navlink" data-route="patient-portal">Patient Portal</span>
+      <span class="navlink" data-route="agorox-network">AgoroX Network</span>
       <span class="navlink" data-route="press">Publications</span>
       <span class="navlink" data-route="about">About Us</span>
       <span class="navlink" data-route="contact">Contact</span>
     </nav>
     <div class="nav-cta">
-      <button class="btn btn-primary" onclick="openModal()">Client Login</button>
+      <button class="btn btn-primary" onclick="openModal()">Tenant Login</button>
       <button class="nav-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
         <svg width="18" height="14" viewBox="0 0 18 14"><rect width="18" height="2" fill="#0E1F33"/><rect y="6" width="18" height="2" fill="#0E1F33"/><rect y="12" width="18" height="2" fill="#0E1F33"/></svg>
       </button>
@@ -1061,22 +1057,13 @@
 
 <div class="mobile-menu" id="mobileMenu">
   <a data-route="home">Home</a>
-  <a data-route="products">Products</a>
-  <a data-route="academy">Academy</a>
-  <a data-route="knowledge-center">Knowledge Center</a>
-  <a data-route="resources-tools">Tools & Downloads</a>
-  <a data-route="industries">Industries</a>
-  <a data-route="find-test">Find a Test</a>
-  <a data-route="join-network">Join the Network</a>
-  <a data-route="laboratories">Laboratories</a>
+  <a data-route="knowledge-center">Resources</a>
   <a data-route="patient-portal">Patient Portal</a>
   <a data-route="agorox-network">AgoroX Network</a>
-  <a data-route="labos-pricing">LabOS Plans</a>
-  <a data-route="roadmap">Roadmap</a>
   <a data-route="press">Publications</a>
   <a data-route="about">About Us</a>
   <a data-route="contact">Contact</a>
-  <a onclick="openModal(); toggleMobileMenu();">Client Login</a>
+  <a onclick="openModal(); toggleMobileMenu();">Tenant Login</a>
 </div>
 
 <!-- ===== MEGA MENU ===== -->
@@ -1484,7 +1471,7 @@
           <div class="pc-tag" style="color:rgba(247,245,240,0.5);">AgoroX Platform</div>
           <h3 style="color:var(--paper);">One login, every product</h3>
           <p style="color:rgba(247,245,240,0.65);">Existing customers sign in once and move between every AgoroX platform they're licensed for.</p>
-          <span class="pc-link" style="color:var(--clay);">Client Login →</span>
+          <span class="pc-link" style="color:var(--clay);">Tenant Login →</span>
         </div>
       </div>
     </div>
@@ -1515,7 +1502,7 @@
           </ul>
           <div class="feature-actions">
             <span class="btn btn-primary" data-route="contact">Request a Demo</span>
-            <button class="btn btn-ghost" onclick="openModal()">Client Login</button>
+            <button class="btn btn-ghost" onclick="openModal()">Tenant Login</button>
           </div>
         </div>
       </div>
@@ -1576,7 +1563,7 @@
           </ul>
           <div class="feature-actions">
             <span class="btn btn-primary" data-route="contact">Request a Demo</span>
-            <button class="btn btn-ghost" onclick="openModal()">Client Login</button>
+            <button class="btn btn-ghost" onclick="openModal()">Tenant Login</button>
           </div>
         </div>
       </div>
@@ -1598,7 +1585,7 @@
           </ul>
           <div class="feature-actions">
             <span class="btn btn-primary" data-route="contact">Request a Demo</span>
-            <button class="btn btn-ghost" onclick="openModal()">Client Login</button>
+            <button class="btn btn-ghost" onclick="openModal()">Tenant Login</button>
           </div>
         </div>
         <div class="feature-visual" style="order:2;">
@@ -2651,7 +2638,7 @@
           </div>
           <div class="contact-card">
             <h4>Existing Customers</h4>
-            <span class="cc-val" style="cursor:pointer; font-size:16px; font-family:var(--body); color:var(--navy); font-weight:600;" onclick="openModal()">Client Login →</span>
+            <span class="cc-val" style="cursor:pointer; font-size:16px; font-family:var(--body); color:var(--navy); font-weight:600;" onclick="openModal()">Tenant Login →</span>
           </div>
           <div class="contact-card">
             <h4>Follow AgoroX</h4>
@@ -3105,7 +3092,7 @@
           <div class="lab-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Ibadan, Oyo State</div>
           <div class="lab-tests">120+ tests · Haematology, Microbiology, Chemical Pathology</div>
           <div class="lab-actions">
-            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="book-test">Book Test</span>
+            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="patient-portal">Book Test</span>
             <span class="lab-rating"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M10 1.5l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3.5L4.5 17.5l1.5-6L1.5 7.5l6-.5z"/></svg> 4.8</span>
           </div>
         </div>
@@ -3116,7 +3103,7 @@
           <div class="lab-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Lagos, Lagos State</div>
           <div class="lab-tests">200+ tests · Full Service Laboratory</div>
           <div class="lab-actions">
-            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="book-test">Book Test</span>
+            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="patient-portal">Book Test</span>
             <span class="lab-rating"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M10 1.5l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3.5L4.5 17.5l1.5-6L1.5 7.5l6-.5z"/></svg> 4.6</span>
           </div>
         </div>
@@ -3138,7 +3125,7 @@
           <div class="lab-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Port Harcourt, Rivers State</div>
           <div class="lab-tests">150+ tests · DNA, Microbiology, Histopathology</div>
           <div class="lab-actions">
-            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="book-test">Book Test</span>
+            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="patient-portal">Book Test</span>
             <span class="lab-rating"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M10 1.5l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3.5L4.5 17.5l1.5-6L1.5 7.5l6-.5z"/></svg> 4.7</span>
           </div>
         </div>
@@ -3160,7 +3147,7 @@
           <div class="lab-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> Kano, Kano State</div>
           <div class="lab-tests">180+ tests · Full Service, Research</div>
           <div class="lab-actions">
-            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="book-test">Book Test</span>
+            <span class="btn btn-clay" style="font-size:12px; padding:7px 14px;" data-route="patient-portal">Book Test</span>
             <span class="lab-rating"><svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor" stroke="currentColor" stroke-width="1"><path d="M10 1.5l2.5 5.5 6 .5-4.5 4 1.5 6-5.5-3.5L4.5 17.5l1.5-6L1.5 7.5l6-.5z"/></svg> 4.9</span>
           </div>
         </div>
@@ -3239,7 +3226,7 @@
           <div class="lab-sidebar-card">
             <h4>Book a Test</h4>
             <p style="margin-bottom:12px;">Select a test, choose a date, and book your appointment online.</p>
-            <span class="btn btn-clay" style="width:100%; text-align:center; display:block;" data-route="book-test">Book Appointment →</span>
+            <span class="btn btn-clay" style="width:100%; text-align:center; display:block;" data-route="patient-portal">Book Appointment →</span>
           </div>
           <div class="lab-sidebar-card">
             <h4>Operating Hours</h4>
@@ -3273,8 +3260,7 @@
     <div class="wrap">
       <div class="breadcrumb">
         <span data-route="home" style="cursor:pointer;">Home</span> /
-        <span data-route="laboratories" style="cursor:pointer;">Laboratories</span> /
-        <span data-route="lab-profile" style="cursor:pointer;">Laboratory</span> / Book a Test
+        <span data-route="patient-portal" style="cursor:pointer;">Patient Portal</span> / Book a Test
       </div>
       <div class="eyebrow">Test Booking</div>
       <h1 style="font-weight:700; color:#1F3A5F;">Book a Test</h1>
@@ -3404,67 +3390,145 @@
   <div class="page-hero">
     <div class="wrap">
       <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Patient Portal</div>
-      <h1 style="font-weight:700; color:#1F3A5F;">Patient Portal</h1>
-      <p class="lede">Access your appointments, test results, invoices, and health records — all in one place.</p>
+      <div class="eyebrow">Patient Portal</div>
+      <h1 style="font-weight:700; color:#1F3A5F;">Find &amp; Book a Test</h1>
+      <p class="lede">Search 300+ tests from accredited laboratories. Book online in minutes. Results delivered to your phone.</p>
     </div>
   </div>
 
-  <section style="background:var(--paper);">
-    <div class="wrap">
-      <div class="portal-features">
-        <div class="portal-feature-card">
-          <div class="portal-feature-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 2h6v2H7z"/><rect x="4" y="3" width="12" height="15" rx="1"/><path d="M7 9h6M7 12h4"/></svg></div>
-          <h4>Appointments</h4>
-          <p>View upcoming appointments, reschedule, or book new tests at any network laboratory.</p>
-        </div>
-        <div class="portal-feature-card">
-          <div class="portal-feature-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18V2"/><path d="M2 14l4-4 3 2 5-6 4 3"/></svg></div>
-          <h4>Test Results</h4>
-          <p>View and download PDF results. Track status in real time — from sample collection to release.</p>
-        </div>
-        <div class="portal-feature-card">
-          <div class="portal-feature-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="18" height="13" rx="1.5"/><path d="M1 9h18"/><path d="M5 13h3"/></svg></div>
-          <h4>Payments & Invoices</h4>
-          <p>Pay online before or after your visit. View receipts and payment history.</p>
-        </div>
-        <div class="portal-feature-card">
-          <div class="portal-feature-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2a6 6 0 016 6c0 4 1.5 5 2 6H2c.5-1 2-2 2-6a6 6 0 016-6z"/><path d="M8 18a2 2 0 004 0"/></svg></div>
-          <h4>Notifications</h4>
-          <p>Get notified when your results are ready, appointments are confirmed, or payments are due.</p>
-        </div>
-        <div class="portal-feature-card">
-          <div class="portal-feature-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5a1 1 0 011-1h5l2 2h7a1 1 0 011 1v9a1 1 0 01-1 1H3a1 1 0 01-1-1V5z"/></svg></div>
-          <h4>Health Records</h4>
-          <p>Access your complete test history across all AgoroX Network laboratories.</p>
-        </div>
-        <div class="portal-feature-card">
-          <div class="portal-feature-icon"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-3.5 3-6 7-6s7 2.5 7 6"/></svg></div>
-          <h4>Profile Management</h4>
-          <p>Update your personal information, contact details, and notification preferences.</p>
-        </div>
-      </div>
-
-      <div class="portal-login-box">
-        <h3>Sign in to your portal</h3>
-        <p>Access your account on <strong>portal.agorox.africa</strong></p>
-        <span class="btn btn-clay">Sign In to Patient Portal →</span>
-        <p style="margin-top:14px; font-size:12.5px; color:var(--slate);">Don't have an account? Book a test to get started.</p>
+  <!-- Quick Test Search -->
+  <section style="background:var(--skyfill); padding:28px 0 20px;">
+    <div class="wrap" style="max-width:680px;">
+      <p style="font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:10px;">Search 300+ Tests</p>
+      <div class="eco-search-box" style="position:relative; margin-bottom:0;">
+        <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        <input type="text" id="ppSearch" placeholder="Type a test — e.g. Malaria, CBC, HbA1c, Liver Function, Biopsy…" oninput="PP.filter(this.value)" onkeydown="PP.key(event)" autocomplete="off" style="width:100%; box-sizing:border-box;">
+        <div class="ft-dropdown" id="ppDropdown"></div>
       </div>
     </div>
   </section>
 
-  <section class="eco-cta">
-    <div class="wrap">
-      <h2>Africa's Laboratory Network</h2>
-      <p>AgoroX connects patients and laboratories across the continent. Find a lab, book a test, access your results — from anywhere.</p>
-      <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
-        <span class="btn btn-clay" data-route="laboratories">Find a Laboratory →</span>
-        <span class="btn btn-ghost" data-route="contact" style="color:var(--paper); border-color:rgba(247,245,240,0.3);">Partner with AgoroX →</span>
-      </div>
-    </div>
-  </section>
+  <!-- Booking Wizard -->
+  <section>
+    <div class="wrap" style="max-width:720px;">
 
-</div>
+      <div class="bw-progress" id="bwProgress">
+        <div class="bw-prog-step active" data-step="1"><div class="bw-prog-dot">1</div><div class="bw-prog-label">Test</div></div>
+        <div class="bw-prog-step" data-step="2"><div class="bw-prog-dot">2</div><div class="bw-prog-label">Date</div></div>
+        <div class="bw-prog-step" data-step="3"><div class="bw-prog-dot">3</div><div class="bw-prog-label">Time</div></div>
+        <div class="bw-prog-step" data-step="4"><div class="bw-prog-dot">4</div><div class="bw-prog-label">Details</div></div>
+        <div class="bw-prog-step" data-step="5"><div class="bw-prog-dot">5</div><div class="bw-prog-label">Confirm</div></div>
+      </div>
+
+      <!-- Step 1: Choose test -->
+      <div class="bw-step active" id="bwStep1">
+        <h3 style="margin-bottom:4px;">Select a Test</h3>
+        <p style="font-size:13.5px;color:var(--slate-dark);margin-bottom:16px;">Type above to search, or browse below. Click any test to select it.</p>
+
+        <!-- Selected test indicator -->
+        <div id="bwSelectedTest" style="display:none; background:var(--skyfill); border:2px solid var(--clay); border-radius:4px; padding:10px 14px; margin-bottom:14px;">
+          <span style="font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--clay-deep);">Selected:</span>
+          <span id="bwSelectedTestName" style="font-size:14px; font-weight:600; color:var(--navy); margin-left:8px;"></span>
+          <span style="float:right; font-size:12px; color:var(--slate); cursor:pointer;" onclick="BW.clearTest()">✕ Change</span>
+        </div>
+
+        <div class="eco-search-box" style="margin-bottom:14px;">
+          <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input type="text" id="bwTestSearch" placeholder="Filter tests..." oninput="BW.filterTests(this.value)" autocomplete="off">
+        </div>
+        <div class="bw-test-grid" id="bwTestGrid"></div>
+        <div class="ow-nav"><span></span><button class="btn btn-clay" onclick="BW.next(1)">Continue →</button></div>
+      </div>
+
+      <!-- Step 2: Choose date -->
+      <div class="bw-step" id="bwStep2">
+        <h3 style="margin-bottom:4px;">Choose a Date</h3>
+        <p style="font-size:13.5px;color:var(--slate-dark);margin-bottom:6px;">Select your preferred date. Same-day booking available before 10:00 AM.</p>
+        <div id="bwSelectedDateLabel" style="font-size:13px; color:var(--clay-deep); font-weight:600; margin-bottom:14px;"></div>
+        <div class="bw-date-grid" id="bwDateGrid" style="margin-bottom:20px;"></div>
+        <div class="ow-nav">
+          <button class="btn btn-ghost" onclick="BW.back(2)">← Back</button>
+          <button class="btn btn-clay" onclick="BW.next(2)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Choose time -->
+      <div class="bw-step" id="bwStep3">
+        <h3 style="margin-bottom:4px;">Choose a Time Slot</h3>
+        <p style="font-size:13.5px;color:var(--slate-dark);margin-bottom:16px;">Grey slots are already booked.</p>
+        <div class="bw-time-grid" id="bwTimeGrid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:20px;"></div>
+        <div class="ow-nav">
+          <button class="btn btn-ghost" onclick="BW.back(3)">← Back</button>
+          <button class="btn btn-clay" onclick="BW.next(3)">Continue →</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Patient details -->
+      <div class="bw-step" id="bwStep4">
+        <h3 style="margin-bottom:16px;">Your Details</h3>
+        <div style="display:grid; gap:14px;">
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Full Name *</label>
+            <input type="text" id="bw_name" placeholder="e.g. Adewale Okafor" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:9px 12px; font-size:14px;">
+            <span id="bw_name_err" style="color:var(--clay-deep); font-size:12px;"></span>
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Email Address *</label>
+            <input type="email" id="bw_email" placeholder="your@email.com" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:9px 12px; font-size:14px;">
+            <span id="bw_email_err" style="color:var(--clay-deep); font-size:12px;"></span>
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Phone Number</label>
+            <input type="tel" id="bw_phone" placeholder="e.g. 0803 000 0000" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:9px 12px; font-size:14px;">
+          </div>
+          <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Notes (optional)</label>
+            <textarea id="bw_notes" placeholder="Any relevant medical history or instructions…" rows="3" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:9px 12px; font-size:14px; resize:vertical;"></textarea>
+          </div>
+        </div>
+        <div class="ow-nav" style="margin-top:20px;">
+          <button class="btn btn-ghost" onclick="BW.back(4)">← Back</button>
+          <button class="btn btn-clay" onclick="BW.next(4)">Review Booking →</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Review -->
+      <div class="bw-step" id="bwStep5">
+        <h3 style="margin-bottom:16px;">Review Your Booking</h3>
+        <div class="bw-summary" id="bwSummary" style="background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:20px; margin-bottom:20px;">
+          <div class="bw-summary-row"><span class="bw-summary-label">Test</span><span id="bwSumTest" class="bw-summary-value"></span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Laboratory</span><span class="bw-summary-value">Vitalis Diagnostics, Ibadan</span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Date</span><span id="bwSumDate" class="bw-summary-value"></span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Time</span><span id="bwSumTime" class="bw-summary-value"></span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Name</span><span id="bwSumName" class="bw-summary-value"></span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Email</span><span id="bwSumEmail" class="bw-summary-value"></span></div>
+        </div>
+        <p style="font-size:13px; color:var(--slate-dark); margin-bottom:16px;">A confirmation with your booking reference will be sent to your email immediately.</p>
+        <div id="owSubmitArea">
+          <div class="ow-nav">
+            <button class="btn btn-ghost" onclick="BW.back(5)">← Back</button>
+            <button id="bwSubmitBtn" class="btn btn-clay" onclick="BW.submit()">Confirm Booking →</button>
+          </div>
+        </div>
+        <div id="bwSuccessMsg" style="display:none;"></div>
+      </div>
+
+      <!-- Step 6: Confirmation -->
+      <div class="bw-step" id="bwStep6">
+        <div style="text-align:center; padding:40px 20px;">
+          <div style="font-size:48px; margin-bottom:16px;">✓</div>
+          <h2 style="color:var(--navy); margin-bottom:8px;">Booking Confirmed!</h2>
+          <p style="color:var(--slate-dark); margin-bottom:8px;">Your booking reference:</p>
+          <p id="bwConfRef" style="font-family:var(--mono); font-size:22px; font-weight:700; color:var(--clay-deep); margin-bottom:16px;"></p>
+          <p style="font-size:14px; color:var(--slate-dark);">A confirmation has been sent to <strong id="bwConfEmail"></strong></p>
+          <div style="margin-top:28px;">
+            <button class="btn btn-clay" onclick="window.location.hash='#patient-portal'; BW.reset();">Book Another Test</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section></div>
 
 
 <!-- =========================================================== AGOROX NETWORK =========================================================== -->
@@ -3957,11 +4021,6 @@
           <li><a data-route="products" data-anchor="poultrysuite">PoultrySuite Africa</a></li>
           <li><a data-route="products" data-anchor="pharmacyos">PharmacyOS</a></li>
           <li><a data-route="products" data-anchor="smartinvoice">SmartInvoice</a></li>
-          <li style="margin-top:8px; padding-top:8px; border-top:1px solid var(--line);"><a data-route="laboratories">Find a Laboratory</a></li>
-          <li><a data-route="patient-portal">Patient Portal</a></li>
-          <li><a data-route="agorox-network">AgoroX Network</a></li>
-          <li><a data-route="labos-pricing">LabOS Plans</a></li>
-          <li><a data-route="roadmap">Roadmap</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -3971,7 +4030,6 @@
           <li><a data-route="academy">Academy</a></li>
           <li><a data-route="knowledge-center">Knowledge Center</a></li>
           <li><a data-route="resources-tools">Tools & Downloads</a></li>
-          <li><a data-route="industries">Industries</a></li>
           <li><a data-route="press">Publications</a></li>
         </ul>
       </div>
@@ -4006,7 +4064,7 @@
   <div class="modal">
     <div class="modal-head">
       <div>
-        <h3>Client Login</h3>
+        <h3>Tenant Login</h3>
         <p>Select the AgoroX platform you'd like to sign in to.</p>
       </div>
       <button class="modal-close" onclick="closeModal()">✕</button>
@@ -4072,7 +4130,7 @@
     });
     // Highlight Network for sub-pages
     document.querySelectorAll('.navlink[data-route="agorox-network"]').forEach(n=>{
-      n.classList.toggle('active', ['agorox-network','labos-pricing','roadmap','join-network'].includes(route));
+      n.classList.toggle('active', ['agorox-network','labos-pricing','roadmap','join-network','patient-portal','book-test'].includes(route));
     });
     // Highlight Laboratories for find-test
     document.querySelectorAll('.navlink[data-route="laboratories"]').forEach(n=>{
@@ -4491,7 +4549,7 @@
             </div>
           </div>
           <div class="tri-cta">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="book-test">Book Test →</span>
+            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="patient-portal">Book Test →</span>
           </div>
         </div>
 
@@ -4509,7 +4567,7 @@
             </div>
           </div>
           <div class="tri-cta">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="book-test">Book Test →</span>
+            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="patient-portal">Book Test →</span>
           </div>
         </div>
 
@@ -4527,7 +4585,7 @@
             </div>
           </div>
           <div class="tri-cta">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="book-test">Book Test →</span>
+            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="patient-portal">Book Test →</span>
           </div>
         </div>
 
@@ -4545,7 +4603,7 @@
             </div>
           </div>
           <div class="tri-cta">
-            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="book-test">Book Test →</span>
+            <span class="btn btn-clay" style="font-size:12.5px; padding:9px 14px;" data-route="patient-portal">Book Test →</span>
           </div>
         </div>
 
@@ -5074,8 +5132,11 @@ const BW = (function(){
       return '<button class="bw-time-btn'+(taken?' unavailable':'')+(state.time===t?' selected':'')+'" '+(taken?'disabled':'')+' onclick="BW.pickTime(''+t+'')">'+t+'</button>';
     }).join('');
   }
+  // Expose tests globally for PP search
+  window._AGOROX_TESTS = TESTS;
+
   return {
-    preselectAndGo(testId){ state.test=TESTS.find(t=>t.id===testId)||null; window.location.hash='#book-test'; },
+    preselectAndGo(testId){ state.test=TESTS.find(t=>t.id===testId)||null; window.location.hash='#patient-portal'; },
     init(){
       gotoStep(1);
       const prog=document.getElementById('bwProgress'); if(prog) prog.style.display='';
@@ -5090,7 +5151,27 @@ const BW = (function(){
       }
     },
     filterTests(q){ document.querySelectorAll('.bw-test-item').forEach(el=>{ el.style.display=el.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'; }); },
-    pickTest(id){ state.test=TESTS.find(t=>t.id===id)||null; renderTests(); },
+    pickTest(id){
+      state.test=TESTS.find(t=>t.id===id)||null;
+      renderTests();
+      // Update the selected test indicator
+      var ind=document.getElementById('bwSelectedTest');
+      var nm=document.getElementById('bwSelectedTestName');
+      if(ind && nm){
+        if(state.test){ ind.style.display='block'; nm.textContent=state.test.name; }
+        else { ind.style.display='none'; }
+      }
+    },
+    clearTest(){
+      state.test=null;
+      renderTests();
+      var ind=document.getElementById('bwSelectedTest');
+      if(ind) ind.style.display='none';
+    },
+    reset(){
+      state={step:1,test:null,date:null,dateLabel:null,time:null,patient:{name:'',email:'',phone:'',notes:''}};
+      BW.init();
+    },
     pickDate(iso,label){ state.date=iso; state.dateLabel=label; renderDates(); const l=document.getElementById('bwSelectedDateLabel'); if(l) l.textContent=label; renderTimes(); },
     pickTime(t){ state.time=t; renderTimes(); },
     next(current){
@@ -5568,6 +5649,65 @@ const FT = (function(){
   };
 })();
 
+
+// ════════════════════════════════════════════════════════════════════════════
+// PP — Patient Portal quick search (mirrors FT, targets #ppSearch)
+// ════════════════════════════════════════════════════════════════════════════
+const PP = (function(){
+  function hl(text,term){
+    var i=text.toLowerCase().indexOf(term.toLowerCase());
+    if(i===-1) return text;
+    return text.slice(0,i)+'<mark>'+text.slice(i,i+term.length)+'</mark>'+text.slice(i+term.length);
+  }
+  var highlighted=-1, filtered=[];
+  function close(){
+    var dd=document.getElementById('ppDropdown'); if(dd) dd.classList.remove('open'); highlighted=-1;
+  }
+  function getTests(){
+    // Reuse FT.TESTS if available, else empty
+    try{ return FT && FT._tests ? FT._tests : []; } catch(e){ return []; }
+  }
+  function render(term){
+    var dd=document.getElementById('ppDropdown'); if(!dd) return;
+    if(!term){ close(); return; }
+    // Search from BW's TESTS indirectly via BW._tests exposed below
+    var allTests=[];
+    try{ allTests=window._AGOROX_TESTS||[]; } catch(e){}
+    filtered=allTests.filter(function(t){ return t.name.toLowerCase().includes(term.toLowerCase())||t.cat.toLowerCase().includes(term.toLowerCase()); });
+    highlighted=-1;
+    if(filtered.length===0){
+      dd.innerHTML='<div class="ft-no-results">No tests found — try "liver", "CBC" or "thyroid"</div>';
+    } else {
+      dd.innerHTML=filtered.slice(0,12).map(function(t){
+        return '<div class="ft-dd-item" onclick="PP.pick(''+t.id+'')"><span>'+hl(t.name,term)+'</span><span class="ft-dd-cat">'+t.cat+'</span></div>';
+      }).join('');
+    }
+    dd.classList.add('open');
+  }
+  document.addEventListener('click',function(e){ if(!e.target.closest('.eco-search-box')) close(); });
+  return {
+    filter:function(q){ render(q.trim()); },
+    key:function(e){
+      var dd=document.getElementById('ppDropdown');
+      if(!dd||!dd.classList.contains('open')) return;
+      var items=dd.querySelectorAll('.ft-dd-item');
+      if(e.key==='ArrowDown'){ e.preventDefault(); highlighted=Math.min(highlighted+1,items.length-1); items.forEach(function(el,i){ el.classList.toggle('highlighted',i===highlighted); }); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); highlighted=Math.max(highlighted-1,0); items.forEach(function(el,i){ el.classList.toggle('highlighted',i===highlighted); }); }
+      else if(e.key==='Enter'){ e.preventDefault(); if(highlighted>=0&&filtered[highlighted]) PP.pick(filtered[highlighted].id); }
+      else if(e.key==='Escape'){ close(); var inp=document.getElementById('ppSearch'); if(inp){ inp.value=''; render(''); } }
+    },
+    pick:function(testId){
+      var allTests=[]; try{ allTests=window._AGOROX_TESTS||[]; } catch(e){}
+      var t=allTests.find(function(x){ return x.id===testId; }); if(!t) return;
+      close();
+      var inp=document.getElementById('ppSearch'); if(inp) inp.value='';
+      // Pre-select in BW and scroll to wizard
+      BW.preselectAndGo(testId);
+    }
+  };
+})();
+
+
 // ════════════════════════════════════════════════════════════════════════════
 // Init — fire on route change
 // ════════════════════════════════════════════════════════════════════════════
@@ -5576,7 +5716,7 @@ const FT = (function(){
   window.renderRoute=function(){
     if(orig) orig();
     const hash=window.location.hash.replace('#','').split('/')[0];
-    if(hash==='book-test'){ const prog=document.getElementById('bwProgress'); if(prog) prog.style.display=''; BW.init(); }
+    if(hash==='patient-portal'||hash==='book-test'){ const prog=document.getElementById('bwProgress'); if(prog) prog.style.display=''; BW.init(); }
     AX.analytics.track('page_view',hash,'');
   };
   document.addEventListener('click',function(e){
