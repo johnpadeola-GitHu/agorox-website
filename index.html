@@ -975,6 +975,12 @@
   .ft-dd-cat{ font-family:var(--mono); font-size:10.5px; color:var(--slate); letter-spacing:.04em; }
   .ft-no-results{ padding:14px 16px; font-size:13.5px; color:var(--slate-dark); }
 
+
+  /* ── Plan card selection affordance ─────────────────────────────────────── */
+  .plan-card{ cursor:pointer; transition:box-shadow .15s, border .15s; border:2px solid transparent; }
+  .plan-card:hover{ box-shadow:0 2px 12px rgba(196,106,62,.15); border-color:var(--clay); }
+  .plan-card.plan-featured:hover{ box-shadow:0 2px 12px rgba(196,106,62,.25); }
+
 </style>
 </head>
 <body>
@@ -4169,6 +4175,8 @@
             <li>Academy foundation modules</li>
             <li>Knowledge Center access</li>
           </ul>
+        
+          <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); font-weight:600;">→ Select CoreCare</span></div>
         </div>
         <div class="plan-card plan-featured" onclick="OW.selectPlan('professional',this)">
           <div class="plan-tier">Professional</div>
@@ -4182,6 +4190,8 @@
             <li>All Academy certifications</li>
             <li>Performance analytics</li>
           </ul>
+        
+          <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); font-weight:600;">→ Select Professional</span></div>
         </div>
         <div class="plan-card" onclick="OW.selectPlan('enterprise',this)">
           <div class="plan-tier">Enterprise</div>
@@ -4194,6 +4204,8 @@
             <li>API access &amp; integrations</li>
             <li>Dedicated onboarding support</li>
           </ul>
+        
+          <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); font-weight:600;">→ Select Enterprise</span></div>
         </div>
         <div class="plan-card" style="background:var(--skyfill);" onclick="OW.selectPlan('network-partner',this)">
           <div class="plan-tier" style="color:#2E7D32;">Network Partner</div>
@@ -4239,7 +4251,9 @@
           <input id="ow_phone" type="tel" placeholder="+234 801 234 5678">
         </div>
         <div class="ow-nav"><span></span><button class="btn btn-clay" onclick="OW.next(1)">Continue →</button></div>
-      </div>
+      
+          <div style="margin-top:16px; padding-top:14px; border-top:1px solid var(--line);"><span style="font-family:var(--mono); font-size:11px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); font-weight:600;">→ Select Network Partner</span></div>
+        </div>
 
       <!-- Panel 2: Laboratory details -->
       <div class="ow-panel" id="owPanel2">
@@ -4633,58 +4647,40 @@ const AX = (function(){
   const API = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
     ? 'http://localhost:8787'
     : 'https://agorox-api.johnpadeola.workers.dev/api';
-
   const sessionId = 'ax_' + Math.random().toString(36).slice(2,10);
-
   async function post(path, data){
     try{
-      const r = await fetch(API + path, {
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body: JSON.stringify(data)
-      });
+      const r = await fetch(API + path, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)});
       return r.json();
     } catch(e){ console.warn('AX.post error', path, e); return {ok:false}; }
   }
-
   function $(id){ return document.getElementById(id); }
   function setErr(id, msg){ const el=$(id); if(el) el.textContent=msg; }
   function clearErr(id){ setErr(id,''); }
-
   function toast(msg){
-    const t=$('ax-toast');
-    if(!t) return;
-    t.textContent=msg;
-    t.classList.add('show');
+    const t=$('ax-toast'); if(!t) return;
+    t.textContent=msg; t.classList.add('show');
     setTimeout(()=>t.classList.remove('show'), 2400);
   }
-
   const analytics = {
     track(event, page='', element='', meta={}){
       post('/analytics', {event, page, element, session_id: sessionId, meta});
     }
   };
-
   let _pendingResource = null;
   const leads = {
     open(el){
-      _pendingResource = {
-        id: el ? (el.dataset.resourceId||'') : '',
-        title: el ? (el.dataset.resourceTitle||'Resource') : 'Resource'
-      };
+      _pendingResource = { id: el?(el.dataset.resourceId||''):'', title: el?(el.dataset.resourceTitle||'Resource'):'Resource' };
       const titleEl=$('axLeadResourceTitle');
-      if(titleEl) titleEl.textContent = `Enter your details to access: "${_pendingResource.title}"`;
-      const successEl=$('axLeadSuccess');
-      const formEl=$('axLeadForm');
-      if(successEl) successEl.style.display='none';
-      if(formEl) formEl.style.display='block';
-      const modal=$('axLeadModal');
-      if(modal) modal.classList.add('open');
+      if(titleEl) titleEl.textContent = 'Enter your details to access: "'+_pendingResource.title+'"';
+      const s=$('axLeadSuccess'); const f=$('axLeadForm');
+      if(s) s.style.display='none'; if(f) f.style.display='block';
+      const m=$('axLeadModal'); if(m) m.classList.add('open');
       analytics.track('lead_modal_open','knowledge-center',_pendingResource.id);
     },
     async submit(){
-      const name  = ($('lf_name')||{}).value ? $('lf_name').value.trim() : '';
-      const email = ($('lf_email')||{}).value ? $('lf_email').value.trim() : '';
+      const name=($('lf_name')||{}).value?$('lf_name').value.trim():'';
+      const email=($('lf_email')||{}).value?$('lf_email').value.trim():'';
       clearErr('lf_name_err'); clearErr('lf_email_err');
       let ok=true;
       if(!name){ setErr('lf_name_err','Name is required'); ok=false; }
@@ -4692,29 +4688,19 @@ const AX = (function(){
       if(!ok) return;
       const btn=document.querySelector('#axLeadForm .btn-clay');
       if(btn){ btn.disabled=true; btn.innerHTML='<span class="ax-spinner"></span> Processing…'; }
-      await post('/lead', {
-        name, email,
-        lab_name: ($('lf_lab')||{}).value ? $('lf_lab').value.trim() : '',
-        country:  ($('lf_country')||{}).value || '',
-        resource_id:    _pendingResource ? _pendingResource.id    : '',
-        resource_title: _pendingResource ? _pendingResource.title : '',
-        source_page: window.location.hash
-      });
-      const formEl=$('axLeadForm'); if(formEl) formEl.style.display='none';
-      const successEl=$('axLeadSuccess'); if(successEl) successEl.style.display='block';
-      analytics.track('lead_captured','knowledge-center', _pendingResource ? _pendingResource.id : '');
+      await post('/lead',{name,email,lab_name:($('lf_lab')||{}).value||'',country:($('lf_country')||{}).value||'',resource_id:_pendingResource?_pendingResource.id:'',resource_title:_pendingResource?_pendingResource.title:'',source_page:window.location.hash});
+      const f=$('axLeadForm'); if(f) f.style.display='none';
+      const s=$('axLeadSuccess'); if(s) s.style.display='block';
+      analytics.track('lead_captured','knowledge-center',_pendingResource?_pendingResource.id:'');
     },
     close(){ const m=$('axLeadModal'); if(m) m.classList.remove('open'); }
   };
-
   const modal = { close(){ leads.close(); } };
-
   return { post, analytics, leads, modal, toast, $, setErr, clearErr };
 })();
 
-// Close modal on overlay click
 (function(){
-  const m = document.getElementById('axLeadModal');
+  const m=document.getElementById('axLeadModal');
   if(m) m.addEventListener('click', function(e){ if(e.target===this) AX.modal.close(); });
 })();
 
@@ -4722,35 +4708,334 @@ const AX = (function(){
 // BW — Booking Wizard
 // ════════════════════════════════════════════════════════════════════════════
 const BW = (function(){
-  const state = { step:1, test:null, date:null, dateLabel:null, time:null,
-    patient:{ name:'', email:'', phone:'', notes:'' } };
-
+  const state = { step:1, test:null, date:null, dateLabel:null, time:null, patient:{name:'',email:'',phone:'',notes:''} };
   const TESTS = [
-    {id:'fbc',    name:'Full Blood Count (FBC)',          cat:'Haematology'},
-    {id:'malaria',name:'Malaria RDT / Microscopy',        cat:'Parasitology'},
-    {id:'lft',    name:'Liver Function Test (LFT)',        cat:'Chemical Pathology'},
-    {id:'lipid',  name:'Lipid Profile',                   cat:'Chemical Pathology'},
-    {id:'hba1c',  name:'HbA1c',                           cat:'Chemical Pathology'},
-    {id:'hiv',    name:'HIV Screen',                      cat:'Immunology'},
-    {id:'hepb',   name:'Hepatitis B & C Screen',          cat:'Immunology'},
-    {id:'thyroid',name:'Thyroid Function Test',           cat:'Endocrinology'},
-    {id:'glucose',name:'Blood Glucose (FBS / 2hPP)',      cat:'Chemical Pathology'},
-    {id:'urine',  name:'Urinalysis (M/C/S)',              cat:'Microbiology'},
-    {id:'kft',    name:'Kidney Function Test (KFT)',       cat:'Chemical Pathology'},
-    {id:'cs',     name:'Culture & Sensitivity',           cat:'Microbiology'},
-    {id:'preg',   name:'Pregnancy Test (β-hCG)',          cat:'Immunology'},
-    {id:'drug',   name:'Drug Screening Panel',            cat:'Toxicology'},
-    {id:'dna',    name:'DNA Paternity Testing',           cat:'Molecular'},
-    {id:'semen',  name:'Seminal Analysis',                cat:'Andrology'},
-    {id:'eso',    name:'Electrolytes / Urea / Creatinine',cat:'Chemical Pathology'},
-    {id:'psa',    name:'PSA (Prostate Specific Antigen)', cat:'Oncology'},
+    // ── Haematology ──────────────────────────────────────────────────────────
+    {id:'fbc',       name:'Full Blood Count (FBC / CBC)',                  cat:'Haematology'},
+    {id:'diff',      name:'Differential White Cell Count',                 cat:'Haematology'},
+    {id:'pcv',       name:'Packed Cell Volume (PCV / Haematocrit)',        cat:'Haematology'},
+    {id:'hb',        name:'Haemoglobin Level (Hb)',                        cat:'Haematology'},
+    {id:'retic',     name:'Reticulocyte Count',                            cat:'Haematology'},
+    {id:'plt',       name:'Platelet Count',                                cat:'Haematology'},
+    {id:'esr',       name:'ESR (Erythrocyte Sedimentation Rate)',          cat:'Haematology'},
+    {id:'hba',       name:'Haemoglobin Electrophoresis (HbS,HbC,HbA2)',   cat:'Haematology'},
+    {id:'pt',        name:'Prothrombin Time (PT)',                         cat:'Haematology'},
+    {id:'ptt',       name:'Partial Thromboplastin Time (PTT / APTT)',      cat:'Haematology'},
+    {id:'inr',       name:'INR (International Normalized Ratio)',           cat:'Haematology'},
+    {id:'ddimer',    name:'D-Dimer',                                       cat:'Haematology'},
+    {id:'fibrin',    name:'Fibrinogen',                                    cat:'Haematology'},
+    {id:'thrombin',  name:'Thrombin Time (TT)',                            cat:'Haematology'},
+    {id:'bf_mal',    name:'Blood Film for Malaria Parasites',              cat:'Haematology'},
+    {id:'bf_cells',  name:'Blood Film for Abnormal Cells',                 cat:'Haematology'},
+    {id:'sickle',    name:'Sickle Cell Screening (Sickling Test)',         cat:'Haematology'},
+    {id:'g6pd',      name:'G6PD (Glucose-6-Phosphate Dehydrogenase)',      cat:'Haematology'},
+    {id:'btct',      name:'Bleeding Time / Clotting Time',                 cat:'Haematology'},
+    {id:'bg',        name:'Blood Group & Rhesus Typing (ABO & Rh)',        cat:'Haematology'},
+    {id:'xmatch',    name:'Cross-Matching',                                cat:'Haematology'},
+    {id:'coombs',    name:'Coombs Test (Direct & Indirect)',               cat:'Haematology'},
+    // ── Chemical Pathology / Clinical Chemistry ───────────────────────────
+    {id:'fbs',       name:'Fasting Blood Sugar (FBS)',                     cat:'Chemical Pathology'},
+    {id:'rbs',       name:'Random Blood Sugar (RBS)',                      cat:'Chemical Pathology'},
+    {id:'2hpp',      name:'2-Hour Post-Prandial Blood Sugar (2hPP)',       cat:'Chemical Pathology'},
+    {id:'hba1c',     name:'HbA1c (Glycated Haemoglobin)',                  cat:'Chemical Pathology'},
+    {id:'insulin',   name:'Serum Insulin',                                 cat:'Chemical Pathology'},
+    {id:'cpeptide',  name:'C-Peptide',                                     cat:'Chemical Pathology'},
+    {id:'lft',       name:'Liver Function Test (LFT)',                     cat:'Chemical Pathology'},
+    {id:'kft',       name:'Kidney Function Test (KFT / RFT)',              cat:'Chemical Pathology'},
+    {id:'eso',       name:'Electrolytes / Urea / Creatinine (EUC)',        cat:'Chemical Pathology'},
+    {id:'sodium',    name:'Serum Sodium (Na)',                             cat:'Chemical Pathology'},
+    {id:'potassium', name:'Serum Potassium (K)',                           cat:'Chemical Pathology'},
+    {id:'chloride',  name:'Serum Chloride (Cl)',                           cat:'Chemical Pathology'},
+    {id:'bicarb',    name:'Serum Bicarbonate / CO2',                       cat:'Chemical Pathology'},
+    {id:'urea',      name:'Blood Urea Nitrogen (BUN / Urea)',              cat:'Chemical Pathology'},
+    {id:'creat',     name:'Serum Creatinine',                              cat:'Chemical Pathology'},
+    {id:'egfr',      name:'eGFR (Estimated Glomerular Filtration Rate)',   cat:'Chemical Pathology'},
+    {id:'uricac',    name:'Uric Acid',                                     cat:'Chemical Pathology'},
+    {id:'lipid',     name:'Lipid Profile (Full)',                          cat:'Chemical Pathology'},
+    {id:'cholest',   name:'Total Cholesterol',                             cat:'Chemical Pathology'},
+    {id:'ldl',       name:'LDL Cholesterol',                               cat:'Chemical Pathology'},
+    {id:'hdl',       name:'HDL Cholesterol',                               cat:'Chemical Pathology'},
+    {id:'trig',      name:'Triglycerides',                                 cat:'Chemical Pathology'},
+    {id:'tp',        name:'Total Protein',                                 cat:'Chemical Pathology'},
+    {id:'albumin',   name:'Serum Albumin',                                 cat:'Chemical Pathology'},
+    {id:'globulin',  name:'Serum Globulin',                                cat:'Chemical Pathology'},
+    {id:'tbil',      name:'Total Bilirubin',                               cat:'Chemical Pathology'},
+    {id:'dbil',      name:'Direct Bilirubin (Conjugated)',                 cat:'Chemical Pathology'},
+    {id:'ibil',      name:'Indirect Bilirubin (Unconjugated)',             cat:'Chemical Pathology'},
+    {id:'alt',       name:'ALT / SGPT (Alanine Aminotransferase)',         cat:'Chemical Pathology'},
+    {id:'ast',       name:'AST / SGOT (Aspartate Aminotransferase)',       cat:'Chemical Pathology'},
+    {id:'alp',       name:'ALP (Alkaline Phosphatase)',                    cat:'Chemical Pathology'},
+    {id:'ggt',       name:'GGT (Gamma-Glutamyl Transferase)',              cat:'Chemical Pathology'},
+    {id:'amylase',   name:'Amylase',                                       cat:'Chemical Pathology'},
+    {id:'lipase',    name:'Lipase',                                        cat:'Chemical Pathology'},
+    {id:'ldh',       name:'LDH (Lactate Dehydrogenase)',                   cat:'Chemical Pathology'},
+    {id:'ck',        name:'CK (Creatine Kinase)',                          cat:'Chemical Pathology'},
+    {id:'ckmb',      name:'CK-MB',                                         cat:'Chemical Pathology'},
+    {id:'troponin',  name:'Troponin I / T',                                cat:'Chemical Pathology'},
+    {id:'bnp',       name:'BNP / NT-proBNP',                              cat:'Chemical Pathology'},
+    {id:'ca',        name:'Serum Calcium',                                 cat:'Chemical Pathology'},
+    {id:'phos',      name:'Serum Phosphate',                               cat:'Chemical Pathology'},
+    {id:'mag',       name:'Serum Magnesium',                               cat:'Chemical Pathology'},
+    {id:'iron',      name:'Serum Iron',                                    cat:'Chemical Pathology'},
+    {id:'tibc',      name:'TIBC (Total Iron Binding Capacity)',            cat:'Chemical Pathology'},
+    {id:'fer',       name:'Serum Ferritin',                                cat:'Chemical Pathology'},
+    {id:'b12',       name:'Vitamin B12',                                   cat:'Chemical Pathology'},
+    {id:'folate',    name:'Serum Folate',                                  cat:'Chemical Pathology'},
+    {id:'vitd',      name:'Vitamin D (25-OH)',                             cat:'Chemical Pathology'},
+    {id:'homocyst',  name:'Homocysteine',                                  cat:'Chemical Pathology'},
+    {id:'osmol',     name:'Serum Osmolality',                              cat:'Chemical Pathology'},
+    {id:'ammonia',   name:'Serum Ammonia',                                 cat:'Chemical Pathology'},
+    {id:'acetam',    name:'Paracetamol (Acetaminophen) Level',            cat:'Chemical Pathology'},
+    {id:'ethanol',   name:'Ethanol (Blood Alcohol) Level',                 cat:'Chemical Pathology'},
+    // ── Microbiology ──────────────────────────────────────────────────────
+    {id:'malaria',   name:'Malaria RDT (Rapid Diagnostic Test)',           cat:'Microbiology'},
+    {id:'mal_micro', name:'Malaria Microscopy (Thick & Thin Film)',        cat:'Microbiology'},
+    {id:'widal',     name:'Widal Test (Typhoid Fever)',                    cat:'Microbiology'},
+    {id:'ucs',       name:'Urine Culture & Sensitivity (C&S)',             cat:'Microbiology'},
+    {id:'bcs',       name:'Blood Culture & Sensitivity',                   cat:'Microbiology'},
+    {id:'scs',       name:'Sputum Culture & Sensitivity',                  cat:'Microbiology'},
+    {id:'wcs',       name:'Wound Swab Culture & Sensitivity',              cat:'Microbiology'},
+    {id:'hvs',       name:'HVS (High Vaginal Swab) Culture',              cat:'Microbiology'},
+    {id:'stool_cs',  name:'Stool Culture & Sensitivity',                   cat:'Microbiology'},
+    {id:'throat',    name:'Throat Swab Culture & Sensitivity',             cat:'Microbiology'},
+    {id:'ear_swab',  name:'Ear Swab Culture & Sensitivity',                cat:'Microbiology'},
+    {id:'eye_swab',  name:'Eye Swab Culture & Sensitivity',                cat:'Microbiology'},
+    {id:'urethral',  name:'Urethral Swab (MCS)',                           cat:'Microbiology'},
+    {id:'afb',       name:'AFB Smear (Acid-Fast Bacilli / TB)',            cat:'Microbiology'},
+    {id:'afb_cult',  name:'AFB Culture (TB Culture)',                      cat:'Microbiology'},
+    {id:'genexpert', name:'GeneXpert MTB/RIF (TB Molecular Test)',         cat:'Microbiology'},
+    {id:'hpylori',   name:'H. pylori Antigen / Antibody Test',            cat:'Microbiology'},
+    {id:'brucella',  name:'Brucella Agglutination Test',                   cat:'Microbiology'},
+    {id:'stool_ov',  name:'Stool Microscopy (Ova & Parasites)',            cat:'Microbiology'},
+    {id:'mrsa',      name:'MRSA Screening',                                cat:'Microbiology'},
+    {id:'csf',       name:'CSF Analysis (Cerebrospinal Fluid)',            cat:'Microbiology'},
+    // ── Urinalysis ────────────────────────────────────────────────────────
+    {id:'urine',     name:'Urinalysis (Routine / Dipstick)',               cat:'Urinalysis'},
+    {id:'umcs',      name:'Urine Microscopy, Culture & Sensitivity (UMCS)',cat:'Urinalysis'},
+    {id:'upr',       name:'Urine Protein (24-hour)',                       cat:'Urinalysis'},
+    {id:'uacr',      name:'Urine Albumin:Creatinine Ratio (UACR)',        cat:'Urinalysis'},
+    {id:'umicro',    name:'Urine Microalbumin',                            cat:'Urinalysis'},
+    {id:'ucr',       name:'Urine Creatinine (Spot)',                       cat:'Urinalysis'},
+    // ── Immunology / Serology ─────────────────────────────────────────────
+    {id:'hiv',       name:'HIV 1 & 2 Screen (Rapid)',                      cat:'Immunology'},
+    {id:'hiv_conf',  name:'HIV Confirmatory Test (Western Blot / ELISA)', cat:'Immunology'},
+    {id:'hbsag',     name:'Hepatitis B Surface Antigen (HBsAg)',           cat:'Immunology'},
+    {id:'anti_hbs',  name:'Hepatitis B Surface Antibody (Anti-HBs)',       cat:'Immunology'},
+    {id:'anti_hbc',  name:'Hepatitis B Core Antibody (Anti-HBc)',          cat:'Immunology'},
+    {id:'hbeag',     name:'Hepatitis B e-Antigen (HBeAg)',                 cat:'Immunology'},
+    {id:'hcv',       name:'Hepatitis C Antibody (Anti-HCV)',               cat:'Immunology'},
+    {id:'hcv_conf',  name:'Hepatitis C Confirmatory (HCV ELISA)',          cat:'Immunology'},
+    {id:'rpr',       name:'RPR / VDRL (Syphilis Screening)',               cat:'Immunology'},
+    {id:'tpha',      name:'TPHA (Treponema Pallidum Haemagglutination)',   cat:'Immunology'},
+    {id:'asot',      name:'ASO Titre (Anti-Streptolysin O)',               cat:'Immunology'},
+    {id:'crp',       name:'C-Reactive Protein (CRP)',                      cat:'Immunology'},
+    {id:'rhf',       name:'Rheumatoid Factor (RHF)',                       cat:'Immunology'},
+    {id:'ana',       name:'ANA (Antinuclear Antibodies)',                   cat:'Immunology'},
+    {id:'anti_dsdna',name:'Anti-dsDNA',                                    cat:'Immunology'},
+    {id:'anca',      name:'ANCA',                                           cat:'Immunology'},
+    {id:'anti_ccp',  name:'Anti-CCP (Cyclic Citrullinated Peptide)',       cat:'Immunology'},
+    {id:'dengue_ns1',name:'Dengue NS1 Antigen',                            cat:'Immunology'},
+    {id:'dengue_ab', name:'Dengue IgM / IgG',                              cat:'Immunology'},
+    {id:'covid_ag',  name:'COVID-19 Rapid Antigen Test',                   cat:'Immunology'},
+    {id:'typhoid_ab',name:'Typhoid IgM / IgG (Typhidot)',                 cat:'Immunology'},
+    {id:'toxo',      name:'Toxoplasma IgM / IgG',                         cat:'Immunology'},
+    {id:'rubella',   name:'Rubella IgM / IgG',                            cat:'Immunology'},
+    {id:'cmv',       name:'CMV IgM / IgG (Cytomegalovirus)',              cat:'Immunology'},
+    {id:'ebv',       name:'EBV VCA IgM / IgG (Epstein-Barr)',            cat:'Immunology'},
+    {id:'hsv',       name:'Herpes Simplex (HSV) IgM / IgG',              cat:'Immunology'},
+    {id:'torch',     name:'TORCH Screen (Full Panel)',                      cat:'Immunology'},
+    {id:'hpv',       name:'HPV Screen',                                    cat:'Immunology'},
+    {id:'complement',name:'Complement (C3 / C4)',                          cat:'Immunology'},
+    {id:'igg',       name:'Immunoglobulins (IgA, IgG, IgM)',              cat:'Immunology'},
+    {id:'preg',      name:'Pregnancy Test (beta-hCG)',                     cat:'Immunology'},
+    {id:'total_ige', name:'Total IgE',                                     cat:'Immunology'},
+    // ── Endocrinology / Hormones ──────────────────────────────────────────
+    {id:'tsh',       name:'TSH (Thyroid Stimulating Hormone)',             cat:'Endocrinology'},
+    {id:'ft3',       name:'Free T3 (FT3)',                                 cat:'Endocrinology'},
+    {id:'ft4',       name:'Free T4 (FT4)',                                 cat:'Endocrinology'},
+    {id:'thyroid',   name:'Thyroid Function Test (TFT — TSH, FT3, FT4)',  cat:'Endocrinology'},
+    {id:'cortisol',  name:'Cortisol (Morning / Random)',                   cat:'Endocrinology'},
+    {id:'acth',      name:'ACTH (Adrenocorticotropic Hormone)',            cat:'Endocrinology'},
+    {id:'fsh',       name:'FSH (Follicle Stimulating Hormone)',            cat:'Endocrinology'},
+    {id:'lh',        name:'LH (Luteinizing Hormone)',                      cat:'Endocrinology'},
+    {id:'prolactin', name:'Prolactin',                                     cat:'Endocrinology'},
+    {id:'testost',   name:'Testosterone (Total)',                          cat:'Endocrinology'},
+    {id:'free_test', name:'Free Testosterone',                             cat:'Endocrinology'},
+    {id:'e2',        name:'Oestradiol (E2)',                               cat:'Endocrinology'},
+    {id:'prog',      name:'Progesterone',                                  cat:'Endocrinology'},
+    {id:'amh',       name:'AMH (Anti-Mullerian Hormone)',                  cat:'Endocrinology'},
+    {id:'dheas',     name:'DHEA-S',                                        cat:'Endocrinology'},
+    {id:'pth',       name:'PTH (Parathyroid Hormone)',                     cat:'Endocrinology'},
+    {id:'aldost',    name:'Aldosterone',                                   cat:'Endocrinology'},
+    {id:'renin',     name:'Renin',                                         cat:'Endocrinology'},
+    {id:'igf1',      name:'IGF-1 (Insulin-like Growth Factor)',            cat:'Endocrinology'},
+    {id:'gh',        name:'Growth Hormone (GH)',                           cat:'Endocrinology'},
+    {id:'shbg',      name:'SHBG (Sex Hormone Binding Globulin)',           cat:'Endocrinology'},
+    // ── Oncology / Tumour Markers ─────────────────────────────────────────
+    {id:'psa',       name:'PSA (Prostate Specific Antigen)',               cat:'Oncology'},
+    {id:'fpsa',      name:'Free PSA Ratio',                                cat:'Oncology'},
+    {id:'afp',       name:'AFP (Alpha-Fetoprotein)',                       cat:'Oncology'},
+    {id:'cea',       name:'CEA (Carcinoembryonic Antigen)',                cat:'Oncology'},
+    {id:'ca125',     name:'CA-125 (Ovarian Cancer Marker)',                cat:'Oncology'},
+    {id:'ca153',     name:'CA 15-3 (Breast Cancer Marker)',               cat:'Oncology'},
+    {id:'ca199',     name:'CA 19-9 (Pancreatic Cancer Marker)',           cat:'Oncology'},
+    {id:'hcg',       name:'Beta-hCG Quantitative',                        cat:'Oncology'},
+    {id:'cyfra',     name:'CYFRA 21-1 (Lung Cancer Marker)',              cat:'Oncology'},
+    {id:'nse',       name:'NSE (Neuron-Specific Enolase)',                 cat:'Oncology'},
+    // ── Molecular / Genetics ──────────────────────────────────────────────
+    {id:'dna',       name:'DNA Paternity Testing',                         cat:'Molecular'},
+    {id:'covid_pcr', name:'COVID-19 PCR',                                  cat:'Molecular'},
+    {id:'hbv_dna',   name:'HBV DNA (Hepatitis B Viral Load)',              cat:'Molecular'},
+    {id:'hcv_rna',   name:'HCV RNA (Hepatitis C Viral Load)',              cat:'Molecular'},
+    {id:'hiv_vl',    name:'HIV Viral Load (HIV RNA PCR)',                  cat:'Molecular'},
+    {id:'cd4',       name:'CD4 Count (Flow Cytometry)',                    cat:'Molecular'},
+    {id:'cd4_ratio', name:'CD4:CD8 Ratio',                                 cat:'Molecular'},
+    {id:'brca',      name:'BRCA1 / BRCA2 Gene Test',                      cat:'Molecular'},
+    {id:'hpv_dna',   name:'HPV DNA Typing (High-Risk)',                    cat:'Molecular'},
+    {id:'tb_pcr',    name:'TB PCR / GeneXpert MTB/RIF',                   cat:'Molecular'},
+    {id:'karyotype', name:'Karyotyping (Chromosomal Analysis)',            cat:'Molecular'},
+    // ── Andrology ─────────────────────────────────────────────────────────
+    {id:'semen',     name:'Seminal Analysis (Semen Analysis)',             cat:'Andrology'},
+    {id:'sperm_morph',name:'Sperm Morphology (Strict Criteria)',           cat:'Andrology'},
+    {id:'sperm_dna', name:'Sperm DNA Fragmentation',                       cat:'Andrology'},
+    // ── Toxicology / Drug Monitoring ──────────────────────────────────────
+    {id:'drug',      name:'Drug of Abuse Screen (6-Panel)',                cat:'Toxicology'},
+    {id:'drug12',    name:'Drug of Abuse Screen (12-Panel)',               cat:'Toxicology'},
+    {id:'cannabis',  name:'Cannabis (THC) Screen',                         cat:'Toxicology'},
+    {id:'cocaine',   name:'Cocaine Screen',                                cat:'Toxicology'},
+    {id:'opiates',   name:'Opiates Screen',                                cat:'Toxicology'},
+    {id:'amphet',    name:'Amphetamines Screen',                           cat:'Toxicology'},
+    {id:'benzo',     name:'Benzodiazepines Screen',                        cat:'Toxicology'},
+    {id:'digoxin',   name:'Digoxin Level',                                 cat:'Toxicology'},
+    {id:'lithium',   name:'Lithium Level',                                 cat:'Toxicology'},
+    {id:'phenytoin', name:'Phenytoin Level',                               cat:'Toxicology'},
+    {id:'lead',      name:'Blood Lead Level',                              cat:'Toxicology'},
+    // ── Special ───────────────────────────────────────────────────────────
+    {id:'spep',      name:'Serum Protein Electrophoresis (SPEP)',          cat:'Special'},
+    {id:'lp',        name:'Lupus Profile (ANA, anti-dsDNA, Complement)',   cat:'Special'},
+    {id:'auto_panel',name:'Full Autoimmune Panel',                         cat:'Special'},
+    {id:'allergy',   name:'Allergy Panel (IgE)',                           cat:'Special'},
+    {id:'copper',    name:'Serum Copper',                                  cat:'Special'},
+    {id:'zinc',      name:'Serum Zinc',                                    cat:'Special'},
+    {id:'selenium',  name:'Serum Selenium',                                cat:'Special'},
+    {id:'cs_joint',  name:'Joint Aspirate Culture & Sensitivity',          cat:'Special'},
+    {id:'csf_cs',    name:'CSF Culture & Sensitivity',                     cat:'Special'},
+    // ── Imaging & Radiology ───────────────────────────────────────────────
+    {id:'xray_chest',  name:'Chest X-Ray (CXR)',                               cat:'Imaging & Radiology'},
+    {id:'xray_abd',    name:'Abdominal X-Ray (AXR)',                           cat:'Imaging & Radiology'},
+    {id:'xray_spine',  name:'Spine X-Ray (Cervical / Thoracic / Lumbar)',      cat:'Imaging & Radiology'},
+    {id:'xray_knee',   name:'Knee X-Ray',                                      cat:'Imaging & Radiology'},
+    {id:'xray_hip',    name:'Hip X-Ray',                                       cat:'Imaging & Radiology'},
+    {id:'xray_shoulder',name:'Shoulder X-Ray',                                 cat:'Imaging & Radiology'},
+    {id:'xray_hand',   name:'Hand / Wrist X-Ray',                             cat:'Imaging & Radiology'},
+    {id:'xray_foot',   name:'Foot / Ankle X-Ray',                             cat:'Imaging & Radiology'},
+    {id:'xray_skull',  name:'Skull X-Ray',                                     cat:'Imaging & Radiology'},
+    {id:'xray_pelvis', name:'Pelvis X-Ray',                                    cat:'Imaging & Radiology'},
+    {id:'us_abd',      name:'Abdominal Ultrasound',                            cat:'Imaging & Radiology'},
+    {id:'us_pelvic',   name:'Pelvic Ultrasound',                               cat:'Imaging & Radiology'},
+    {id:'us_obstetric',name:'Obstetric Ultrasound (Dating / Anomaly Scan)',    cat:'Imaging & Radiology'},
+    {id:'us_renal',    name:'Renal Ultrasound (Kidney, Ureter, Bladder)',      cat:'Imaging & Radiology'},
+    {id:'us_thyroid',  name:'Thyroid Ultrasound',                              cat:'Imaging & Radiology'},
+    {id:'us_breast',   name:'Breast Ultrasound',                               cat:'Imaging & Radiology'},
+    {id:'us_scrotal',  name:'Scrotal Ultrasound',                              cat:'Imaging & Radiology'},
+    {id:'us_doppler',  name:'Doppler Ultrasound (Vascular)',                   cat:'Imaging & Radiology'},
+    {id:'us_liver',    name:'Liver / Hepatobiliary Ultrasound',                cat:'Imaging & Radiology'},
+    {id:'us_cardiac',  name:'Echocardiogram (Echo)',                           cat:'Imaging & Radiology'},
+    {id:'ct_brain',    name:'CT Scan — Brain',                                 cat:'Imaging & Radiology'},
+    {id:'ct_chest',    name:'CT Scan — Chest',                                 cat:'Imaging & Radiology'},
+    {id:'ct_abd_pel',  name:'CT Scan — Abdomen & Pelvis',                     cat:'Imaging & Radiology'},
+    {id:'ct_spine',    name:'CT Scan — Spine',                                 cat:'Imaging & Radiology'},
+    {id:'mri_brain',   name:'MRI — Brain',                                     cat:'Imaging & Radiology'},
+    {id:'mri_spine',   name:'MRI — Spine',                                     cat:'Imaging & Radiology'},
+    {id:'mri_knee',    name:'MRI — Knee',                                      cat:'Imaging & Radiology'},
+    {id:'mri_shoulder',name:'MRI — Shoulder',                                  cat:'Imaging & Radiology'},
+    {id:'mri_abd',     name:'MRI — Abdomen',                                   cat:'Imaging & Radiology'},
+    {id:'mammogram',   name:'Mammography',                                     cat:'Imaging & Radiology'},
+    {id:'dexa',        name:'DEXA Scan (Bone Density)',                        cat:'Imaging & Radiology'},
+    {id:'ecg',         name:'ECG / EKG (Electrocardiogram)',                   cat:'Imaging & Radiology'},
+    {id:'barium',      name:'Barium Swallow / Meal / Enema',                   cat:'Imaging & Radiology'},
+    {id:'ivp',         name:'IVP (Intravenous Pyelogram)',                     cat:'Imaging & Radiology'},
+    {id:'fluoroscopy', name:'Fluoroscopy',                                     cat:'Imaging & Radiology'},
+    // ── Histopathology & Cytology ─────────────────────────────────────────
+    {id:'pap_smear',   name:'Pap Smear (Cervical Cytology)',                   cat:'Histopathology'},
+    {id:'fnac',        name:'FNAC (Fine Needle Aspiration Cytology)',          cat:'Histopathology'},
+    {id:'bx_skin',     name:'Skin Biopsy & Histology',                        cat:'Histopathology'},
+    {id:'bx_liver',    name:'Liver Biopsy & Histology',                       cat:'Histopathology'},
+    {id:'bx_kidney',   name:'Renal (Kidney) Biopsy & Histology',              cat:'Histopathology'},
+    {id:'bx_cervix',   name:'Cervical Biopsy & Histology',                    cat:'Histopathology'},
+    {id:'bx_endometrium',name:'Endometrial Biopsy & Histology',               cat:'Histopathology'},
+    {id:'bx_prostate', name:'Prostate Biopsy & Histology',                    cat:'Histopathology'},
+    {id:'bx_lymphnode',name:'Lymph Node Biopsy & Histology',                  cat:'Histopathology'},
+    {id:'bx_breast',   name:'Breast Biopsy & Histology',                      cat:'Histopathology'},
+    {id:'bx_bone',     name:'Bone Biopsy & Histology',                        cat:'Histopathology'},
+    {id:'bx_gi',       name:'GI Biopsy & Histology (Gastric / Colonic)',       cat:'Histopathology'},
+    {id:'bx_thyroid',  name:'Thyroid Biopsy & Histology',                     cat:'Histopathology'},
+    {id:'bx_lung',     name:'Lung Biopsy & Histology',                        cat:'Histopathology'},
+    {id:'bm_biopsy',   name:'Bone Marrow Biopsy & Trephine',                  cat:'Histopathology'},
+    {id:'bm_aspirate', name:'Bone Marrow Aspirate',                            cat:'Histopathology'},
+    {id:'cytology_fluid',name:'Body Fluid Cytology (Pleural / Ascitic / CSF)', cat:'Histopathology'},
+    {id:'cytology_sputum',name:'Sputum Cytology',                             cat:'Histopathology'},
+    {id:'cytology_urine', name:'Urine Cytology',                              cat:'Histopathology'},
+    {id:'frozen_section', name:'Frozen Section (Intraoperative)',              cat:'Histopathology'},
+    {id:'imhc',        name:'Immunohistochemistry (IHC)',                      cat:'Histopathology'},
+    // ── STI / Sexual Health ───────────────────────────────────────────────
+    {id:'sti_full',    name:'Full STI Screen Panel',                           cat:'STI / Sexual Health'},
+    {id:'chlamydia',   name:'Chlamydia trachomatis (PCR)',                     cat:'STI / Sexual Health'},
+    {id:'gonorrhoea',  name:'Gonorrhoea (Neisseria gonorrhoeae) PCR',          cat:'STI / Sexual Health'},
+    {id:'trichomonas', name:'Trichomonas vaginalis (PCR / Wet Prep)',          cat:'STI / Sexual Health'},
+    {id:'gc_culture',  name:'Gonorrhoea Culture & Sensitivity',                cat:'STI / Sexual Health'},
+    {id:'sti_multiplex',name:'STI Multiplex PCR (Chlamydia, GC, Trichomonas)',cat:'STI / Sexual Health'},
+    {id:'hiv_sti',     name:'HIV Screen (STI context)',                        cat:'STI / Sexual Health'},
+    {id:'syphilis_sti',name:'Syphilis Screen (RPR + TPHA)',                    cat:'STI / Sexual Health'},
+    {id:'hpv_sti',     name:'HPV DNA Typing (High-Risk Strains)',              cat:'STI / Sexual Health'},
+    {id:'hsv_sti',     name:'Herpes Simplex (HSV-1 & HSV-2) PCR',            cat:'STI / Sexual Health'},
+    {id:'bv_screen',   name:'Bacterial Vaginosis Screen (BV)',                 cat:'STI / Sexual Health'},
+    {id:'candida_screen',name:'Candida (Thrush) Screen',                       cat:'STI / Sexual Health'},
+    {id:'lgv',         name:'Lymphogranuloma Venereum (LGV)',                  cat:'STI / Sexual Health'},
+    {id:'mpox',        name:'Mpox (Monkeypox) PCR',                           cat:'STI / Sexual Health'},
+    {id:'hepatitis_sti',name:'Hepatitis B & C Screen (STI context)',          cat:'STI / Sexual Health'},
+    {id:'prep_screen', name:'PrEP / PEP Baseline Screen',                     cat:'STI / Sexual Health'},
+    // ── Renal / Nephrology ────────────────────────────────────────────────
+    {id:'cystatin_c',  name:'Cystatin C',                                      cat:'Renal'},
+    {id:'beta2_micro', name:'Beta-2 Microglobulin',                            cat:'Renal'},
+    {id:'u_beta2',     name:'Urinary Beta-2 Microglobulin',                    cat:'Renal'},
+    {id:'u_osmol',     name:'Urine Osmolality',                                cat:'Renal'},
+    {id:'fena',        name:'Fractional Excretion of Sodium (FENa)',           cat:'Renal'},
+    {id:'u24_protein', name:'24-Hour Urine Protein',                           cat:'Renal'},
+    {id:'u24_creat',   name:'24-Hour Urine Creatinine',                        cat:'Renal'},
+    {id:'u24_electro', name:'24-Hour Urine Electrolytes',                      cat:'Renal'},
+    {id:'upep',        name:'Urine Protein Electrophoresis (UPEP)',            cat:'Renal'},
+    {id:'renogram',    name:'DTPA Renogram (Nuclear Medicine)',                cat:'Renal'},
+    {id:'renal_us_doppler',name:'Renal Doppler Ultrasound',                   cat:'Renal'},
+    // ── Extended Haematology ─────────────────────────────────────────────
+    {id:'factor_viii', name:'Coagulation Factor VIII',                         cat:'Haematology'},
+    {id:'factor_ix',   name:'Coagulation Factor IX',                           cat:'Haematology'},
+    {id:'factor_xi',   name:'Coagulation Factor XI',                           cat:'Haematology'},
+    {id:'vwf',         name:'Von Willebrand Factor (vWF)',                     cat:'Haematology'},
+    {id:'antithrombin',name:'Antithrombin III',                                cat:'Haematology'},
+    {id:'protein_c',   name:'Protein C',                                       cat:'Haematology'},
+    {id:'protein_s',   name:'Protein S',                                       cat:'Haematology'},
+    {id:'lupus_anticoag',name:'Lupus Anticoagulant',                           cat:'Haematology'},
+    {id:'antiphospho', name:'Antiphospholipid Antibodies (APA)',               cat:'Haematology'},
+    {id:'osmotic_frag',name:'Osmotic Fragility Test',                          cat:'Haematology'},
+    {id:'pbf_review',  name:'Peripheral Blood Film Review',                    cat:'Haematology'},
+    {id:'fbc_diff',    name:'FBC with Full Differential & Morphology',         cat:'Haematology'},
+    // ── Extended Molecular ────────────────────────────────────────────────
+    {id:'sti_pcr',     name:'STI Multiplex PCR (Comprehensive)',               cat:'Molecular'},
+    {id:'hpv_genotype',name:'HPV Genotyping (Full Panel)',                     cat:'Molecular'},
+    {id:'mtb_resist',  name:'MTB Drug Resistance Testing (RIF, INH, etc.)',   cat:'Molecular'},
+    {id:'sars_seq',    name:'SARS-CoV-2 Variant Sequencing',                  cat:'Molecular'},
+    {id:'ngs',         name:'Next Generation Sequencing (NGS) Panel',          cat:'Molecular'},
+    {id:'pcr_malaria', name:'Malaria PCR (Species-specific)',                  cat:'Molecular'},
+    {id:'leptospira',  name:'Leptospira PCR',                                  cat:'Molecular'},
+    {id:'dengue_pcr',  name:'Dengue PCR (NS1 confirmation)',                   cat:'Molecular'},
+
   ];
 
-  const DAYS  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  const TIMES_ALL  = ['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30',
-                      '12:00','13:00','13:30','14:00','14:30','15:00','15:30','16:00'];
-  const TIMES_TAKEN = ['09:00','11:00','13:30'];
+  const DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const MONTHS=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const TIMES_ALL=['08:00','08:30','09:00','09:30','10:00','10:30','11:00','11:30','12:00','13:00','13:30','14:00','14:30','15:00','15:30','16:00'];
+  const TIMES_TAKEN=['09:00','11:00','13:30'];
 
   function gotoStep(n){
     document.querySelectorAll('.bw-step').forEach(s=>s.classList.remove('active'));
@@ -4758,22 +5043,18 @@ const BW = (function(){
     state.step=n;
     document.querySelectorAll('.bw-prog-step').forEach(dot=>{
       const s=parseInt(dot.dataset.step);
-      dot.classList.toggle('done',   s<n);
-      dot.classList.toggle('active', s===n);
+      dot.classList.toggle('done',s<n); dot.classList.toggle('active',s===n);
     });
     const hero=document.querySelector('.page.active .page-hero');
     if(hero) hero.scrollIntoView({behavior:'smooth',block:'start'});
   }
-
   function renderTests(){
     const grid=document.getElementById('bwTestGrid'); if(!grid) return;
-    grid.innerHTML=TESTS.map(t=>`
-      <div class="bw-test-item${state.test&&state.test.id===t.id?' selected':''}" onclick="BW.pickTest('${t.id}')">
-        <div class="bw-test-name">${t.name}</div>
-        <div class="bw-test-cat">${t.cat}</div>
-      </div>`).join('');
+    grid.innerHTML=TESTS.map(t=>
+      '<div class="bw-test-item'+(state.test&&state.test.id===t.id?' selected':'')+'" onclick="BW.pickTest(''+t.id+'')">'+
+      '<div class="bw-test-name">'+t.name+'</div><div class="bw-test-cat">'+t.cat+'</div></div>'
+    ).join('');
   }
-
   function renderDates(){
     const grid=document.getElementById('bwDateGrid'); if(!grid) return;
     const today=new Date(); let h='';
@@ -4781,82 +5062,54 @@ const BW = (function(){
       const d=new Date(today); d.setDate(today.getDate()+i);
       const iso=d.toISOString().slice(0,10);
       const lbl=(i===0?'Today':i===1?'Tomorrow':DAYS[d.getDay()]);
-      h+=`<button class="bw-date-btn${state.date===iso?' selected':''}" onclick="BW.pickDate('${iso}','${lbl}, ${d.getDate()} ${MONTHS[d.getMonth()]}')">
-        <span class="bw-date-day">${lbl}</span>
-        <span class="bw-date-num">${d.getDate()}</span>
-      </button>`;
+      h+='<button class="bw-date-btn'+(state.date===iso?' selected':'')+'" onclick="BW.pickDate(''+iso+'',''+lbl+', '+d.getDate()+' '+MONTHS[d.getMonth()]+'')">'+
+         '<span class="bw-date-day">'+lbl+'</span><span class="bw-date-num">'+d.getDate()+'</span></button>';
     }
     grid.innerHTML=h;
   }
-
   function renderTimes(){
     const grid=document.getElementById('bwTimeGrid'); if(!grid) return;
     grid.innerHTML=TIMES_ALL.map(t=>{
       const taken=TIMES_TAKEN.includes(t);
-      return `<button class="bw-time-btn${taken?' unavailable':''}${state.time===t?' selected':''}"
-        ${taken?'disabled':''} onclick="BW.pickTime('${t}')">${t}</button>`;
+      return '<button class="bw-time-btn'+(taken?' unavailable':'')+(state.time===t?' selected':'')+'" '+(taken?'disabled':'')+' onclick="BW.pickTime(''+t+'')">'+t+'</button>';
     }).join('');
   }
-
   return {
-    preselectAndGo(testId){
-      state.test = TESTS.find(t=>t.id===testId)||null;
-      window.location.hash='#book-test';
-    },
+    preselectAndGo(testId){ state.test=TESTS.find(t=>t.id===testId)||null; window.location.hash='#book-test'; },
     init(){
-      // Reset steps
       gotoStep(1);
-      const prog=document.getElementById('bwProgress');
-      if(prog) prog.style.display='';
-      renderTests();
-      renderDates();
-      // Apply pre-selection highlight
+      const prog=document.getElementById('bwProgress'); if(prog) prog.style.display='';
+      renderTests(); renderDates();
       if(state.test){
         setTimeout(()=>{
           document.querySelectorAll('.bw-test-item').forEach(el=>{
             const n=el.querySelector('.bw-test-name');
-            if(n && state.test && n.textContent===state.test.name)
-              el.classList.add('selected');
+            if(n&&state.test&&n.textContent===state.test.name) el.classList.add('selected');
           });
         },50);
       }
     },
-    filterTests(q){
-      document.querySelectorAll('.bw-test-item').forEach(el=>{
-        el.style.display=el.textContent.toLowerCase().includes(q.toLowerCase())?'':'none';
-      });
-    },
-    pickTest(id){
-      state.test=TESTS.find(t=>t.id===id)||null;
-      renderTests();
-    },
-    pickDate(iso,label){
-      state.date=iso; state.dateLabel=label;
-      renderDates();
-      const lbl=document.getElementById('bwSelectedDateLabel');
-      if(lbl) lbl.textContent=label;
-      renderTimes();
-    },
+    filterTests(q){ document.querySelectorAll('.bw-test-item').forEach(el=>{ el.style.display=el.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'; }); },
+    pickTest(id){ state.test=TESTS.find(t=>t.id===id)||null; renderTests(); },
+    pickDate(iso,label){ state.date=iso; state.dateLabel=label; renderDates(); const l=document.getElementById('bwSelectedDateLabel'); if(l) l.textContent=label; renderTimes(); },
     pickTime(t){ state.time=t; renderTimes(); },
     next(current){
       if(current===1){ if(!state.test){ AX.toast('Please select a test'); return; } }
       else if(current===2){ if(!state.date){ AX.toast('Please select a date'); return; } }
       else if(current===3){ if(!state.time){ AX.toast('Please select a time slot'); return; } }
       else if(current===4){
-        const name  = (document.getElementById('bw_name')||{}).value||'';
-        const email = (document.getElementById('bw_email')||{}).value||'';
+        const name=(document.getElementById('bw_name')||{}).value||'';
+        const email=(document.getElementById('bw_email')||{}).value||'';
         AX.clearErr('bw_name_err'); AX.clearErr('bw_email_err');
         if(!name.trim()){ AX.setErr('bw_name_err','Name is required'); return; }
         if(!email.trim()||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('bw_email_err','Valid email required'); return; }
-        state.patient={ name:name.trim(), email:email.trim(),
-          phone:(document.getElementById('bw_phone')||{}).value||'',
-          notes:(document.getElementById('bw_notes')||{}).value||'' };
+        state.patient={name:name.trim(),email:email.trim(),phone:(document.getElementById('bw_phone')||{}).value||'',notes:(document.getElementById('bw_notes')||{}).value||''};
         const set=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=v; };
-        set('bwSumTest',  state.test?state.test.name:'');
-        set('bwSumDate',  state.dateLabel||state.date||'');
-        set('bwSumTime',  state.time||'');
-        set('bwSumName',  state.patient.name);
-        set('bwSumEmail', state.patient.email);
+        set('bwSumTest', state.test?state.test.name:'');
+        set('bwSumDate', state.dateLabel||state.date||'');
+        set('bwSumTime', state.time||'');
+        set('bwSumName', state.patient.name);
+        set('bwSumEmail',state.patient.email);
       }
       gotoStep(current+1);
     },
@@ -4864,24 +5117,13 @@ const BW = (function(){
     async submit(){
       const btn=document.getElementById('bwSubmitBtn');
       if(btn){ btn.disabled=true; btn.innerHTML='<span class="ax-spinner"></span> Confirming…'; }
-      const result=await AX.post('/booking',{
-        patient_name:  state.patient.name,
-        patient_email: state.patient.email,
-        patient_phone: state.patient.phone,
-        lab_id:'vitalis-ibadan', lab_name:'Vitalis Diagnostics',
-        test_id:  state.test?state.test.id:'',
-        test_name:state.test?state.test.name:'',
-        booking_date:state.date, booking_time:state.time,
-        notes:state.patient.notes
-      });
-      const ref=result&&result.booking_ref ? result.booking_ref : 'AX'+Math.random().toString(36).slice(2,8).toUpperCase();
+      const result=await AX.post('/booking',{patient_name:state.patient.name,patient_email:state.patient.email,patient_phone:state.patient.phone,lab_id:'vitalis-ibadan',lab_name:'Vitalis Diagnostics',test_id:state.test?state.test.id:'',test_name:state.test?state.test.name:'',booking_date:state.date,booking_time:state.time,notes:state.patient.notes});
+      const ref=result&&result.booking_ref?result.booking_ref:'AX'+Math.random().toString(36).slice(2,8).toUpperCase();
       const setEl=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=v; };
-      setEl('bwConfRef',   ref);
-      setEl('bwConfEmail', state.patient.email);
-      AX.analytics.track('booking_completed','book-test', state.test?state.test.id:'');
+      setEl('bwConfRef',ref); setEl('bwConfEmail',state.patient.email);
+      AX.analytics.track('booking_completed','book-test',state.test?state.test.id:'');
       gotoStep(6);
-      const prog=document.getElementById('bwProgress');
-      if(prog) prog.style.display='none';
+      const prog=document.getElementById('bwProgress'); if(prog) prog.style.display='none';
     }
   };
 })();
@@ -4892,18 +5134,15 @@ const BW = (function(){
 const OW = (function(){
   let state={plan:'', step:1};
   const fields={};
-
   function goPanel(n){
     state.step=n;
     document.querySelectorAll('.ow-panel').forEach(p=>p.classList.remove('active'));
     const panel=document.getElementById('owPanel'+n); if(panel) panel.classList.add('active');
     document.querySelectorAll('.ow-step-tab').forEach(t=>{
       const s=parseInt(t.dataset.panel);
-      t.classList.toggle('active',s===n);
-      t.classList.toggle('done',s<n);
+      t.classList.toggle('active',s===n); t.classList.toggle('done',s<n);
     });
   }
-
   return {
     selectPlan(plan,el){
       state.plan=plan;
@@ -4916,8 +5155,8 @@ const OW = (function(){
     },
     next(current){
       if(current===1){
-        const name  = (document.getElementById('ow_name')||{}).value||'';
-        const email = (document.getElementById('ow_email')||{}).value||'';
+        const name=(document.getElementById('ow_name')||{}).value||'';
+        const email=(document.getElementById('ow_email')||{}).value||'';
         AX.clearErr('ow_name_err'); AX.clearErr('ow_email_err');
         if(!name.trim()){ AX.setErr('ow_name_err','Name is required'); return; }
         if(!email.trim()||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('ow_email_err','Valid email required'); return; }
@@ -4932,16 +5171,16 @@ const OW = (function(){
         fields.lab_state=(document.getElementById('ow_state')||{}).value||'';
       } else if(current===3){
         const sel=document.getElementById('ow_spec');
-        fields.specialities=sel ? Array.from(sel.selectedOptions).map(o=>o.value).join(', ') : '';
+        fields.specialities=sel?Array.from(sel.selectedOptions).map(o=>o.value).join(', '):'';
         fields.accreditation=(document.getElementById('ow_accred')||{}).value||'';
         const summary=document.getElementById('owSummary');
-        if(summary) summary.innerHTML=`
-          <div class="bw-summary-row"><span class="bw-summary-label">Plan</span><span class="bw-summary-value">${state.plan}</span></div>
-          <div class="bw-summary-row"><span class="bw-summary-label">Contact</span><span class="bw-summary-value">${fields.contact_name}</span></div>
-          <div class="bw-summary-row"><span class="bw-summary-label">Email</span><span class="bw-summary-value">${fields.contact_email}</span></div>
-          <div class="bw-summary-row"><span class="bw-summary-label">Laboratory</span><span class="bw-summary-value">${fields.lab_name}</span></div>
-          <div class="bw-summary-row"><span class="bw-summary-label">State</span><span class="bw-summary-value">${fields.lab_state||'—'}</span></div>
-          <div class="bw-summary-row"><span class="bw-summary-label">Specialities</span><span class="bw-summary-value">${fields.specialities||'—'}</span></div>`;
+        if(summary) summary.innerHTML=
+          '<div class="bw-summary-row"><span class="bw-summary-label">Plan</span><span class="bw-summary-value">'+state.plan+'</span></div>'+
+          '<div class="bw-summary-row"><span class="bw-summary-label">Contact</span><span class="bw-summary-value">'+fields.contact_name+'</span></div>'+
+          '<div class="bw-summary-row"><span class="bw-summary-label">Email</span><span class="bw-summary-value">'+fields.contact_email+'</span></div>'+
+          '<div class="bw-summary-row"><span class="bw-summary-label">Laboratory</span><span class="bw-summary-value">'+fields.lab_name+'</span></div>'+
+          '<div class="bw-summary-row"><span class="bw-summary-label">State</span><span class="bw-summary-value">'+(fields.lab_state||'—')+'</span></div>'+
+          '<div class="bw-summary-row"><span class="bw-summary-label">Specialities</span><span class="bw-summary-value">'+(fields.specialities||'—')+'</span></div>';
       }
       goPanel(current+1);
     },
@@ -4949,7 +5188,7 @@ const OW = (function(){
     async submit(){
       const btn=document.getElementById('owSubmitBtn');
       if(btn){ btn.disabled=true; btn.innerHTML='<span class="ax-spinner"></span> Submitting…'; }
-      await AX.post('/lab-apply', {...fields, plan:state.plan});
+      await AX.post('/lab-apply', Object.assign({}, fields, {plan:state.plan}));
       const area=document.getElementById('owSubmitArea'); if(area) area.style.display='none';
       const success=document.getElementById('owSuccess'); if(success) success.style.display='block';
       const e=document.getElementById('owSuccessEmail'); if(e) e.textContent=fields.contact_email;
@@ -4958,138 +5197,391 @@ const OW = (function(){
   };
 })();
 
-
 // ════════════════════════════════════════════════════════════════════════════
 // FT — Find a Test autocomplete
 // ════════════════════════════════════════════════════════════════════════════
 const FT = (function(){
   const TESTS = [
-    {id:'fbc',     name:'Full Blood Count (FBC / CBC)',          cat:'Haematology'},
-    {id:'malaria', name:'Malaria RDT / Microscopy',              cat:'Parasitology'},
-    {id:'lft',     name:'Liver Function Test (LFT)',             cat:'Chemical Pathology'},
-    {id:'lipid',   name:'Lipid Profile',                         cat:'Chemical Pathology'},
-    {id:'hba1c',   name:'HbA1c (Glycated Haemoglobin)',          cat:'Chemical Pathology'},
-    {id:'hiv',     name:'HIV / AIDS Screen',                     cat:'Immunology'},
-    {id:'hepb',    name:'Hepatitis B & C Screening',             cat:'Immunology'},
-    {id:'thyroid', name:'Thyroid Function Test (TFT)',            cat:'Endocrinology'},
-    {id:'glucose', name:'Blood Glucose (FBS / 2hPP)',            cat:'Chemical Pathology'},
-    {id:'urine',   name:'Urinalysis (M/C/S)',                    cat:'Microbiology'},
-    {id:'kft',     name:'Kidney Function Test (KFT)',             cat:'Chemical Pathology'},
-    {id:'cs',      name:'Culture & Sensitivity (C&S)',            cat:'Microbiology'},
-    {id:'preg',    name:'Pregnancy Test (beta-hCG)',              cat:'Immunology'},
-    {id:'drug',    name:'Drug Screening Panel',                  cat:'Toxicology'},
-    {id:'dna',     name:'DNA Paternity Testing',                 cat:'Molecular'},
-    {id:'semen',   name:'Seminal Analysis',                      cat:'Andrology'},
-    {id:'eso',     name:'Electrolytes / Urea / Creatinine',      cat:'Chemical Pathology'},
-    {id:'psa',     name:'PSA (Prostate Specific Antigen)',       cat:'Oncology'},
-    {id:'widal',   name:'Widal Test (Typhoid)',                  cat:'Microbiology'},
-    {id:'rpr',     name:'RPR / VDRL (Syphilis)',                 cat:'Immunology'},
-    {id:'hba',     name:'Haemoglobin Electrophoresis',           cat:'Haematology'},
-    {id:'esr',     name:'ESR (Erythrocyte Sedimentation Rate)',  cat:'Haematology'},
-    {id:'rhf',     name:'Rheumatoid Factor (RHF)',               cat:'Immunology'},
-    {id:'crp',     name:'C-Reactive Protein (CRP)',              cat:'Immunology'},
-    {id:'fer',     name:'Serum Ferritin',                        cat:'Chemical Pathology'},
-    {id:'vitd',    name:'Vitamin D (25-OH)',                     cat:'Endocrinology'},
-    {id:'b12',     name:'Vitamin B12 & Folate',                  cat:'Chemical Pathology'},
-    {id:'uric',    name:'Uric Acid',                             cat:'Chemical Pathology'},
-    {id:'cortisol',name:'Cortisol (Morning / Random)',           cat:'Endocrinology'},
-    {id:'afp',     name:'AFP (Alpha-Fetoprotein)',               cat:'Oncology'},
+    // ── Haematology ──────────────────────────────────────────────────────────
+    {id:'fbc',       name:'Full Blood Count (FBC / CBC)',                  cat:'Haematology'},
+    {id:'diff',      name:'Differential White Cell Count',                 cat:'Haematology'},
+    {id:'pcv',       name:'Packed Cell Volume (PCV / Haematocrit)',        cat:'Haematology'},
+    {id:'hb',        name:'Haemoglobin Level (Hb)',                        cat:'Haematology'},
+    {id:'retic',     name:'Reticulocyte Count',                            cat:'Haematology'},
+    {id:'plt',       name:'Platelet Count',                                cat:'Haematology'},
+    {id:'esr',       name:'ESR (Erythrocyte Sedimentation Rate)',          cat:'Haematology'},
+    {id:'hba',       name:'Haemoglobin Electrophoresis (HbS,HbC,HbA2)',   cat:'Haematology'},
+    {id:'pt',        name:'Prothrombin Time (PT)',                         cat:'Haematology'},
+    {id:'ptt',       name:'Partial Thromboplastin Time (PTT / APTT)',      cat:'Haematology'},
+    {id:'inr',       name:'INR (International Normalized Ratio)',           cat:'Haematology'},
+    {id:'ddimer',    name:'D-Dimer',                                       cat:'Haematology'},
+    {id:'fibrin',    name:'Fibrinogen',                                    cat:'Haematology'},
+    {id:'thrombin',  name:'Thrombin Time (TT)',                            cat:'Haematology'},
+    {id:'bf_mal',    name:'Blood Film for Malaria Parasites',              cat:'Haematology'},
+    {id:'bf_cells',  name:'Blood Film for Abnormal Cells',                 cat:'Haematology'},
+    {id:'sickle',    name:'Sickle Cell Screening (Sickling Test)',         cat:'Haematology'},
+    {id:'g6pd',      name:'G6PD (Glucose-6-Phosphate Dehydrogenase)',      cat:'Haematology'},
+    {id:'btct',      name:'Bleeding Time / Clotting Time',                 cat:'Haematology'},
+    {id:'bg',        name:'Blood Group & Rhesus Typing (ABO & Rh)',        cat:'Haematology'},
+    {id:'xmatch',    name:'Cross-Matching',                                cat:'Haematology'},
+    {id:'coombs',    name:'Coombs Test (Direct & Indirect)',               cat:'Haematology'},
+    // ── Chemical Pathology / Clinical Chemistry ───────────────────────────
+    {id:'fbs',       name:'Fasting Blood Sugar (FBS)',                     cat:'Chemical Pathology'},
+    {id:'rbs',       name:'Random Blood Sugar (RBS)',                      cat:'Chemical Pathology'},
+    {id:'2hpp',      name:'2-Hour Post-Prandial Blood Sugar (2hPP)',       cat:'Chemical Pathology'},
+    {id:'hba1c',     name:'HbA1c (Glycated Haemoglobin)',                  cat:'Chemical Pathology'},
+    {id:'insulin',   name:'Serum Insulin',                                 cat:'Chemical Pathology'},
+    {id:'cpeptide',  name:'C-Peptide',                                     cat:'Chemical Pathology'},
+    {id:'lft',       name:'Liver Function Test (LFT)',                     cat:'Chemical Pathology'},
+    {id:'kft',       name:'Kidney Function Test (KFT / RFT)',              cat:'Chemical Pathology'},
+    {id:'eso',       name:'Electrolytes / Urea / Creatinine (EUC)',        cat:'Chemical Pathology'},
+    {id:'sodium',    name:'Serum Sodium (Na)',                             cat:'Chemical Pathology'},
+    {id:'potassium', name:'Serum Potassium (K)',                           cat:'Chemical Pathology'},
+    {id:'chloride',  name:'Serum Chloride (Cl)',                           cat:'Chemical Pathology'},
+    {id:'bicarb',    name:'Serum Bicarbonate / CO2',                       cat:'Chemical Pathology'},
+    {id:'urea',      name:'Blood Urea Nitrogen (BUN / Urea)',              cat:'Chemical Pathology'},
+    {id:'creat',     name:'Serum Creatinine',                              cat:'Chemical Pathology'},
+    {id:'egfr',      name:'eGFR (Estimated Glomerular Filtration Rate)',   cat:'Chemical Pathology'},
+    {id:'uricac',    name:'Uric Acid',                                     cat:'Chemical Pathology'},
+    {id:'lipid',     name:'Lipid Profile (Full)',                          cat:'Chemical Pathology'},
+    {id:'cholest',   name:'Total Cholesterol',                             cat:'Chemical Pathology'},
+    {id:'ldl',       name:'LDL Cholesterol',                               cat:'Chemical Pathology'},
+    {id:'hdl',       name:'HDL Cholesterol',                               cat:'Chemical Pathology'},
+    {id:'trig',      name:'Triglycerides',                                 cat:'Chemical Pathology'},
+    {id:'tp',        name:'Total Protein',                                 cat:'Chemical Pathology'},
+    {id:'albumin',   name:'Serum Albumin',                                 cat:'Chemical Pathology'},
+    {id:'globulin',  name:'Serum Globulin',                                cat:'Chemical Pathology'},
+    {id:'tbil',      name:'Total Bilirubin',                               cat:'Chemical Pathology'},
+    {id:'dbil',      name:'Direct Bilirubin (Conjugated)',                 cat:'Chemical Pathology'},
+    {id:'ibil',      name:'Indirect Bilirubin (Unconjugated)',             cat:'Chemical Pathology'},
+    {id:'alt',       name:'ALT / SGPT (Alanine Aminotransferase)',         cat:'Chemical Pathology'},
+    {id:'ast',       name:'AST / SGOT (Aspartate Aminotransferase)',       cat:'Chemical Pathology'},
+    {id:'alp',       name:'ALP (Alkaline Phosphatase)',                    cat:'Chemical Pathology'},
+    {id:'ggt',       name:'GGT (Gamma-Glutamyl Transferase)',              cat:'Chemical Pathology'},
+    {id:'amylase',   name:'Amylase',                                       cat:'Chemical Pathology'},
+    {id:'lipase',    name:'Lipase',                                        cat:'Chemical Pathology'},
+    {id:'ldh',       name:'LDH (Lactate Dehydrogenase)',                   cat:'Chemical Pathology'},
+    {id:'ck',        name:'CK (Creatine Kinase)',                          cat:'Chemical Pathology'},
+    {id:'ckmb',      name:'CK-MB',                                         cat:'Chemical Pathology'},
+    {id:'troponin',  name:'Troponin I / T',                                cat:'Chemical Pathology'},
+    {id:'bnp',       name:'BNP / NT-proBNP',                              cat:'Chemical Pathology'},
+    {id:'ca',        name:'Serum Calcium',                                 cat:'Chemical Pathology'},
+    {id:'phos',      name:'Serum Phosphate',                               cat:'Chemical Pathology'},
+    {id:'mag',       name:'Serum Magnesium',                               cat:'Chemical Pathology'},
+    {id:'iron',      name:'Serum Iron',                                    cat:'Chemical Pathology'},
+    {id:'tibc',      name:'TIBC (Total Iron Binding Capacity)',            cat:'Chemical Pathology'},
+    {id:'fer',       name:'Serum Ferritin',                                cat:'Chemical Pathology'},
+    {id:'b12',       name:'Vitamin B12',                                   cat:'Chemical Pathology'},
+    {id:'folate',    name:'Serum Folate',                                  cat:'Chemical Pathology'},
+    {id:'vitd',      name:'Vitamin D (25-OH)',                             cat:'Chemical Pathology'},
+    {id:'homocyst',  name:'Homocysteine',                                  cat:'Chemical Pathology'},
+    {id:'osmol',     name:'Serum Osmolality',                              cat:'Chemical Pathology'},
+    {id:'ammonia',   name:'Serum Ammonia',                                 cat:'Chemical Pathology'},
+    {id:'acetam',    name:'Paracetamol (Acetaminophen) Level',            cat:'Chemical Pathology'},
+    {id:'ethanol',   name:'Ethanol (Blood Alcohol) Level',                 cat:'Chemical Pathology'},
+    // ── Microbiology ──────────────────────────────────────────────────────
+    {id:'malaria',   name:'Malaria RDT (Rapid Diagnostic Test)',           cat:'Microbiology'},
+    {id:'mal_micro', name:'Malaria Microscopy (Thick & Thin Film)',        cat:'Microbiology'},
+    {id:'widal',     name:'Widal Test (Typhoid Fever)',                    cat:'Microbiology'},
+    {id:'ucs',       name:'Urine Culture & Sensitivity (C&S)',             cat:'Microbiology'},
+    {id:'bcs',       name:'Blood Culture & Sensitivity',                   cat:'Microbiology'},
+    {id:'scs',       name:'Sputum Culture & Sensitivity',                  cat:'Microbiology'},
+    {id:'wcs',       name:'Wound Swab Culture & Sensitivity',              cat:'Microbiology'},
+    {id:'hvs',       name:'HVS (High Vaginal Swab) Culture',              cat:'Microbiology'},
+    {id:'stool_cs',  name:'Stool Culture & Sensitivity',                   cat:'Microbiology'},
+    {id:'throat',    name:'Throat Swab Culture & Sensitivity',             cat:'Microbiology'},
+    {id:'ear_swab',  name:'Ear Swab Culture & Sensitivity',                cat:'Microbiology'},
+    {id:'eye_swab',  name:'Eye Swab Culture & Sensitivity',                cat:'Microbiology'},
+    {id:'urethral',  name:'Urethral Swab (MCS)',                           cat:'Microbiology'},
+    {id:'afb',       name:'AFB Smear (Acid-Fast Bacilli / TB)',            cat:'Microbiology'},
+    {id:'afb_cult',  name:'AFB Culture (TB Culture)',                      cat:'Microbiology'},
+    {id:'genexpert', name:'GeneXpert MTB/RIF (TB Molecular Test)',         cat:'Microbiology'},
+    {id:'hpylori',   name:'H. pylori Antigen / Antibody Test',            cat:'Microbiology'},
+    {id:'brucella',  name:'Brucella Agglutination Test',                   cat:'Microbiology'},
+    {id:'stool_ov',  name:'Stool Microscopy (Ova & Parasites)',            cat:'Microbiology'},
+    {id:'mrsa',      name:'MRSA Screening',                                cat:'Microbiology'},
+    {id:'csf',       name:'CSF Analysis (Cerebrospinal Fluid)',            cat:'Microbiology'},
+    // ── Urinalysis ────────────────────────────────────────────────────────
+    {id:'urine',     name:'Urinalysis (Routine / Dipstick)',               cat:'Urinalysis'},
+    {id:'umcs',      name:'Urine Microscopy, Culture & Sensitivity (UMCS)',cat:'Urinalysis'},
+    {id:'upr',       name:'Urine Protein (24-hour)',                       cat:'Urinalysis'},
+    {id:'uacr',      name:'Urine Albumin:Creatinine Ratio (UACR)',        cat:'Urinalysis'},
+    {id:'umicro',    name:'Urine Microalbumin',                            cat:'Urinalysis'},
+    {id:'ucr',       name:'Urine Creatinine (Spot)',                       cat:'Urinalysis'},
+    // ── Immunology / Serology ─────────────────────────────────────────────
+    {id:'hiv',       name:'HIV 1 & 2 Screen (Rapid)',                      cat:'Immunology'},
+    {id:'hiv_conf',  name:'HIV Confirmatory Test (Western Blot / ELISA)', cat:'Immunology'},
+    {id:'hbsag',     name:'Hepatitis B Surface Antigen (HBsAg)',           cat:'Immunology'},
+    {id:'anti_hbs',  name:'Hepatitis B Surface Antibody (Anti-HBs)',       cat:'Immunology'},
+    {id:'anti_hbc',  name:'Hepatitis B Core Antibody (Anti-HBc)',          cat:'Immunology'},
+    {id:'hbeag',     name:'Hepatitis B e-Antigen (HBeAg)',                 cat:'Immunology'},
+    {id:'hcv',       name:'Hepatitis C Antibody (Anti-HCV)',               cat:'Immunology'},
+    {id:'hcv_conf',  name:'Hepatitis C Confirmatory (HCV ELISA)',          cat:'Immunology'},
+    {id:'rpr',       name:'RPR / VDRL (Syphilis Screening)',               cat:'Immunology'},
+    {id:'tpha',      name:'TPHA (Treponema Pallidum Haemagglutination)',   cat:'Immunology'},
+    {id:'asot',      name:'ASO Titre (Anti-Streptolysin O)',               cat:'Immunology'},
+    {id:'crp',       name:'C-Reactive Protein (CRP)',                      cat:'Immunology'},
+    {id:'rhf',       name:'Rheumatoid Factor (RHF)',                       cat:'Immunology'},
+    {id:'ana',       name:'ANA (Antinuclear Antibodies)',                   cat:'Immunology'},
+    {id:'anti_dsdna',name:'Anti-dsDNA',                                    cat:'Immunology'},
+    {id:'anca',      name:'ANCA',                                           cat:'Immunology'},
+    {id:'anti_ccp',  name:'Anti-CCP (Cyclic Citrullinated Peptide)',       cat:'Immunology'},
+    {id:'dengue_ns1',name:'Dengue NS1 Antigen',                            cat:'Immunology'},
+    {id:'dengue_ab', name:'Dengue IgM / IgG',                              cat:'Immunology'},
+    {id:'covid_ag',  name:'COVID-19 Rapid Antigen Test',                   cat:'Immunology'},
+    {id:'typhoid_ab',name:'Typhoid IgM / IgG (Typhidot)',                 cat:'Immunology'},
+    {id:'toxo',      name:'Toxoplasma IgM / IgG',                         cat:'Immunology'},
+    {id:'rubella',   name:'Rubella IgM / IgG',                            cat:'Immunology'},
+    {id:'cmv',       name:'CMV IgM / IgG (Cytomegalovirus)',              cat:'Immunology'},
+    {id:'ebv',       name:'EBV VCA IgM / IgG (Epstein-Barr)',            cat:'Immunology'},
+    {id:'hsv',       name:'Herpes Simplex (HSV) IgM / IgG',              cat:'Immunology'},
+    {id:'torch',     name:'TORCH Screen (Full Panel)',                      cat:'Immunology'},
+    {id:'hpv',       name:'HPV Screen',                                    cat:'Immunology'},
+    {id:'complement',name:'Complement (C3 / C4)',                          cat:'Immunology'},
+    {id:'igg',       name:'Immunoglobulins (IgA, IgG, IgM)',              cat:'Immunology'},
+    {id:'preg',      name:'Pregnancy Test (beta-hCG)',                     cat:'Immunology'},
+    {id:'total_ige', name:'Total IgE',                                     cat:'Immunology'},
+    // ── Endocrinology / Hormones ──────────────────────────────────────────
+    {id:'tsh',       name:'TSH (Thyroid Stimulating Hormone)',             cat:'Endocrinology'},
+    {id:'ft3',       name:'Free T3 (FT3)',                                 cat:'Endocrinology'},
+    {id:'ft4',       name:'Free T4 (FT4)',                                 cat:'Endocrinology'},
+    {id:'thyroid',   name:'Thyroid Function Test (TFT — TSH, FT3, FT4)',  cat:'Endocrinology'},
+    {id:'cortisol',  name:'Cortisol (Morning / Random)',                   cat:'Endocrinology'},
+    {id:'acth',      name:'ACTH (Adrenocorticotropic Hormone)',            cat:'Endocrinology'},
+    {id:'fsh',       name:'FSH (Follicle Stimulating Hormone)',            cat:'Endocrinology'},
+    {id:'lh',        name:'LH (Luteinizing Hormone)',                      cat:'Endocrinology'},
+    {id:'prolactin', name:'Prolactin',                                     cat:'Endocrinology'},
+    {id:'testost',   name:'Testosterone (Total)',                          cat:'Endocrinology'},
+    {id:'free_test', name:'Free Testosterone',                             cat:'Endocrinology'},
+    {id:'e2',        name:'Oestradiol (E2)',                               cat:'Endocrinology'},
+    {id:'prog',      name:'Progesterone',                                  cat:'Endocrinology'},
+    {id:'amh',       name:'AMH (Anti-Mullerian Hormone)',                  cat:'Endocrinology'},
+    {id:'dheas',     name:'DHEA-S',                                        cat:'Endocrinology'},
+    {id:'pth',       name:'PTH (Parathyroid Hormone)',                     cat:'Endocrinology'},
+    {id:'aldost',    name:'Aldosterone',                                   cat:'Endocrinology'},
+    {id:'renin',     name:'Renin',                                         cat:'Endocrinology'},
+    {id:'igf1',      name:'IGF-1 (Insulin-like Growth Factor)',            cat:'Endocrinology'},
+    {id:'gh',        name:'Growth Hormone (GH)',                           cat:'Endocrinology'},
+    {id:'shbg',      name:'SHBG (Sex Hormone Binding Globulin)',           cat:'Endocrinology'},
+    // ── Oncology / Tumour Markers ─────────────────────────────────────────
+    {id:'psa',       name:'PSA (Prostate Specific Antigen)',               cat:'Oncology'},
+    {id:'fpsa',      name:'Free PSA Ratio',                                cat:'Oncology'},
+    {id:'afp',       name:'AFP (Alpha-Fetoprotein)',                       cat:'Oncology'},
+    {id:'cea',       name:'CEA (Carcinoembryonic Antigen)',                cat:'Oncology'},
+    {id:'ca125',     name:'CA-125 (Ovarian Cancer Marker)',                cat:'Oncology'},
+    {id:'ca153',     name:'CA 15-3 (Breast Cancer Marker)',               cat:'Oncology'},
+    {id:'ca199',     name:'CA 19-9 (Pancreatic Cancer Marker)',           cat:'Oncology'},
+    {id:'hcg',       name:'Beta-hCG Quantitative',                        cat:'Oncology'},
+    {id:'cyfra',     name:'CYFRA 21-1 (Lung Cancer Marker)',              cat:'Oncology'},
+    {id:'nse',       name:'NSE (Neuron-Specific Enolase)',                 cat:'Oncology'},
+    // ── Molecular / Genetics ──────────────────────────────────────────────
+    {id:'dna',       name:'DNA Paternity Testing',                         cat:'Molecular'},
+    {id:'covid_pcr', name:'COVID-19 PCR',                                  cat:'Molecular'},
+    {id:'hbv_dna',   name:'HBV DNA (Hepatitis B Viral Load)',              cat:'Molecular'},
+    {id:'hcv_rna',   name:'HCV RNA (Hepatitis C Viral Load)',              cat:'Molecular'},
+    {id:'hiv_vl',    name:'HIV Viral Load (HIV RNA PCR)',                  cat:'Molecular'},
+    {id:'cd4',       name:'CD4 Count (Flow Cytometry)',                    cat:'Molecular'},
+    {id:'cd4_ratio', name:'CD4:CD8 Ratio',                                 cat:'Molecular'},
+    {id:'brca',      name:'BRCA1 / BRCA2 Gene Test',                      cat:'Molecular'},
+    {id:'hpv_dna',   name:'HPV DNA Typing (High-Risk)',                    cat:'Molecular'},
+    {id:'tb_pcr',    name:'TB PCR / GeneXpert MTB/RIF',                   cat:'Molecular'},
+    {id:'karyotype', name:'Karyotyping (Chromosomal Analysis)',            cat:'Molecular'},
+    // ── Andrology ─────────────────────────────────────────────────────────
+    {id:'semen',     name:'Seminal Analysis (Semen Analysis)',             cat:'Andrology'},
+    {id:'sperm_morph',name:'Sperm Morphology (Strict Criteria)',           cat:'Andrology'},
+    {id:'sperm_dna', name:'Sperm DNA Fragmentation',                       cat:'Andrology'},
+    // ── Toxicology / Drug Monitoring ──────────────────────────────────────
+    {id:'drug',      name:'Drug of Abuse Screen (6-Panel)',                cat:'Toxicology'},
+    {id:'drug12',    name:'Drug of Abuse Screen (12-Panel)',               cat:'Toxicology'},
+    {id:'cannabis',  name:'Cannabis (THC) Screen',                         cat:'Toxicology'},
+    {id:'cocaine',   name:'Cocaine Screen',                                cat:'Toxicology'},
+    {id:'opiates',   name:'Opiates Screen',                                cat:'Toxicology'},
+    {id:'amphet',    name:'Amphetamines Screen',                           cat:'Toxicology'},
+    {id:'benzo',     name:'Benzodiazepines Screen',                        cat:'Toxicology'},
+    {id:'digoxin',   name:'Digoxin Level',                                 cat:'Toxicology'},
+    {id:'lithium',   name:'Lithium Level',                                 cat:'Toxicology'},
+    {id:'phenytoin', name:'Phenytoin Level',                               cat:'Toxicology'},
+    {id:'lead',      name:'Blood Lead Level',                              cat:'Toxicology'},
+    // ── Special ───────────────────────────────────────────────────────────
+    {id:'spep',      name:'Serum Protein Electrophoresis (SPEP)',          cat:'Special'},
+    {id:'lp',        name:'Lupus Profile (ANA, anti-dsDNA, Complement)',   cat:'Special'},
+    {id:'auto_panel',name:'Full Autoimmune Panel',                         cat:'Special'},
+    {id:'allergy',   name:'Allergy Panel (IgE)',                           cat:'Special'},
+    {id:'copper',    name:'Serum Copper',                                  cat:'Special'},
+    {id:'zinc',      name:'Serum Zinc',                                    cat:'Special'},
+    {id:'selenium',  name:'Serum Selenium',                                cat:'Special'},
+    {id:'cs_joint',  name:'Joint Aspirate Culture & Sensitivity',          cat:'Special'},
+    {id:'csf_cs',    name:'CSF Culture & Sensitivity',                     cat:'Special'},
+    // ── Imaging & Radiology ───────────────────────────────────────────────
+    {id:'xray_chest',  name:'Chest X-Ray (CXR)',                               cat:'Imaging & Radiology'},
+    {id:'xray_abd',    name:'Abdominal X-Ray (AXR)',                           cat:'Imaging & Radiology'},
+    {id:'xray_spine',  name:'Spine X-Ray (Cervical / Thoracic / Lumbar)',      cat:'Imaging & Radiology'},
+    {id:'xray_knee',   name:'Knee X-Ray',                                      cat:'Imaging & Radiology'},
+    {id:'xray_hip',    name:'Hip X-Ray',                                       cat:'Imaging & Radiology'},
+    {id:'xray_shoulder',name:'Shoulder X-Ray',                                 cat:'Imaging & Radiology'},
+    {id:'xray_hand',   name:'Hand / Wrist X-Ray',                             cat:'Imaging & Radiology'},
+    {id:'xray_foot',   name:'Foot / Ankle X-Ray',                             cat:'Imaging & Radiology'},
+    {id:'xray_skull',  name:'Skull X-Ray',                                     cat:'Imaging & Radiology'},
+    {id:'xray_pelvis', name:'Pelvis X-Ray',                                    cat:'Imaging & Radiology'},
+    {id:'us_abd',      name:'Abdominal Ultrasound',                            cat:'Imaging & Radiology'},
+    {id:'us_pelvic',   name:'Pelvic Ultrasound',                               cat:'Imaging & Radiology'},
+    {id:'us_obstetric',name:'Obstetric Ultrasound (Dating / Anomaly Scan)',    cat:'Imaging & Radiology'},
+    {id:'us_renal',    name:'Renal Ultrasound (Kidney, Ureter, Bladder)',      cat:'Imaging & Radiology'},
+    {id:'us_thyroid',  name:'Thyroid Ultrasound',                              cat:'Imaging & Radiology'},
+    {id:'us_breast',   name:'Breast Ultrasound',                               cat:'Imaging & Radiology'},
+    {id:'us_scrotal',  name:'Scrotal Ultrasound',                              cat:'Imaging & Radiology'},
+    {id:'us_doppler',  name:'Doppler Ultrasound (Vascular)',                   cat:'Imaging & Radiology'},
+    {id:'us_liver',    name:'Liver / Hepatobiliary Ultrasound',                cat:'Imaging & Radiology'},
+    {id:'us_cardiac',  name:'Echocardiogram (Echo)',                           cat:'Imaging & Radiology'},
+    {id:'ct_brain',    name:'CT Scan — Brain',                                 cat:'Imaging & Radiology'},
+    {id:'ct_chest',    name:'CT Scan — Chest',                                 cat:'Imaging & Radiology'},
+    {id:'ct_abd_pel',  name:'CT Scan — Abdomen & Pelvis',                     cat:'Imaging & Radiology'},
+    {id:'ct_spine',    name:'CT Scan — Spine',                                 cat:'Imaging & Radiology'},
+    {id:'mri_brain',   name:'MRI — Brain',                                     cat:'Imaging & Radiology'},
+    {id:'mri_spine',   name:'MRI — Spine',                                     cat:'Imaging & Radiology'},
+    {id:'mri_knee',    name:'MRI — Knee',                                      cat:'Imaging & Radiology'},
+    {id:'mri_shoulder',name:'MRI — Shoulder',                                  cat:'Imaging & Radiology'},
+    {id:'mri_abd',     name:'MRI — Abdomen',                                   cat:'Imaging & Radiology'},
+    {id:'mammogram',   name:'Mammography',                                     cat:'Imaging & Radiology'},
+    {id:'dexa',        name:'DEXA Scan (Bone Density)',                        cat:'Imaging & Radiology'},
+    {id:'ecg',         name:'ECG / EKG (Electrocardiogram)',                   cat:'Imaging & Radiology'},
+    {id:'barium',      name:'Barium Swallow / Meal / Enema',                   cat:'Imaging & Radiology'},
+    {id:'ivp',         name:'IVP (Intravenous Pyelogram)',                     cat:'Imaging & Radiology'},
+    {id:'fluoroscopy', name:'Fluoroscopy',                                     cat:'Imaging & Radiology'},
+    // ── Histopathology & Cytology ─────────────────────────────────────────
+    {id:'pap_smear',   name:'Pap Smear (Cervical Cytology)',                   cat:'Histopathology'},
+    {id:'fnac',        name:'FNAC (Fine Needle Aspiration Cytology)',          cat:'Histopathology'},
+    {id:'bx_skin',     name:'Skin Biopsy & Histology',                        cat:'Histopathology'},
+    {id:'bx_liver',    name:'Liver Biopsy & Histology',                       cat:'Histopathology'},
+    {id:'bx_kidney',   name:'Renal (Kidney) Biopsy & Histology',              cat:'Histopathology'},
+    {id:'bx_cervix',   name:'Cervical Biopsy & Histology',                    cat:'Histopathology'},
+    {id:'bx_endometrium',name:'Endometrial Biopsy & Histology',               cat:'Histopathology'},
+    {id:'bx_prostate', name:'Prostate Biopsy & Histology',                    cat:'Histopathology'},
+    {id:'bx_lymphnode',name:'Lymph Node Biopsy & Histology',                  cat:'Histopathology'},
+    {id:'bx_breast',   name:'Breast Biopsy & Histology',                      cat:'Histopathology'},
+    {id:'bx_bone',     name:'Bone Biopsy & Histology',                        cat:'Histopathology'},
+    {id:'bx_gi',       name:'GI Biopsy & Histology (Gastric / Colonic)',       cat:'Histopathology'},
+    {id:'bx_thyroid',  name:'Thyroid Biopsy & Histology',                     cat:'Histopathology'},
+    {id:'bx_lung',     name:'Lung Biopsy & Histology',                        cat:'Histopathology'},
+    {id:'bm_biopsy',   name:'Bone Marrow Biopsy & Trephine',                  cat:'Histopathology'},
+    {id:'bm_aspirate', name:'Bone Marrow Aspirate',                            cat:'Histopathology'},
+    {id:'cytology_fluid',name:'Body Fluid Cytology (Pleural / Ascitic / CSF)', cat:'Histopathology'},
+    {id:'cytology_sputum',name:'Sputum Cytology',                             cat:'Histopathology'},
+    {id:'cytology_urine', name:'Urine Cytology',                              cat:'Histopathology'},
+    {id:'frozen_section', name:'Frozen Section (Intraoperative)',              cat:'Histopathology'},
+    {id:'imhc',        name:'Immunohistochemistry (IHC)',                      cat:'Histopathology'},
+    // ── STI / Sexual Health ───────────────────────────────────────────────
+    {id:'sti_full',    name:'Full STI Screen Panel',                           cat:'STI / Sexual Health'},
+    {id:'chlamydia',   name:'Chlamydia trachomatis (PCR)',                     cat:'STI / Sexual Health'},
+    {id:'gonorrhoea',  name:'Gonorrhoea (Neisseria gonorrhoeae) PCR',          cat:'STI / Sexual Health'},
+    {id:'trichomonas', name:'Trichomonas vaginalis (PCR / Wet Prep)',          cat:'STI / Sexual Health'},
+    {id:'gc_culture',  name:'Gonorrhoea Culture & Sensitivity',                cat:'STI / Sexual Health'},
+    {id:'sti_multiplex',name:'STI Multiplex PCR (Chlamydia, GC, Trichomonas)',cat:'STI / Sexual Health'},
+    {id:'hiv_sti',     name:'HIV Screen (STI context)',                        cat:'STI / Sexual Health'},
+    {id:'syphilis_sti',name:'Syphilis Screen (RPR + TPHA)',                    cat:'STI / Sexual Health'},
+    {id:'hpv_sti',     name:'HPV DNA Typing (High-Risk Strains)',              cat:'STI / Sexual Health'},
+    {id:'hsv_sti',     name:'Herpes Simplex (HSV-1 & HSV-2) PCR',            cat:'STI / Sexual Health'},
+    {id:'bv_screen',   name:'Bacterial Vaginosis Screen (BV)',                 cat:'STI / Sexual Health'},
+    {id:'candida_screen',name:'Candida (Thrush) Screen',                       cat:'STI / Sexual Health'},
+    {id:'lgv',         name:'Lymphogranuloma Venereum (LGV)',                  cat:'STI / Sexual Health'},
+    {id:'mpox',        name:'Mpox (Monkeypox) PCR',                           cat:'STI / Sexual Health'},
+    {id:'hepatitis_sti',name:'Hepatitis B & C Screen (STI context)',          cat:'STI / Sexual Health'},
+    {id:'prep_screen', name:'PrEP / PEP Baseline Screen',                     cat:'STI / Sexual Health'},
+    // ── Renal / Nephrology ────────────────────────────────────────────────
+    {id:'cystatin_c',  name:'Cystatin C',                                      cat:'Renal'},
+    {id:'beta2_micro', name:'Beta-2 Microglobulin',                            cat:'Renal'},
+    {id:'u_beta2',     name:'Urinary Beta-2 Microglobulin',                    cat:'Renal'},
+    {id:'u_osmol',     name:'Urine Osmolality',                                cat:'Renal'},
+    {id:'fena',        name:'Fractional Excretion of Sodium (FENa)',           cat:'Renal'},
+    {id:'u24_protein', name:'24-Hour Urine Protein',                           cat:'Renal'},
+    {id:'u24_creat',   name:'24-Hour Urine Creatinine',                        cat:'Renal'},
+    {id:'u24_electro', name:'24-Hour Urine Electrolytes',                      cat:'Renal'},
+    {id:'upep',        name:'Urine Protein Electrophoresis (UPEP)',            cat:'Renal'},
+    {id:'renogram',    name:'DTPA Renogram (Nuclear Medicine)',                cat:'Renal'},
+    {id:'renal_us_doppler',name:'Renal Doppler Ultrasound',                   cat:'Renal'},
+    // ── Extended Haematology ─────────────────────────────────────────────
+    {id:'factor_viii', name:'Coagulation Factor VIII',                         cat:'Haematology'},
+    {id:'factor_ix',   name:'Coagulation Factor IX',                           cat:'Haematology'},
+    {id:'factor_xi',   name:'Coagulation Factor XI',                           cat:'Haematology'},
+    {id:'vwf',         name:'Von Willebrand Factor (vWF)',                     cat:'Haematology'},
+    {id:'antithrombin',name:'Antithrombin III',                                cat:'Haematology'},
+    {id:'protein_c',   name:'Protein C',                                       cat:'Haematology'},
+    {id:'protein_s',   name:'Protein S',                                       cat:'Haematology'},
+    {id:'lupus_anticoag',name:'Lupus Anticoagulant',                           cat:'Haematology'},
+    {id:'antiphospho', name:'Antiphospholipid Antibodies (APA)',               cat:'Haematology'},
+    {id:'osmotic_frag',name:'Osmotic Fragility Test',                          cat:'Haematology'},
+    {id:'pbf_review',  name:'Peripheral Blood Film Review',                    cat:'Haematology'},
+    {id:'fbc_diff',    name:'FBC with Full Differential & Morphology',         cat:'Haematology'},
+    // ── Extended Molecular ────────────────────────────────────────────────
+    {id:'sti_pcr',     name:'STI Multiplex PCR (Comprehensive)',               cat:'Molecular'},
+    {id:'hpv_genotype',name:'HPV Genotyping (Full Panel)',                     cat:'Molecular'},
+    {id:'mtb_resist',  name:'MTB Drug Resistance Testing (RIF, INH, etc.)',   cat:'Molecular'},
+    {id:'sars_seq',    name:'SARS-CoV-2 Variant Sequencing',                  cat:'Molecular'},
+    {id:'ngs',         name:'Next Generation Sequencing (NGS) Panel',          cat:'Molecular'},
+    {id:'pcr_malaria', name:'Malaria PCR (Species-specific)',                  cat:'Molecular'},
+    {id:'leptospira',  name:'Leptospira PCR',                                  cat:'Molecular'},
+    {id:'dengue_pcr',  name:'Dengue PCR (NS1 confirmation)',                   cat:'Molecular'},
+
   ];
 
-  var highlighted = -1;
-  var filtered = [];
-
-  function hl(text, term){
-    var i = text.toLowerCase().indexOf(term.toLowerCase());
-    if(i === -1) return text;
-    return text.slice(0,i) + '<mark>' + text.slice(i, i+term.length) + '</mark>' + text.slice(i+term.length);
+  var highlighted=-1, filtered=[];
+  function hl(text,term){
+    var i=text.toLowerCase().indexOf(term.toLowerCase());
+    if(i===-1) return text;
+    return text.slice(0,i)+'<mark>'+text.slice(i,i+term.length)+'</mark>'+text.slice(i+term.length);
   }
-
   function close(){
-    var dd = document.getElementById('ftDropdown');
-    if(dd) dd.classList.remove('open');
-    highlighted = -1;
+    var dd=document.getElementById('ftDropdown'); if(dd) dd.classList.remove('open'); highlighted=-1;
   }
-
   function render(term){
-    var dd = document.getElementById('ftDropdown');
-    if(!dd) return;
+    var dd=document.getElementById('ftDropdown'); if(!dd) return;
     if(!term){ close(); return; }
-    filtered = TESTS.filter(function(t){
-      return t.name.toLowerCase().includes(term.toLowerCase()) ||
-             t.cat.toLowerCase().includes(term.toLowerCase()) ||
-             t.id.toLowerCase().includes(term.toLowerCase());
-    });
-    highlighted = -1;
-    if(filtered.length === 0){
-      dd.innerHTML = '<div class="ft-no-results">No tests found — try "liver", "CBC" or "thyroid"</div>';
+    filtered=TESTS.filter(function(t){ return t.name.toLowerCase().includes(term.toLowerCase())||t.cat.toLowerCase().includes(term.toLowerCase())||t.id.toLowerCase().includes(term.toLowerCase()); });
+    highlighted=-1;
+    if(filtered.length===0){
+      dd.innerHTML='<div class="ft-no-results">No tests found — try “liver”, “CBC” or “thyroid”</div>';
     } else {
-      dd.innerHTML = filtered.map(function(t){
-        return '<div class="ft-dd-item" onclick="FT.pick(\''+t.id+'\')">'+
-               '<span>'+hl(t.name,term)+'</span>'+
-               '<span class="ft-dd-cat">'+t.cat+'</span></div>';
+      dd.innerHTML=filtered.map(function(t){
+        return '<div class="ft-dd-item" onclick="FT.pick(''+t.id+'')"><span>'+hl(t.name,term)+'</span><span class="ft-dd-cat">'+t.cat+'</span></div>';
       }).join('');
     }
     dd.classList.add('open');
   }
-
-  document.addEventListener('click', function(e){
-    if(!e.target.closest('.eco-search-box')) close();
-  });
-
+  document.addEventListener('click',function(e){ if(!e.target.closest('.eco-search-box')) close(); });
   return {
-    filter: function(q){ render(q.trim()); },
-    key: function(e){
-      var dd = document.getElementById('ftDropdown');
-      if(!dd || !dd.classList.contains('open')) return;
-      var items = dd.querySelectorAll('.ft-dd-item');
-      if(e.key === 'ArrowDown'){
-        e.preventDefault();
-        highlighted = Math.min(highlighted+1, items.length-1);
-        items.forEach(function(el,i){ el.classList.toggle('highlighted', i===highlighted); });
-      } else if(e.key === 'ArrowUp'){
-        e.preventDefault();
-        highlighted = Math.max(highlighted-1, 0);
-        items.forEach(function(el,i){ el.classList.toggle('highlighted', i===highlighted); });
-      } else if(e.key === 'Enter'){
-        e.preventDefault();
-        if(highlighted >= 0 && filtered[highlighted]) FT.pick(filtered[highlighted].id);
-      } else if(e.key === 'Escape'){
-        close();
-        var inp = document.getElementById('ftSearch');
-        if(inp){ inp.value=''; render(''); }
-      }
+    filter:function(q){ render(q.trim()); },
+    key:function(e){
+      var dd=document.getElementById('ftDropdown');
+      if(!dd||!dd.classList.contains('open')) return;
+      var items=dd.querySelectorAll('.ft-dd-item');
+      if(e.key==='ArrowDown'){ e.preventDefault(); highlighted=Math.min(highlighted+1,items.length-1); items.forEach(function(el,i){ el.classList.toggle('highlighted',i===highlighted); }); }
+      else if(e.key==='ArrowUp'){ e.preventDefault(); highlighted=Math.max(highlighted-1,0); items.forEach(function(el,i){ el.classList.toggle('highlighted',i===highlighted); }); }
+      else if(e.key==='Enter'){ e.preventDefault(); if(highlighted>=0&&filtered[highlighted]) FT.pick(filtered[highlighted].id); }
+      else if(e.key==='Escape'){ close(); var inp=document.getElementById('ftSearch'); if(inp){ inp.value=''; render(''); } }
     },
-    pick: function(testId){
-      var t = TESTS.find(function(x){ return x.id===testId; });
-      if(!t) return;
-      var inp = document.getElementById('ftSearch');
-      if(inp) inp.value = t.name;
+    pick:function(testId){
+      var t=TESTS.find(function(x){ return x.id===testId; }); if(!t) return;
+      var inp=document.getElementById('ftSearch'); if(inp) inp.value=t.name;
       close();
-      setTimeout(function(){ BW.preselectAndGo(testId); }, 150);
+      setTimeout(function(){ BW.preselectAndGo(testId); },150);
     }
   };
 })();
-
 
 // ════════════════════════════════════════════════════════════════════════════
 // Init — fire on route change
 // ════════════════════════════════════════════════════════════════════════════
 (function(){
-  const orig = window.renderRoute;
-  window.renderRoute = function(){
+  const orig=window.renderRoute;
+  window.renderRoute=function(){
     if(orig) orig();
-    const hash = window.location.hash.replace('#','').split('/')[0];
-    if(hash === 'book-test'){
-      const prog = document.getElementById('bwProgress');
-      if(prog) prog.style.display = '';
-      BW.init();
-    }
-    AX.analytics.track('page_view', hash, '');
+    const hash=window.location.hash.replace('#','').split('/')[0];
+    if(hash==='book-test'){ const prog=document.getElementById('bwProgress'); if(prog) prog.style.display=''; BW.init(); }
+    AX.analytics.track('page_view',hash,'');
   };
-  document.addEventListener('click', function(e){
-    const cta = e.target.closest('[data-route]');
-    if(cta) AX.analytics.track('cta_click', window.location.hash.slice(1), cta.textContent.trim().slice(0,40));
+  document.addEventListener('click',function(e){
+    const cta=e.target.closest('[data-route]');
+    if(cta) AX.analytics.track('cta_click',window.location.hash.slice(1),cta.textContent.trim().slice(0,40));
   });
 })();
 </script>
