@@ -981,6 +981,25 @@
   .plan-card:hover{ box-shadow:0 2px 12px rgba(196,106,62,.15); border-color:var(--clay); }
   .plan-card.plan-featured:hover{ box-shadow:0 2px 12px rgba(196,106,62,.25); }
 
+
+  /* ── Booking: category accordion ──────────────────────────────────────── */
+  .bw-cat-list{ border:1px solid var(--line); border-radius:5px; overflow:hidden; }
+  .bw-cat{ border-bottom:1px solid var(--line); }
+  .bw-cat:last-child{ border-bottom:none; }
+  .bw-cat-head{ display:flex; align-items:center; justify-content:space-between; padding:13px 16px; cursor:pointer; background:#fff; transition:background .12s; user-select:none; }
+  .bw-cat-head:hover{ background:var(--paper); }
+  .bw-cat-name{ font-size:13.5px; font-weight:600; color:var(--navy); }
+  .bw-cat-meta{ display:flex; align-items:center; gap:10px; }
+  .bw-cat-count{ font-family:var(--mono); font-size:11px; color:var(--slate); background:var(--paper); padding:2px 8px; border-radius:10px; }
+  .bw-cat-chev{ font-size:11px; color:var(--slate); transition:transform .18s; }
+  .bw-cat.open .bw-cat-chev{ transform:rotate(180deg); }
+  .bw-cat.open .bw-cat-head{ background:var(--paper); border-bottom:1px solid var(--line); }
+  .bw-cat-body{ display:none; }
+  .bw-cat.open .bw-cat-body{ display:block; }
+  .bw-cat-body .bw-test-item{ padding:10px 16px 10px 28px; font-size:13px; color:var(--slate-dark); cursor:pointer; border-top:1px solid var(--paper); transition:background .1s, color .1s; }
+  .bw-cat-body .bw-test-item:hover{ background:var(--skyfill); color:var(--navy); }
+  .bw-cat-body .bw-test-item.selected{ background:var(--clay); color:#fff; font-weight:600; }
+
 </style>
 </head>
 <body>
@@ -3682,7 +3701,8 @@
                  autocomplete="off">
           <div class="ft-dropdown" id="bwSearchDrop"></div>
         </div>
-        <div class="bw-test-grid" id="bwTestGrid"></div>
+        <div style="font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--slate); margin-bottom:8px;">Browse by category</div>
+        <div class="bw-cat-list" id="bwTestGrid"></div>
         <div class="ow-nav"><span></span><button class="btn btn-clay" onclick="BW.next(1)">Continue →</button></div>
       </div>
 
@@ -5126,6 +5146,9 @@ const AX = (function(){
       var s2=document.getElementById('ftDropdown');   if(s2) s2.classList.remove('open');
       var s3=document.getElementById('ppDropdown');   if(s3) s3.classList.remove('open');
     }
+    // BW category header toggle
+    var ct=e.target.closest('[data-bw-cattoggle]');
+    if(ct){ ct.parentElement.classList.toggle('open'); return; }
     // BW test grid
     var ti=e.target.closest('[data-bw-test]');
     if(ti){ BW.pickTest(ti.dataset.bwTest); return; }
@@ -5499,9 +5522,27 @@ const BW = (function(){
   }
   function renderTests(){
     var grid=document.getElementById('bwTestGrid'); if(!grid) return;
-    grid.innerHTML=TESTS.map(function(t){
-      var sel=state.test&&state.test.id===t.id?' selected':'';
-      return '<div class="bw-test-item'+sel+'" data-bw-test="'+t.id+'"><div class="bw-test-name">'+t.name+'</div><div class="bw-test-cat">'+t.cat+'</div></div>';
+    // Group tests by category
+    var cats={}, order=[];
+    TESTS.forEach(function(t){
+      if(!cats[t.cat]){ cats[t.cat]=[]; order.push(t.cat); }
+      cats[t.cat].push(t);
+    });
+    grid.innerHTML=order.map(function(cat){
+      var items=cats[cat];
+      var hasSelected=state.test&&items.some(function(t){return t.id===state.test.id;});
+      var open=hasSelected?' open':'';
+      var rows=items.map(function(t){
+        var sel=state.test&&state.test.id===t.id?' selected':'';
+        return '<div class="bw-test-item'+sel+'" data-bw-test="'+t.id+'">'+t.name+'</div>';
+      }).join('');
+      return '<div class="bw-cat'+open+'" data-bw-cat="'+cat+'">'+
+               '<div class="bw-cat-head" data-bw-cattoggle="'+cat+'">'+
+                 '<span class="bw-cat-name">'+cat+'</span>'+
+                 '<span class="bw-cat-meta"><span class="bw-cat-count">'+items.length+'</span><span class="bw-cat-chev">▾</span></span>'+
+               '</div>'+
+               '<div class="bw-cat-body">'+rows+'</div>'+
+             '</div>';
     }).join('');
   }
   function renderDates(){
@@ -5585,7 +5626,26 @@ const BW = (function(){
       var dd=document.getElementById('bwSearchDrop'); if(dd) dd.classList.remove('open');
       BW.pickTest(testId);
     },
-    filterTests(q){ document.querySelectorAll('.bw-test-item').forEach(el=>{ el.style.display=el.textContent.toLowerCase().includes(q.toLowerCase())?'':'none'; }); },
+    filterTests(q){
+      var term=q.trim().toLowerCase();
+      document.querySelectorAll('.bw-cat').forEach(function(cat){
+        var items=cat.querySelectorAll('.bw-test-item');
+        var anyVisible=false;
+        items.forEach(function(el){
+          var match=!term||el.textContent.toLowerCase().includes(term);
+          el.style.display=match?'':'none';
+          if(match) anyVisible=true;
+        });
+        cat.style.display=anyVisible?'':'none';
+        // Auto-expand categories with matches when searching
+        if(term&&anyVisible) cat.classList.add('open');
+        else if(!term) cat.classList.remove('open');
+      });
+    },
+    toggleCat(cat){
+      var el=document.querySelector('.bw-cat[data-bw-cat="'+cat.replace(/"/g,'')+'"]');
+      if(el) el.classList.toggle('open');
+    },
     pickTest(id){
       state.test=TESTS.find(t=>t.id===id)||null;
       renderTests();
