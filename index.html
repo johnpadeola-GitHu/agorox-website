@@ -4001,6 +4001,12 @@
             <span id="ow_labname_err" style="color:var(--clay-deep); font-size:12px;"></span>
           </div>
           <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Lab Booking Email *</label>
+            <input type="email" id="ow_lab_email" placeholder="e.g. bookings@yourlaboratory.com" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
+            <span id="ow_lab_email_err" style="color:var(--clay-deep); font-size:12px;"></span>
+            <p style="font-size:11.5px; color:var(--slate); margin-top:4px;">Booking notifications will be sent here whenever a patient books with your lab.</p>
+          </div>
+          <div>
             <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Primary / HQ Address</label>
             <input type="text" id="ow_address" placeholder="Head office street address" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
           </div>
@@ -5473,6 +5479,10 @@ const OW = (function(){
         AX.clearErr('ow_labname_err');
         if(!ln.trim()){ AX.setErr('ow_labname_err','Laboratory name is required'); return; }
         fields.lab_name=ln.trim();
+        var le=(document.getElementById('ow_lab_email')||{}).value||'';
+        AX.clearErr('ow_lab_email_err');
+        if(!le.trim()||!/\S+@\S+\.\S+/.test(le)){ AX.setErr('ow_lab_email_err','Valid lab email required'); return; }
+        fields.lab_email=le.trim();
         fields.lab_address=(document.getElementById('ow_address')||{}).value||'';
         fields.lab_state=(document.getElementById('ow_state')||{}).value||'';
         fields.branches=(document.getElementById('ow_branches')||{}).value||'1';
@@ -5486,6 +5496,7 @@ const OW = (function(){
           '<div class="bw-summary-row"><span class="bw-summary-label">Contact</span><span class="bw-summary-value">'+fields.contact_name+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">Email</span><span class="bw-summary-value">'+fields.contact_email+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">Laboratory</span><span class="bw-summary-value">'+fields.lab_name+'</span></div>'+
+          '<div class="bw-summary-row"><span class="bw-summary-label">Booking Email</span><span class="bw-summary-value">'+fields.lab_email+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">Branches</span><span class="bw-summary-value">'+(fields.branches==='1'?'Single center':fields.branches+' branches')+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">HQ State</span><span class="bw-summary-value">'+(fields.lab_state||'—')+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">Specialities</span><span class="bw-summary-value">'+(fields.specialities||'—')+'</span></div>';
