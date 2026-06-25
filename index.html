@@ -999,6 +999,11 @@
   .bw-cat-body .bw-test-item{ padding:10px 16px 10px 28px; font-size:13px; color:var(--slate-dark); cursor:pointer; border-top:1px solid var(--paper); transition:background .1s, color .1s; }
   .bw-cat-body .bw-test-item:hover{ background:var(--skyfill); color:var(--navy); }
   .bw-cat-body .bw-test-item.selected{ background:var(--clay); color:#fff; font-weight:600; }
+  .bw-cat-body .bw-test-item{ position:relative; padding-left:36px; }
+  .bw-cat-body .bw-test-item::before{ content:''; position:absolute; left:16px; top:50%; transform:translateY(-50%); width:14px; height:14px; border:1.5px solid var(--line); border-radius:3px; background:#fff; transition:all .1s; }
+  .bw-cat-body .bw-test-item.selected::before{ background:var(--clay); border-color:var(--clay); content:'✓'; color:#fff; display:flex; align-items:center; justify-content:center; font-size:9px; font-weight:700; }
+  .bw-cart-tag{ display:inline-flex; align-items:center; gap:6px; background:#fff; border:1px solid var(--clay); border-radius:3px; padding:4px 10px; margin:3px 4px 3px 0; font-size:12.5px; color:var(--navy); }
+  .bw-cart-tag button{ background:none; border:none; color:var(--clay); cursor:pointer; font-size:14px; line-height:1; padding:0; font-weight:700; }
 
 </style>
 </head>
@@ -3710,16 +3715,10 @@
 
       <!-- Step 1: Choose test -->
       <div class="bw-step active" id="bwStep1">
-        <h3 style="margin-bottom:4px;">Select a Test</h3>
-        <p style="font-size:13.5px;color:var(--slate-dark);margin-bottom:16px;">Search by name or category — or scroll to browse all 302 tests.</p>
+        <h3 style="margin-bottom:4px;">Select Tests</h3>
+        <p style="font-size:13.5px;color:var(--slate-dark);margin-bottom:14px;">Select one or more tests. Tick any test to add it — tick again to remove.</p>
 
-        <!-- Selected test indicator -->
-        <div id="bwSelectedTest" style="display:none; background:var(--skyfill); border:2px solid var(--clay); border-radius:4px; padding:10px 14px; margin-bottom:14px;">
-          <span style="font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--clay-deep);">Selected:</span>
-          <span id="bwSelectedTestName" style="font-size:14px; font-weight:600; color:var(--navy); margin-left:8px;"></span>
-          <span style="float:right; font-size:12px; color:var(--slate); cursor:pointer;" onclick="BW.clearTest()">✕ Change</span>
-        </div>
-
+        <!-- Search -->
         <div class="eco-search-box" style="margin-bottom:14px; position:relative;">
           <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
           <input type="text" id="bwTestSearch"
@@ -3729,9 +3728,24 @@
                  autocomplete="off">
           <div class="ft-dropdown" id="bwSearchDrop"></div>
         </div>
+
+        <!-- Selected tests cart -->
+        <div id="bwCart" style="display:none; background:var(--skyfill); border:2px solid var(--clay); border-radius:4px; padding:10px 14px; margin-bottom:14px;">
+          <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+            <span style="font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--clay-deep);">Selected Tests</span>
+            <span style="font-size:11px; color:var(--slate); cursor:pointer;" onclick="BW.clearAll()">✕ Clear all</span>
+          </div>
+          <div id="bwCartItems"></div>
+        </div>
+
         <div style="font-family:var(--mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.05em; color:var(--slate); margin-bottom:8px;">Browse by category</div>
-        <div class="bw-cat-list" id="bwTestGrid"></div>
-        <div class="ow-nav"><span></span><button class="btn btn-clay" onclick="BW.next(1)">Continue →</button></div>
+        <div class="bw-cat-list" id="bwTestGrid" style="margin-bottom:80px;"></div>
+
+        <!-- Sticky Continue bar — appears when tests selected -->
+        <div id="bwStickyBar" style="display:none; position:fixed; bottom:0; left:0; right:0; background:var(--navy); padding:14px 20px; display:flex; align-items:center; justify-content:space-between; z-index:200; box-shadow:0 -4px 16px rgba(0,0,0,.18);">
+          <span id="bwStickyCount" style="color:var(--paper); font-size:14px; font-weight:500;"></span>
+          <button class="btn btn-clay" onclick="BW.next(1)" style="margin:0;">Continue →</button>
+        </div>
       </div>
 
       <!-- Step 2: Choose date -->
@@ -3790,7 +3804,7 @@
       <div class="bw-step" id="bwStep5">
         <h3 style="margin-bottom:16px;">Review Your Booking</h3>
         <div class="bw-summary" id="bwSummary" style="background:var(--paper); border:1px solid var(--line); border-radius:4px; padding:20px; margin-bottom:20px;">
-          <div class="bw-summary-row"><span class="bw-summary-label">Test</span><span id="bwSumTest" class="bw-summary-value"></span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Tests</span><span id="bwSumTest" class="bw-summary-value" style="white-space:pre-line;"></span></div>
           <div class="bw-summary-row"><span class="bw-summary-label">Laboratory</span><span class="bw-summary-value">Vitalis Diagnostics, Ibadan</span></div>
           <div class="bw-summary-row"><span class="bw-summary-label">Date</span><span id="bwSumDate" class="bw-summary-value"></span></div>
           <div class="bw-summary-row"><span class="bw-summary-label">Time</span><span id="bwSumTime" class="bw-summary-value"></span></div>
@@ -3813,7 +3827,7 @@
           <div style="font-size:48px; margin-bottom:16px;">✓</div>
           <h2 style="color:var(--navy); margin-bottom:8px;">Booking Confirmed!</h2>
           <p style="color:var(--slate-dark); margin-bottom:8px;">Your booking reference:</p>
-          <p id="bwConfRef" style="font-family:var(--mono); font-size:22px; font-weight:700; color:var(--clay-deep); margin-bottom:16px;"></p>
+          <div id="bwConfRefs" style="margin-bottom:16px;"></div>
           <p style="font-size:14px; color:var(--slate-dark);">A confirmation has been sent to <strong id="bwConfEmail"></strong></p>
           <div style="margin-top:28px;">
             <button class="btn btn-clay" onclick="window.location.hash='#patient-portal'; BW.reset();">Book Another Test</button>
@@ -4902,7 +4916,7 @@ const AX = (function(){
 // BW — Booking Wizard
 // ════════════════════════════════════════════════════════════════════════════
 const BW = (function(){
-  const state = { step:1, test:null, date:null, dateLabel:null, time:null, patient:{name:'',email:'',phone:'',notes:''} };
+  const state = { step:1, tests:[], date:null, dateLabel:null, time:null, patient:{name:'',email:'',phone:'',notes:''} };
   const TESTS = [
     // ── Haematology ──────────────────────────────────────────────────────────
     {id:'fbc',       name:'Full Blood Count (FBC / CBC)',                  cat:'Haematology'},
@@ -5250,7 +5264,6 @@ const BW = (function(){
   }
   function renderTests(){
     var grid=document.getElementById('bwTestGrid'); if(!grid) return;
-    // Group tests by category
     var cats={}, order=[];
     TESTS.forEach(function(t){
       if(!cats[t.cat]){ cats[t.cat]=[]; order.push(t.cat); }
@@ -5258,20 +5271,40 @@ const BW = (function(){
     });
     grid.innerHTML=order.map(function(cat){
       var items=cats[cat];
-      var hasSelected=state.test&&items.some(function(t){return t.id===state.test.id;});
+      var hasSelected=items.some(function(t){ return state.tests.some(function(s){return s.id===t.id;}); });
       var open=hasSelected?' open':'';
+      var selectedCount=items.filter(function(t){ return state.tests.some(function(s){return s.id===t.id;}); }).length;
       var rows=items.map(function(t){
-        var sel=state.test&&state.test.id===t.id?' selected':'';
+        var sel=state.tests.some(function(s){return s.id===t.id;})?' selected':'';
         return '<div class="bw-test-item'+sel+'" data-bw-test="'+t.id+'">'+t.name+'</div>';
       }).join('');
+      var countBadge=selectedCount>0?' <span style="color:var(--clay);font-weight:700;margin-left:4px;">'+selectedCount+' ✓</span>':'';
       return '<div class="bw-cat'+open+'" data-bw-cat="'+cat+'">'+
                '<div class="bw-cat-head" data-bw-cattoggle="'+cat+'">'+
                  '<span class="bw-cat-name">'+cat+'</span>'+
-                 '<span class="bw-cat-meta"><span class="bw-cat-count">'+items.length+'</span><span class="bw-cat-chev">▾</span></span>'+
+                 '<span class="bw-cat-meta"><span class="bw-cat-count">'+items.length+'</span>'+countBadge+'<span class="bw-cat-chev">▾</span></span>'+
                '</div>'+
                '<div class="bw-cat-body">'+rows+'</div>'+
              '</div>';
     }).join('');
+    updateCart();
+  }
+  function updateCart(){
+    var cart=document.getElementById('bwCart');
+    var items=document.getElementById('bwCartItems');
+    var bar=document.getElementById('bwStickyBar');
+    var cnt=document.getElementById('bwStickyCount');
+    if(state.tests.length===0){
+      if(cart) cart.style.display='none';
+      if(bar)  bar.style.display='none';
+    } else {
+      if(cart){ cart.style.display='block'; }
+      if(items){ items.innerHTML=state.tests.map(function(t){
+        return '<span class="bw-cart-tag">'+t.name+'<button onclick="BW.removeTest(\''+t.id+'\')" title="Remove">×</button></span>';
+      }).join(''); }
+      if(bar){  bar.style.display='flex'; }
+      if(cnt){  var n=state.tests.length; cnt.textContent=n+' test'+(n>1?'s':'')+' selected'; }
+    }
   }
   function renderDates(){
     var grid=document.getElementById('bwDateGrid'); if(!grid) return;
@@ -5297,7 +5330,7 @@ const BW = (function(){
   var bwDropHL=-1, bwDropFiltered=[];
 
   return {
-    preselectAndGo(testId){ state.test=TESTS.find(t=>t.id===testId)||null; window.location.hash='#patient-portal'; },
+    preselectAndGo(testId){ var t=TESTS.find(function(x){return x.id===testId;}); if(t&&!state.tests.some(function(x){return x.id===testId;})) state.tests.push(t); window.location.hash='#patient-portal'; },
     init(){
       // Hide all steps first, then show step 1 via gotoStep
       var activePage=document.querySelector('.page.active')||document;
@@ -5305,14 +5338,7 @@ const BW = (function(){
       const prog=activePage.querySelector('#bwProgress'); if(prog) prog.style.display='';
       gotoStep(1);
       renderTests(); renderDates();
-      if(state.test){
-        setTimeout(()=>{
-          document.querySelectorAll('.bw-test-item').forEach(el=>{
-            const n=el.querySelector('.bw-test-name');
-            if(n&&state.test&&n.textContent===state.test.name) el.classList.add('selected');
-          });
-        },50);
-      }
+      updateCart();
     },
 
     searchFilter:function(q){
@@ -5350,7 +5376,7 @@ const BW = (function(){
     searchPick:function(testId){
       var t=TESTS.find(function(x){return x.id===testId;});
       if(!t) return;
-      var inp=document.getElementById('bwTestSearch'); if(inp) inp.value=t.name;
+      var inp=document.getElementById('bwTestSearch'); if(inp) inp.value='';
       var dd=document.getElementById('bwSearchDrop'); if(dd) dd.classList.remove('open');
       BW.pickTest(testId);
     },
@@ -5365,43 +5391,40 @@ const BW = (function(){
           if(match) anyVisible=true;
         });
         cat.style.display=anyVisible?'':'none';
-        // Auto-expand categories with matches when searching
         if(term&&anyVisible) cat.classList.add('open');
         else if(!term) cat.classList.remove('open');
       });
+      updateCart(); // keep sticky bar updated
     },
     toggleCat(cat){
       var el=document.querySelector('.bw-cat[data-bw-cat="'+cat.replace(/"/g,'')+'"]');
       if(el) el.classList.toggle('open');
     },
     pickTest(id){
-      state.test=TESTS.find(t=>t.id===id)||null;
+      var t=TESTS.find(function(x){return x.id===id;}); if(!t) return;
+      var idx=state.tests.findIndex(function(x){return x.id===id;});
+      if(idx>=0){ state.tests.splice(idx,1); } // deselect
+      else { state.tests.push(t); }             // select
       renderTests();
-      // Update the selected test indicator
-      var ind=document.getElementById('bwSelectedTest');
-      var nm=document.getElementById('bwSelectedTestName');
-      if(ind && nm){
-        if(state.test){ ind.style.display='block'; nm.textContent=state.test.name; }
-        else { ind.style.display='none'; }
-      }
     },
-    clearTest(){
-      state.test=null;
+    removeTest(id){
+      state.tests=state.tests.filter(function(t){return t.id!==id;});
       renderTests();
-      var ind=document.getElementById('bwSelectedTest');
-      if(ind) ind.style.display='none';
+    },
+    clearAll(){
+      state.tests=[];
+      renderTests();
     },
     reset(){
-      state.step=1; state.test=null; state.date=null; state.dateLabel=null; state.time=null;
+      state.step=1; state.tests=[]; state.date=null; state.dateLabel=null; state.time=null;
       state.patient={name:'',email:'',phone:'',notes:''};
       var inp=document.getElementById('bwTestSearch'); if(inp) inp.value='';
-      var ind=document.getElementById('bwSelectedTest'); if(ind) ind.style.display='none';
       BW.init();
     },
     pickDate(iso,label){ state.date=iso; state.dateLabel=label; renderDates(); const l=document.getElementById('bwSelectedDateLabel'); if(l) l.textContent=label; renderTimes(); },
     pickTime(t){ state.time=t; renderTimes(); },
     next(current){
-      if(current===1){ if(!state.test){ AX.toast('Please select a test'); return; } }
+      if(current===1){ if(!state.tests.length){ AX.toast('Please select at least one test'); return; } }
       else if(current===2){ if(!state.date){ AX.toast('Please select a date'); return; } }
       else if(current===3){ if(!state.time){ AX.toast('Please select a time slot'); return; } }
       else if(current===4){
@@ -5412,7 +5435,7 @@ const BW = (function(){
         if(!email.trim()||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('bw_email_err','Valid email required'); return; }
         state.patient={name:name.trim(),email:email.trim(),phone:(document.getElementById('bw_phone')||{}).value||'',notes:(document.getElementById('bw_notes')||{}).value||''};
         const set=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=v; };
-        set('bwSumTest', state.test?state.test.name:'');
+        set('bwSumTest', state.tests.map(function(t){return '• '+t.name;}).join('\n'));
         set('bwSumDate', state.dateLabel||state.date||'');
         set('bwSumTime', state.time||'');
         set('bwSumName', state.patient.name);
@@ -5422,15 +5445,35 @@ const BW = (function(){
     },
     back(current){ gotoStep(current-1); },
     async submit(){
-      const btn=document.getElementById('bwSubmitBtn');
+      var btn=document.getElementById('bwSubmitBtn');
       if(btn){ btn.disabled=true; btn.innerHTML='<span class="ax-spinner"></span> Confirming…'; }
-      const result=await AX.post('/booking',{patient_name:state.patient.name,patient_email:state.patient.email,patient_phone:state.patient.phone,lab_id:'vitalis-ibadan',lab_name:'Vitalis Diagnostics',test_id:state.test?state.test.id:'',test_name:state.test?state.test.name:'',booking_date:state.date,booking_time:state.time,notes:state.patient.notes});
-      const ref=result&&result.booking_ref?result.booking_ref:'AX'+Math.random().toString(36).slice(2,8).toUpperCase();
-      const setEl=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=v; };
-      setEl('bwConfRef',ref); setEl('bwConfEmail',state.patient.email);
-      AX.analytics.track('booking_completed','book-test',state.test?state.test.id:'');
+      // Book each selected test separately
+      var refs=[];
+      for(var i=0;i<state.tests.length;i++){
+        var t=state.tests[i];
+        var result=await AX.post('/booking',{
+          patient_name:state.patient.name,patient_email:state.patient.email,
+          patient_phone:state.patient.phone,lab_id:'vitalis-ibadan',lab_name:'Vitalis Diagnostics',
+          test_id:t.id,test_name:t.name,booking_date:state.date,booking_time:state.time,
+          notes:state.patient.notes
+        });
+        var r=result&&result.booking_ref?result.booking_ref:'AX'+Math.random().toString(36).slice(2,8).toUpperCase();
+        refs.push({ref:r,test:t.name});
+      }
+      // Show confirmation
+      var confEl=document.getElementById('bwConfRefs');
+      if(confEl){
+        confEl.innerHTML=refs.map(function(r){
+          return '<div style="margin-bottom:12px;">'+
+            '<div style="font-size:11px;color:var(--slate);margin-bottom:2px;">'+r.test+'</div>'+
+            '<div style="font-family:var(--mono);font-size:20px;font-weight:700;color:var(--clay-deep);">'+r.ref+'</div>'+
+          '</div>';
+        }).join('');
+      }
+      var emailEl=document.getElementById('bwConfEmail'); if(emailEl) emailEl.textContent=state.patient.email;
+      AX.analytics.track('booking_completed','book-test',state.tests.map(function(t){return t.id;}).join(','));
       gotoStep(6);
-      const prog=document.getElementById('bwProgress'); if(prog) prog.style.display='none';
+      var prog=document.getElementById('bwProgress'); if(prog) prog.style.display='none';
     }
   };
 })();
