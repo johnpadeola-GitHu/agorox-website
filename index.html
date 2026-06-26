@@ -3742,7 +3742,7 @@
         <div class="bw-cat-list" id="bwTestGrid" style="margin-bottom:80px;"></div>
 
         <!-- Sticky Continue bar — appears when tests selected -->
-        <div id="bwStickyBar" style="display:none; position:fixed; bottom:0; left:0; right:0; background:var(--navy); padding:14px 20px; display:flex; align-items:center; justify-content:space-between; z-index:200; box-shadow:0 -4px 16px rgba(0,0,0,.18);">
+        <div id="bwStickyBar" style="display:none; position:fixed; bottom:0; left:0; right:0; background:var(--navy); padding:14px 20px; align-items:center; justify-content:space-between; z-index:200; box-shadow:0 -4px 16px rgba(0,0,0,.18);">
           <span id="bwStickyCount" style="color:var(--paper); font-size:14px; font-weight:500;"></span>
           <button class="btn btn-clay" onclick="BW.next(1)" style="margin:0;">Continue →</button>
         </div>
@@ -5266,7 +5266,10 @@ const BW = (function(){
       var s=parseInt(dot.dataset.step);
       dot.classList.toggle('done',s<n); dot.classList.toggle('active',s===n);
     });
-    // Scroll the wizard into view (not page top) so the active step is visible
+    // Hide sticky bar on steps beyond step 1
+    var stickyBar=activePage.querySelector('#bwStickyBar');
+    if(stickyBar) stickyBar.style.display = (n===1 && state.tests && state.tests.length>0) ? 'flex' : 'none';
+    // Scroll wizard into view
     var prog=activePage.querySelector('#bwProgress');
     if(prog&&prog.scrollIntoView){ prog.scrollIntoView({behavior:'smooth',block:'start'}); }
   }
@@ -5310,7 +5313,7 @@ const BW = (function(){
       if(items){ items.innerHTML=state.tests.map(function(t){
         return '<span class="bw-cart-tag">'+t.name+'<button onclick="BW.removeTest(\''+t.id+'\')" title="Remove">×</button></span>';
       }).join(''); }
-      if(bar){  bar.style.display='flex'; }
+      if(bar&&state.step===1){  bar.style.display='flex'; }
       if(cnt){  var n=state.tests.length; cnt.textContent=n+' test'+(n>1?'s':'')+' selected'; }
     }
   }
