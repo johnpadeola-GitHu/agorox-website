@@ -255,7 +255,7 @@
   .feature-actions{ display:flex; gap:14px; margin-top:8px; flex-wrap:wrap; }
 
   /* ---------- Compact featured products (two-up, Home) ---------- */
-  .feature-duo{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); }
+  .feature-duo{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
   @media (max-width:860px){ .feature-duo{ grid-template-columns:1fr; } }
   .feature-mini{ background:var(--skyfill); padding:28px 24px; display:flex; flex-direction:column; min-height:215px; cursor:pointer; transition: background .15s ease; }
   .feature-mini:hover{ background:var(--sky-mid); }
@@ -1248,13 +1248,12 @@
           <span style="color:var(--slate); opacity:.4;">·</span>
           <span style="font-family:var(--mono); font-size:14px; color:var(--navy);"><strong>4</strong> <span style="color:var(--slate);">industries</span></span>
         </div>
-        </div>
-
         <div style="margin-top:18px;">
           <span class="btn btn-ghost" data-route="products">View all products →</span>
         </div>
       </div>
-      <div class="feature-duo">
+
+      <div class="feature-duo" style="margin-top:24px;">
         <div class="feature-mini" data-route="products" data-anchor="labos">
           <div class="fv-top">AX-01 / HEALTHCARE / DIAGNOSTICS</div>
           <h3>LabOS</h3>
