@@ -3779,6 +3779,22 @@
             <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Phone Number</label>
             <input type="tel" id="bw_phone" placeholder="e.g. 0803 000 0000" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:9px 12px; font-size:14px;">
           </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+            <div>
+              <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Date of Birth *</label>
+              <input type="date" id="bw_dob" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:9px 12px; font-size:14px;">
+              <span id="bw_dob_err" style="color:var(--clay-deep); font-size:12px;"></span>
+            </div>
+            <div>
+              <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Gender *</label>
+              <select id="bw_gender" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:9px 12px; font-size:14px; background:#fff;">
+                <option value="">Select…</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+              </select>
+              <span id="bw_gender_err" style="color:var(--clay-deep); font-size:12px;"></span>
+            </div>
+          </div>
           <div>
             <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Notes (optional)</label>
             <textarea id="bw_notes" placeholder="Any relevant medical history or instructions…" rows="3" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:9px 12px; font-size:14px; resize:vertical;"></textarea>
@@ -3800,6 +3816,8 @@
           <div class="bw-summary-row"><span class="bw-summary-label">Time</span><span id="bwSumTime" class="bw-summary-value"></span></div>
           <div class="bw-summary-row"><span class="bw-summary-label">Name</span><span id="bwSumName" class="bw-summary-value"></span></div>
           <div class="bw-summary-row"><span class="bw-summary-label">Email</span><span id="bwSumEmail" class="bw-summary-value"></span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Date of Birth</span><span id="bwSumDob" class="bw-summary-value"></span></div>
+          <div class="bw-summary-row"><span class="bw-summary-label">Gender</span><span id="bwSumGender" class="bw-summary-value"></span></div>
         </div>
         <p style="font-size:13px; color:var(--slate-dark); margin-bottom:16px;">A confirmation with your booking reference will be sent to your email immediately.</p>
         <div id="bwSubmitArea">
@@ -5338,7 +5356,7 @@ const AX = (function(){
 // BW — Booking Wizard
 // ════════════════════════════════════════════════════════════════════════════
 const BW = (function(){
-  const state = { step:1, tests:[], date:null, dateLabel:null, time:null, patient:{name:'',email:'',phone:'',notes:''} };
+  const state = { step:1, tests:[], date:null, dateLabel:null, time:null, patient:{name:'',email:'',phone:'',dob:'',gender:'',notes:''} };
   const TESTS = [
     // ── Haematology ──────────────────────────────────────────────────────────
     {id:'fbc',       name:'Full Blood Count (FBC / CBC)',                  cat:'Haematology'},
@@ -5855,16 +5873,22 @@ const BW = (function(){
       else if(current===4){
         const name=(document.getElementById('bw_name')||{}).value||'';
         const email=(document.getElementById('bw_email')||{}).value||'';
-        AX.clearErr('bw_name_err'); AX.clearErr('bw_email_err');
+        const dob=(document.getElementById('bw_dob')||{}).value||'';
+        const gender=(document.getElementById('bw_gender')||{}).value||'';
+        AX.clearErr('bw_name_err'); AX.clearErr('bw_email_err'); AX.clearErr('bw_dob_err'); AX.clearErr('bw_gender_err');
         if(!name.trim()){ AX.setErr('bw_name_err','Name is required'); return; }
         if(!email.trim()||!/\S+@\S+\.\S+/.test(email)){ AX.setErr('bw_email_err','Valid email required'); return; }
-        state.patient={name:name.trim(),email:email.trim(),phone:(document.getElementById('bw_phone')||{}).value||'',notes:(document.getElementById('bw_notes')||{}).value||''};
+        if(!dob){ AX.setErr('bw_dob_err','Date of birth is required'); return; }
+        if(!gender){ AX.setErr('bw_gender_err','Please select a gender'); return; }
+        state.patient={name:name.trim(),email:email.trim(),phone:(document.getElementById('bw_phone')||{}).value||'',dob:dob,gender:gender,notes:(document.getElementById('bw_notes')||{}).value||''};
         const set=(id,v)=>{ const el=document.getElementById(id); if(el) el.textContent=v; };
         set('bwSumTest', state.tests.map(function(t){return '• '+t.name;}).join('\n'));
         set('bwSumDate', state.dateLabel||state.date||'');
         set('bwSumTime', state.time||'');
         set('bwSumName', state.patient.name);
         set('bwSumEmail',state.patient.email);
+        set('bwSumDob',state.patient.dob);
+        set('bwSumGender',state.patient.gender);
       }
       gotoStep(current+1);
     },
@@ -5878,7 +5902,8 @@ const BW = (function(){
         var t=state.tests[i];
         var result=await AX.post('/booking',{
           patient_name:state.patient.name,patient_email:state.patient.email,
-          patient_phone:state.patient.phone,lab_id:'vitalis-ibadan',lab_name:'Vitalis Diagnostics',
+          patient_phone:state.patient.phone,patient_dob:state.patient.dob,patient_gender:state.patient.gender,
+          lab_id:'vitalis-ibadan',lab_name:'Vitalis Diagnostics',
           test_id:t.id,test_name:t.name,booking_date:state.date,booking_time:state.time,
           notes:state.patient.notes
         });
