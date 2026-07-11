@@ -4247,6 +4247,11 @@
             <p style="font-size:11.5px; color:var(--slate); margin-top:4px;">Booking notifications will be sent here whenever a patient books with your lab.</p>
           </div>
           <div>
+            <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">LabOS Tenant ID</label>
+            <input type="text" id="ow_labos_tenant" placeholder="e.g. 440a5c9e-605e-4d53-9aff-dc7562087575" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:13px; font-family:var(--mono);">
+            <p style="font-size:11.5px; color:var(--slate); margin-top:4px;">Already have a LabOS account? Find this in LabOS under <strong>Settings → My Account</strong>. Leave blank if you don't have one yet — we'll help you get set up.</p>
+          </div>
+          <div>
             <label style="font-size:13px; font-weight:500; display:block; margin-bottom:5px;">Primary / HQ Address</label>
             <input type="text" id="ow_address" placeholder="Head office street address" style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:3px; padding:10px 12px; font-size:14px;">
           </div>
@@ -4507,41 +4512,68 @@
 <!-- ============ CLIENT LOGIN MODAL ============ -->
 <div class="modal-backdrop" id="loginModal">
   <div class="modal">
-    <div class="modal-head">
-      <div>
-        <h3>Tenants Login</h3>
-        <p>Select the AgoroX platform you'd like to sign in to.</p>
+
+    <!-- ── Auth step: email + password ──────────────────────── -->
+    <div id="modalAuthStep">
+      <div class="modal-head">
+        <div>
+          <h3>Tenants Login</h3>
+          <p>Sign in to access your AgoroX platform.</p>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
       </div>
-      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div style="padding:0 4px;">
+        <div style="display:grid; gap:14px;">
+          <div>
+            <label style="font-size:12.5px; font-weight:500; display:block; margin-bottom:5px; color:var(--navy);">Email Address</label>
+            <input type="email" id="loginEmail" placeholder="your@email.com" autocomplete="email"
+              style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:4px; padding:10px 13px; font-size:15px;"
+              onkeydown="if(event.key==='Enter') TLOGIN.submit()">
+          </div>
+          <div>
+            <label style="font-size:12.5px; font-weight:500; display:block; margin-bottom:5px; color:var(--navy);">Password</label>
+            <div style="position:relative;">
+              <input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"
+                style="width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:4px; padding:10px 40px 10px 13px; font-size:15px;"
+                onkeydown="if(event.key==='Enter') TLOGIN.submit()">
+              <span onclick="TLOGIN.togglePass()" title="Show/hide"
+                style="position:absolute; right:12px; top:50%; transform:translateY(-50%); cursor:pointer; color:var(--slate); font-size:14px;">👁</span>
+            </div>
+          </div>
+        </div>
+        <div id="loginErr" style="color:var(--clay-deep); font-size:12.5px; margin-top:10px; min-height:18px;"></div>
+        <button onclick="TLOGIN.submit()"
+          style="width:100%; background:var(--navy); color:#fff; border:none; border-radius:4px; padding:12px; font-size:14px; font-weight:600; cursor:pointer; margin-top:14px; min-height:44px;">
+          <span id="loginBtnText">Sign In →</span>
+        </button>
+        <p style="font-size:12px; color:var(--slate); text-align:center; margin-top:14px;">
+          Contact <a href="mailto:support@agorox.africa" style="color:var(--clay);">support@agorox.africa</a> if you need access.
+        </p>
+      </div>
     </div>
-    <div class="modal-products">
-      <a class="modal-product" href="https://labos.agorox.africa" target="_blank" rel="noopener" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
-        <div class="mp-left"><div class="mp-icon">LB</div><div><div class="mp-name">LabOS</div><div class="mp-sub">Laboratory Information Management</div></div></div>
-        <div class="mp-arrow">→</div>
-      </a>
-      <a class="modal-product" href="https://poultrysuite.agorox.africa" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
-        <div class="mp-left"><div class="mp-icon">PS</div><div><div class="mp-name">PoultrySuite Africa</div><div class="mp-sub">Hatchery, Feed Mill &amp; Poultry Management</div></div></div>
-        <div class="mp-arrow">→</div>
-      </a>
-      <a class="modal-product" href="https://smartinvoice.agorox.africa" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
-        <div class="mp-left"><div class="mp-icon">SI</div><div><div class="mp-name">SmartInvoice Pro</div><div class="mp-sub">Billing &amp; Invoicing</div></div></div>
-        <div class="mp-arrow">→</div>
-      </a>
-      <a class="modal-product" href="https://pharmacyos.agorox.africa" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
-        <div class="mp-left"><div class="mp-icon">PH</div><div><div class="mp-name">PharmacyOS</div><div class="mp-sub">Pharmacy Management</div></div></div>
-        <div class="mp-arrow">→</div>
-      </a>
-      <a class="modal-product" data-route="agorox-vault" onclick="closeModal(); navigate('agorox-vault');" style="text-decoration:none; color:inherit; cursor:pointer;">
-        <div class="mp-left"><div class="mp-icon" style="background:#3D1E4F; color:#E8B4B8;">AV</div><div><div class="mp-name">AgoroX Vault</div><div class="mp-sub">Encrypted Secret Vault</div></div></div>
-        <div class="mp-arrow">→</div>
-      </a>
+
+    <!-- ── Platform step: filtered tiles after auth ──────────── -->
+    <div id="modalPlatformStep" style="display:none;">
+      <div class="modal-head">
+        <div>
+          <h3>Select Platform</h3>
+          <p id="modalWelcome" style="color:var(--clay-deep); font-weight:500;"></p>
+        </div>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+      </div>
+      <div class="modal-products" id="modalProductList"></div>
+      <div style="margin-top:12px; padding-top:12px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-size:12px; color:var(--slate);">Signed in as <span id="modalUserEmail" style="color:var(--navy); font-weight:500;"></span></span>
+        <button onclick="TLOGIN.signOut()" style="background:none; border:none; font-size:12px; color:var(--clay-deep); cursor:pointer; padding:4px 8px;">Sign out</button>
+      </div>
     </div>
+
   </div>
 </div>
 
 <script>
   // ---------- Modal ----------
-  function openModal(){ document.getElementById('loginModal').classList.add('open'); }
+  function openModal(){ TLOGIN.init(); document.getElementById('loginModal').classList.add('open'); }
   function closeModal(){ document.getElementById('loginModal').classList.remove('open'); }
   document.getElementById('loginModal').addEventListener('click', function(e){ if(e.target === this) closeModal(); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeModal(); });
@@ -4640,6 +4672,162 @@
     if(el && !e.target.closest('#navResources')){ closeMegaMenu(); }
   });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeMegaMenu(); });
+
+
+// ════════════════════════════════════════════════════════════════════════════
+// TLOGIN — Tenant Login: auth gate → per-platform filtered tiles
+// ════════════════════════════════════════════════════════════════════════════
+const TLOGIN = (function(){
+  const API = (window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')
+    ? 'http://localhost:8787' : 'https://agorox-api.johnpadeola.workers.dev/api';
+
+  // All platform definitions — key must match what's stored in user.platforms
+  const PLATFORMS = [
+    { key:'labos',        name:'LabOS',             sub:'Laboratory Information Management',    icon:'LB', url:'https://labos.agorox.africa',        style:'' },
+    { key:'poultrysuite', name:'PoultrySuite Africa',sub:'Hatchery, Feed Mill & Poultry',       icon:'PS', url:'https://poultrysuite.agorox.africa',  style:'' },
+    { key:'smartinvoice', name:'SmartInvoice Pro',   sub:'Billing & Invoicing',                 icon:'SI', url:'https://smartinvoice.agorox.africa',  style:'' },
+    { key:'pharmacyos',   name:'PharmacyOS',         sub:'Pharmacy Management',                 icon:'PH', url:'https://pharmacyos.agorox.africa',    style:'' },
+    { key:'vault',        name:'AgoroX Vault',       sub:'Encrypted Secret Vault',              icon:'AV', url:'', route:'agorox-vault', style:'background:#3D1E4F;color:#E8B4B8;' }
+  ];
+
+  function getSession(){
+    try{ return JSON.parse(sessionStorage.getItem('ax_tenant')||'null'); }catch(e){ return null; }
+  }
+  function setSession(data){ sessionStorage.setItem('ax_tenant', JSON.stringify(data)); }
+  function clearSession(){ sessionStorage.removeItem('ax_tenant'); }
+
+  function userPlatforms(platforms){
+    if(!platforms||platforms==='*') return PLATFORMS; // superadmin sees all
+    const allowed = platforms.split(',').map(p=>p.trim().toLowerCase());
+    return PLATFORMS.filter(p=>allowed.includes(p.key));
+  }
+
+  function renderPlatforms(session){
+    const list = document.getElementById('modalProductList');
+    const welcome = document.getElementById('modalWelcome');
+    const userEmail = document.getElementById('modalUserEmail');
+    if(!list) return;
+    const role = session.role||'tenant';
+    const name = session.email.split('@')[0];
+    if(welcome) welcome.textContent = (role==='superadmin'?'Superadmin — all platforms':'Your platforms');
+    if(userEmail) userEmail.textContent = session.email;
+
+    const visible = userPlatforms(session.platforms);
+    if(visible.length===0){
+      list.innerHTML='<p style="font-size:13px;color:var(--slate);text-align:center;padding:16px 0;">No platforms assigned. Contact support@agorox.africa</p>';
+      return;
+    }
+    list.innerHTML = visible.map(function(p){
+      if(p.route){
+        return '<a class="modal-product" onclick="closeModal();navigate(\'' +p.route+ '\')" style="text-decoration:none;color:inherit;cursor:pointer;">'+
+          '<div class="mp-left"><div class="mp-icon" style="'+p.style+'">'+p.icon+'</div>'+
+          '<div><div class="mp-name">'+p.name+'</div><div class="mp-sub">'+p.sub+'</div></div></div>'+
+          '<div class="mp-arrow">→</div></a>';
+      }
+      return '<a class="modal-product" href="'+p.url+'" target="_blank" rel="noopener" style="text-decoration:none;color:inherit;">'+
+        '<div class="mp-left"><div class="mp-icon" style="'+p.style+'">'+p.icon+'</div>'+
+        '<div><div class="mp-name">'+p.name+'</div><div class="mp-sub">'+p.sub+'</div></div></div>'+
+        '<div class="mp-arrow">→</div></a>';
+    }).join('');
+  }
+
+  function showPlatforms(session){
+    const auth = document.getElementById('modalAuthStep');
+    const plat = document.getElementById('modalPlatformStep');
+    if(auth) auth.style.display='none';
+    if(plat){ plat.style.display='block'; renderPlatforms(session); }
+  }
+
+  function showAuth(){
+    const auth = document.getElementById('modalAuthStep');
+    const plat = document.getElementById('modalPlatformStep');
+    if(auth) auth.style.display='block';
+    if(plat) plat.style.display='none';
+    const err = document.getElementById('loginErr'); if(err) err.textContent='';
+    const btn = document.getElementById('loginBtnText'); if(btn) btn.textContent='Sign In →';
+    var emailEl = document.getElementById('loginEmail');
+    var passEl  = document.getElementById('loginPass');
+    if(emailEl) emailEl.disabled=false;
+    if(passEl)  passEl.disabled=false;
+    setTimeout(function(){ if(emailEl) emailEl.focus(); }, 100);
+  }
+
+  return {
+    // Called by openModal() — check existing session first
+    init: function(){
+      var session = getSession();
+      if(session && session.token){
+        // Verify token is still valid (check exp)
+        try {
+          var parts = session.token.split('.');
+          if(parts.length===3){
+            var payload = JSON.parse(atob(parts[1].replace(/-/g,'+').replace(/_/g,'/')));
+            if(payload.exp && payload.exp > Math.floor(Date.now()/1000)){
+              showPlatforms(session); return;
+            }
+          }
+        } catch(e){}
+        clearSession();
+      }
+      showAuth();
+    },
+
+    submit: async function(){
+      var email = (document.getElementById('loginEmail')||{}).value||'';
+      var pass  = (document.getElementById('loginPass')||{}).value||'';
+      var err   = document.getElementById('loginErr');
+      var btn   = document.getElementById('loginBtnText');
+
+      if(!email||!pass){ if(err) err.textContent='Please enter your email and password.'; return; }
+
+      if(btn){ btn.textContent='Signing in…'; }
+      if(err){ err.textContent=''; }
+      var emailEl = document.getElementById('loginEmail');
+      var passEl  = document.getElementById('loginPass');
+      if(emailEl) emailEl.disabled=true;
+      if(passEl)  passEl.disabled=true;
+
+      try {
+        var res = await fetch(API+'/auth/login', {
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({email:email.trim(), password:pass})
+        });
+        var data = await res.json();
+
+        if(data.ok && data.token){
+          var session = Object.assign({}, data.user, {token:data.token});
+          setSession(session);
+          showPlatforms(session);
+          if(emailEl) emailEl.value='';
+          if(passEl)  passEl.value='';
+        } else {
+          if(err) err.textContent = data.error||'Invalid email or password.';
+          if(btn) btn.textContent='Sign In →';
+          if(emailEl) emailEl.disabled=false;
+          if(passEl){ passEl.disabled=false; passEl.value=''; passEl.focus(); }
+        }
+      } catch(e) {
+        if(err) err.textContent='Connection error. Please try again.';
+        if(btn) btn.textContent='Sign In →';
+        if(emailEl) emailEl.disabled=false;
+        if(passEl)  passEl.disabled=false;
+      }
+    },
+
+    togglePass: function(){
+      var p = document.getElementById('loginPass');
+      if(p) p.type = p.type==='password' ? 'text' : 'password';
+    },
+
+    signOut: function(){
+      clearSession();
+      closeModal();
+    }
+  };
+})();
+
+
 </script>
 
 
@@ -5763,6 +5951,7 @@ const OW = (function(){
         AX.clearErr('ow_lab_email_err');
         if(!le.trim()||!/\S+@\S+\.\S+/.test(le)){ AX.setErr('ow_lab_email_err','Valid lab email required'); return; }
         fields.lab_email=le.trim();
+        fields.labos_tenant_id=(document.getElementById('ow_labos_tenant')||{}).value.trim()||'';
         fields.lab_address=(document.getElementById('ow_address')||{}).value||'';
         fields.lab_state=(document.getElementById('ow_state')||{}).value||'';
         fields.branches=(document.getElementById('ow_branches')||{}).value||'1';
@@ -5777,6 +5966,7 @@ const OW = (function(){
           '<div class="bw-summary-row"><span class="bw-summary-label">Email</span><span class="bw-summary-value">'+fields.contact_email+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">Laboratory</span><span class="bw-summary-value">'+fields.lab_name+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">Booking Email</span><span class="bw-summary-value">'+fields.lab_email+'</span></div>'+
+          '<div class="bw-summary-row"><span class="bw-summary-label">LabOS Tenant ID</span><span class="bw-summary-value">'+(fields.labos_tenant_id||'Not yet provisioned')+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">Branches</span><span class="bw-summary-value">'+(fields.branches==='1'?'Single center':fields.branches+' branches')+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">HQ State</span><span class="bw-summary-value">'+(fields.lab_state||'—')+'</span></div>'+
           '<div class="bw-summary-row"><span class="bw-summary-label">Specialities</span><span class="bw-summary-value">'+(fields.specialities||'—')+'</span></div>';
