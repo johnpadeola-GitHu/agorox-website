@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0E1F33">
+<meta name="theme-color" content="var(--navy)">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="mobile-web-app-capable" content="yes">
@@ -11,31 +11,50 @@
 <link rel="icon" type="image/png" href="data:image/png;base64,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">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0E1F33;
-    --navy-soft:#16293F;
-    --bg:#FFFFFF;
-    --skyfill:#E0F2FE;
-    --sky-mid:#FDFCFA;
-    --sky-deep:#F7F5F0;
-    --paper:#F7F5F0;
-    --paper-dim:#F5F3EE;
-    --clay:#C46A3E;
-    --clay-deep:#A8552E;
-    --slate:#8C95A6;
-    --slate-dark:#5C6678;
-    --line: rgba(14,31,51,0.12);
-    --line-soft: rgba(14,31,51,0.07);
-    --white:#FFFFFF;
-    --charcoal:#2B2F36;
-    --charcoal-soft:#6B7178;
-    --display: 'Inter', sans-serif;
-    --body: 'Inter', sans-serif;
-    --mono: 'JetBrains Mono', monospace;
-    --max: 1140px;
-  }
+  /* ── Ink: the anchor. Near-black navy, not decorative blue ───────────── */
+  --navy:#0A1628;
+  --navy-soft:#152338;
+  --ink-900:#0A1628;
+  --ink-700:#1E2D3F;
+  --ink-500:#4A5766;
+  --ink-300:#8A94A1;
+  --ink-100:#C9CFD6;
+
+  /* ── Surfaces: true neutral. No cream. ───────────────────────────────── */
+  --bg:#FFFFFF;
+  --white:#FFFFFF;
+  --paper:#FAFBFC;
+  --paper-dim:#F4F6F8;
+  --sky-mid:#FAFBFC;
+  --sky-deep:#F4F6F8;
+  --skyfill:#F4F6F8;
+
+  /* ── Clay: demoted. Reserved signal only — live status, one CTA/view ── */
+  --clay:#C4542E;
+  --clay-deep:#A8441F;
+  --clay-wash:rgba(196,84,46,0.06);
+
+  /* ── Text ────────────────────────────────────────────────────────────── */
+  --charcoal:#0A1628;
+  --charcoal-soft:#4A5766;
+  --slate:#8A94A1;
+  --slate-dark:#4A5766;
+
+  /* ── Structure: tighter, more precise than before ─────────────────────── */
+  --line: rgba(10,22,40,0.09);
+  --line-soft: rgba(10,22,40,0.05);
+  --line-strong: rgba(10,22,40,0.16);
+
+  /* ── Type: display face now distinct from body ────────────────────────── */
+  --display: 'Instrument Sans', 'Inter', sans-serif;
+  --body: 'Inter', sans-serif;
+  --mono: 'JetBrains Mono', monospace;
+
+  --max: 1140px;
+}
   *{box-sizing:border-box; margin:0; padding:0;}
   html{scroll-behavior:smooth;}
   body{
@@ -266,7 +285,7 @@
   .feature-mini{ background:var(--skyfill); padding:28px 24px; display:flex; flex-direction:column; min-height:215px; cursor:pointer; transition: background .15s ease; }
   .feature-mini:hover{ background:var(--sky-mid); }
   .feature-mini .fv-top{ font-family:var(--mono); font-size:11.5px; color:var(--slate-dark); }
-  .feature-mini h3{ color:#0E1F33; font-size:24px; margin-top:14px; font-weight:700; }
+  .feature-mini h3{ color:var(--navy); font-size:24px; margin-top:14px; font-weight:700; }
   .feature-mini p{ color:var(--navy-soft); font-size:14px; margin-top:10px; }
   .feature-mini .feature-mock{ margin-top:auto; }
   .feature-mini .feature-actions{ margin-top:22px; }
@@ -468,7 +487,7 @@
   /* Lab Profile */
   .lab-profile-header{ display:flex; gap:24px; align-items:flex-start; margin-bottom:28px; flex-wrap:wrap; }
   .lab-profile-logo{ width:80px; height:80px; border-radius:8px; background:var(--paper); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:var(--display); font-size:28px; font-weight:700; color:var(--navy); flex-shrink:0; }
-  .lab-profile-info h1{ font-size:clamp(20px,2.5vw,28px); font-weight:700; color:#0E1F33; margin-bottom:6px; }
+  .lab-profile-info h1{ font-size:clamp(20px,2.5vw,28px); font-weight:700; color:var(--navy); margin-bottom:6px; }
   .lab-profile-info .lab-meta{ font-size:13.5px; color:var(--slate-dark); }
   .lab-profile-info .lab-meta span{ margin-right:16px; }
   .lab-detail-grid{ display:grid; grid-template-columns:2fr 1fr; gap:24px; }
@@ -563,7 +582,7 @@
   .plan-card{ background:var(--bg); border:1.5px solid var(--line); border-radius:8px; padding:24px; display:flex; flex-direction:column; }
   .plan-card.featured{ border-color:var(--clay); box-shadow:0 4px 16px rgba(196,106,62,0.12); }
   .plan-card .plan-tier{ font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:6px; }
-  .plan-card h3{ font-size:20px; font-weight:700; color:#0E1F33; margin-bottom:4px; }
+  .plan-card h3{ font-size:20px; font-weight:700; color:var(--navy); margin-bottom:4px; }
   .plan-card .plan-tagline{ font-size:13.5px; color:var(--slate-dark); margin-bottom:16px; font-style:italic; }
   .plan-card .plan-price{ font-size:14px; font-weight:600; color:var(--navy); margin-bottom:16px; font-family:var(--mono); }
   .plan-card ul{ list-style:none; padding:0; margin:0 0 18px; flex:1; }
@@ -611,11 +630,11 @@
   @media (max-width:860px){ .footer-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:540px){ .footer-grid{ grid-template-columns:1fr; } }
   .footer-social{ display:flex; gap:12px; margin-top:18px; }
-  .footer-social a{ width:34px; height:34px; border-radius:7px; border:1.5px solid #fff; background:#0E1F33; display:flex; align-items:center; justify-content:center; color:#fff; transition: all .15s ease; }
+  .footer-social a{ width:34px; height:34px; border-radius:7px; border:1.5px solid #fff; background:var(--navy); display:flex; align-items:center; justify-content:center; color:#fff; transition: all .15s ease; }
   .footer-social a svg{ fill:#fff; }
   .footer-social a:hover{ background:#16293F; border-color:#fff; color:#fff; }
   .footer-brand p{ font-size:13.5px; color:var(--charcoal-soft); margin-top:14px; max-width:280px; }
-  .footer-col h4{ font-family:var(--body); font-size:13.5px; letter-spacing:0; text-transform:none; color:#0E1F33; font-weight:700; margin-bottom:14px; }
+  .footer-col h4{ font-family:var(--body); font-size:13.5px; letter-spacing:0; text-transform:none; color:var(--navy); font-weight:700; margin-bottom:14px; }
   .footer-col ul{ display:flex; flex-direction:column; gap:10px; }
   .footer-col a{ font-size:13.5px; color:var(--charcoal); cursor:pointer; }
   .footer-col a:hover{ color:var(--clay-deep); }
@@ -1011,6 +1030,299 @@
   .bw-cart-tag{ display:inline-flex; align-items:center; gap:6px; background:#fff; border:1px solid var(--clay); border-radius:3px; padding:4px 10px; margin:3px 4px 3px 0; font-size:12.5px; color:var(--navy); }
   .bw-cart-tag button{ background:none; border:none; color:var(--clay); cursor:pointer; font-size:14px; line-height:1; padding:0; font-weight:700; }
 
+
+
+  /* ═══════════════════════════════════════════════════════════════════════
+     AGOROX — infrastructure identity
+     Colour is restrained; type and rhythm carry the personality.
+     Clay appears only as: live status, one CTA per view. Nothing else.
+     ═══════════════════════════════════════════════════════════════════════ */
+
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+
+  /* ── Hero ──────────────────────────────────────────────────────────── */
+  .ax-hero{ background:var(--bg); padding:76px 0 64px; border-bottom:1px solid var(--line); }
+  .ax-hero-mark{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase;
+    color:var(--ink-500); border:1px solid var(--line); border-radius:100px;
+    padding:6px 14px; margin-bottom:30px;
+  }
+  .ax-hero-dot{
+    width:5px; height:5px; border-radius:50%; background:var(--clay);
+    box-shadow:0 0 0 3px var(--clay-wash);
+  }
+  .ax-hero-h1{
+    font-family:var(--display);
+    font-size:clamp(34px,5.4vw,62px); font-weight:600; line-height:1.04;
+    letter-spacing:-.035em; color:var(--ink-900); margin:0 0 22px;
+  }
+  .ax-hero-lede{
+    font-size:clamp(15px,1.5vw,18px); line-height:1.6; color:var(--ink-500);
+    max-width:53ch; margin:0 0 44px;
+  }
+
+  /* ── Signature: the register ───────────────────────────────────────── */
+  .ax-reg{ border:1px solid var(--line); border-radius:10px; overflow:hidden; background:var(--bg); }
+  .ax-reg-head{
+    display:grid; grid-template-columns:1fr 150px 130px 74px;
+    gap:16px; padding:11px 20px; background:var(--paper);
+    border-bottom:1px solid var(--line);
+    font-family:var(--mono); font-size:10px; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--ink-300);
+  }
+  .ax-reg-row{
+    display:grid; grid-template-columns:1fr 150px 130px 74px;
+    gap:16px; padding:17px 20px; align-items:center;
+    border-bottom:1px solid var(--line-soft);
+    text-decoration:none; color:inherit;
+    transition:background .14s ease;
+  }
+  .ax-reg-row:last-child{ border-bottom:none; }
+  .ax-reg-row:hover{ background:var(--paper); }
+  .ax-reg-row:focus-visible{ outline:2px solid var(--clay); outline-offset:-2px; }
+  .ax-reg-row.is-next{ cursor:default; }
+  .ax-reg-row.is-next:hover{ background:transparent; }
+
+  .ax-reg-sys{ display:flex; flex-direction:column; gap:3px; min-width:0; }
+  .ax-reg-id{
+    font-family:var(--mono); font-size:10px; letter-spacing:.07em;
+    color:var(--ink-300);
+  }
+  .ax-reg-name{
+    font-family:var(--display); font-size:16px; font-weight:600;
+    color:var(--ink-900); letter-spacing:-.015em;
+  }
+  .ax-reg-sib{ font-weight:400; font-size:12.5px; color:var(--ink-300); letter-spacing:0; }
+  .ax-reg-desc{ font-size:12.5px; color:var(--ink-500); }
+  .ax-reg-ind{ font-size:13px; color:var(--ink-500); }
+
+  .ax-reg-stat{
+    display:inline-flex; align-items:center; gap:7px;
+    font-family:var(--mono); font-size:11px; letter-spacing:.04em;
+  }
+  .ax-reg-stat.live{ color:var(--clay-deep); }
+  .ax-reg-stat.onboarding,
+  .ax-reg-stat.build{ color:var(--ink-300); }
+  .ax-pulse{
+    width:5px; height:5px; border-radius:50%; background:currentColor;
+    flex-shrink:0; display:block;
+  }
+  .ax-reg-stat.live .ax-pulse{ animation:axPulse 2.4s ease-in-out infinite; }
+  @keyframes axPulse{
+    0%,100%{ box-shadow:0 0 0 0 var(--clay-wash); }
+    50%    { box-shadow:0 0 0 4px transparent; }
+  }
+  .ax-reg-go{
+    font-family:var(--mono); font-size:11px; letter-spacing:.05em;
+    color:var(--ink-300); text-align:right; transition:color .14s ease;
+  }
+  .ax-reg-row:hover .ax-reg-go{ color:var(--clay-deep); }
+  .ax-reg-row.is-next .ax-reg-go{ cursor:pointer; }
+
+  .ax-hero-foot{
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    margin-top:22px; font-size:12.5px; color:var(--ink-300);
+  }
+  .ax-hero-foot strong{ color:var(--ink-700); font-weight:600; font-family:var(--mono); }
+  .ax-sep{ opacity:.35; }
+
+  /* ── Thesis ────────────────────────────────────────────────────────── */
+  .ax-thesis{ background:var(--paper); padding:64px 0; border-bottom:1px solid var(--line); }
+  .ax-thesis-grid{ display:grid; grid-template-columns:180px 1fr; gap:48px; align-items:start; }
+  .ax-thesis-lead{
+    font-family:var(--display); font-size:clamp(21px,2.6vw,30px); font-weight:600;
+    line-height:1.24; letter-spacing:-.025em; color:var(--ink-900);
+    margin:0 0 20px; max-width:26ch;
+  }
+  .ax-thesis-body{
+    font-size:15px; line-height:1.72; color:var(--ink-500);
+    max-width:62ch; margin:0 0 14px;
+  }
+  .ax-thesis-body:last-child{ margin-bottom:0; }
+
+  /* ── Substrate ─────────────────────────────────────────────────────── */
+  .ax-substrate{ background:var(--bg); padding:64px 0; border-bottom:1px solid var(--line); }
+  .ax-h2{
+    font-family:var(--display); font-size:clamp(24px,3vw,36px); font-weight:600;
+    letter-spacing:-.03em; color:var(--ink-900); margin:0 0 12px; line-height:1.1;
+  }
+  .ax-sub-lede{ font-size:15px; color:var(--ink-500); line-height:1.65; max-width:56ch; margin:0 0 34px; }
+
+  .ax-spine{ border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+  .ax-spine-layer{
+    display:grid; grid-template-columns:110px 1fr; gap:22px;
+    padding:18px 20px; align-items:center;
+    border-bottom:1px solid var(--line-soft); background:var(--bg);
+  }
+  .ax-spine-layer:last-child{ border-bottom:none; }
+  .ax-spine-layer.is-core{ background:var(--navy); }
+  .ax-spine-label{
+    font-family:var(--mono); font-size:10px; letter-spacing:.09em;
+    text-transform:uppercase; color:var(--ink-300);
+  }
+  .ax-spine-layer.is-core .ax-spine-label{ color:var(--clay); }
+  .ax-spine-items{ display:flex; flex-wrap:wrap; gap:7px; }
+  .ax-spine-items span{
+    font-size:12.5px; color:var(--ink-700);
+    border:1px solid var(--line); border-radius:4px; padding:4px 10px;
+    background:var(--bg);
+  }
+  .ax-spine-layer.is-core .ax-spine-items span{
+    color:#E8EDF3; border-color:rgba(255,255,255,.16); background:transparent;
+  }
+
+  /* ── Entry points ──────────────────────────────────────────────────── */
+  .ax-entry{ background:var(--paper); padding:64px 0; border-bottom:1px solid var(--line); }
+  .ax-entry-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:1px;
+    background:var(--line); border:1px solid var(--line); border-radius:10px; overflow:hidden;
+  }
+  .ax-entry-card{ background:var(--bg); padding:34px 30px; }
+  .ax-entry-card.is-alt{ background:var(--paper-dim); }
+  .ax-entry-card h3{
+    font-family:var(--display); font-size:clamp(18px,2vw,23px); font-weight:600;
+    letter-spacing:-.02em; color:var(--ink-900); margin:12px 0 10px; line-height:1.22;
+  }
+  .ax-entry-card p{ font-size:14px; color:var(--ink-500); line-height:1.65; margin:0 0 22px; }
+  .ax-entry-actions{ display:flex; gap:10px; flex-wrap:wrap; }
+
+  /* ── Close ─────────────────────────────────────────────────────────── */
+  .ax-close{ background:var(--navy); padding:72px 0; }
+  .ax-close-h2{
+    font-family:var(--display); font-size:clamp(24px,3.2vw,38px); font-weight:600;
+    letter-spacing:-.03em; color:#fff; margin:0 0 14px; line-height:1.1;
+  }
+  .ax-close-p{ font-size:15px; color:rgba(255,255,255,.62); line-height:1.65; max-width:52ch; margin:0 0 30px; }
+  .ax-close-actions{ display:flex; gap:11px; flex-wrap:wrap; }
+  .btn-navy{ background:var(--navy); color:#fff; border:1px solid var(--navy); }
+  .btn-navy:hover{ background:var(--ink-700); border-color:var(--ink-700); }
+  .btn-ghost-light{
+    background:transparent; color:#fff; border:1px solid rgba(255,255,255,.26);
+  }
+  .btn-ghost-light:hover{ border-color:rgba(255,255,255,.5); background:rgba(255,255,255,.05); }
+
+  /* ── Responsive ────────────────────────────────────────────────────── */
+  @media (max-width:860px){
+    .ax-thesis-grid{ grid-template-columns:1fr; gap:16px; }
+    .ax-entry-grid{ grid-template-columns:1fr; }
+    .ax-reg-head{ display:none; }
+    .ax-reg-row{ grid-template-columns:1fr auto; gap:10px 14px; padding:16px; }
+    .ax-reg-ind{ display:none; }
+    .ax-reg-stat{ justify-self:end; }
+    .ax-reg-go{ display:none; }
+    .ax-spine-layer{ grid-template-columns:1fr; gap:10px; }
+  }
+  @media (max-width:640px){
+    .ax-hero{ padding:44px 0 40px; }
+    .ax-thesis,.ax-substrate,.ax-entry{ padding:44px 0; }
+    .ax-close{ padding:48px 0; }
+    .ax-entry-card{ padding:26px 20px; }
+    .ax-hero-foot{ gap:8px; font-size:11.5px; }
+    .ax-close-actions .btn,.ax-entry-actions .btn{ width:100%; justify-content:center; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .ax-reg-stat.live .ax-pulse{ animation:none; }
+    *{ transition-duration:.01ms !important; }
+  }
+
+
+
+  /* ── Chrome refinement: nav, buttons, eyebrows ─────────────────────── */
+  header{
+    background:rgba(255,255,255,0.86) !important;
+    backdrop-filter:blur(14px) saturate(180%) !important;
+    -webkit-backdrop-filter:blur(14px) saturate(180%) !important;
+    border-bottom:1px solid var(--line) !important;
+  }
+  .navlink{
+    font-family:var(--body) !important;
+    font-size:13.5px !important; font-weight:500 !important;
+    color:var(--ink-500) !important; letter-spacing:-.005em !important;
+    border-bottom:1.5px solid transparent !important;
+  }
+  .navlink:hover{ color:var(--ink-900) !important; }
+  .navlink.active{
+    color:var(--ink-900) !important;
+    border-bottom-color:var(--clay) !important;
+  }
+
+  .eyebrow{
+    font-family:var(--mono) !important;
+    font-size:10.5px !important;
+    letter-spacing:.11em !important;
+    color:var(--ink-300) !important;
+    font-weight:500 !important;
+  }
+
+  .btn{
+    font-family:var(--body) !important;
+    font-weight:500 !important; font-size:13.5px !important;
+    padding:10px 18px !important; border-radius:6px !important;
+    letter-spacing:-.005em !important;
+    transition:background .15s ease, border-color .15s ease, color .15s ease !important;
+  }
+  .btn-clay{ background:var(--clay) !important; border-color:var(--clay) !important; color:#fff !important; }
+  .btn-clay:hover{ background:var(--clay-deep) !important; border-color:var(--clay-deep) !important; }
+  .btn-ghost{
+    background:transparent !important; color:var(--ink-700) !important;
+    border:1px solid var(--line-strong) !important;
+  }
+  .btn-ghost:hover{ border-color:var(--ink-500) !important; background:var(--paper) !important; }
+  .btn-arrow{ transition:transform .15s ease; }
+  .btn:hover .btn-arrow{ transform:translateX(2px); }
+
+  /* ── Footer: re-tone ───────────────────────────────────────────────── */
+  footer{ background:var(--paper) !important; border-top:1px solid var(--line) !important; }
+  .footer-col h4{
+    font-family:var(--display) !important; font-size:12.5px !important;
+    font-weight:600 !important; color:var(--ink-900) !important;
+    letter-spacing:-.005em !important;
+  }
+  .footer-col a{ color:var(--ink-500) !important; transition:color .13s ease; }
+  .footer-col a:hover{ color:var(--clay-deep) !important; }
+  .footer-bottom{ border-top:1px solid var(--line) !important; }
+
+  /* ── Page heroes across the site: match the new register language ──── */
+  .page-hero{
+    background:var(--paper) !important;
+    border-bottom:1px solid var(--line) !important;
+    padding:34px 0 28px !important;
+  }
+  .page-hero h1{
+    font-family:var(--display) !important; font-weight:600 !important;
+    letter-spacing:-.03em !important; color:var(--ink-900) !important;
+  }
+  .breadcrumb{ font-family:var(--mono) !important; font-size:11px !important; color:var(--ink-300) !important; }
+  .lede{ color:var(--ink-500) !important; }
+
+  h1,h2,h3{ font-family:var(--display); letter-spacing:-.025em; }
+
+
+
+  /* ── Interior page heroes: white + hairline, never a tinted slab ────── */
+  .ax-page-hero{
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    padding:48px 0 40px;
+  }
+  .ax-page-hero h1{
+    font-family:var(--display) !important; font-weight:600 !important;
+    letter-spacing:-.035em !important; color:var(--ink-900) !important;
+    line-height:1.06 !important;
+  }
+  .ax-page-hero .breadcrumb{ margin-bottom:20px; }
+  .ax-page-hero p{ color:var(--ink-500) !important; }
+  @media (max-width:640px){ .ax-page-hero{ padding:32px 0 26px; } }
+
+
+  .ax-spine-items span em{
+    font-style:normal; color:var(--ink-300); font-size:11.5px;
+    letter-spacing:.01em;
+  }
+  .ax-spine-layer.is-core .ax-spine-items span em{ color:rgba(255,255,255,.45); }
+  .ax-reg-sib{ display:block; margin-top:1px; }
+
 </style>
 </head>
 <body>
@@ -1082,7 +1394,7 @@
     <div class="nav-cta">
       <button class="btn btn-primary" onclick="openModal()">Tenants Login</button>
       <button class="nav-mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu">
-        <svg width="18" height="14" viewBox="0 0 18 14"><rect width="18" height="2" fill="#0E1F33"/><rect y="6" width="18" height="2" fill="#0E1F33"/><rect y="12" width="18" height="2" fill="#0E1F33"/></svg>
+        <svg width="18" height="14" viewBox="0 0 18 14"><rect width="18" height="2" fill="#0A1628"/><rect y="6" width="18" height="2" fill="#0A1628"/><rect y="12" width="18" height="2" fill="#0A1628"/></svg>
       </button>
     </div>
   </div>
@@ -1159,184 +1471,205 @@
 <!-- =========================================================== HOME =========================================================== -->
 <div class="page" data-page="home">
 
-  <section class="hero" style="padding-bottom:0;">
+  <!-- ═══ HERO — the Operations Register is the thesis ═══════════════════ -->
+  <section class="ax-hero">
     <div class="wrap">
-      <div class="hero-top">
+
+      <div class="ax-hero-mark">
+        <span class="ax-hero-dot"></span>
+        Operating systems for African industry
+      </div>
+
+      <h1 class="ax-hero-h1">
+        We build the operating systems<br>
+        that run Africa's industries.
+      </h1>
+
+      <p class="ax-hero-lede">
+        Laboratories, hospitals, hatcheries, feed mills, and the businesses that
+        supply them. Each runs on infrastructure we built by running one ourselves.
+      </p>
+
+      <!-- ── SIGNATURE: live systems register ─────────────────────────── -->
+      <div class="ax-reg" role="table" aria-label="AgoroX operating systems register">
+        <div class="ax-reg-head" role="row">
+          <span role="columnheader">System</span>
+          <span role="columnheader">Industry</span>
+          <span role="columnheader">Status</span>
+          <span role="columnheader"><span class="sr-only">Action</span></span>
+        </div>
+
+        <a class="ax-reg-row" href="https://labos.agorox.africa" target="_blank" rel="noopener" role="row">
+          <span class="ax-reg-sys" role="cell">
+            <span class="ax-reg-id">AX·01</span>
+            <span class="ax-reg-name">LabOS</span>
+            <span class="ax-reg-desc">Sample intake to verified result</span>
+          </span>
+          <span class="ax-reg-ind" role="cell">Diagnostics</span>
+          <span class="ax-reg-stat live" role="cell"><i class="ax-pulse"></i>Live</span>
+          <span class="ax-reg-go" role="cell">Open</span>
+        </a>
+
+        <a class="ax-reg-row" href="https://poultrysuite.agorox.africa" target="_blank" rel="noopener" role="row">
+          <span class="ax-reg-sys" role="cell">
+            <span class="ax-reg-id">AX·02</span>
+            <span class="ax-reg-name">PoultrySuite <span class="ax-reg-sib">PoultryOS · HatcheryOS · FeedMillOS</span></span>
+            <span class="ax-reg-desc">Three modules across the poultry value chain</span>
+          </span>
+          <span class="ax-reg-ind" role="cell">Agriculture</span>
+          <span class="ax-reg-stat live" role="cell"><i class="ax-pulse"></i>Live</span>
+          <span class="ax-reg-go" role="cell">Open</span>
+        </a>
+
+        <a class="ax-reg-row" href="https://smartinvoice.agorox.africa" target="_blank" rel="noopener" role="row">
+          <span class="ax-reg-sys" role="cell">
+            <span class="ax-reg-id">AX·03</span>
+            <span class="ax-reg-name">SmartInvoice</span>
+            <span class="ax-reg-desc">Billing, settlement, and cash discipline</span>
+          </span>
+          <span class="ax-reg-ind" role="cell">Commerce</span>
+          <span class="ax-reg-stat live" role="cell"><i class="ax-pulse"></i>Live</span>
+          <span class="ax-reg-go" role="cell">Open</span>
+        </a>
+
+        <a class="ax-reg-row" href="https://hospitalos.agorox.africa" target="_blank" rel="noopener" role="row">
+          <span class="ax-reg-sys" role="cell">
+            <span class="ax-reg-id">AX·04</span>
+            <span class="ax-reg-name">HospitalOS</span>
+            <span class="ax-reg-desc">Admissions, wards, and clinical records</span>
+          </span>
+          <span class="ax-reg-ind" role="cell">Hospitals</span>
+          <span class="ax-reg-stat onboarding" role="cell"><i class="ax-pulse"></i>Onboarding</span>
+          <span class="ax-reg-go" role="cell">Open</span>
+        </a>
+
+        <div class="ax-reg-row is-next" role="row">
+          <span class="ax-reg-sys" role="cell">
+            <span class="ax-reg-id">AX·05</span>
+            <span class="ax-reg-name">AgoroX Vault</span>
+            <span class="ax-reg-desc">Encrypted records, held offline</span>
+          </span>
+          <span class="ax-reg-ind" role="cell">Security</span>
+          <span class="ax-reg-stat build" role="cell"><i class="ax-pulse"></i>In build</span>
+          <span class="ax-reg-go" role="cell" data-route="agorox-vault">Read</span>
+        </div>
+      </div>
+
+      <div class="ax-hero-foot">
+        <span><strong>4</strong> systems live</span>
+        <span class="ax-sep">·</span>
+        <span><strong>302</strong> diagnostic tests catalogued</span>
+        <span class="ax-sep">·</span>
+        <span>One sign-on across every system</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══ THESIS ════════════════════════════════════════════════════════ -->
+  <section class="ax-thesis">
+    <div class="wrap">
+      <div class="ax-thesis-grid">
         <div>
-          <h1>Africa's healthcare platform — <em>find tests, book online, get results.</em></h1>
-          <p class="lede">The digital infrastructure connecting laboratories and patients across Africa. Book tests, access results, digitise lab operations — all on one platform.</p>
-          <div class="hero-actions">
-            <span class="btn btn-clay" data-route="patient-portal">Book a Test <span class="btn-arrow">→</span></span>
-            <span class="btn btn-clay" data-route="agorox-network" style="background:var(--navy);">Join as Laboratory →</span>
-          </div>
+          <div class="eyebrow">Why operating systems</div>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat"><div class="hero-stat-num">04</div><div class="hero-stat-label">Platforms in active operation</div></div>
-          <div class="hero-stat"><div class="hero-stat-num">5</div><div class="hero-stat-label">User types served, clinics to government</div></div>
-          <div class="hero-stat"><div class="hero-stat-num">NG</div><div class="hero-stat-label">Headquartered in Ibadan, Nigeria</div></div>
-          <div class="hero-stat"><div class="hero-stat-num">1</div><div class="hero-stat-label">Unified sign-on across every product</div></div>
+        <div>
+          <p class="ax-thesis-lead">
+            Software gets sold to Africa. Operating systems get built in it.
+          </p>
+          <p class="ax-thesis-body">
+            A tool digitises a task. An operating system runs the whole operation —
+            it holds the record of truth, enforces the workflow, and keeps working
+            when the network doesn't. That distinction decides whether a laboratory
+            can be audited, whether a hatchery can trace a batch, whether a hospital
+            can produce a patient record on demand.
+          </p>
+          <p class="ax-thesis-body">
+            We build the second kind. Every AgoroX system runs a real operation before
+            it reaches a customer — because we run a laboratory and a farm ourselves.
+          </p>
         </div>
-      </div>
-    </div>
-
-    <div class="wrap">
-      <div class="eyebrow" style="margin-bottom:14px;">Operations Register — live products</div>
-      <div class="register">
-        <div class="register-head"><div>Product</div><div>Category</div><div>Status</div><div></div></div>
-        <div class="register-row" data-route="products" data-anchor="labos">
-          <div class="register-name"><span class="register-id">AX-01</span>LabOS<span>Laboratory Information Management</span></div>
-          <div class="register-cat">Healthcare / Diagnostics</div>
-          <div class="register-status status-live"><span class="status-dot"></span>Live</div>
-          <div class="register-link">View →</div>
-        </div>
-        <div class="register-row" data-route="products" data-anchor="poultrysuite">
-          <div class="register-name"><span class="register-id">AX-02</span>PoultrySuite Africa<span>Hatchery, Feed Mill &amp; Poultry</span></div>
-          <div class="register-cat">Agriculture</div>
-          <div class="register-status status-live"><span class="status-dot"></span>Live</div>
-          <div class="register-link">View →</div>
-        </div>
-        <div class="register-row" data-route="products" data-anchor="pharmacyos">
-          <div class="register-name"><span class="register-id">AX-03</span>PharmacyOS<span>Pharmacy Management</span></div>
-          <div class="register-cat">Healthcare / Retail</div>
-          <div class="register-status status-rollout"><span class="status-dot"></span>Onboarding</div>
-          <div class="register-link">View →</div>
-        </div>
-        <div class="register-row" data-route="products" data-anchor="smartinvoice">
-          <div class="register-name"><span class="register-id">AX-04</span>SmartInvoice<span>Billing &amp; Invoicing</span></div>
-          <div class="register-cat">Business Operations</div>
-          <div class="register-status status-live"><span class="status-dot"></span>Live</div>
-          <div class="register-link">View →</div>
-        </div>
-      </div>
-      <div class="hero-foot">
-        <span>4 platforms in active operation</span>
-        <span>Unified under the AgoroX Platform — <a href="https://agorox.africa" style="color:var(--clay); text-decoration:none;">agorox.africa</a></span>
       </div>
     </div>
   </section>
 
-  <div class="strip">
-    <div class="wrap strip-inner">
-      <span class="strip-label">Built for</span>
-      <div class="strip-items">
-        <span>Diagnostic Laboratories</span>
-        <span>Patients Seeking Tests</span>
-        <span>Community Pharmacies</span>
-        <span>Healthcare Institutions</span>
-        <span>Knowledge Seekers</span>
-      </div>
-    </div>
-  </div>
-
-  <section style="background:var(--paper);">
+  <!-- ═══ ONE SUBSTRATE ═════════════════════════════════════════════════ -->
+  <section class="ax-substrate">
     <div class="wrap">
-      <!-- Heading -->
-      <div style="margin-bottom:32px;">
-        <div class="eyebrow" style="margin-bottom:14px;">Featured Products</div>
+      <div class="eyebrow" style="margin-bottom:18px;">One substrate</div>
+      <h2 class="ax-h2">Every system. One spine.</h2>
+      <p class="ax-sub-lede">
+        Identity, records, billing, and audit are solved once and shared. A lab that
+        adds a hospital doesn't start over — it extends.
+      </p>
 
-        <!-- Option B headline — single line -->
-        <div style="font-size:clamp(26px,3.8vw,44px); font-weight:900; color:#0E1F33; line-height:1.1; letter-spacing:-1px; display:flex; align-items:center; flex-wrap:wrap; gap:10px;">
-          Built for
-          <span style="background:#C46A3E; color:#fff; padding:3px 14px; border-radius:3px;">the floor.</span>
-        </div>
-        <div style="margin-top:8px; font-size:13px; font-style:italic; color:var(--slate); letter-spacing:.03em;">— not the boardroom.</div>
-
-        <!-- Supporting copy -->
-        <p style="font-size:15px; color:var(--slate-dark); line-height:1.65; margin:14px 0 0;">
-          Every AgoroX product is tested on a live operation before it reaches a customer. We run a laboratory and a farm — so the software handles what happens on the ground, not what looks good in a pitch deck.
-        </p>
-
-        <!-- Proof points — single row -->
-        <div style="display:flex; align-items:center; gap:20px; margin-top:20px; flex-wrap:wrap;">
-          <span style="font-family:var(--mono); font-size:14px; color:var(--navy);"><strong>5</strong> <span style="color:var(--slate);">products</span></span>
-          <span style="color:var(--slate); opacity:.4;">·</span>
-          <span style="font-family:var(--mono); font-size:14px; color:var(--navy);"><strong>302</strong> <span style="color:var(--slate);">diagnostic tests</span></span>
-          <span style="color:var(--slate); opacity:.4;">·</span>
-          <span style="font-family:var(--mono); font-size:14px; color:var(--navy);"><strong>4</strong> <span style="color:var(--slate);">industries</span></span>
-        </div>
-        <div style="margin-top:18px;">
-          <span class="btn btn-ghost" data-route="products">View all products →</span>
-        </div>
-      </div>
-
-      <div class="feature-duo" style="margin-top:24px;">
-        <div class="feature-mini" data-route="products" data-anchor="labos">
-          <div class="fv-top">AX-01 / HEALTHCARE / DIAGNOSTICS</div>
-          <h3>LabOS</h3>
-          <p>Laboratory information management — sample intake through verified result, across one branch or many.</p>
-          <div class="feature-mock">
-            <div class="fm-row"><span>Sample #LB-22041</span><span class="fm-ok">Verified</span></div>
-            <div class="fm-row"><span>Instrument Gateway</span><span class="fm-ok">Connected</span></div>
-          </div>
-          <div class="feature-actions">
-            <span class="btn btn-ghost" data-route="products" data-anchor="labos">Learn more →</span>
-            <a class="btn btn-clay" href="https://labos.agorox.africa" target="_blank" rel="noopener" style="font-size:12px; padding:6px 14px; min-height:32px;">Login →</a>
+      <div class="ax-spine">
+        <div class="ax-spine-layer">
+          <div class="ax-spine-label">Systems</div>
+          <div class="ax-spine-items">
+            <span>LabOS</span><span>HospitalOS</span>
+            <span>PoultrySuite <em>· PoultryOS · HatcheryOS · FeedMillOS</em></span>
+            <span>SmartInvoice</span>
           </div>
         </div>
-        <div class="feature-mini" data-route="products" data-anchor="poultrysuite">
-          <div class="fv-top">AX-02 / AGRICULTURE</div>
-          <h3>PoultrySuite</h3>
-          <p>A suite of three platforms — HatcheryOS, FeedMillOS, and PoultryOS — covering hatchery, feed, and flock in one account.</p>
-          <div class="feature-mock">
-            <div class="fm-row"><span>House 4 — Batch 18</span><span class="fm-ok">Healthy</span></div>
-            <div class="fm-row"><span>Biosecurity check</span><span class="fm-ok">Passed</span></div>
+        <div class="ax-spine-layer is-core">
+          <div class="ax-spine-label">Platform</div>
+          <div class="ax-spine-items">
+            <span>Identity &amp; sign-on</span><span>Records</span>
+            <span>Billing &amp; settlement</span><span>Audit trail</span>
           </div>
-          <div class="feature-actions">
-            <span class="btn btn-ghost" data-route="products" data-anchor="poultrysuite">Learn more →</span>
-            <a class="btn btn-clay" href="https://poultrysuite.agorox.africa" target="_blank" rel="noopener" style="font-size:12px; padding:6px 14px; min-height:32px;">Login →</a>
+        </div>
+        <div class="ax-spine-layer">
+          <div class="ax-spine-label">Ground</div>
+          <div class="ax-spine-items">
+            <span>Offline-first</span><span>Local payment rails</span>
+            <span>Low-bandwidth</span><span>Regulator-ready</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
-
-
-
-  <!-- PLATFORM ACQUISITION STRIP -->
-  <section>
+  <!-- ═══ ENTRY POINTS ══════════════════════════════════════════════════ -->
+  <section class="ax-entry">
     <div class="wrap">
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);">
-        <div style="background:var(--paper); padding:24px 20px;">
-          <div class="eyebrow">For Laboratories</div>
-          <h2 style="margin-top:12px; font-weight:600; font-size:clamp(18px,2vw,22px);">Join the Network. Start in 30 minutes.</h2>
-          <p style="font-size:14px; color:var(--slate-dark); margin-top:10px; line-height:1.6;">No setup fee. No sales call required. Choose your plan, configure your tests, and start receiving bookings directly into LabOS.</p>
-          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-            <span class="btn btn-clay" data-route="agorox-network">Join the Network <span class="btn-arrow">→</span></span>
-            <span class="btn btn-ghost" data-route="labos-pricing">View Plans</span>
+      <div class="ax-entry-grid">
+        <div class="ax-entry-card">
+          <div class="eyebrow">Laboratories</div>
+          <h3>Run your lab on LabOS. Take bookings from day one.</h3>
+          <p>Join the network, publish your test catalogue, and receive patient bookings straight into your system. No setup fee, no sales call.</p>
+          <div class="ax-entry-actions">
+            <span class="btn btn-clay" data-route="agorox-network">Join the network <span class="btn-arrow">→</span></span>
+            <span class="btn btn-ghost" data-route="labos-pricing">See plans</span>
           </div>
         </div>
-        <div style="background:var(--skyfill); padding:24px 20px;">
-          <div class="eyebrow">For Patients</div>
-          <h2 style="margin-top:12px; font-weight:600; font-size:clamp(18px,2vw,22px);">Find a test. Book online. Get results digitally.</h2>
-          <p style="font-size:14px; color:var(--slate-dark); margin-top:10px; line-height:1.6;">Search for any diagnostic test across our network of accredited laboratories. Compare options, check availability, and book with one tap.</p>
-          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap;">
-            <span class="btn btn-clay" data-route="find-test">Find a Test <span class="btn-arrow">→</span></span>
-            <span class="btn btn-ghost" data-route="patient-portal">Patient Portal</span>
+        <div class="ax-entry-card is-alt">
+          <div class="eyebrow">Patients</div>
+          <h3>Find a test. Book it. Get the result digitally.</h3>
+          <p>Search 302 tests across accredited laboratories, compare availability, and book in a few taps.</p>
+          <div class="ax-entry-actions">
+            <span class="btn btn-navy" data-route="patient-portal">Book a test <span class="btn-arrow">→</span></span>
+            <span class="btn btn-ghost" data-route="find-test">Find a test</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-
-  <section class="cta">
+  <!-- ═══ CLOSE ═════════════════════════════════════════════════════════ -->
+  <section class="ax-close">
     <div class="wrap">
-      <div class="eyebrow">Get Started</div>
-      <h2 style="font-weight:800; letter-spacing:-.5px;">Let's see if AgoroX fits your operation.</h2>
-      <p>Whether you run a lab, a farm, a pharmacy, or a growing business — request a demo and we'll show you the platform built for your industry.</p>
-      <div class="cta-actions">
-        <span class="btn btn-clay" data-route="contact">Request a Demo <span class="btn-arrow">→</span></span>
-        <button class="btn btn-ghost" style="color:var(--navy); border-color:rgba(14,31,51,0.25); background:var(--bg);" onclick="openModal()">Existing Customer? Sign In</button>
+      <h2 class="ax-close-h2">Let's see which system fits your operation.</h2>
+      <p class="ax-close-p">Tell us how you run today. We'll show you the system built for it — or tell you honestly if we haven't built it yet.</p>
+      <div class="ax-close-actions">
+        <span class="btn btn-clay" data-route="contact">Request a demo <span class="btn-arrow">→</span></span>
+        <button class="btn btn-ghost-light" onclick="openModal()">Existing customer? Sign in</button>
       </div>
     </div>
   </section>
 
 </div>
 
-
-<!-- =========================================================== PRODUCTS =========================================================== -->
 <div class="page" data-page="products">
 
   <div class="page-hero">
@@ -1362,10 +1695,10 @@
           <p>A suite of three platforms — HatcheryOS, FeedMillOS, and PoultryOS — covering the full poultry value chain under one account.</p>
           <span class="pc-link">Jump to detail →</span>
         </div>
-        <div class="product-card" data-anchor="pharmacyos">
+        <div class="product-card" data-anchor="hospitalos">
           <div class="pc-tag">AX-03 — Healthcare</div>
-          <h3>PharmacyOS</h3>
-          <p>A pharmacy management platform for Nigerian pharmacies — inventory, dispensing, controlled drug registers, and regulatory compliance built in.</p>
+          <h3>HospitalOS</h3>
+          <p>A hospital management platform for Nigerian hospitals — admissions, wards, clinical records, and LabOS-linked diagnostics.</p>
           <span class="pc-link">Jump to detail →</span>
         </div>
         <div class="product-card" data-anchor="smartinvoice">
@@ -1452,27 +1785,27 @@
     </div>
   </section>
 
-  <section style="padding-top:0;" id="pharmacyos">
+  <section style="padding-top:0;" id="hospitalos">
     <div class="wrap">
       <div class="feature">
         <div class="feature-visual">
-          <div class="fv-top">AX-03 / HEALTHCARE / RETAIL</div>
+          <div class="fv-top">AX-03 / HEALTHCARE / HOSPITALS</div>
           <div class="feature-mock">
-            <div class="fm-row"><span>NAFDAC compliance</span><span class="fm-ok">Up to date</span></div>
-            <div class="fm-row"><span>Controlled drug register</span><span class="fm-ok">Logged</span></div>
-            <div class="fm-row"><span>Barcode scanner</span><span class="fm-ok">Connected</span></div>
+            <div class="fm-row"><span>Ward 2 — Bed 14</span><span class="fm-ok">Admitted</span></div>
+            <div class="fm-row"><span>Patient record #HR-4021</span><span class="fm-ok">Updated</span></div>
+            <div class="fm-row"><span>LabOS results</span><span class="fm-ok">Linked</span></div>
           </div>
-          <h3>PharmacyOS</h3>
+          <h3>HospitalOS</h3>
         </div>
         <div class="feature-body">
-          <div class="eyebrow">Pharmacy Management Platform</div>
-          <h2>Pharmacy operations, made compliant by default.</h2>
-          <p>PharmacyOS manages dispensing, inventory, and regulatory recordkeeping for Nigerian community pharmacies — built around NAFDAC requirements from day one.</p>
+          <div class="eyebrow">Hospital Management Platform</div>
+          <h2>Hospital operations, made accountable by default.</h2>
+          <p>HospitalOS runs admissions, wards, and clinical records for Nigerian hospitals — one patient record that follows the patient from intake to discharge, and links straight into LabOS for diagnostics.</p>
           <ul class="feature-list">
-            <li>Inventory and dispensing in one workflow</li>
-            <li>Controlled drug register, kept audit-ready automatically</li>
-            <li>Barcode scanning at the point of sale</li>
-            <li>Clinical medication browser with generic and chemical name search</li>
+            <li>Admissions, bed management, and discharge in one workflow</li>
+            <li>A single patient record across departments</li>
+            <li>Diagnostics ordered and returned through LabOS</li>
+            <li>Audit trail on every clinical entry</li>
           </ul>
           <div class="feature-actions">
             <span class="btn btn-primary" data-route="contact">Request a Demo</span>
@@ -1714,7 +2047,7 @@
         <div class="academy-coming-card">
           <div class="acc-tag">Upcoming Courses</div>
           <h4>New certifications in development</h4>
-          <p>Additional programs across PharmacyOS and SmartInvoice, planned as the Academy expands.</p>
+          <p>Additional programs across HospitalOS and SmartInvoice, planned as the Academy expands.</p>
           <div class="acc-status">Coming soon</div>
         </div>
         <div class="academy-coming-card">
@@ -1763,7 +2096,7 @@
           </div>
         </div>
         <div style="background:var(--navy); padding:24px 20px;">
-          <div class="eyebrow" style="color:var(--clay);">Corporate Training</div>
+          <div class="eyebrow">Corporate Training</div>
           <h3 style="font-size:20px; margin-top:12px; font-weight:600; color:var(--paper);">Train your entire team.</h3>
           <p style="font-size:14px; color:rgba(247,245,240,0.7); margin-top:10px; line-height:1.6;">Customised cohort programs for laboratory groups, hospital systems, and government institutions.</p>
           <div style="margin-top:18px;">
@@ -2317,7 +2650,7 @@
 <div class="page" data-page="agorox-vault">
 
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
-  <div style="background:#0E1F33; padding:40px 0 64px; position:relative; overflow:hidden;">
+  <div style="background:var(--navy); padding:40px 0 64px; position:relative; overflow:hidden;">
     <!-- decorative QR-grid motif -->
     <svg style="position:absolute; top:-20px; right:-40px; width:380px; height:380px; opacity:.06;" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
       <rect x="0" y="0" width="30" height="30" fill="none" stroke="#fff" stroke-width="3"/>
@@ -2337,7 +2670,7 @@
         <span data-route="home" style="cursor:pointer; color:rgba(247,245,240,.5);">Home</span> / AgoroX Vault
       </div>
       <div style="max-width:620px;">
-        <div class="eyebrow" style="color:var(--clay);">AgoroX Vault</div>
+        <div class="eyebrow">AgoroX Vault</div>
         <h1 style="color:var(--paper); font-weight:700; font-size:clamp(28px,4.5vw,52px); line-height:1.12; margin:16px 0 20px;">
           Your secrets,<br>sealed in a QR code.
         </h1>
@@ -2367,7 +2700,7 @@
         <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:32px 28px; position:relative;">
           <div style="position:absolute; top:24px; right:28px; font-family:var(--mono); font-size:13px; color:var(--slate); opacity:.4;">01</div>
           <div style="width:48px; height:48px; border-radius:10px; background:rgba(196,106,62,.1); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--clay-deep)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8441F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
           </div>
           <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">Enter your secret</h4>
           <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.65;">Type or paste anything you need to protect — a password, seed phrase, PIN, bank details, or a private note. Set an unlock key only you know.</p>
@@ -2376,7 +2709,7 @@
         <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:32px 28px; position:relative;">
           <div style="position:absolute; top:24px; right:28px; font-family:var(--mono); font-size:13px; color:var(--slate); opacity:.4;">02</div>
           <div style="width:48px; height:48px; border-radius:10px; background:rgba(196,106,62,.1); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--clay-deep)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8441F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
           </div>
           <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">It's encrypted &amp; sealed</h4>
           <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.65;">AgoroX Vault encrypts your secret with AES-256 right on your device, then renders it as a QR code. The plaintext is never stored or transmitted.</p>
@@ -2385,7 +2718,7 @@
         <div style="background:#fff; border:1px solid var(--line); border-radius:8px; padding:32px 28px; position:relative;">
           <div style="position:absolute; top:24px; right:28px; font-family:var(--mono); font-size:13px; color:var(--slate); opacity:.4;">03</div>
           <div style="width:48px; height:48px; border-radius:10px; background:rgba(196,106,62,.1); display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--clay-deep)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 21v.01M14 21h.01M21 14h.01"/></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#A8441F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 21v.01M14 21h.01M21 14h.01"/></svg>
           </div>
           <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">Store it anywhere offline</h4>
           <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.65;">Print the QR and keep it in a safe, a notebook, or a deposit box. To unlock, scan it back into the app and enter your key. That's the only way in.</p>
@@ -2401,7 +2734,7 @@
           </div>
         </div>
         <div style="text-align:center;">
-          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--clay)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#C4542E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
           <div style="font-family:var(--mono); font-size:9px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay); margin-top:6px;">AES-256</div>
         </div>
         <div style="text-align:center;">
@@ -2409,7 +2742,7 @@
           <div style="display:inline-block; background:#fff; padding:14px; border-radius:6px;">
             <svg width="110" height="110" viewBox="0 0 29 29" shape-rendering="crispEdges" xmlns="http://www.w3.org/2000/svg">
               <rect width="29" height="29" fill="#fff"/>
-              <g fill="#0E1F33">
+              <g fill="#0A1628">
                 <!-- finder patterns -->
                 <rect x="0" y="0" width="7" height="7"/><rect x="1" y="1" width="5" height="5" fill="#fff"/><rect x="2" y="2" width="3" height="3"/>
                 <rect x="22" y="0" width="7" height="7"/><rect x="23" y="1" width="5" height="5" fill="#fff"/><rect x="24" y="2" width="3" height="3"/>
@@ -2442,7 +2775,7 @@
     <div class="wrap">
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:start;">
         <div>
-          <div class="eyebrow" style="color:var(--clay-deep);">Personal Vault</div>
+          <div class="eyebrow">Personal Vault</div>
           <h3 style="font-weight:700; color:var(--navy); margin:12px 0 16px; font-size:clamp(20px,2.5vw,26px);">Protect what matters most to you.</h3>
           <ul style="list-style:none; padding:0; margin:0; font-size:14px; color:var(--slate-dark); line-height:1.5;">
             <li style="display:flex; gap:10px; padding:8px 0; border-bottom:1px solid var(--line);"><span style="color:var(--clay);">✓</span>Crypto wallet seed phrases &amp; private keys</li>
@@ -2453,7 +2786,7 @@
           </ul>
         </div>
         <div>
-          <div class="eyebrow" style="color:var(--clay-deep);">Business Vault</div>
+          <div class="eyebrow">Business Vault</div>
           <h3 style="font-weight:700; color:var(--navy); margin:12px 0 16px; font-size:clamp(20px,2.5vw,26px);">Controlled access for your team.</h3>
           <ul style="list-style:none; padding:0; margin:0; font-size:14px; color:var(--slate-dark); line-height:1.5;">
             <li style="display:flex; gap:10px; padding:8px 0; border-bottom:1px solid var(--line);"><span style="color:var(--clay);">✓</span>Server credentials &amp; API keys</li>
@@ -2501,7 +2834,7 @@
   <section id="vaultNotify" style="background:var(--paper); padding:24px 0 72px;">
     <div class="wrap">
       <div style="background:var(--navy); border-radius:10px; padding:48px 40px; text-align:center; position:relative; overflow:hidden;">
-        <div class="eyebrow" style="color:var(--clay);">Early Access</div>
+        <div class="eyebrow">Early Access</div>
         <h3 style="color:var(--paper); font-size:clamp(20px,3vw,28px); font-weight:700; margin:12px 0 8px;">Be first to secure your secrets</h3>
         <p style="color:rgba(247,245,240,.7); font-size:14px; max-width:440px; margin:0 auto 28px;">AgoroX Vault launches soon. Join the waitlist for early access and launch-day pricing.</p>
         <form style="display:flex; gap:10px; max-width:440px; margin:0 auto; flex-wrap:wrap;" onsubmit="return AX.leads.submitVault(this);">
@@ -2521,14 +2854,14 @@
 <div class="page" data-page="press">
 
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
-  <div style="background:#E0F2FE; padding:48px 0 40px;">
+  <div class="ax-page-hero">
     <div class="wrap">
       <div class="breadcrumb" style="color:var(--slate-dark);">
         <span data-route="home" style="cursor:pointer; color:var(--slate-dark);">Home</span> / AgoroX Press
       </div>
       <div style="display:grid; grid-template-columns:1fr auto; gap:40px; align-items:end; flex-wrap:wrap;">
         <div>
-          <div class="eyebrow" style="color:var(--clay-deep);">AgoroX Press</div>
+          <div class="eyebrow">AgoroX Press</div>
           <h1 style="color:var(--navy); font-weight:700; font-size:clamp(28px,4vw,48px); line-height:1.15; margin:16px 0 20px;">
             Publishing practical knowledge<br>for African operators.
           </h1>
@@ -2745,7 +3078,7 @@
 
       <!-- Interest capture -->
       <div style="margin-top:64px; background:var(--navy); border-radius:6px; padding:36px; text-align:center;">
-        <div class="eyebrow" style="color:var(--clay);">Be First to Know</div>
+        <div class="eyebrow">Be First to Know</div>
         <h3 style="color:var(--paper); font-size:clamp(18px,2.5vw,24px); font-weight:700; margin:12px 0 8px;">Get notified when the series launches</h3>
         <p style="color:rgba(247,245,240,.7); font-size:13.5px; margin-bottom:24px;">Leave your email and we'll notify you before the public release — with an early-reader discount.</p>
         <form style="display:flex; gap:10px; max-width:420px; margin:0 auto; flex-wrap:wrap;" onsubmit="return AX.leads.submitPress(this);">
@@ -2821,40 +3154,16 @@
 <div class="page" data-page="about">
 
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
-  <div style="background:#E0F2FE; padding:44px 0 52px;">
+  <div class="ax-page-hero">
     <div class="wrap">
       <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / About Us</div>
       <div style="max-width:680px;">
-        <div class="eyebrow" style="color:var(--clay-deep);">About AgoroX</div>
+        <div class="eyebrow">About AgoroX</div>
         <h1 style="font-weight:700; color:var(--navy); font-size:clamp(28px,4.5vw,46px); line-height:1.14; margin:14px 0 18px;">A software company<br>that started on a farm.</h1>
-        <p style="font-size:16px; color:var(--slate-dark); line-height:1.65;">We build digital platforms for laboratories, farms, pharmacies, and growing businesses across Africa — shaped by people who run the operations they build for.</p>
+        <p style="font-size:16px; color:var(--slate-dark); line-height:1.65;">We build digital platforms for laboratories, hospitals, farms, and growing businesses across Africa — shaped by people who run the operations they build for.</p>
       </div>
     </div>
   </div>
-
-  <!-- ── STATS STRIP ────────────────────────────────────────────────────── -->
-  <section style="background:var(--navy); padding:32px 0;">
-    <div class="wrap">
-      <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:24px; text-align:center;">
-        <div>
-          <div style="font-size:30px; font-weight:700; color:var(--clay); font-family:var(--mono);">5</div>
-          <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:rgba(247,245,240,.65); margin-top:4px;">Platforms shipped</div>
-        </div>
-        <div>
-          <div style="font-size:30px; font-weight:700; color:var(--clay); font-family:var(--mono);">302</div>
-          <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:rgba(247,245,240,.65); margin-top:4px;">Diagnostic tests</div>
-        </div>
-        <div>
-          <div style="font-size:30px; font-weight:700; color:var(--clay); font-family:var(--mono);">4</div>
-          <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:rgba(247,245,240,.65); margin-top:4px;">Industries served</div>
-        </div>
-        <div>
-          <div style="font-size:30px; font-weight:700; color:var(--clay); font-family:var(--mono);">1</div>
-          <div style="font-size:11.5px; text-transform:uppercase; letter-spacing:.05em; color:rgba(247,245,240,.65); margin-top:4px;">Unified login</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- ── OUR STORY ──────────────────────────────────────────────────────── -->
   <section style="background:var(--paper); padding:40px 0;">
@@ -2865,7 +3174,7 @@
           <h2 style="font-weight:700; color:var(--navy); margin-top:12px; font-size:clamp(22px,3vw,30px);">We didn't start as a vendor.</h2>
         </div>
         <div>
-          <p style="font-size:15px; color:var(--slate-dark); line-height:1.7; margin-bottom:16px;">AgoroX began by building the systems our own laboratory, farm, and business operations actually needed — not by guessing what an industry might want. Those internal tools were refined into LabOS, PoultrySuite Africa, PharmacyOS, and SmartInvoice: products organizations across Africa now rely on.</p>
+          <p style="font-size:15px; color:var(--slate-dark); line-height:1.7; margin-bottom:16px;">AgoroX began by building the systems our own laboratory, farm, and business operations actually needed — not by guessing what an industry might want. Those internal tools were refined into LabOS, PoultrySuite Africa, HospitalOS, and SmartInvoice: products organizations across Africa now rely on.</p>
           <p style="font-size:15px; color:var(--slate-dark); line-height:1.7;">That origin still shapes how we build. Every feature is tested against a real operation before it ships to a customer's. We don't theorize about workflows — we run them.</p>
         </div>
       </div>
@@ -2880,21 +3189,21 @@
       <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden;">
         <div style="background:#fff; padding:28px 24px;">
           <div style="width:42px; height:42px; border-radius:9px; background:rgba(196,106,62,.1); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-deep)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8441F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
           </div>
           <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">Operator-built</h4>
           <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.6;">Every product is shaped by a company that runs its own lab and farm. We build for ourselves first — then for you.</p>
         </div>
         <div style="background:#fff; padding:28px 24px;">
           <div style="width:42px; height:42px; border-radius:9px; background:rgba(196,106,62,.1); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-deep)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8441F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           </div>
           <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">Africa-ready</h4>
           <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.6;">Offline-first design, local payment rails, and tolerance for real-world conditions — not Silicon Valley assumptions.</p>
         </div>
         <div style="background:#fff; padding:28px 24px;">
           <div style="width:42px; height:42px; border-radius:9px; background:rgba(196,106,62,.1); display:flex; align-items:center; justify-content:center; margin-bottom:16px;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clay-deep)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#A8441F" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
           </div>
           <h4 style="font-weight:600; color:var(--navy); margin-bottom:8px;">One ecosystem</h4>
           <p style="font-size:13.5px; color:var(--slate-dark); line-height:1.6;">Every AgoroX product shares one login, one design language, and one promise: tools that work together, not in silos.</p>
@@ -2922,10 +3231,10 @@
           <a href="https://poultrysuite.agorox.africa" target="_blank" rel="noopener" style="font-size:12px; color:var(--clay-deep); font-weight:500; text-decoration:none; font-family:var(--mono); letter-spacing:.03em;">↗ poultrysuite.agorox.africa</a>
         </div>
         <div style="background:#fff; border:1px solid var(--line); border-radius:6px; padding:22px;">
-          <div style="font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:8px;">Pharmacy</div>
-          <h4 style="font-weight:600; color:var(--navy); margin-bottom:6px;">PharmacyOS</h4>
-          <p style="font-size:13px; color:var(--slate-dark); line-height:1.6;">Pharmacy management with NAFDAC/PCN compliance and barcode scanning.</p>
-          <a href="https://pharmacyos.agorox.africa" target="_blank" rel="noopener" style="font-size:12px; color:var(--clay-deep); font-weight:500; text-decoration:none; font-family:var(--mono); letter-spacing:.03em;">↗ pharmacyos.agorox.africa</a>
+          <div style="font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:8px;">Hospitals</div>
+          <h4 style="font-weight:600; color:var(--navy); margin-bottom:6px;">HospitalOS</h4>
+          <p style="font-size:13px; color:var(--slate-dark); line-height:1.6;">Hospital management — admissions, wards, and clinical records.</p>
+          <a href="https://hospitalos.agorox.africa" target="_blank" rel="noopener" style="font-size:12px; color:var(--clay-deep); font-weight:500; text-decoration:none; font-family:var(--mono); letter-spacing:.03em;">↗ hospitalos.agorox.africa</a>
         </div>
         <div style="background:#fff; border:1px solid var(--line); border-radius:6px; padding:22px;">
           <div style="font-family:var(--mono); font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--clay-deep); margin-bottom:8px;">SME Tooling</div>
@@ -2945,11 +3254,11 @@
       <div style="display:grid; gap:0;">
         <div style="display:grid; grid-template-columns:90px 1fr; gap:24px; padding:18px 0; border-bottom:1px solid var(--line);">
           <div style="font-family:var(--mono); font-size:13px; font-weight:600; color:var(--clay-deep);">2026</div>
-          <div><h4 style="font-weight:600; color:var(--navy); margin-bottom:4px; font-size:15px;">Platform unification</h4><p style="font-size:13.5px; color:var(--slate-dark); line-height:1.6;">LabOS, PoultrySuite Africa, PharmacyOS, and SmartInvoice brought under a single sign-on gateway.</p></div>
+          <div><h4 style="font-weight:600; color:var(--navy); margin-bottom:4px; font-size:15px;">Platform unification</h4><p style="font-size:13.5px; color:var(--slate-dark); line-height:1.6;">LabOS, PoultrySuite Africa, HospitalOS, and SmartInvoice brought under a single sign-on gateway.</p></div>
         </div>
         <div style="display:grid; grid-template-columns:90px 1fr; gap:24px; padding:18px 0; border-bottom:1px solid var(--line);">
           <div style="font-family:var(--mono); font-size:13px; font-weight:600; color:var(--clay-deep);">2026</div>
-          <div><h4 style="font-weight:600; color:var(--navy); margin-bottom:4px; font-size:15px;">PharmacyOS &amp; SmartInvoice launch</h4><p style="font-size:13.5px; color:var(--slate-dark); line-height:1.6;">Two new platforms shipped — pharmacy management and offline-first invoicing for Nigerian SMEs.</p></div>
+          <div><h4 style="font-weight:600; color:var(--navy); margin-bottom:4px; font-size:15px;">HospitalOS &amp; SmartInvoice launch</h4><p style="font-size:13.5px; color:var(--slate-dark); line-height:1.6;">Two new platforms shipped — hospital management and offline-first invoicing for Nigerian SMEs.</p></div>
         </div>
         <div style="display:grid; grid-template-columns:90px 1fr; gap:24px; padding:18px 0; border-bottom:1px solid var(--line);">
           <div style="font-family:var(--mono); font-size:13px; font-weight:600; color:var(--clay-deep);">2026</div>
@@ -2982,7 +3291,7 @@
   <!-- ── CTA ────────────────────────────────────────────────────────────── -->
   <section style="background:var(--navy); padding:40px 0;">
     <div class="wrap" style="text-align:center;">
-      <div class="eyebrow" style="color:var(--clay);">Work With Us</div>
+      <div class="eyebrow">Work With Us</div>
       <h2 style="color:var(--paper); font-weight:700; margin:12px 0 12px; font-size:clamp(22px,3vw,30px);">Want to talk to the team?</h2>
       <p style="color:rgba(247,245,240,.7); font-size:14px; max-width:480px; margin:0 auto 26px;">Whether you're a prospective customer, a partner, or an investor — we'd like to hear from you.</p>
       <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
@@ -3002,7 +3311,7 @@
     <div class="wrap">
       <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Contact</div>
       <h1>Let's see if AgoroX fits your operation.</h1>
-      <p class="lede">Whether you run a lab, a farm, a pharmacy, or a growing business — tell us about it and we'll show you the platform built for your industry.</p>
+      <p class="lede">Whether you run a lab, a farm, a hospital, or a growing business — tell us about it and we'll show you the platform built for your industry.</p>
     </div>
   </div>
 
@@ -3023,7 +3332,7 @@
                 <select>
                   <option>LabOS</option>
                   <option>PoultrySuite Africa</option>
-                  <option>PharmacyOS</option>
+                  <option>HospitalOS</option>
                   <option>SmartInvoice</option>
                   <option>Not sure yet</option>
                 </select>
@@ -3104,7 +3413,7 @@
     <div class="wrap">
       <div class="section-head"><div>
         <div class="eyebrow">Your Learning Journey</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Resources that lead somewhere.</h2>
+        <h2 style="font-weight:600; color:var(--navy);">Resources that lead somewhere.</h2>
         <p class="lede" style="margin-top:12px;">Every article, guide, and tool in the AgoroX Knowledge Center is designed to move you forward — from awareness to expertise to digital transformation.</p>
       </div></div>
       <div class="resource-journey">
@@ -3122,7 +3431,7 @@
     <div class="wrap">
       <div class="section-head"><div>
         <div class="eyebrow">Free Downloads</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Templates, checklists, and quality resources.</h2>
+        <h2 style="font-weight:600; color:var(--navy);">Templates, checklists, and quality resources.</h2>
         <p class="lede" style="margin-top:12px;">Download and use immediately. No login required for basic resources.</p>
       </div></div>
       <div class="download-grid">
@@ -3283,7 +3592,7 @@
     <div class="wrap">
       <div class="section-head"><div>
         <div class="eyebrow">Your Learning Path</div>
-        <h2 style="font-weight:600; color:#0E1F33;">From knowledge to certification to adoption</h2>
+        <h2 style="font-weight:600; color:var(--navy);">From knowledge to certification to adoption</h2>
       </div></div>
       <div class="why-grid">
         <div class="why-card">
@@ -3851,14 +4160,14 @@
 <div class="page" data-page="agorox-network">
 
   <!-- ── HERO ───────────────────────────────────────────────────────────── -->
-  <div style="background:#E0F2FE; padding:48px 0 40px;">
+  <div class="ax-page-hero">
     <div class="wrap">
       <div class="breadcrumb" style="color:var(--slate-dark);">
         <span data-route="home" style="cursor:pointer; color:var(--slate-dark);">Home</span> / AgoroX Network
       </div>
       <div style="display:grid; grid-template-columns:1fr; gap:40px;">
         <div>
-          <div class="eyebrow" style="color:var(--clay-deep);">Laboratory Network</div>
+          <div class="eyebrow">Laboratory Network</div>
           <h1 style="color:var(--navy); font-weight:700; font-size:clamp(28px,4vw,48px); line-height:1.15; margin:16px 0 20px;">
             Join Africa's Connected<br>Laboratory Network
           </h1>
@@ -4398,7 +4707,7 @@
   </section>
 
   <!-- ── QUOTE ───────────────────────────────────────────────────────────── -->
-  <section style="background:#E0F2FE; padding:48px 0;">
+  <section style="background:var(--paper-dim); padding:48px 0;">
     <div class="wrap" style="max-width:680px; text-align:center;">
       <p style="font-size:clamp(16px,2.5vw,22px); color:var(--navy); line-height:1.65; font-style:italic; margin-bottom:24px;">
         "AgoroX didn't sell us software built for a market they'd never seen. They built it for a lab — because they run one."
@@ -4518,7 +4827,7 @@
 
   <section>
     <div class="wrap" style="text-align:center; max-width:600px; margin:0 auto;">
-      <h2 style="font-weight:600; color:#0E1F33;">Not sure which plan is right?</h2>
+      <h2 style="font-weight:600; color:var(--navy);">Not sure which plan is right?</h2>
       <p style="font-size:14.5px; color:var(--charcoal-soft); margin:12px 0 20px;">Talk to our team. We'll help you find the right fit based on your laboratory's size, specialities, and goals.</p>
       <span class="btn btn-clay" data-route="contact">Request a Consultation →</span>
     </div>
@@ -4702,9 +5011,9 @@ const TLOGIN = (function(){
   // All platform definitions — key must match what's stored in user.platforms
   const PLATFORMS = [
     { key:'labos',        name:'LabOS',             sub:'Laboratory Information Management',    icon:'LB', url:'https://labos.agorox.africa',        style:'' },
-    { key:'poultrysuite', name:'PoultrySuite Africa',sub:'Hatchery, Feed Mill & Poultry',       icon:'PS', url:'https://poultrysuite.agorox.africa',  style:'' },
+    { key:'poultrysuite', name:'PoultrySuite Africa',sub:'PoultryOS · HatcheryOS · FeedMillOS',       icon:'PS', url:'https://poultrysuite.agorox.africa',  style:'' },
     { key:'smartinvoice', name:'SmartInvoice Pro',   sub:'Billing & Invoicing',                 icon:'SI', url:'https://smartinvoice.agorox.africa',  style:'' },
-    { key:'pharmacyos',   name:'PharmacyOS',         sub:'Pharmacy Management',                 icon:'PH', url:'https://pharmacyos.agorox.africa',    style:'' },
+    { key:'hospitalos',   name:'HospitalOS',         sub:'Hospital Management',                 icon:'HO', url:'https://hospitalos.agorox.africa',      style:'' },
     { key:'vault',        name:'AgoroX Vault',       sub:'Encrypted Secret Vault',              icon:'AV', url:'', route:'agorox-vault', style:'background:#3D1E4F;color:#E8B4B8;' }
   ];
 
@@ -4997,7 +5306,7 @@ const TLOGIN = (function(){
     <div class="wrap">
       <div class="section-head"><div>
         <div class="eyebrow">Popular Tests</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Most searched tests in the network</h2>
+        <h2 style="font-weight:600; color:var(--navy);">Most searched tests in the network</h2>
       </div></div>
       <div class="test-category-grid">
         <div class="test-category-card" onclick="BW.preselectAndGo('fbc')" style="cursor:pointer;">
@@ -5073,7 +5382,7 @@ const TLOGIN = (function(){
     <div class="wrap">
       <div class="section-head"><div>
         <div class="eyebrow">Showing Results For</div>
-        <h2 style="font-weight:600; color:#0E1F33;">Full Blood Count (FBC)</h2>
+        <h2 style="font-weight:600; color:var(--navy);">Full Blood Count (FBC)</h2>
         <p style="font-size:14px; color:var(--slate-dark); margin-top:8px;">6 laboratories available · Ibadan, Lagos, Abuja, Port Harcourt, Enugu, Kano</p>
       </div></div>
 
@@ -5201,7 +5510,7 @@ const TLOGIN = (function(){
     <div class="wrap">
       <div class="section-head"><div>
         <div class="eyebrow">For Patients</div>
-        <h2 style="font-weight:600; color:#0E1F33;">One platform. Every test. Your health records — digital.</h2>
+        <h2 style="font-weight:600; color:var(--navy);">One platform. Every test. Your health records — digital.</h2>
       </div></div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);">
         <div style="background:var(--bg); padding:18px;">
