@@ -1172,7 +1172,7 @@
       <div class="mega-col">
         <div class="mega-col-head">Foundation</div>
         <span class="mega-item mega-item-primary" data-route="platform">AgoroX Platform</span>
-        <span class="mega-item" data-route="platform" data-anchor="connect">AgoroX Connect</span>
+        <span class="mega-item" data-route="agorox-connect">AgoroX Connect</span>
       </div>
       <div class="mega-col">
         <div class="mega-col-head">Capabilities</div>
@@ -2289,6 +2289,10 @@
       <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Platform</div>
       <h1>The AgoroX Platform</h1>
       <p class="lede">One technology foundation. Multiple specialized platforms — each purpose-built for its industry, sharing common infrastructure underneath.</p>
+      <div class="hero-actions" style="margin-top:20px;">
+        <span class="btn btn-clay" data-route="agorox-connect">Explore AgoroX Connect <span class="btn-arrow">→</span></span>
+        <span class="btn btn-ghost" data-route="contact">Talk to AgoroX</span>
+      </div>
     </div>
   </div>
 
@@ -2296,9 +2300,9 @@
     <div class="wrap">
       <div class="feature">
         <div class="feature-body">
-          <div class="eyebrow" id="connect">AgoroX Connect</div>
-          <h2>The infrastructure connecting AgoroX platforms, organizations and people.</h2>
-          <p>AgoroX Connect is the shared layer underneath every industry platform. Today that means a common design system and, for LabOS, a real public booking and discovery flow. Cross-platform identity, payments, and notifications are being built out as each product matures — capabilities below are labeled by what's actually live today.</p>
+          <div class="eyebrow">Why a Shared Foundation</div>
+          <h2>Purpose-built products, not five separate companies.</h2>
+          <p>Each AgoroX product is built independently for its industry — a lab does not work like a school, and a hospital does not work like a poultry farm. But none of them start from zero. Design system, hosting, tenant architecture, and the growing AgoroX Connect layer are shared underneath, so a new product reaches the field faster and a customer running more than one AgoroX platform gets a consistent experience.</p>
         </div>
         <div class="feature-visual">
           <div class="fv-top">AGOROX PLATFORM</div>
@@ -2310,8 +2314,9 @@
     </div>
   </section>
 
-  <section style="padding-top:0;">
+  <section style="padding-top:0; background:var(--paper);">
     <div class="wrap">
+      <div class="eyebrow" style="margin-bottom:14px;">Foundation Layers</div>
       <div class="product-grid">
         <div class="product-card" id="identity">
           <div class="pc-tag">Foundation</div>
@@ -2336,15 +2341,119 @@
         <div class="product-card" id="security">
           <div class="pc-tag">Foundation</div>
           <h3>Security</h3>
-          <p>Encrypted secrets and credential management are handled through AgoroX Vault, live today for participating tenants.</p>
+          <p>Encrypted secrets and credential management are handled through AgoroX Vault, live today for participating tenants. Each product's data is tenant-isolated by design.</p>
           <span class="pc-link" data-route="agorox-vault">Explore AgoroX Vault →</span>
         </div>
-        <div class="product-card" style="background:var(--navy-soft);" onclick="openModal()">
-          <div class="pc-tag" style="color:rgba(247,245,240,0.5);">Technology</div>
+        <div class="product-card" id="deployment">
+          <div class="pc-tag">Foundation</div>
+          <h3>Deployment</h3>
+          <p>Every live product is cloud-hosted and accessed from a modern browser — no local install, no client software to maintain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="feature">
+        <div class="feature-body">
+          <div class="eyebrow">Technology</div>
+          <h2>Built to run on Africa's actual conditions.</h2>
+          <p>The same engineering principles run through every AgoroX product: offline-tolerant where the workflow allows it, responsive on constrained mobile networks, and architected multi-tenant from day one rather than retrofitted for it. See <span data-route="about" data-anchor="technology" style="text-decoration:underline; cursor:pointer;">what we build</span> for more on the engineering approach.</p>
+        </div>
+        <div class="feature-body" style="background:var(--navy-soft); padding:28px 24px; border-radius:6px;">
           <h3 style="color:var(--paper);">Sign In</h3>
           <p style="color:rgba(247,245,240,0.65);">Access any live AgoroX platform you're licensed for.</p>
-          <span class="pc-link" style="color:var(--clay);">Sign In →</span>
+          <div class="feature-actions">
+            <button class="btn btn-clay" onclick="openModal()">Sign In →</button>
+          </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="eyebrow" style="margin-bottom:14px;">Related</div>
+      <div class="product-grid">
+        <div class="product-card" data-route="agorox-connect"><h3>AgoroX Connect</h3><p>The connectivity infrastructure tying identity, booking, and data exchange together across products.</p></div>
+        <div class="product-card" data-route="agorox-vault"><h3>AgoroX Vault</h3><p>Encrypted secret and credential management, live today.</p></div>
+        <div class="product-card" data-route="products"><h3>All Products</h3><p>See what's built on top of the AgoroX Platform.</p></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<!-- =========================================================== AGOROX CONNECT =========================================================== -->
+<div class="page" data-page="agorox-connect">
+
+  <div class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="platform" style="cursor:pointer;">Platform</span> / AgoroX Connect</div>
+      <div class="eyebrow">Cross-Platform Connectivity Infrastructure</div>
+      <h1>The infrastructure connecting AgoroX platforms, organizations and people.</h1>
+      <p class="lede">AgoroX Connect is the layer underneath every industry platform that lets a person, organization, or record move between products without starting over. Some of it is live today; the rest is being built out as each product matures — every capability below is labeled honestly by status.</p>
+    </div>
+  </div>
+
+  <section style="padding-top:0;">
+    <div class="wrap">
+      <div class="eyebrow" style="margin-bottom:14px;">Capabilities</div>
+      <div class="product-grid">
+        <div class="product-card">
+          <div class="pc-tag">Live — via LabOS</div>
+          <h3>Discovery</h3>
+          <p>Search across a network of participating laboratories by test name, condition, or specialty — no referral or account needed to search.</p>
+        </div>
+        <div class="product-card">
+          <div class="pc-tag">Live — for LabOS</div>
+          <h3>Booking</h3>
+          <p>Select a provider, book, and receive a reference number, end to end, today. Booking for other platforms follows as each one ships — see <span data-route="book-service" style="text-decoration:underline; cursor:pointer;">Book a Service</span>.</p>
+        </div>
+        <div class="product-card">
+          <div class="pc-tag">Mixed</div>
+          <h3>Payments</h3>
+          <p>Online payment, bank transfer, cash, and pay-at-provider are all real, supported paths — which ones apply depends on the product and the provider.</p>
+        </div>
+        <div class="product-card">
+          <div class="pc-tag">Per-product today</div>
+          <h3>Identity</h3>
+          <p>Each platform authenticates its own users today. A shared AgoroX Account across every product is the direction this is heading, not the current reality.</p>
+        </div>
+        <div class="product-card">
+          <div class="pc-tag">Planned</div>
+          <h3>Notifications</h3>
+          <p>Cross-platform booking and status notifications (SMS, email, WhatsApp) are planned as more products come online with booking flows of their own.</p>
+        </div>
+        <div class="product-card">
+          <div class="pc-tag">Planned</div>
+          <h3>Data Exchange</h3>
+          <p>Structured data exchange between products — starting with LabOS ↔ HospitalOS order-to-result — is planned, building on LabOS's existing HL7 v2 messaging.</p>
+        </div>
+        <div class="product-card">
+          <div class="pc-tag">Planned</div>
+          <h3>Integrations</h3>
+          <p>Third-party integrations beyond lab instruments (accounting, SMS gateways, payment processors) are evaluated product by product as demand appears.</p>
+        </div>
+        <div class="product-card">
+          <div class="pc-tag">Live</div>
+          <h3>Security</h3>
+          <p>Encrypted secret and credential management via AgoroX Vault, and tenant-isolated data by design across every product.</p>
+          <span class="pc-link" data-route="agorox-vault">Explore AgoroX Vault →</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <div class="eyebrow">Get Started</div>
+      <h2 style="font-weight:800; letter-spacing:-.5px;">See AgoroX Connect in action.</h2>
+      <p>The clearest live example today is LabOS's public booking network — search, book, and get a reference in minutes.</p>
+      <div class="cta-actions">
+        <span class="btn btn-clay" data-route="find-test">Find a Test <span class="btn-arrow">→</span></span>
+        <span class="btn btn-ghost" style="color:var(--navy); border-color:rgba(14,31,51,0.25); background:var(--bg);" data-route="platform">Back to AgoroX Platform</span>
       </div>
     </div>
   </section>
@@ -5459,7 +5568,7 @@
   function toggleMobileMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 
   // ---------- Router ----------
-  const validRoutes = ['home','products','labos','hospitalos','schoolos','poultrysuite','smartinvoice','solutions','platform','agorox-health','academy','academy-cla','academy-ldtb','academy-poultrysuite','laboratories','lab-profile','book-test','book-service','hospitalos-booking','patient-portal','agorox-network','agorox-vault','labos-pricing','press','about','contact','knowledge-center','resources-tools','find-test'];
+  const validRoutes = ['home','products','labos','hospitalos','schoolos','poultrysuite','smartinvoice','solutions','platform','agorox-connect','agorox-health','academy','academy-cla','academy-ldtb','academy-poultrysuite','laboratories','lab-profile','book-test','book-service','hospitalos-booking','patient-portal','agorox-network','agorox-vault','labos-pricing','press','about','contact','knowledge-center','resources-tools','find-test'];
 
   function navigate(route, anchor){
     if(!validRoutes.includes(route)) route = 'home';
@@ -5481,7 +5590,7 @@
     const navHighlights = {
       productsNavLink: ['products','labos','hospitalos','schoolos','poultrysuite','smartinvoice'],
       solutionsNavLink: ['solutions'],
-      platformNavLink: ['platform','agorox-network','agorox-vault'],
+      platformNavLink: ['platform','agorox-connect','agorox-network','agorox-vault'],
       academyNavLink: ['academy','academy-cla','academy-ldtb','academy-poultrysuite'],
       resourcesNavLink: ['knowledge-center','resources-tools','press'],
       companyNavLink: ['about','contact']
