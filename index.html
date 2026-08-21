@@ -93,37 +93,38 @@
   /* ---------- Type scale ---------- */
   .eyebrow{
     font-family: var(--mono);
-    font-size:11.5px;
-    letter-spacing:0.14em;
+    font-size:11px;
+    letter-spacing:0.13em;
     text-transform:uppercase;
-    color:var(--slate-dark);
+    color:var(--slate);
     font-weight:500;
-    display:flex; align-items:center; gap:10px;
+    display:flex; align-items:center; gap:9px;
   }
   .eyebrow::before{
-    content:""; width:18px; height:1px; background:var(--slate-dark); display:inline-block;
+    content:""; width:14px; height:1px; background:var(--slate); display:inline-block;
   }
-  h1,h2,h3,h4{ font-family:var(--display); font-weight:400; letter-spacing:-0.02em; color:var(--navy); }
-  h1{ font-size:clamp(24px,3.2vw,38px); line-height:1.12; font-weight:400; }
-  h2{ font-size:clamp(18px,2vw,24px); line-height:1.2; font-weight:400; }
-  h3{ font-size:15px; line-height:1.3; font-weight:500; letter-spacing:-0.01em; }
+  h1,h2,h3,h4{ font-family:var(--display); font-weight:600; letter-spacing:-0.025em; color:var(--navy); }
+  h1{ font-size:clamp(28px,4.4vw,50px); line-height:1.08; font-weight:600; letter-spacing:-0.03em; }
+  h2{ font-size:clamp(21px,2.6vw,30px); line-height:1.18; font-weight:600; }
+  h3{ font-size:16px; line-height:1.35; font-weight:600; letter-spacing:-0.01em; }
   p{ color:var(--slate-dark); }
-  .lede{ font-size:16px; line-height:1.55; color:var(--slate-dark); max-width:520px; }
+  .lede{ font-size:17px; line-height:1.6; color:var(--slate-dark); max-width:540px; font-weight:400; }
 
   /* ---------- Buttons ---------- */
   .btn{
-    display:inline-flex; align-items:center; gap:8px; min-height:40px;
+    display:inline-flex; align-items:center; gap:8px; min-height:44px;
     font-family:var(--body); font-weight:600; font-size:14.5px;
-    padding:11px 20px; border-radius:3px; cursor:pointer; border:1px solid transparent;
-    transition: all .15s ease; white-space:nowrap;
+    padding:12px 22px; border-radius:6px; cursor:pointer; border:1px solid transparent;
+    transition: transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    white-space:nowrap;
   }
   .btn-primary{ background:var(--navy); color:var(--paper); }
-  .btn-primary:hover{ background:var(--navy-soft); transform:translateY(-1px); }
+  .btn-primary:hover{ background:var(--navy-soft); transform:translateY(-1px); box-shadow:0 6px 16px rgba(14,31,51,0.16); }
   .btn-clay{ background:var(--clay); color:var(--white); }
-  .btn-clay:hover{ background:var(--clay-deep); transform:translateY(-1px); }
+  .btn-clay:hover{ background:var(--clay-deep); transform:translateY(-1px); box-shadow:0 6px 16px rgba(196,106,62,0.24); }
   .btn-ghost{ background:transparent; color:var(--navy); border-color:var(--line); }
-  .btn-ghost:hover{ border-color:var(--navy); }
-  .btn-arrow{ transition: transform .15s ease; }
+  .btn-ghost:hover{ border-color:var(--navy); transform:translateY(-1px); }
+  .btn-arrow{ transition: transform .18s ease; }
   .btn:hover .btn-arrow{ transform:translateX(3px); }
 
   /* ---------- Header / Tab Nav ---------- */
@@ -188,27 +189,28 @@
   .page.active{ display:block; animation: fadein .25s ease; }
   @keyframes fadein{ from{ opacity:0; transform:translateY(6px);} to{ opacity:1; transform:none; } }
 
-  section{ padding:38px 0; }
-  @media (max-width:760px){ section{ padding:32px 0; } }
-  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:20px; }
+  section{ padding:64px 0; }
+  @media (max-width:760px){ section{ padding:44px 0; } }
+  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:40px; margin-bottom:32px; }
   @media (max-width:760px){ .section-head{ flex-direction:column; align-items:flex-start; gap:16px; } }
   .section-head h2{ margin-top:14px; max-width:560px; }
   .section-head .lede{ margin-top:14px; }
   .divider{ border:none; border-top:1px solid var(--line); }
 
   /* page hero (sub-pages) */
-  .page-hero{ padding:32px 0 26px; border-bottom:1px solid var(--line); }
-  .page-hero h1{ margin-top:14px; }
-  .page-hero .lede{ margin-top:16px; }
+  .page-hero{ padding:56px 0 44px; border-bottom:1px solid var(--line); }
+  @media (max-width:760px){ .page-hero{ padding:36px 0 30px; } }
+  .page-hero h1{ margin-top:16px; }
+  .page-hero .lede{ margin-top:18px; }
   .breadcrumb{ font-family:var(--mono); font-size:11.5px; color:var(--slate); letter-spacing:0.05em; }
-  .page-hero .eyebrow{ margin-top:18px; margin-bottom:4px; }
+  .page-hero .eyebrow{ margin-top:20px; margin-bottom:4px; }
   .breadcrumb a:hover{ color:var(--clay-deep); }
 
   /* ---------- Hero / Operations Register (Home) ---------- */
-  .hero{ padding:32px 0 0; position:relative; background:var(--paper); }
-  .hero-top{ display:grid; grid-template-columns: 1.05fr 0.95fr; gap:40px; align-items:stretch; padding-bottom:28px; }
-  @media (max-width:980px){ .hero-top{ grid-template-columns:1fr; gap:24px; } }
-  .hero h1{ margin:14px 0 14px; font-size:clamp(24px,3.2vw,38px); font-weight:700; }
+  .hero{ padding:56px 0 0; position:relative; background:var(--paper); }
+  .hero-top{ display:grid; grid-template-columns: 1.05fr 0.95fr; gap:48px; align-items:stretch; padding-bottom:40px; }
+  @media (max-width:980px){ .hero-top{ grid-template-columns:1fr; gap:24px; } .hero{ padding-top:36px; } }
+  .hero h1{ margin:18px 0 18px; font-size:clamp(30px,4.6vw,54px); font-weight:600; letter-spacing:-0.03em; }
   .hero h1 em{ font-style:normal; color:var(--clay-deep); }
   .hero-actions{ display:flex; gap:14px; margin-top:20px; flex-wrap:wrap; }
   .hero-stats{ display:flex; flex-direction:column; align-self:center; border-top:1px solid var(--line); }
@@ -218,8 +220,8 @@
   @media (max-width:980px){ .hero-stats{ display:none; } }
 
   .register{ border-top:1px solid var(--navy); border-bottom:1px solid var(--navy); }
-  .register-head{ display:grid; grid-template-columns: 2.1fr 1fr 100px 80px; padding:8px 0; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate); border-bottom:1px solid var(--line); }
-  .register-row{ display:grid; grid-template-columns: 2.1fr 1fr 100px 80px; align-items:center; padding:9px 0; border-bottom:1px solid var(--line-soft); transition: background .15s ease; cursor:pointer; }
+  .register-head{ display:grid; grid-template-columns: 2.1fr 1fr 100px 80px; padding:12px 0; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate); border-bottom:1px solid var(--line); }
+  .register-row{ display:grid; grid-template-columns: 2.1fr 1fr 100px 80px; align-items:center; padding:16px 0; border-bottom:1px solid var(--line-soft); transition: background .15s ease; cursor:pointer; }
   .register-row:last-child{ border-bottom:none; }
   .register-row:hover{ background:rgba(196,106,62,0.05); }
   .register-id{ font-family:var(--mono); font-size:11px; color:var(--slate); margin-right:10px; }
@@ -266,42 +268,42 @@
   .product-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
   @media (max-width:860px){ .product-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:560px){ .product-grid{ grid-template-columns:1fr; } }
-  .product-card{ background:var(--bg); padding:14px 14px; display:flex; flex-direction:column; min-height:120px; transition: background .15s ease; cursor:pointer; }
+  .product-card{ background:var(--bg); padding:26px 24px; display:flex; flex-direction:column; min-height:150px; transition: background .18s ease; cursor:pointer; }
   .product-card:hover{ background:var(--paper); }
   .product-card .pc-tag{ font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); }
-  .product-card h3{ margin-top:14px; }
-  .product-card p{ font-size:14px; margin-top:10px; flex-grow:1; }
-  .product-card .pc-link{ font-size:13px; font-weight:600; margin-top:18px; display:flex; align-items:center; gap:6px; }
+  .product-card h3{ margin-top:16px; }
+  .product-card p{ font-size:14px; margin-top:10px; flex-grow:1; line-height:1.55; }
+  .product-card .pc-link{ font-size:13px; font-weight:600; margin-top:20px; display:flex; align-items:center; gap:6px; color:var(--navy); }
   .product-card .pc-link:hover{ color:var(--clay-deep); }
 
   /* ---------- Featured product split (full detail, Products page) ---------- */
   .feature{ display:grid; grid-template-columns: 0.95fr 1.05fr; gap:0; border:1px solid var(--line); margin-bottom:1px; }
   .feature.feature-reverse{ grid-template-columns: 1.05fr 0.95fr; }
   @media (max-width:900px){ .feature{ grid-template-columns:1fr; } .feature.feature-reverse{ grid-template-columns:1fr; } }
-  .feature-visual{ background:var(--skyfill); padding:16px 16px; display:flex; flex-direction:column; justify-content:space-between; min-height:0; position:relative; overflow:hidden; }
-  .feature-visual h3{ color:var(--navy); font-size:22px; margin-top:14px; font-weight:400; }
-  .feature-visual .fv-top{ font-family:var(--mono); font-size:12px; color:var(--slate-dark); }
-  .feature-mock{ margin-top:24px; background:var(--sky-mid); border:1px solid rgba(14,31,51,0.14); border-radius:4px; padding:18px; font-family:var(--mono); font-size:11.5px; color:var(--navy-soft); }
-  .feature-mock .fm-row{ display:flex; justify-content:space-between; padding:7px 0; border-bottom:1px solid rgba(14,31,51,0.1); }
+  .feature-visual{ background:var(--paper); padding:32px; display:flex; flex-direction:column; justify-content:space-between; min-height:0; position:relative; overflow:hidden; }
+  .feature-visual h3{ color:var(--navy); font-size:22px; margin-top:16px; font-weight:600; }
+  .feature-visual .fv-top{ font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--slate); }
+  .feature-mock{ margin-top:24px; background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:20px; font-family:var(--mono); font-size:11.5px; color:var(--navy-soft); }
+  .feature-mock .fm-row{ display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid var(--line-soft); }
   .feature-mock .fm-row:last-child{ border-bottom:none; }
   .feature-mock .fm-ok{ color:var(--clay-deep); font-weight:600; }
-  .feature-body{ padding:16px 16px; display:flex; flex-direction:column; justify-content:center; }
-  .feature-body .eyebrow{ margin-bottom:10px; }
-  .feature-body h2{ margin-bottom:10px; font-size:clamp(22px,2.6vw,30px); font-weight:400; }
-  .feature-body p{ line-height:1.45; font-size:14.5px; }
-  .feature-list{ margin:12px 0; display:flex; flex-direction:column; gap:7px; }
-  .feature-list li{ display:flex; gap:12px; font-size:14.5px; color:var(--navy-soft); font-weight:400; }
+  .feature-body{ padding:32px; display:flex; flex-direction:column; justify-content:center; }
+  .feature-body .eyebrow{ margin-bottom:12px; }
+  .feature-body h2{ margin-bottom:12px; font-size:clamp(22px,2.6vw,30px); }
+  .feature-body p{ line-height:1.6; font-size:14.5px; }
+  .feature-list{ margin:16px 0; display:flex; flex-direction:column; gap:9px; }
+  .feature-list li{ display:flex; gap:12px; font-size:14.5px; color:var(--navy-soft); font-weight:400; line-height:1.5; }
   .feature-list li::before{ content:"—"; color:var(--clay-deep); flex-shrink:0; }
-  .feature-actions{ display:flex; gap:14px; margin-top:8px; flex-wrap:wrap; }
+  .feature-actions{ display:flex; gap:14px; margin-top:12px; flex-wrap:wrap; }
 
   /* ---------- Compact featured products (two-up, Home) ---------- */
-  .feature-duo{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  .feature-duo{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
   @media (max-width:860px){ .feature-duo{ grid-template-columns:1fr; } }
-  .feature-mini{ background:var(--skyfill); padding:28px 24px; display:flex; flex-direction:column; min-height:215px; cursor:pointer; transition: background .15s ease; }
-  .feature-mini:hover{ background:var(--sky-mid); }
-  .feature-mini .fv-top{ font-family:var(--mono); font-size:11.5px; color:var(--slate-dark); }
-  .feature-mini h3{ color:#0E1F33; font-size:24px; margin-top:14px; font-weight:700; }
-  .feature-mini p{ color:var(--navy-soft); font-size:14px; margin-top:10px; }
+  .feature-mini{ background:var(--paper); padding:32px 28px; display:flex; flex-direction:column; min-height:225px; cursor:pointer; transition: background .18s ease; }
+  .feature-mini:hover{ background:var(--paper-dim); }
+  .feature-mini .fv-top{ font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--slate); }
+  .feature-mini h3{ color:var(--navy); font-size:23px; margin-top:16px; font-weight:600; }
+  .feature-mini p{ color:var(--navy-soft); font-size:14px; margin-top:10px; line-height:1.55; }
   .feature-mini .feature-mock{ margin-top:auto; }
   .feature-mini .feature-actions{ margin-top:22px; }
   .feature-mini .btn-ghost{ color:var(--navy); border-color:rgba(14,31,51,0.25); background:var(--bg); }
@@ -443,12 +445,14 @@
   .press-filter button:hover:not(.active){ border-color:var(--navy); color:var(--navy); }
 
   /* ---------- CTA ---------- */
-  .cta{ background:var(--skyfill); color:var(--navy); text-align:center; padding:50px 0; }
-  .cta .eyebrow{ justify-content:center; color:var(--clay-deep); }
-  .cta .eyebrow::before{ background:var(--clay-deep); }
-  .cta h2{ color:var(--navy); margin:14px auto 12px; max-width:680px; }
-  .cta p{ color:var(--navy-soft); max-width:520px; margin:0 auto 26px; }
+  .cta{ background:var(--navy); color:var(--paper); text-align:center; padding:72px 0; }
+  .cta .eyebrow{ justify-content:center; color:var(--clay); }
+  .cta .eyebrow::before{ background:var(--clay); }
+  .cta h2{ color:var(--paper); margin:16px auto 14px; max-width:680px; }
+  .cta p{ color:rgba(247,245,240,0.65); max-width:520px; margin:0 auto 30px; }
   .cta-actions{ display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+  .cta .btn-ghost{ color:var(--paper); border-color:rgba(247,245,240,0.3); background:transparent; }
+  .cta .btn-ghost:hover{ border-color:rgba(247,245,240,0.6); }
 
   /* ---------- Contact page ---------- */
   .contact-grid{ display:grid; grid-template-columns:1fr 1fr; gap:36px; }
@@ -1497,28 +1501,28 @@
         Every AgoroX product is purpose-built for its industry, but none of them start from zero — identity, payments, booking, and security are shared infrastructure underneath, built out as each platform matures.
       </p>
 
-      <div style="margin-top:32px; border:1px solid rgba(247,245,240,0.15); border-radius:6px; overflow:hidden;">
-        <div style="background:rgba(196,106,62,0.12); padding:16px 20px; text-align:center; font-family:var(--mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--clay);">AgoroX Platform</div>
-        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(247,245,240,0.1);">
-          <div style="background:var(--navy-soft); padding:14px; text-align:center; font-size:12.5px; color:rgba(247,245,240,0.8);">Identity</div>
-          <div style="background:var(--navy-soft); padding:14px; text-align:center; font-size:12.5px; color:rgba(247,245,240,0.8);">Security</div>
-          <div style="background:var(--navy-soft); padding:14px; text-align:center; font-size:12.5px; color:rgba(247,245,240,0.8);">Payments</div>
-          <div style="background:var(--navy-soft); padding:14px; text-align:center; font-size:12.5px; color:rgba(247,245,240,0.8);">Booking</div>
-          <div style="background:var(--navy-soft); padding:14px; text-align:center; font-size:12.5px; color:rgba(247,245,240,0.8);">Notifications</div>
-          <div style="background:var(--navy-soft); padding:14px; text-align:center; font-size:12.5px; color:rgba(247,245,240,0.8);">Analytics</div>
-          <div style="background:var(--navy-soft); padding:14px; text-align:center; font-size:12.5px; color:rgba(247,245,240,0.8);">Integrations</div>
-          <div style="background:var(--navy-soft); padding:14px; text-align:center; font-size:12.5px; color:rgba(247,245,240,0.8);">Data Infrastructure</div>
+      <div style="margin-top:40px; border:1px solid rgba(247,245,240,0.14); border-radius:10px; overflow:hidden;">
+        <div style="padding:18px 20px; text-align:center; font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--clay);">AgoroX Platform</div>
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(247,245,240,0.08);">
+          <div style="background:var(--navy-soft); padding:20px 14px; text-align:center; font-size:13px; color:rgba(247,245,240,0.75);">Identity</div>
+          <div style="background:var(--navy-soft); padding:20px 14px; text-align:center; font-size:13px; color:rgba(247,245,240,0.75);">Security</div>
+          <div style="background:var(--navy-soft); padding:20px 14px; text-align:center; font-size:13px; color:rgba(247,245,240,0.75);">Payments</div>
+          <div style="background:var(--navy-soft); padding:20px 14px; text-align:center; font-size:13px; color:rgba(247,245,240,0.75);">Booking</div>
+          <div style="background:var(--navy-soft); padding:20px 14px; text-align:center; font-size:13px; color:rgba(247,245,240,0.75);">Notifications</div>
+          <div style="background:var(--navy-soft); padding:20px 14px; text-align:center; font-size:13px; color:rgba(247,245,240,0.75);">Analytics</div>
+          <div style="background:var(--navy-soft); padding:20px 14px; text-align:center; font-size:13px; color:rgba(247,245,240,0.75);">Integrations</div>
+          <div style="background:var(--navy-soft); padding:20px 14px; text-align:center; font-size:13px; color:rgba(247,245,240,0.75);">Data Infrastructure</div>
         </div>
-        <div style="text-align:center; padding:10px; color:rgba(247,245,240,0.3); font-family:var(--mono); font-size:16px;">↓</div>
-        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:rgba(247,245,240,0.1);">
-          <div style="background:var(--navy-soft); padding:16px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">LabOS</div>
-          <div style="background:var(--navy-soft); padding:16px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">HospitalOS</div>
-          <div style="background:var(--navy-soft); padding:16px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">SchoolOS</div>
-          <div style="background:var(--navy-soft); padding:16px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">PoultrySuite</div>
-          <div style="background:var(--navy-soft); padding:16px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">SmartInvoice</div>
+        <div style="text-align:center; padding:14px; color:rgba(247,245,240,0.25); font-family:var(--mono); font-size:16px;">↓</div>
+        <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:1px; background:rgba(247,245,240,0.08);">
+          <div style="background:var(--navy-soft); padding:20px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">LabOS</div>
+          <div style="background:var(--navy-soft); padding:20px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">HospitalOS</div>
+          <div style="background:var(--navy-soft); padding:20px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">SchoolOS</div>
+          <div style="background:var(--navy-soft); padding:20px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">PoultrySuite</div>
+          <div style="background:var(--navy-soft); padding:20px 10px; text-align:center; font-weight:600; color:var(--paper); font-size:13px;">SmartInvoice</div>
         </div>
       </div>
-      <div style="margin-top:20px;">
+      <div style="margin-top:28px;">
         <span class="btn btn-clay" data-route="platform">Explore the AgoroX Platform <span class="btn-arrow">→</span></span>
       </div>
     </div>
@@ -1575,21 +1579,16 @@
   <!-- ============ 6. BUILT FOR AFRICA ============ -->
   <section style="background:var(--paper);">
     <div class="wrap">
-      <div class="eyebrow" style="margin-bottom:14px;">Engineering Reality</div>
-      <div style="font-size:clamp(24px,3.4vw,36px); font-weight:900; color:#0E1F33; line-height:1.15; letter-spacing:-1px; display:flex; align-items:center; flex-wrap:wrap; gap:10px;">
-        Built for the conditions
-        <span style="background:#C46A3E; color:#fff; padding:3px 14px; border-radius:3px;">others design around.</span>
-      </div>
-      <p style="font-size:15px; color:var(--slate-dark); line-height:1.65; margin:14px 0 0; max-width:620px;">
-        Every AgoroX product is tested on a live operation before it reaches a customer — we run a laboratory and a farm, so the software handles what happens on the ground, not what looks good in a pitch deck.
+      <div class="eyebrow" style="margin-bottom:16px;">Engineering Reality</div>
+      <h2 style="max-width:620px;">Built for the conditions others design around.</h2>
+      <p class="lede" style="margin-top:16px; max-width:600px;">
+        We run a laboratory and a farm — so the software handles what happens on the ground, not what looks good in a pitch deck.
       </p>
-      <div class="product-grid" style="margin-top:28px;">
-        <div class="product-card"><h3>Offline-Ready</h3><p>SmartInvoice and field workflows keep working, and sync, when connectivity drops.</p></div>
-        <div class="product-card"><h3>Low-Bandwidth Conscious</h3><p>Interfaces built to load and respond on constrained mobile networks.</p></div>
-        <div class="product-card"><h3>Local Payment Workflows</h3><p>Online payment, bank transfer, cash, and pay-at-provider — not one forced gateway.</p></div>
-        <div class="product-card"><h3>Operationally Resilient</h3><p>Built against real branch, staffing, and power conditions, not idealized ones.</p></div>
-        <div class="product-card"><h3>Secure &amp; Auditable</h3><p>Records and access kept audit-ready, with encrypted credential handling via AgoroX Vault.</p></div>
-        <div class="product-card"><h3>Designed for African Realities</h3><p>Multi-branch, multi-tenant, and multi-currency from the ground up.</p></div>
+      <div class="product-grid" style="margin-top:36px;">
+        <div class="product-card"><h3>Offline-Ready</h3><p>Keeps working, and syncs, when connectivity drops.</p></div>
+        <div class="product-card"><h3>Local Payment Workflows</h3><p>Online payment, bank transfer, cash, pay-at-provider — not one forced gateway.</p></div>
+        <div class="product-card"><h3>Operationally Resilient</h3><p>Built against real branch, staffing, and power conditions.</p></div>
+        <div class="product-card"><h3>Multi-Tenant by Design</h3><p>Multi-branch, multi-tenant, multi-currency, from the ground up.</p></div>
       </div>
     </div>
   </section>
@@ -1643,8 +1642,8 @@
       <p>Whether you run a lab, a hospital, a school, a farm, or a growing business — we'll show you the platform built for your industry.</p>
       <div class="cta-actions">
         <span class="btn btn-clay" data-route="contact">I'm looking for a solution <span class="btn-arrow">→</span></span>
-        <span class="btn btn-ghost" style="color:var(--navy); border-color:rgba(14,31,51,0.25); background:var(--bg);" data-route="contact">I'm interested in partnering</span>
-        <button class="btn btn-ghost" style="color:var(--navy); border-color:rgba(14,31,51,0.25); background:var(--bg);" onclick="openModal()">Existing Customer? Sign In</button>
+        <span class="btn btn-ghost" data-route="contact">I'm interested in partnering</span>
+        <button class="btn btn-ghost" onclick="openModal()">Existing Customer? Sign In</button>
       </div>
     </div>
   </section>
@@ -1883,7 +1882,7 @@
       <p>Request a demo, or if you're a patient looking to book a test, search the network directly.</p>
       <div class="cta-actions">
         <span class="btn btn-clay" data-route="contact">Request a Demo <span class="btn-arrow">→</span></span>
-        <span class="btn btn-ghost" style="color:var(--navy); border-color:rgba(14,31,51,0.25); background:var(--bg);" data-route="agorox-network">Join the Network</span>
+        <span class="btn btn-ghost" data-route="agorox-network">Join the Network</span>
       </div>
     </div>
   </section>
@@ -2486,7 +2485,7 @@
       <p>The clearest live example today is LabOS's public booking network — search, book, and get a reference in minutes.</p>
       <div class="cta-actions">
         <span class="btn btn-clay" data-route="find-test">Find a Test <span class="btn-arrow">→</span></span>
-        <span class="btn btn-ghost" style="color:var(--navy); border-color:rgba(14,31,51,0.25); background:var(--bg);" data-route="platform">Back to AgoroX Platform</span>
+        <span class="btn btn-ghost" data-route="platform">Back to AgoroX Platform</span>
       </div>
     </div>
   </section>
@@ -4394,7 +4393,7 @@
       <p>AgoroX Academy connects every resource to a certification pathway — turning knowledge into credentials that advance your career.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <span class="btn btn-primary" data-route="academy">Explore Certifications <span class="btn-arrow">→</span></span>
-        <span class="btn btn-ghost" style="color:var(--navy);border-color:rgba(14,31,51,0.25);background:var(--bg);" data-route="contact">Talk to Us</span>
+        <span class="btn btn-ghost" data-route="contact">Talk to Us</span>
       </div>
     </div>
   </section>
@@ -4524,7 +4523,7 @@
       <p>Every resource connects to a training pathway. Every training pathway connects to a product.</p>
       <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
         <span class="btn btn-primary" data-route="academy">Explore Academy <span class="btn-arrow">→</span></span>
-        <span class="btn btn-ghost" style="color:var(--navy);border-color:rgba(14,31,51,0.25);background:var(--bg);" data-route="knowledge-center">Knowledge Center</span>
+        <span class="btn btn-ghost" data-route="knowledge-center">Knowledge Center</span>
       </div>
     </div>
   </section>
