@@ -4032,16 +4032,16 @@
       <div class="contact-grid">
         <div>
           <div class="eyebrow" style="margin-bottom:24px;">Request a Demo</div>
-          <form onsubmit="event.preventDefault(); alert('Thanks — this is a design preview, so submissions aren\'t wired up yet. Reach us directly at support@agorox.africa.');">
+          <form id="contactForm" onsubmit="return AX.leads.submitContact(this);">
             <div class="form-row">
-              <div class="form-field"><label>Full name</label><input type="text" placeholder="Your name" required></div>
-              <div class="form-field"><label>Work email</label><input type="email" placeholder="you@company.com" required></div>
+              <div class="form-field"><label>Full name</label><input type="text" id="ct_name" placeholder="Your name" required></div>
+              <div class="form-field"><label>Work email</label><input type="email" id="ct_email" placeholder="you@company.com" required></div>
             </div>
             <div class="form-row">
-              <div class="form-field"><label>Organization</label><input type="text" placeholder="Company or organization"></div>
+              <div class="form-field"><label>Organization</label><input type="text" id="ct_org" placeholder="Company or organization"></div>
               <div class="form-field">
                 <label>I'm interested in</label>
-                <select>
+                <select id="ct_product">
                   <option>LabOS</option>
                   <option>HospitalOS</option>
                   <option>SchoolOS</option>
@@ -4053,7 +4053,7 @@
             </div>
             <div class="form-field">
               <label>I am a</label>
-              <select>
+              <select id="ct_type">
                 <option>Prospective Customer</option>
                 <option>Existing Customer</option>
                 <option>Partner</option>
@@ -4061,9 +4061,14 @@
                 <option>Government / Institutional Organization</option>
               </select>
             </div>
-            <div class="form-field"><label>Message</label><textarea placeholder="Tell us about your operation and what you're looking for"></textarea></div>
-            <button type="submit" class="btn btn-clay">Send Request <span class="btn-arrow">→</span></button>
+            <div class="form-field"><label>Message</label><textarea id="ct_message" placeholder="Tell us about your operation and what you're looking for"></textarea></div>
+            <div id="contactFormErr" style="display:none; background:#FDECEA; border:1px solid #E8B4A8; color:#7A2E1E; font-size:13px; padding:12px 14px; border-radius:4px; margin-bottom:14px;"></div>
+            <button type="submit" id="contactSubmitBtn" class="btn btn-clay">Send Request <span class="btn-arrow">→</span></button>
           </form>
+          <div id="contactFormSuccess" style="display:none; padding:20px; background:var(--skyfill); border:1px solid var(--line); border-radius:6px;">
+            <h4 style="color:var(--navy); margin-bottom:6px;">Request received.</h4>
+            <p style="font-size:14px; color:var(--slate-dark);">We'll get back to you at the email you provided. For anything urgent, reach us directly at <a href="mailto:support@agorox.africa" style="color:var(--clay-deep);">support@agorox.africa</a>.</p>
+          </div>
         </div>
         <div>
           <div class="eyebrow" style="margin-bottom:24px;">Direct Contact</div>
@@ -4082,16 +4087,16 @@
           <div class="contact-card">
             <h4>Follow AgoroX</h4>
             <div class="footer-social" style="margin-top:10px;">
-              <a href="#" aria-label="WhatsApp" title="WhatsApp" style="border-color:var(--line); color:var(--slate-dark);">
+              <a href="https://wa.me/2348034129684" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp" style="border-color:var(--line); color:var(--slate-dark);">
                 <svg viewBox="0 0 24 24" width="18" height="18" fill="#fff"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.74.46 3.43 1.32 4.92L2.05 22l5.3-1.39a9.87 9.87 0 0 0 4.69 1.2h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m0 1.67a8.2 8.2 0 0 1 5.83 2.42 8.18 8.18 0 0 1 2.41 5.82c0 4.55-3.7 8.25-8.25 8.25a8.2 8.2 0 0 1-4.2-1.15l-.3-.18-3.14.82.84-3.06-.2-.32a8.18 8.18 0 0 1-1.26-4.38c0-4.55 3.7-8.25 8.27-8.25M8.53 6.7c-.17 0-.45.06-.69.32-.23.26-.9.87-.9 2.13s.92 2.47 1.05 2.64c.13.17 1.78 2.85 4.42 3.89 2.19.86 2.63.69 3.11.65.48-.04 1.55-.63 1.77-1.24.22-.61.22-1.13.15-1.24-.06-.11-.24-.17-.5-.3-.26-.13-1.55-.77-1.79-.86-.24-.09-.41-.13-.59.13-.17.26-.67.86-.82 1.04-.15.17-.3.19-.56.07-.26-.13-1.09-.4-2.08-1.28-.77-.68-1.29-1.53-1.44-1.78-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.45.13-.15.17-.26.26-.43.08-.17.04-.32-.02-.45-.06-.13-.59-1.45-.82-1.98-.21-.51-.43-.45-.59-.45h-.5"/></svg>
               </a>
-              <a href="#" aria-label="X" title="X" style="border-color:var(--line); color:var(--slate-dark);">
+              <a href="https://x.com/agorox" target="_blank" rel="noopener" aria-label="X" title="X" style="border-color:var(--line); color:var(--slate-dark);">
                 <svg viewBox="0 0 24 24" width="16" height="16" fill="#fff"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-7l-5.5-7.2L4.5 22H1.4l8.1-9.3L1 2h7.2l5 6.6L18.9 2m-1.2 18h1.7L7.4 4H5.6l12.1 16Z"/></svg>
               </a>
-              <a href="#" aria-label="Instagram" title="Instagram" style="border-color:var(--line); color:var(--slate-dark);">
+              <a href="https://instagram.com/agorox" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram" style="border-color:var(--line); color:var(--slate-dark);">
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="#fff"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.74 3.74 0 0 1-1.38-.9 3.74 3.74 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56a5.9 5.9 0 0 0-2.14 1.39A5.9 5.9 0 0 0 .61 4.16C.31 4.92.11 5.79.05 7.07.01 8.35 0 8.76 0 12s.01 3.65.07 4.93c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13a5.9 5.9 0 0 0 2.13 1.39c.76.3 1.63.5 2.91.56C8.33 23.99 8.74 24 12 24s3.65-.01 4.93-.07c1.28-.06 2.15-.26 2.91-.56a5.9 5.9 0 0 0 2.13-1.39 5.9 5.9 0 0 0 1.39-2.13c.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.93s-.01-3.65-.07-4.93c-.06-1.28-.26-2.15-.56-2.91a5.9 5.9 0 0 0-1.39-2.13A5.9 5.9 0 0 0 19.84.63c-.76-.3-1.63-.5-2.91-.56C15.65.01 15.24 0 12 0Zm0 5.84A6.16 6.16 0 1 0 18.16 12 6.16 6.16 0 0 0 12 5.84M12 16a4 4 0 1 1 4-4 4 4 0 0 1-4 4m6.41-10.85a1.44 1.44 0 1 0 1.44 1.44 1.44 1.44 0 0 0-1.44-1.44Z"/></svg>
               </a>
-              <a href="#" aria-label="Facebook" title="Facebook" style="border-color:var(--line); color:var(--slate-dark);">
+              <a href="https://facebook.com/agorox" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook" style="border-color:var(--line); color:var(--slate-dark);">
                 <svg viewBox="0 0 24 24" width="17" height="17" fill="#fff"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg>
               </a>
             </div>
@@ -4491,6 +4496,50 @@
     </div>
   </section>
 
+</div>
+
+<!-- =========================================================== PRIVACY =========================================================== -->
+<div class="page" data-page="privacy">
+  <div class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Privacy</div>
+      <h1>Privacy</h1>
+      <p class="lede">A plain description of what AgoroX Africa collects through this website and why.</p>
+    </div>
+  </div>
+  <section style="padding-top:0;">
+    <div class="wrap" style="max-width:680px;">
+      <div class="feature-body">
+        <h3>What we collect</h3>
+        <p style="margin-bottom:16px;">Forms on this site (demo requests, resource downloads, network applications, booking) collect the name, email, phone number, and organization details you provide, plus which page you submitted from. We also track basic usage events (which pages and buttons are used) to understand how the site is used — no ad-tracking cookies, no cross-site tracking pixels.</p>
+        <h3>How it's used</h3>
+        <p style="margin-bottom:16px;">Contact and demo requests are used to respond to you. Test bookings made through the LabOS network are shared with the servicing laboratory so they can fulfil your booking — see each laboratory's own privacy practice for how they handle your health information. We do not sell your data.</p>
+        <h3>Product-level data</h3>
+        <p style="margin-bottom:16px;">Data you enter directly into a live AgoroX product (LabOS, PoultrySuite Africa, SmartInvoice) is governed by that product's own account and tenant setup, not by this marketing site.</p>
+        <h3>Questions or data requests</h3>
+        <p>Email <a href="mailto:support@agorox.africa" style="color:var(--clay-deep);">support@agorox.africa</a> to ask what we hold about you or to request it be removed.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- =========================================================== TERMS =========================================================== -->
+<div class="page" data-page="terms">
+  <div class="page-hero">
+    <div class="wrap">
+      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Terms</div>
+      <h1>Terms</h1>
+      <p class="lede">Formal Terms of Service are being finalized.</p>
+    </div>
+  </div>
+  <section style="padding-top:0;">
+    <div class="wrap" style="max-width:680px;">
+      <p style="color:var(--slate-dark); line-height:1.65;">AgoroX Africa's published Terms of Service for this website and for each product are in progress. Each live product (LabOS, PoultrySuite Africa, SmartInvoice) operates under its own account terms presented at sign-up. If you need terms in writing before proceeding with anything, contact us directly and we'll provide them.</p>
+      <div style="margin-top:20px;">
+        <span class="btn btn-clay" data-route="contact">Contact AgoroX <span class="btn-arrow">→</span></span>
+      </div>
+    </div>
+  </section>
 </div>
 
 </main>
@@ -5530,7 +5579,7 @@
   function toggleMobileMenu(){ document.getElementById('mobileMenu').classList.toggle('open'); }
 
   // ---------- Router ----------
-  const validRoutes = ['home','products','labos','hospitalos','schoolos','poultrysuite','smartinvoice','solutions','platform','agorox-connect','agorox-health','academy','academy-cla','academy-ldtb','academy-poultrysuite','laboratories','lab-profile','book-test','book-service','hospitalos-booking','patient-portal','agorox-network','agorox-vault','labos-pricing','press','about','contact','knowledge-center','resources-tools','find-test'];
+  const validRoutes = ['home','products','labos','hospitalos','schoolos','poultrysuite','smartinvoice','solutions','platform','agorox-connect','agorox-health','academy','academy-cla','academy-ldtb','academy-poultrysuite','laboratories','lab-profile','book-test','book-service','hospitalos-booking','patient-portal','agorox-network','agorox-vault','labos-pricing','press','about','contact','knowledge-center','resources-tools','find-test','privacy','terms'];
 
   function navigate(route, anchor){
     if(!validRoutes.includes(route)) route = 'home';
@@ -5728,9 +5777,9 @@
         <span style="margin:0 12px; opacity:.35;">·</span>
         <span>&copy; 2026 AgoroX Technologies. All Rights Reserved.</span>
         <span style="margin:0 12px; opacity:.35;">·</span>
-        <a href="#" style="color:var(--slate); text-decoration:none;" onmouseover="this.style.color='var(--clay)'" onmouseout="this.style.color='var(--slate)'">Privacy</a>
+        <span data-route="privacy" style="color:var(--slate); text-decoration:none; cursor:pointer;" onmouseover="this.style.color='var(--clay)'" onmouseout="this.style.color='var(--slate)'">Privacy</span>
         <span style="margin:0 10px; opacity:.35;">·</span>
-        <a href="#" style="color:var(--slate); text-decoration:none;" onmouseover="this.style.color='var(--clay)'" onmouseout="this.style.color='var(--slate)'">Terms</a>
+        <span data-route="terms" style="color:var(--slate); text-decoration:none; cursor:pointer;" onmouseover="this.style.color='var(--clay)'" onmouseout="this.style.color='var(--slate)'">Terms</span>
       </div>
     </div>
   </div>
@@ -6080,7 +6129,8 @@ const AX = (function(){
     async submitPress(form){
       var email=(document.getElementById('pressEmail')||{}).value||'';
       if(!email) return false;
-      await post('/lead',{name:'Press Interest',email:email,resource_title:"The Poultry Farmer's Playbook Series",source_page:'press'});
+      var result=await post('/lead',{name:'Press Interest',email:email,resource_title:"The Poultry Farmer's Playbook Series",source_page:'press'});
+      if(!result||result.ok===false){ toast("Couldn't save that — please try again."); return false; }
       var t=document.getElementById('pressEmailThanks'); if(t) t.style.display='block';
       var f=document.getElementById('pressEmail'); if(f) f.style.display='none';
       return false;
@@ -6088,9 +6138,40 @@ const AX = (function(){
     async submitVault(form){
       var email=(document.getElementById('vaultEmail')||{}).value||'';
       if(!email) return false;
-      await post('/lead',{name:'Vault Waitlist',email:email,resource_title:'AgoroX Vault Early Access',source_page:'agorox-vault'});
+      var result=await post('/lead',{name:'Vault Waitlist',email:email,resource_title:'AgoroX Vault Early Access',source_page:'agorox-vault'});
+      if(!result||result.ok===false){ toast("Couldn't save that — please try again."); return false; }
       var t=document.getElementById('vaultThanks'); if(t) t.style.display='block';
       var f=document.getElementById('vaultEmail'); if(f) f.style.display='none';
+      return false;
+    },
+    async submitContact(form){
+      var btn=document.getElementById('contactSubmitBtn');
+      var errEl=document.getElementById('contactFormErr');
+      if(errEl) errEl.style.display='none';
+      var name=(document.getElementById('ct_name')||{}).value||'';
+      var email=(document.getElementById('ct_email')||{}).value||'';
+      clearErr('ct_name_err'); clearErr('ct_email_err');
+      if(!name.trim()||!email.trim()||!/\S+@\S+\.\S+/.test(email)){
+        if(errEl){ errEl.textContent='Please enter your name and a valid email address.'; errEl.style.display='block'; }
+        return false;
+      }
+      if(btn){ btn.disabled=true; btn.innerHTML='<span class="ax-spinner"></span> Sending…'; }
+      var result=await post('/lead',{
+        name:name.trim(), email:email.trim(),
+        organization:(document.getElementById('ct_org')||{}).value||'',
+        resource_title:'Demo Request — '+((document.getElementById('ct_product')||{}).value||'Not sure yet'),
+        contact_type:(document.getElementById('ct_type')||{}).value||'',
+        message:(document.getElementById('ct_message')||{}).value||'',
+        source_page:'contact'
+      });
+      if(!result||result.ok===false){
+        if(btn){ btn.disabled=false; btn.innerHTML='Send Request <span class="btn-arrow">→</span>'; }
+        if(errEl){ errEl.textContent="We couldn't send this right now — please try again, or email us directly at support@agorox.africa."; errEl.style.display='block'; }
+        return false;
+      }
+      var f=document.getElementById('contactForm'); if(f) f.style.display='none';
+      var s=document.getElementById('contactFormSuccess'); if(s) s.style.display='block';
+      analytics.track('demo_request_submitted','contact','');
       return false;
     }
   };
