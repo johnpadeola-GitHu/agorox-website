@@ -314,7 +314,7 @@
   .cert-card .cc-actions .btn{ flex:1; justify-content:center; font-size:12.5px; padding:10px 12px; }
 
   /* ---------- Academy: placeholder / coming-soon cards ---------- */
-  .academy-coming-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
+  .academy-coming-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); }
   @media (max-width:900px){ .academy-coming-grid{ grid-template-columns:repeat(2,1fr); } }
   @media (max-width:540px){ .academy-coming-grid{ grid-template-columns:1fr; } }
   .academy-coming-card{ background:var(--paper); padding:14px 14px; min-height:100px; display:flex; flex-direction:column; }
@@ -1196,7 +1196,7 @@
     <div class="mega-cols">
       <div class="mega-col">
         <div class="mega-col-head">Learning</div>
-        <span class="mega-item mega-item-primary" data-route="academy">Student Learning</span>
+        <span class="mega-item" data-route="academy" data-anchor="waec">Student Learning <span style="opacity:.5;">— Planned</span></span>
         <span class="mega-item mega-item-primary" data-route="academy" data-anchor="corporate-training">Professional Learning</span>
       </div>
       <div class="mega-col">
@@ -1207,8 +1207,8 @@
         <span class="mega-item" data-route="academy-poultrysuite">PoultrySuite Certifications</span>
       </div>
       <div class="mega-col">
-        <div class="mega-col-head">WAEC Preparation</div>
-        <span class="mega-item mega-item-primary" data-route="academy">Learning Resources</span>
+        <div class="mega-col-head">WAEC Preparation <span style="opacity:.5; font-weight:400;">— Planned</span></div>
+        <span class="mega-item mega-item-primary" data-route="academy" data-anchor="waec">Learning Resources</span>
       </div>
     </div>
   </div>
@@ -1365,7 +1365,7 @@
         <div class="product-card" data-route="solutions" data-anchor="education">
           <div class="pc-tag">Education</div>
           <h3>SchoolOS · AgoroX Academy</h3>
-          <p>School operations and learning — certification and WAEC preparation live today.</p>
+          <p>Professional certification is live through AgoroX Academy; SchoolOS and WAEC preparation are next in build.</p>
           <span class="pc-link">Explore Education →</span>
         </div>
         <div class="product-card" data-route="solutions" data-anchor="agriculture">
@@ -1568,12 +1568,12 @@
         <div class="feature-body">
           <div class="eyebrow">AgoroX Academy — Live</div>
           <h2>Technology is only as powerful as the people using it.</h2>
-          <p>AgoroX Academy delivers certification, professional training, and simulations for the people running AgoroX platforms — plus WAEC preparation, independent of any single product.</p>
+          <p>AgoroX Academy delivers certification, professional training, and corporate onboarding for the people running AgoroX platforms — built by the same team that builds the products.</p>
           <ul class="feature-list">
-            <li>Student and professional learning tracks</li>
-            <li>Certification programs — Certified LabOS Admin and more</li>
-            <li>Corporate training and simulations</li>
-            <li>WAEC preparation resources</li>
+            <li>Professional certification tracks — Certified LabOS Admin and more</li>
+            <li>Corporate cohort training for teams adopting AgoroX products</li>
+            <li>Executive programs for owners and leadership</li>
+            <li>Student learning and WAEC preparation — planned alongside SchoolOS</li>
           </ul>
           <div class="feature-actions">
             <span class="btn btn-primary" data-route="academy">Explore Academy <span class="btn-arrow">→</span></span>
@@ -2022,7 +2022,7 @@
     <div class="wrap">
       <div class="eyebrow" style="margin-bottom:14px;">Related</div>
       <div class="product-grid">
-        <div class="product-card" data-route="academy"><h3>AgoroX Academy</h3><p>Live today — certification, professional learning, and WAEC preparation, independent of SchoolOS.</p></div>
+        <div class="product-card" data-route="academy"><h3>AgoroX Academy</h3><p>Live today for professional certification, independent of SchoolOS — student learning and WAEC preparation are planned as SchoolOS ships.</p></div>
       </div>
     </div>
   </section>
@@ -2198,7 +2198,7 @@
         <div class="feature-body" style="order:1;">
           <div class="eyebrow">Education</div>
           <h2>School operations and student learning, in one place.</h2>
-          <p>SchoolOS, in development, will handle administration, finance, and academics for schools. AgoroX Academy is already live, delivering certification, professional training, and WAEC preparation independent of SchoolOS.</p>
+          <p>SchoolOS, in development, will handle administration, finance, and academics for schools. AgoroX Academy is already live, delivering professional certification and corporate training independent of SchoolOS — student learning and WAEC preparation are planned as SchoolOS ships.</p>
           <div class="feature-actions">
             <span class="btn btn-ghost" data-route="schoolos">SchoolOS →</span>
             <span class="btn btn-clay" data-route="academy">Explore Academy</span>
@@ -2713,7 +2713,7 @@
   </section>
 
   <!-- Future expansion placeholders -->
-  <section style="padding-top:0;">
+  <section id="growing" style="padding-top:0;">
     <div class="wrap">
       <div class="section-head">
         <div>
@@ -2722,6 +2722,12 @@
         </div>
       </div>
       <div class="academy-coming-grid">
+        <div class="academy-coming-card" id="waec">
+          <div class="acc-tag">Student Learning</div>
+          <h4>WAEC preparation</h4>
+          <p>Student learning tracks and WAEC exam preparation, planned alongside SchoolOS — SchoolOS's learning engine is already built and verified internally, ahead of public launch.</p>
+          <div class="acc-status">Coming soon</div>
+        </div>
         <div class="academy-coming-card">
           <div class="acc-tag">Upcoming Courses</div>
           <h4>New certifications in development</h4>
