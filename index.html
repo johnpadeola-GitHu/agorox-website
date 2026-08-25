@@ -389,6 +389,10 @@
   .cert-product-head{ display:flex; align-items:baseline; justify-content:space-between; gap:20px; padding-bottom:14px; border-bottom:2px solid var(--navy); margin-bottom:20px; }
   .cert-product-head h3{ font-size:20px; font-weight:500; }
   .cert-product-head .cph-meta{ font-family:var(--mono); font-size:11px; color:var(--slate); letter-spacing:.04em; white-space:nowrap; }
+  @media (max-width:560px){
+    .cert-product-head{ flex-wrap:wrap; }
+    .cert-product-head .cph-meta{ white-space:normal; }
+  }
 
   /* ---------- Academy: tier row (Foundational / Associate / Specialty) ---------- */
   .tier-row{ display:flex; align-items:center; gap:14px; margin-bottom:18px; flex-wrap:wrap; }
@@ -4459,7 +4463,7 @@
 
   <section>
     <div class="wrap reveal">
-      <div class="lab-profile-header">
+      <div class="lab-profile-header" id="vitalis">
         <div class="lab-profile-logo">VD</div>
         <div class="lab-profile-info">
           <h1>Vitalis Diagnostics</h1>
