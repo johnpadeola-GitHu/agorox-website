@@ -233,6 +233,7 @@
   .register-row{ display:grid; grid-template-columns: 2.1fr 1fr 100px 80px; align-items:center; padding:16px 4px; margin:0 -4px; border-radius:6px; border-bottom:1px solid var(--line-soft); transition: background .15s ease, transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s ease; cursor:pointer; }
   .register-row:last-child{ border-bottom:none; }
   .register-row:hover{ background:var(--bg); transform:translateX(2px); box-shadow:0 4px 16px rgba(14,31,51,0.06); }
+  .register-row.no-link:hover{ background:transparent; transform:none; box-shadow:none; }
   .register-id{ font-family:var(--mono); font-size:11px; color:var(--slate); margin-right:10px; }
   .register-name{ font-family:var(--display); font-size:14px; font-weight:500; letter-spacing:-0.01em; }
   .register-name span{ font-family:var(--body); font-size:12px; color:var(--slate-dark); font-weight:400; margin-left:8px; }
@@ -2267,88 +2268,81 @@
   </div>
 
   <section style="padding-top:0;">
-    <div class="wrap">
-      <div class="feature">
-        <div class="feature-body">
-          <div class="eyebrow">Why a Shared Foundation</div>
-          <h2>Purpose-built products, not five separate companies.</h2>
-          <p>A lab doesn't work like a school. But none of them start from zero — design system, hosting, and tenant architecture are shared underneath.</p>
-        </div>
-        <div class="feature-visual">
-          <div class="fv-top">AGOROX PLATFORM</div>
-          <div class="feature-mock">
-            <div class="fm-row"><span>LabOS · HospitalOS · SchoolOS · PoultrySuite · SmartInvoice</span><span></span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section style="padding-top:0; background:var(--paper);">
-    <div class="wrap">
-      <div class="eyebrow" style="margin-bottom:14px;">Foundation Layers</div>
-      <div class="product-grid">
-        <div class="product-card" id="identity">
-          <div class="pc-tag">Foundation</div>
-          <h3>Identity <span style="font-size:10px; font-weight:600; color:var(--slate); font-family:var(--mono); text-transform:uppercase;">Per-product today</span></h3>
-          <p>One AgoroX Account is the direction, not yet the reality.</p>
-        </div>
-        <div class="product-card" id="payments">
-          <div class="pc-tag">Foundation</div>
-          <h3>Payments <span style="font-size:10px; font-weight:600; color:var(--slate); font-family:var(--mono); text-transform:uppercase;">Mixed</span></h3>
-          <p>Online, transfer, cash, pay-at-provider.</p>
-        </div>
-        <div class="product-card" id="booking">
-          <div class="pc-tag">Foundation — Live for LabOS</div>
-          <h3>Booking</h3>
-          <p>Search, select, book, get a reference — live today.</p>
-        </div>
-        <div class="product-card" id="integrations">
-          <div class="pc-tag">Foundation</div>
-          <h3>Integrations <span style="font-size:10px; font-weight:600; color:var(--slate); font-family:var(--mono); text-transform:uppercase;">Planned</span></h3>
-          <p>LabOS ↔ HospitalOS, as HospitalOS ships.</p>
-        </div>
-        <div class="product-card" id="security">
-          <div class="pc-tag">Foundation</div>
-          <h3>Security</h3>
-          <p>Encrypted via AgoroX Vault. Tenant-isolated by design.</p>
-          <span class="pc-link" data-route="agorox-vault">Explore Vault →</span>
-        </div>
-        <div class="product-card" id="deployment">
-          <div class="pc-tag">Foundation</div>
-          <h3>Deployment</h3>
-          <p>Cloud-hosted. No install, no client software.</p>
-        </div>
-      </div>
+    <div class="wrap reveal">
+      <div class="eyebrow" style="margin-bottom:14px;">Why a Shared Foundation</div>
+      <h2 style="max-width:620px;">Purpose-built products, not five separate companies.</h2>
+      <p class="lede" style="margin-top:14px;">A lab doesn't work like a school. But none of them start from zero — identity, payments, booking, and security are shared underneath every product.</p>
     </div>
   </section>
 
   <section style="padding-top:0;">
-    <div class="wrap">
-      <div class="feature">
-        <div class="feature-body">
-          <div class="eyebrow">Technology</div>
-          <h2>Built to run on Africa's actual conditions.</h2>
-          <p>Offline-tolerant, mobile-responsive, multi-tenant from day one. <span data-route="about" data-anchor="technology" style="text-decoration:underline; cursor:pointer;">See what we build →</span></p>
+    <div class="wrap reveal" style="background:var(--navy); border-radius:10px; padding:56px 40px; text-align:center;">
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:10px; max-width:640px; margin:0 auto;">
+        <span style="border:1px solid rgba(247,245,240,0.18); border-radius:20px; padding:8px 18px; font-size:13px; color:rgba(247,245,240,0.75);">Identity</span>
+        <span style="border:1px solid rgba(247,245,240,0.18); border-radius:20px; padding:8px 18px; font-size:13px; color:rgba(247,245,240,0.75);">Payments</span>
+        <span style="border:1px solid rgba(247,245,240,0.18); border-radius:20px; padding:8px 18px; font-size:13px; color:rgba(247,245,240,0.75);">Booking</span>
+        <span style="border:1px solid rgba(247,245,240,0.18); border-radius:20px; padding:8px 18px; font-size:13px; color:rgba(247,245,240,0.75);">Integrations</span>
+        <span style="border:1px solid rgba(247,245,240,0.18); border-radius:20px; padding:8px 18px; font-size:13px; color:rgba(247,245,240,0.75);">Security</span>
+        <span style="border:1px solid rgba(247,245,240,0.18); border-radius:20px; padding:8px 18px; font-size:13px; color:rgba(247,245,240,0.75);">Deployment</span>
+      </div>
+      <div style="margin-top:14px; color:rgba(247,245,240,0.25); font-family:var(--mono); font-size:16px;">↓</div>
+      <div style="margin-top:14px; font-family:var(--mono); font-size:13px; letter-spacing:.03em; color:rgba(247,245,240,0.85);">LabOS · HospitalOS · SchoolOS · PoultrySuite · SmartInvoice</div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap reveal">
+      <div class="eyebrow" style="margin-bottom:14px;">Foundation Layers — What's Actually Live</div>
+      <div class="register">
+        <div class="register-head"><div>Layer</div><div>Status</div><div></div><div></div></div>
+        <div class="register-row no-link" id="identity" style="cursor:default;" >
+          <div class="register-name">Identity<span>One AgoroX Account is the direction, not yet the reality</span></div>
+          <div class="register-cat">Per-product today</div>
+          <div class="register-status status-rollout"><span class="status-dot"></span>Partial</div>
+          <div></div>
         </div>
-        <div class="feature-body" style="background:var(--navy-soft); padding:28px 24px; border-radius:6px;">
-          <h3 style="color:var(--paper);">Sign In</h3>
-          <p style="color:rgba(247,245,240,0.65);">Access any live AgoroX platform you're licensed for.</p>
-          <div class="feature-actions">
-            <button class="btn btn-clay" onclick="openModal()">Sign In →</button>
-          </div>
+        <div class="register-row no-link" id="payments" style="cursor:default;" >
+          <div class="register-name">Payments<span>Online, transfer, cash, pay-at-provider</span></div>
+          <div class="register-cat">Mixed by provider</div>
+          <div class="register-status status-rollout"><span class="status-dot"></span>Partial</div>
+          <div></div>
+        </div>
+        <div class="register-row no-link" id="booking" style="cursor:default;" >
+          <div class="register-name">Booking<span>Search, select, book, get a reference</span></div>
+          <div class="register-cat">Live for LabOS</div>
+          <div class="register-status status-live"><span class="status-dot"></span>Live</div>
+          <div></div>
+        </div>
+        <div class="register-row no-link" id="integrations" style="cursor:default;" >
+          <div class="register-name">Integrations<span>LabOS ↔ HospitalOS, as HospitalOS ships</span></div>
+          <div class="register-cat">Planned</div>
+          <div class="register-status status-rollout"><span class="status-dot"></span>Planned</div>
+          <div></div>
+        </div>
+        <div class="register-row" data-route="agorox-vault" id="security">
+          <div class="register-name">Security<span>Encrypted via AgoroX Vault, tenant-isolated by design</span></div>
+          <div class="register-cat">Foundation</div>
+          <div class="register-status status-live"><span class="status-dot"></span>Live</div>
+          <div class="register-link">View →</div>
+        </div>
+        <div class="register-row no-link" id="deployment" style="cursor:default;" >
+          <div class="register-name">Deployment<span>Cloud-hosted — no install, no client software</span></div>
+          <div class="register-cat">Foundation</div>
+          <div class="register-status status-live"><span class="status-dot"></span>Live</div>
+          <div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section style="padding-top:0;">
+  <section class="cta">
     <div class="wrap">
-      <div class="eyebrow" style="margin-bottom:14px;">Related</div>
-      <div class="product-grid">
-        <div class="product-card" data-route="agorox-connect"><h3>AgoroX Connect</h3><p>Identity, booking, data — tied together.</p></div>
-        <div class="product-card" data-route="agorox-vault"><h3>AgoroX Vault</h3><p>Encrypted credentials, live today.</p></div>
-        <div class="product-card" data-route="products"><h3>All Products</h3><p>Built on the AgoroX Platform.</p></div>
+      <h2 style="letter-spacing:-.02em;">Built to run on Africa's actual conditions.</h2>
+      <p>Offline-tolerant, mobile-responsive, multi-tenant from day one.</p>
+      <div class="cta-actions">
+        <button class="btn btn-clay" onclick="openModal()">Sign In <span class="btn-arrow">→</span></button>
+        <span class="btn btn-ghost" data-route="agorox-connect">Explore AgoroX Connect →</span>
+        <span class="btn btn-ghost" data-route="about" data-anchor="technology">See what we build →</span>
       </div>
     </div>
   </section>
