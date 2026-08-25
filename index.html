@@ -207,6 +207,8 @@
   /* page hero (sub-pages) */
   .page-hero{ padding:56px 0 44px; border-bottom:1px solid var(--line); }
   @media (max-width:760px){ .page-hero{ padding:36px 0 30px; } }
+  .page-hero-split{ display:grid; grid-template-columns:1.2fr 1fr; gap:48px; align-items:center; }
+  @media (max-width:900px){ .page-hero-split{ grid-template-columns:1fr; gap:28px; } }
   .page-hero h1{ margin-top:16px; }
   .page-hero .lede{ margin-top:18px; }
   .breadcrumb{ font-family:var(--mono); font-size:11.5px; color:var(--slate); letter-spacing:0.05em; }
@@ -297,6 +299,9 @@
   .feature-visual .fv-top{ font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--slate); }
   .feature-mock{ margin-top:24px; background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:18px 20px 20px; font-family:var(--mono); font-size:11.5px; color:var(--navy-soft); box-shadow:0 1px 2px rgba(14,31,51,0.04); position:relative; }
   .feature-mock::before{ content:"● ● ●"; display:block; letter-spacing:4px; font-size:7px; color:var(--line); margin-bottom:14px; }
+  .feature-mock.is-planned{ border-style:dashed; border-color:var(--slate); box-shadow:none; color:var(--slate); }
+  .feature-mock.is-planned .fm-row span:last-child{ color:var(--slate); }
+  .feature-mock.is-planned::before{ content:"○ ○ ○"; color:var(--slate); }
 
   /* ---------- Scroll reveal ---------- */
   .reveal{ opacity:0; transform:translateY(18px); transition:opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1); }
@@ -1706,21 +1711,29 @@
 <div class="page" data-page="labos">
 
   <div class="page-hero">
-    <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / LabOS</div>
-      <div class="eyebrow">AX-01 · Healthcare / Diagnostics · Live</div>
-      <h1>The operating system for modern diagnostic laboratories.</h1>
-      <p class="lede">Intake to verified result. One branch or many.</p>
-      <div class="hero-actions" style="margin-top:20px;">
-        <span class="btn btn-clay" data-route="contact">Request a Demo <span class="btn-arrow">→</span></span>
-        <a class="btn btn-ghost" href="https://labos.agorox.africa" target="_blank" rel="noopener">Sign In →</a>
-        <span class="btn btn-ghost" data-route="find-test">See Patient Booking →</span>
+    <div class="wrap page-hero-split">
+      <div>
+        <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / LabOS</div>
+        <div class="eyebrow">AX-01 · Healthcare / Diagnostics · Live</div>
+        <h1>The operating system for modern diagnostic laboratories.</h1>
+        <p class="lede">Intake to verified result. One branch or many.</p>
+        <div class="hero-actions" style="margin-top:20px;">
+          <span class="btn btn-clay" data-route="contact">Request a Demo <span class="btn-arrow">→</span></span>
+          <a class="btn btn-ghost" href="https://labos.agorox.africa" target="_blank" rel="noopener">Sign In →</a>
+          <span class="btn btn-ghost" data-route="find-test">See Patient Booking →</span>
+        </div>
+      </div>
+      <div class="feature-mock" style="margin-top:0;">
+        <div class="fm-row"><span>Sample #LB-22041</span><span class="fm-ok">Verified</span></div>
+        <div class="fm-row"><span>Branch — Vitalis Diagnostics</span><span class="fm-ok">Synced</span></div>
+        <div class="fm-row"><span>Instrument Gateway</span><span class="fm-ok">Connected</span></div>
+        <div class="fm-row"><span>Pending reports</span><span>3</span></div>
       </div>
     </div>
   </div>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">The Problem</div>
@@ -1737,7 +1750,7 @@
   </section>
 
   <section style="padding-top:0; background:var(--paper);">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Core Capabilities</div>
       <div class="product-grid">
         <div class="product-card"><h3>Test Catalog</h3><p>26 diagnostic domains, hundreds of tests.</p></div>
@@ -1753,7 +1766,7 @@
   </section>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Workflow</div>
       <h2 style="font-weight:700; color:var(--navy); font-size:clamp(20px,2.6vw,26px); margin-bottom:20px;">Sample intake to verified result.</h2>
       <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-family:var(--mono); font-size:12.5px; color:var(--navy-soft);">
@@ -1779,7 +1792,7 @@
   </section>
 
   <section style="padding-top:0; background:var(--paper);">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">Integrations</div>
@@ -1804,7 +1817,7 @@
   </section>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Pricing</div>
       <h2>Plans for independent labs and networks.</h2>
       <p class="lede" style="margin-top:10px;">Community, Enterprise, and network-booking tracks.</p>
@@ -1815,7 +1828,7 @@
   </section>
 
   <section class="cta">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow">Get Started</div>
       <h2 style="letter-spacing:-.02em;">Bring your laboratory onto LabOS.</h2>
       <p>Request a demo, or find a test directly.</p>
@@ -1827,7 +1840,7 @@
   </section>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Related</div>
       <div class="product-grid">
         <div class="product-card" data-route="hospitalos"><h3>HospitalOS</h3><p>LabOS's planned hospital-side counterpart.</p></div>
@@ -1843,20 +1856,28 @@
 <div class="page" data-page="hospitalos">
 
   <div class="page-hero">
-    <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / HospitalOS</div>
-      <div class="eyebrow">AX-03 · Healthcare / Hospitals · Planned — in development</div>
-      <h1>The operating system for modern hospitals.</h1>
-      <p class="lede">Patient management, clinical operations, billing — connected to LabOS.</p>
-      <div class="hero-actions" style="margin-top:20px;">
-        <span class="btn btn-clay" data-route="contact">Talk to AgoroX about HospitalOS <span class="btn-arrow">→</span></span>
-        <span class="btn btn-ghost" data-route="hospitalos-booking">See the Booking Architecture →</span>
+    <div class="wrap page-hero-split">
+      <div>
+        <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / HospitalOS</div>
+        <div class="eyebrow">AX-03 · Healthcare / Hospitals · Planned — in development</div>
+        <h1>The operating system for modern hospitals.</h1>
+        <p class="lede">Patient management, clinical operations, billing — connected to LabOS.</p>
+        <div class="hero-actions" style="margin-top:20px;">
+          <span class="btn btn-clay" data-route="contact">Talk to AgoroX about HospitalOS <span class="btn-arrow">→</span></span>
+          <span class="btn btn-ghost" data-route="hospitalos-booking">See the Booking Architecture →</span>
+        </div>
+      </div>
+      <div class="feature-mock is-planned" style="margin-top:0;">
+        <div class="fm-row"><span>Patient record</span><span>In development</span></div>
+        <div class="fm-row"><span>Appointment booking</span><span>In development</span></div>
+        <div class="fm-row"><span>LabOS connectivity</span><span>Planned</span></div>
+        <div class="fm-row"><span>Public sign-in</span><span>Not yet available</span></div>
       </div>
     </div>
   </div>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">The Problem</div>
@@ -1873,7 +1894,7 @@
   </section>
 
   <section style="padding-top:0; background:var(--paper);">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Planned Capabilities</div>
       <div class="product-grid">
         <div class="product-card"><h3>Patient Management</h3><p>Registration and clinical history.</p></div>
@@ -1888,7 +1909,7 @@
   </section>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Workflow — Order to Result (Planned)</div>
       <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-family:var(--mono); font-size:12.5px; color:var(--navy-soft);">
         <span style="background:#fff; border:1px solid var(--line); border-radius:4px; padding:8px 14px;">Doctor orders test</span>
@@ -1908,7 +1929,7 @@
   </section>
 
   <section class="cta">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow">Get Started</div>
       <h2 style="letter-spacing:-.02em;">Want early visibility on HospitalOS?</h2>
       <p>We'll tell you honestly where the build stands.</p>
@@ -1919,7 +1940,7 @@
   </section>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Related</div>
       <div class="product-grid">
         <div class="product-card" data-route="labos"><h3>LabOS</h3><p>The live diagnostics platform HospitalOS connects to.</p></div>
@@ -1934,20 +1955,28 @@
 <div class="page" data-page="schoolos">
 
   <div class="page-hero">
-    <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / SchoolOS</div>
-      <div class="eyebrow">AX-04 · Education · In development — not yet publicly deployed</div>
-      <h1>The digital operating system for modern schools.</h1>
-      <p class="lede">Administration, finance, academics, and learning — one platform.</p>
-      <div class="hero-actions" style="margin-top:20px;">
-        <span class="btn btn-clay" data-route="contact">Talk to AgoroX about SchoolOS <span class="btn-arrow">→</span></span>
-        <span class="btn btn-ghost" data-route="academy">See AgoroX Academy →</span>
+    <div class="wrap page-hero-split">
+      <div>
+        <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / SchoolOS</div>
+        <div class="eyebrow">AX-04 · Education · In development — not yet publicly deployed</div>
+        <h1>The digital operating system for modern schools.</h1>
+        <p class="lede">Administration, finance, academics, and learning — one platform.</p>
+        <div class="hero-actions" style="margin-top:20px;">
+          <span class="btn btn-clay" data-route="contact">Talk to AgoroX about SchoolOS <span class="btn-arrow">→</span></span>
+          <span class="btn btn-ghost" data-route="academy">See AgoroX Academy →</span>
+        </div>
+      </div>
+      <div class="feature-mock is-planned" style="margin-top:0;">
+        <div class="fm-row"><span>Administration</span><span>Built, verified internally</span></div>
+        <div class="fm-row"><span>Finance</span><span>Built, verified internally</span></div>
+        <div class="fm-row"><span>Learning &amp; WAEC prep</span><span>Built, verified internally</span></div>
+        <div class="fm-row"><span>Public sign-up</span><span>Not yet available</span></div>
       </div>
     </div>
   </div>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">The Problem</div>
@@ -1964,7 +1993,7 @@
   </section>
 
   <section style="padding-top:0; background:var(--paper);">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Core Capabilities (In Build)</div>
       <div class="product-grid">
         <div class="product-card"><h3>Administration</h3><p>Students, staff, admissions, attendance.</p></div>
@@ -1979,7 +2008,7 @@
   </section>
 
   <section class="cta">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow">Get Started</div>
       <h2 style="letter-spacing:-.02em;">Curious what SchoolOS can already do?</h2>
       <p>An honest look at what's built, and what's next.</p>
@@ -1990,7 +2019,7 @@
   </section>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Related</div>
       <div class="product-grid">
         <div class="product-card" data-route="academy"><h3>AgoroX Academy</h3><p>Live for certification, independent of SchoolOS.</p></div>
@@ -2004,20 +2033,28 @@
 <div class="page" data-page="poultrysuite">
 
   <div class="page-hero">
-    <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / PoultrySuite Africa</div>
-      <div class="eyebrow">AX-02 · Agriculture · Live</div>
-      <h1>One connected technology platform for the poultry value chain.</h1>
-      <p class="lede">Three platforms — hatchery, feed mill, flock — one account.</p>
-      <div class="hero-actions" style="margin-top:20px;">
-        <span class="btn btn-clay" data-route="contact">Request a Demo <span class="btn-arrow">→</span></span>
-        <a class="btn btn-ghost" href="https://poultrysuite.agorox.africa" target="_blank" rel="noopener">Sign In →</a>
+    <div class="wrap page-hero-split">
+      <div>
+        <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / PoultrySuite Africa</div>
+        <div class="eyebrow">AX-02 · Agriculture · Live</div>
+        <h1>One connected technology platform for the poultry value chain.</h1>
+        <p class="lede">Three platforms — hatchery, feed mill, flock — one account.</p>
+        <div class="hero-actions" style="margin-top:20px;">
+          <span class="btn btn-clay" data-route="contact">Request a Demo <span class="btn-arrow">→</span></span>
+          <a class="btn btn-ghost" href="https://poultrysuite.agorox.africa" target="_blank" rel="noopener">Sign In →</a>
+        </div>
+      </div>
+      <div class="feature-mock" style="margin-top:0;">
+        <div class="fm-row"><span>HatcheryOS — Batch H-114</span><span class="fm-ok">Hatching</span></div>
+        <div class="fm-row"><span>FeedMillOS — Mill run</span><span class="fm-ok">In progress</span></div>
+        <div class="fm-row"><span>PoultryOS — House 4, Batch 18</span><span class="fm-ok">Healthy</span></div>
+        <div class="fm-row"><span>Biosecurity check</span><span class="fm-ok">Passed — today</span></div>
       </div>
     </div>
   </div>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">The Problem</div>
@@ -2034,7 +2071,7 @@
   </section>
 
   <section style="padding-top:0; background:var(--paper);">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Core Capabilities</div>
       <div class="product-grid">
         <div class="product-card"><h3>HatcheryOS</h3><p>Egg intake, incubation, hatch records.</p></div>
@@ -2052,7 +2089,7 @@
   </section>
 
   <section class="cta">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow">Get Started</div>
       <h2 style="letter-spacing:-.02em;">Run your operation on PoultrySuite Africa.</h2>
       <p>We'll show you which of the three fits where you are.</p>
@@ -2068,20 +2105,27 @@
 <div class="page" data-page="smartinvoice">
 
   <div class="page-hero">
-    <div class="wrap">
-      <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / SmartInvoice</div>
-      <div class="eyebrow">AX-05 · Business Operations · Live</div>
-      <h1>Simple, intelligent invoicing for African businesses.</h1>
-      <p class="lede">Quotes, invoices, receipts. Keeps working offline.</p>
-      <div class="hero-actions" style="margin-top:20px;">
-        <span class="btn btn-clay" data-route="contact">Request a Demo <span class="btn-arrow">→</span></span>
-        <a class="btn btn-ghost" href="https://smartinvoice.agorox.africa" target="_blank" rel="noopener">Sign In →</a>
+    <div class="wrap page-hero-split">
+      <div>
+        <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / <span data-route="products" style="cursor:pointer;">Products</span> / SmartInvoice</div>
+        <div class="eyebrow">AX-05 · Business Operations · Live</div>
+        <h1>Simple, intelligent invoicing for African businesses.</h1>
+        <p class="lede">Quotes, invoices, receipts. Keeps working offline.</p>
+        <div class="hero-actions" style="margin-top:20px;">
+          <span class="btn btn-clay" data-route="contact">Request a Demo <span class="btn-arrow">→</span></span>
+          <a class="btn btn-ghost" href="https://smartinvoice.agorox.africa" target="_blank" rel="noopener">Sign In →</a>
+        </div>
+      </div>
+      <div class="feature-mock" style="margin-top:0;">
+        <div class="fm-row"><span>Invoice #SIP-0042</span><span class="fm-ok">Paid</span></div>
+        <div class="fm-row"><span>Connection</span><span>Offline — saved locally</span></div>
+        <div class="fm-row"><span>Sync queue</span><span>2 pending</span></div>
       </div>
     </div>
   </div>
 
   <section style="padding-top:0;">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">The Problem</div>
@@ -2098,7 +2142,7 @@
   </section>
 
   <section style="padding-top:0; background:var(--paper);">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow" style="margin-bottom:14px;">Core Capabilities</div>
       <div class="product-grid">
         <div class="product-card"><h3>Offline-First</h3><p>Saves locally, syncs automatically.</p></div>
@@ -2115,7 +2159,7 @@
   </section>
 
   <section class="cta">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="eyebrow">Get Started</div>
       <h2 style="letter-spacing:-.02em;">Get paid, even offline.</h2>
       <p>See it running on a real dropped connection.</p>
@@ -2139,7 +2183,7 @@
   </div>
 
   <section style="padding-top:0;" id="healthcare">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">Healthcare</div>
@@ -2164,7 +2208,7 @@
   </section>
 
   <section style="padding-top:0;" id="education">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature feature-reverse">
         <div class="feature-body" style="order:1;">
           <div class="eyebrow">Education</div>
@@ -2187,7 +2231,7 @@
   </section>
 
   <section style="padding-top:0;" id="agriculture">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">Agriculture</div>
@@ -2208,7 +2252,7 @@
   </section>
 
   <section style="padding-top:0;" id="business">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature feature-reverse">
         <div class="feature-body" style="order:1;">
           <div class="eyebrow">Business</div>
@@ -2229,7 +2273,7 @@
   </section>
 
   <section style="padding-top:0;" id="enterprise">
-    <div class="wrap">
+    <div class="wrap reveal">
       <div class="feature">
         <div class="feature-body">
           <div class="eyebrow">Enterprise</div>
