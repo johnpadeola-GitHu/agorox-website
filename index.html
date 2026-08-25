@@ -1626,56 +1626,75 @@
   <div class="page-hero">
     <div class="wrap">
       <div class="breadcrumb"><span data-route="home" style="cursor:pointer;">Home</span> / Products</div>
-      <h1>The AgoroX Platform</h1>
-      <p class="lede">Purpose-built operating systems, one technology foundation.</p>
+      <h1>Products</h1>
+      <p class="lede">Five operating systems, purpose-built by industry — one technology foundation underneath.</p>
     </div>
   </div>
 
   <section>
     <div class="wrap">
-      <div class="product-grid">
-        <div class="product-card" data-route="labos">
-          <div class="pc-tag">AX-01 — Healthcare</div>
+      <div class="feature-duo reveal">
+        <div class="feature-mini" data-route="labos">
+          <div class="fv-top">AX-01 / HEALTHCARE — LIVE</div>
           <h3>LabOS</h3>
-          <p>Sample tracking, results, reporting, multi-branch.</p>
-          <span class="pc-link">Explore →</span>
+          <p>Sample tracking, results, reporting, multi-branch — the laboratory information system running real diagnostic labs today.</p>
+          <div class="feature-mock">
+            <div class="fm-row"><span>Sample #LB-22041</span><span class="fm-ok">Verified</span></div>
+            <div class="fm-row"><span>Instrument Gateway</span><span class="fm-ok">Connected</span></div>
+          </div>
+          <div class="feature-actions">
+            <span class="btn btn-ghost" data-route="labos">Explore LabOS →</span>
+          </div>
         </div>
-        <div class="product-card" data-route="poultrysuite">
-          <div class="pc-tag">AX-02 — Agriculture</div>
+        <div class="feature-mini" data-route="poultrysuite">
+          <div class="fv-top">AX-02 / AGRICULTURE — LIVE</div>
           <h3>PoultrySuite Africa</h3>
-          <p>Hatchery, feed mill, and flock — one account.</p>
-          <span class="pc-link">Explore →</span>
+          <p>Hatchery, feed mill, and flock in one account — the connected platform running poultry operations end to end.</p>
+          <div class="feature-mock">
+            <div class="fm-row"><span>House 4 — Batch 18</span><span class="fm-ok">Healthy</span></div>
+            <div class="fm-row"><span>Biosecurity check</span><span class="fm-ok">Passed</span></div>
+          </div>
+          <div class="feature-actions">
+            <span class="btn btn-ghost" data-route="poultrysuite">Explore PoultrySuite →</span>
+          </div>
         </div>
-        <div class="product-card" data-route="hospitalos">
-          <div class="pc-tag">AX-03 — Healthcare</div>
-          <h3>HospitalOS <span style="font-size:10px; font-weight:600; color:var(--slate); font-family:var(--mono); text-transform:uppercase; letter-spacing:.06em; vertical-align:middle;">Planned</span></h3>
-          <p>Patients, clinical ops, billing — connected to LabOS.</p>
-          <span class="pc-link">Explore →</span>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="wrap reveal">
+      <div class="eyebrow" style="margin-bottom:14px;">The Rest of the Register</div>
+      <div class="register">
+        <div class="register-head"><div>Product</div><div>Category</div><div>Status</div><div></div></div>
+        <div class="register-row" data-route="smartinvoice">
+          <div class="register-name"><span class="register-id">AX-05</span>SmartInvoice<span>Offline-capable invoicing and billing</span></div>
+          <div class="register-cat">Business Operations</div>
+          <div class="register-status status-live"><span class="status-dot"></span>Live</div>
+          <div class="register-link">View →</div>
         </div>
-        <div class="product-card" data-route="schoolos">
-          <div class="pc-tag">AX-04 — Education</div>
-          <h3>SchoolOS <span style="font-size:10px; font-weight:600; color:var(--slate); font-family:var(--mono); text-transform:uppercase; letter-spacing:.06em; vertical-align:middle;">Planned</span></h3>
-          <p>Administration, finance, academics, learning.</p>
-          <span class="pc-link">Explore →</span>
+        <div class="register-row" data-route="hospitalos">
+          <div class="register-name"><span class="register-id">AX-03</span>HospitalOS<span>Patients, clinical ops, billing — connected to LabOS</span></div>
+          <div class="register-cat">Healthcare / Hospitals</div>
+          <div class="register-status status-rollout"><span class="status-dot"></span>Planned</div>
+          <div class="register-link">View →</div>
         </div>
-        <div class="product-card" data-route="smartinvoice">
-          <div class="pc-tag">AX-05 — Business</div>
-          <h3>SmartInvoice</h3>
-          <p>Offline-capable invoicing and billing.</p>
-          <span class="pc-link">Explore →</span>
+        <div class="register-row" data-route="schoolos">
+          <div class="register-name"><span class="register-id">AX-04</span>SchoolOS<span>Administration, finance, academics, learning</span></div>
+          <div class="register-cat">Education</div>
+          <div class="register-status status-rollout"><span class="status-dot"></span>Planned</div>
+          <div class="register-link">View →</div>
         </div>
-        <div class="product-card" data-route="press">
-          <div class="pc-tag">Reference</div>
-          <h3>AgoroX Press</h3>
-          <p>Announcements, updates, and writing.</p>
-          <span class="pc-link">Read →</span>
-        </div>
-        <div class="product-card" style="background:var(--navy-soft);" onclick="openModal()">
-          <div class="pc-tag" style="color:rgba(247,245,240,0.5);">AgoroX Platform</div>
-          <h3 style="color:var(--paper);">One login, every product</h3>
-          <p style="color:rgba(247,245,240,0.65);">Sign in once, everywhere licensed.</p>
-          <span class="pc-link" style="color:var(--clay);">Sign In →</span>
-        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2 style="letter-spacing:-.02em;">One login, every product you're licensed for.</h2>
+      <div class="cta-actions">
+        <button class="btn btn-clay" onclick="openModal()">Sign In <span class="btn-arrow">→</span></button>
+        <span class="btn btn-ghost" data-route="platform">Explore the AgoroX Platform →</span>
       </div>
     </div>
   </section>
