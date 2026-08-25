@@ -230,9 +230,9 @@
 
   .register{ border-top:1px solid var(--navy); border-bottom:1px solid var(--navy); }
   .register-head{ display:grid; grid-template-columns: 2.1fr 1fr 100px 80px; padding:12px 0; font-family:var(--mono); font-size:10px; letter-spacing:0.08em; text-transform:uppercase; color:var(--slate); border-bottom:1px solid var(--line); }
-  .register-row{ display:grid; grid-template-columns: 2.1fr 1fr 100px 80px; align-items:center; padding:16px 0; border-bottom:1px solid var(--line-soft); transition: background .15s ease; cursor:pointer; }
+  .register-row{ display:grid; grid-template-columns: 2.1fr 1fr 100px 80px; align-items:center; padding:16px 4px; margin:0 -4px; border-radius:6px; border-bottom:1px solid var(--line-soft); transition: background .15s ease, transform .18s cubic-bezier(.2,.8,.2,1), box-shadow .18s ease; cursor:pointer; }
   .register-row:last-child{ border-bottom:none; }
-  .register-row:hover{ background:rgba(196,106,62,0.05); }
+  .register-row:hover{ background:var(--bg); transform:translateX(2px); box-shadow:0 4px 16px rgba(14,31,51,0.06); }
   .register-id{ font-family:var(--mono); font-size:11px; color:var(--slate); margin-right:10px; }
   .register-name{ font-family:var(--display); font-size:14px; font-weight:500; letter-spacing:-0.01em; }
   .register-name span{ font-family:var(--body); font-size:12px; color:var(--slate-dark); font-weight:400; margin-left:8px; }
@@ -279,8 +279,8 @@
   .product-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line); }
   @media (max-width:860px){ .product-grid{ grid-template-columns:1fr 1fr; } }
   @media (max-width:560px){ .product-grid{ grid-template-columns:1fr; } }
-  .product-card{ background:var(--bg); padding:26px 24px; display:flex; flex-direction:column; min-height:150px; transition: background .18s ease; cursor:pointer; }
-  .product-card:hover{ background:var(--paper); }
+  .product-card{ background:var(--bg); padding:26px 24px; display:flex; flex-direction:column; min-height:150px; transition: background .18s ease, transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease; cursor:pointer; }
+  .product-card:hover{ background:var(--paper); transform:translateY(-3px); box-shadow:0 10px 28px rgba(14,31,51,0.08); }
   .product-card .pc-tag{ font-family:var(--mono); font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--slate); }
   .product-card h3{ margin-top:16px; }
   .product-card p{ font-size:14px; margin-top:10px; flex-grow:1; line-height:1.55; }
@@ -316,8 +316,8 @@
   /* ---------- Compact featured products (two-up, Home) ---------- */
   .feature-duo{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
   @media (max-width:860px){ .feature-duo{ grid-template-columns:1fr; } }
-  .feature-mini{ background:var(--paper); padding:32px 28px; display:flex; flex-direction:column; min-height:225px; cursor:pointer; transition: background .18s ease; }
-  .feature-mini:hover{ background:var(--paper-dim); }
+  .feature-mini{ background:var(--paper); padding:32px 28px; display:flex; flex-direction:column; min-height:225px; cursor:pointer; transition: background .18s ease, transform .2s cubic-bezier(.2,.8,.2,1), box-shadow .2s ease; position:relative; z-index:1; }
+  .feature-mini:hover{ background:var(--paper-dim); transform:translateY(-3px); box-shadow:0 12px 32px rgba(14,31,51,0.09); }
   .feature-mini .fv-top{ font-family:var(--mono); font-size:11px; letter-spacing:.06em; color:var(--slate); }
   .feature-mini h3{ color:var(--navy); font-size:23px; margin-top:16px; font-weight:600; }
   .feature-mini p{ color:var(--navy-soft); font-size:14px; margin-top:10px; line-height:1.55; }
@@ -1342,8 +1342,23 @@
 <div class="page" data-page="home">
 
   <!-- ============ 1. HERO ============ -->
-  <section class="hero" style="padding:64px 0 0;">
-    <div class="wrap hero-split">
+  <section class="hero" style="padding:64px 0 0; overflow:hidden;">
+    <svg aria-hidden="true" viewBox="0 0 620 620" style="position:absolute; top:-60px; right:-80px; width:min(52vw,620px); height:auto; opacity:0.07; pointer-events:none; z-index:0;">
+      <g fill="none" stroke="var(--navy)" stroke-width="1.4">
+        <circle cx="310" cy="310" r="26"/>
+        <line x1="310" y1="310" x2="310" y2="60"/>
+        <line x1="310" y1="310" x2="527" y2="185"/>
+        <line x1="310" y1="310" x2="527" y2="435"/>
+        <line x1="310" y1="310" x2="310" y2="560"/>
+        <line x1="310" y1="310" x2="93" y2="435"/>
+        <circle cx="310" cy="60" r="10"/>
+        <circle cx="527" cy="185" r="10"/>
+        <circle cx="527" cy="435" r="10"/>
+        <circle cx="310" cy="560" r="10"/>
+        <circle cx="93" cy="435" r="10"/>
+      </g>
+    </svg>
+    <div class="wrap hero-split" style="position:relative; z-index:1;">
       <div style="max-width:760px;">
         <div class="eyebrow"><span class="status-dot" style="background:var(--navy); display:inline-block; width:6px; height:6px; border-radius:50%; box-shadow:0 0 0 0 rgba(14,31,51,.28); animation:statusPulse 2.4s ease-out infinite;"></span>Systems operational — AgoroX Africa</div>
         <h1 style="font-size:clamp(40px,7.2vw,84px); line-height:0.98; margin:26px 0 24px; letter-spacing:-0.04em; font-weight:600;">Digital infrastructure<br>for Africa's <em>real-world<br>operations.</em></h1>
@@ -1359,7 +1374,7 @@
       </div>
     </div>
 
-    <div class="wrap reveal" style="margin-top:72px;">
+    <div class="wrap reveal" style="margin-top:72px; position:relative; z-index:1;">
       <div class="register">
         <div class="register-head"><div>Product</div><div>Category</div><div>Status</div><div></div></div>
         <div class="register-row" data-route="labos">
